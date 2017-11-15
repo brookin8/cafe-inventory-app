@@ -23,9 +23,17 @@ Route::resource('items', 'ItemsController');
 
 Route::resource('suppliers', 'SupplierController');
 
-Route::get('/orders', function() {
-	return view('orders.index');
-});
+Route::get('/orders/open', 'OrderController@open');
+
+Route::get('/orders/saved', 'OrderController@saved');
+
+Route::get('/orders/closed', 'OrderController@closed');
+
+Route::resource('orders', 'OrderController');
+
+Route::get('/invoices/backorder', 'InvoiceController@backorder');
+
+Route::resource('invoices', 'InvoiceController');
 
 Route::get('/reporting', function() {
 	return view('reporting.index');
@@ -35,6 +43,3 @@ Route::get('/inventorycounts', function() {
 	return view('inventorycounts.index');
 });
 
-Route::get('/invoices', function() {
-	return view('invoices.index');
-});

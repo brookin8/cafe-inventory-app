@@ -15,9 +15,10 @@ class CreateInvoicesTable extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->increments('id');
-            $table->boolean('editable')->default(true);
+            $table->boolean('editable')->default(false);
             $table->integer('order_id')->unsigned();
-            $table->foreign('order_id')->references('id')->on('orders');
+            $table->integer('supplier_id')->unsigned();
+            $table->foreign('supplier_id')->references('id')->on('suppliers');
             $table->date('actual_delivery_date');
             $table->decimal('total_invoice_amount', 8, 2)->nullable();
             $table->integer('store_id')->unsigned();

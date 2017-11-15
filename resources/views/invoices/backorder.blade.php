@@ -12,10 +12,10 @@
 
 	<ul class="nav nav-tabs">
 	  <li class="nav-item">
-	    <a class="nav-link active" href="#">Closed</a>
+	    <a class="nav-link" href="/invoices">Closed</a>
 	  </li>
 	  <li class="nav-item">
-	    <a class="nav-link" href="/invoices/backorder">Backorder</a>
+	    <a class="nav-link active" href="/invoices/backorder">Backorder</a>
 	  </li>
 	</ul>
 	<div class="container ">
@@ -28,8 +28,9 @@
 						<th class="text-center">Order Number</th>
 						<th class="text-center">Supplier</th>
 						<th class="text-center">Total $ Amount</th>
-						<th class="text-center">Date Submitted</th>
-						<th class="text-center">Submitted By</th>
+						<th class="text-center">Last Updated</th>
+						<th class="text-center">Updated By</th>
+						<th class="text-center">Actions</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -41,6 +42,22 @@
 					<td>{{$invoice->total_invoice_amount}}</td>
 					<td>{{Carbon\Carbon::parse($invoice->updated_at)->format('m/d/Y')}}</td>
 					<td>{{$invoice->username}}</td>
+					<td>
+						<a href="">
+							<button class="edit-modal btn btn-sm btn-info"
+						data-info="">
+								<span class="glyphicon glyphicon-edit"></span>
+							</button>
+						</a>
+						<form method="post" action="">
+                                {{ method_field('DELETE') }}
+                                {{ csrf_field() }}
+                            <button class="delete-modal btn btn-sm btn-danger"
+							data-info="">
+								<span class="glyphicon glyphicon-trash"></span>
+							</button>
+						</form>
+					</td>
 				</tr>
 				@endforeach
 				</tbody>

@@ -12,7 +12,7 @@
 
 	<ul class="nav nav-tabs">
 	  <li class="nav-item">
-	    <a class="nav-link active" href="#">All</a>
+	    <a class="nav-link" href="/orders">All</a>
 	  </li>
 	  <li class="nav-item">
 	    <a class="nav-link" href="/orders/open">Open</a>
@@ -21,7 +21,7 @@
 	    <a class="nav-link" href="/orders/saved">Saved (Unsent)</a>
 	  </li>
 	  <li class="nav-item">
-	    <a class="nav-link" href="/orders/closed">Closed</a>
+	    <a class="nav-link active" href="#">Closed</a>
 	  </li>
 	</ul>
 	<div class="container ">
@@ -34,6 +34,7 @@
 						<th class="text-center">Supplier</th>
 						<th class="text-center">Submitted Date</th>
 						<th class="text-center">Expected Delivery Date</th>
+						<th class="text-center">Actual Delivery Date</th>
 						<th class="text-center">Total $ Amount</th>
 						<th class="text-center">Status</th>
 						<th class="text-center">Actions</th>
@@ -45,43 +46,12 @@
 					<td>{{$order->id}}</td>
 					<td>{{$order->supplier}}</td>
 					<td>{{Carbon\Carbon::parse($order->updated_at)->format('m/d/Y')}}</td>
+					<td> PLACEHOLDER - INVOICE DATE
+					</td>
 					<td>{{Carbon\Carbon::parse($order->expected_delivery_date)->format('m/d/Y')}}</td>
 					<td>{{$order->total_order_cost}}</td>
-					
-					@if ($order->editable === true && $order->received === false)
-						<td>saved (not sent)</td>
-					@elseif ($order->editable === false && $order->received === false)
-						<td>open</td>
-					@else
-						<td>closed</td>
-					@endif
-					
-					@if ($order->editable === true && $order->received === false)
-						<td>
-					<a href=""><button class="edit-modal btn btn-sm btn-info"
-							data-info="">
-							<span class="glyphicon glyphicon-edit"></span>
-						</button></a>
-						<form method="post" action="">
-                                {{ method_field('DELETE') }}
-                                {{ csrf_field() }}
-                            <button class="delete-modal btn btn-sm btn-danger"
-							data-info="">
-							<span class="glyphicon glyphicon-trash"></span>
-						</button></form>
-						</td>
-					@elseif ($order->editable === false && $order->received === false)
-						<td>
-							<a href=""><button class="invoiceButton btn btn-sm btn-info"
-							data-info="">
-							Invoice
-						</button></a>
-						</td>
-					@else
-						<td></td>
-					@endif
-
-
+					<td>closed</td>
+					<td></td>
 				</tr>
 				@endforeach
 				</tbody>

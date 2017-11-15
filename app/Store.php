@@ -15,10 +15,10 @@ class Store extends Model
     }
 
     public function items() {
-    	return $this->belongsToMany('App\Item', 'items_stores');
+    	return $this->belongsToMany('App\Item', 'items_stores','store_id','item_id')->withPivot('PARs')->withTimestamps();
     }
 
      public function suppliers() {
-    	return $this->belongsToMany('App\Supplier','suppliers_stores');
+    	return $this->belongsToMany('App\Supplier','suppliers_stores','store_id','supplier_id')->withPivot('lead_time_days')->withTimestamps();
     }
 }

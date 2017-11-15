@@ -23,18 +23,18 @@ class Item extends Model
     }
 
     public function stores() {
-    	return $this->belongsToMany('App\Store','items_stores');
+    	return $this->belongsToMany('App\Store','items_stores','item_id','store_id')->withPivot('PARs')->withTimestamps();
     }
 
     public function inventorycounts() {
-    	return $this->belongsToMany('App\Inventorycount','items_inventorycounts');
+    	return $this->belongsToMany('App\Inventorycount','items_inventorycounts','item_id','inventorycount_id')->withPivot('iventorycount_qty,inventory_dollar_amount')->withTimestamps();
     }
 
     public function orders() {
-    	return $this->belongsToMany('App\Order','items_orders');
+    	return $this->belongsToMany('App\Order','items_orders','item_id','order_id')->withPivot('order_qty','orders_dollar_amount')->withTimestamps();
     }
 
     public function invoices() {
-    	return $this->belongsToMany('App\Invoice','items_invoices');
+    	return $this->belongsToMany('App\Invoice','items_invoices','item_id','invoice_id')->withPivot('invoice_qty','invoice_dollar_amount')->withTimestamps();
     }
 }

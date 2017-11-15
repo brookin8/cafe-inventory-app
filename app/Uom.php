@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Uom extends Model
 {
-     public function items() {
+    public function items() {
     	return $this->hasMany('App\Item');
     }
 }

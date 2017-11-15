@@ -11,11 +11,30 @@ class InvoiceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
+
     public function index()
     {
-        //
+        $invoices = \DB::table('invoices')
+                ->join('users', 'invoices.created_by', '=', 'users.id')
+                ->join('suppliers', 'invoices.supplier_id','=','suppliers.id')
+                ->select('invoices.*', 'users.name as username','suppliers.name as supplier')
+                ->where('editable','=',false)
+                ->get();
+
+        return view('invoices.index',compact('invoices'));
     }
 
+    public function backorder() {
+        $invoices = \DB::table('invoices')
+                ->join('users', 'invoices.created_by', '=', 'users.id')
+                ->join('suppliers', 'invoices.supplier_id','=','suppliers.id')
+                ->select('invoices.*', 'users.name as username','suppliers.name as supplier')
+                ->where('editable','=',true)
+                ->get();
+
+        return view('invoices.backorder',compact('invoices'));
+    }
     /**
      * Show the form for creating a new resource.
      *

@@ -19,6 +19,7 @@ class Supplier extends Model
     }
 
     public function stores() {
-    	return $this->belongsToMany('App\Store','suppliers_stores');
+    	return $this->belongsToMany('App\Store','suppliers_stores','supplier_id','store_id')->withPivot('lead_time_days')->withTimestamps();
     }
+
 }

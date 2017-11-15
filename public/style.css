@@ -69,6 +69,10 @@
 	padding-left:5px;
 }
 
+.invoiceButton {
+	width:50px;
+}
+
 .glyphicon {
 	width:10px;
 }
@@ -155,6 +159,27 @@ a.tableButton {
 
 a.lastTableButton {
 	color:#fff;
+}
+
+a.nav-link {
+	background-color:#636B6F;
+	color:#F5F8FA;	
+}
+
+a.nav-link:hover {
+	color:#636B6F;	
+}
+
+ul.nav.nav-tabs {
+	margin-left:40px;
+	margin-bottom:30px;
+}
+
+
+
+.nav-tabs .nav-link.active {
+	background-color:#F5F8FA;
+	color:#636B6F;
 }
 
 .lastTableButton {
