@@ -2,20 +2,20 @@
 
 @section('content')
 	
-	<h1 class="text-center">Invoices</h1>
+	<h1 class="text-center">Inventory Counts</h1>
 
 	<div class="container">
 	<div class="row mt-3 mb-4">
-		<a href="/invoices/create"><button class="btn btn-default ml-4">New Invoice</button></a>
+		<a href="/inventorycounts/create"><button class="btn btn-default ml-4">New Count</button></a>
 	</div>
 	</div>
 
 	<ul class="nav nav-tabs">
 	  <li class="nav-item">
-	    <a class="nav-link" href="/invoices">Closed</a>
+	    <a class="nav-link" href="/inventorycounts">Submitted</a>
 	  </li>
 	  <li class="nav-item">
-	    <a class="nav-link active" href="#">Backorder</a>
+	    <a class="nav-link active" href="#">Saved</a>
 	  </li>
 	</ul>
 	<div class="container ">
@@ -24,9 +24,7 @@
 			<table class="table table-borderless table-striped table-hover" id="table">
 				<thead>
 					<tr>
-						<th class="text-center">Invoice Number</th>
-						<th class="text-center">Order Number</th>
-						<th class="text-center">Supplier</th>
+						<th class="text-center">Count Record ID</th>
 						<th class="text-center">Total $ Amount</th>
 						<th class="text-center">Last Updated</th>
 						<th class="text-center">Updated By</th>
@@ -34,29 +32,23 @@
 					</tr>
 				</thead>
 				<tbody>
-				@foreach($invoices as $invoice)
+				@foreach($counts as $count)
 				<tr class="">
-					<td>{{$invoice->id}}</td>
-					<td>{{$invoice->order_id}}</td>
-					<td>{{$invoice->supplier}}</td>
-					<td>{{$invoice->total_invoice_amount}}</td>
-					<td>{{Carbon\Carbon::parse($invoice->updated_at)->format('m/d/Y')}}</td>
-					<td>{{$invoice->username}}</td>
-					<td>
-						<a href="">
-							<button class="edit-modal btn btn-sm btn-info"
-						data-info="">
-								<span class="glyphicon glyphicon-edit"></span>
-							</button>
-						</a>
+					<td>{{$count->id}}</td>
+					<td>{{$count->total_value_onhand}}</td>
+					<td>{{Carbon\Carbon::parse($count->updated_at)->format('m/d/Y')}}</td>
+					<td>{{$count->username}}</td>
+					<td><a href=""><button class="edit-modal btn btn-sm btn-info"
+							data-info="">
+							<span class="glyphicon glyphicon-edit"></span>
+						</button></a>
 						<form method="post" action="">
                                 {{ method_field('DELETE') }}
                                 {{ csrf_field() }}
                             <button class="delete-modal btn btn-sm btn-danger"
 							data-info="">
-								<span class="glyphicon glyphicon-trash"></span>
-							</button>
-						</form>
+							<span class="glyphicon glyphicon-trash"></span>
+						</button></form>
 					</td>
 				</tr>
 				@endforeach

@@ -35,11 +35,12 @@ Route::get('/invoices/backorder', 'InvoiceController@backorder');
 
 Route::resource('invoices', 'InvoiceController');
 
+Route::get('/inventorycounts/saved', 'InventorycountController@saved');
+
+Route::resource('inventorycounts', 'InventorycountController');
+
 Route::get('/reporting', function() {
 	return view('reporting.index');
 });
 
-Route::get('/inventorycounts', function() {
-	return view('inventorycounts.index');
-});
 

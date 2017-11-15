@@ -7,11 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class Store extends Model
 {
     public function inventorycounts() {
-    	return $this->hasMany('App\Inventorycount')
+    	return $this->hasMany('App\Inventorycount');
     }
 
-    public function Invoices() {
-    	return $this->hasMany('App\Invoices')
+    public function invoices() {
+    	return $this->hasMany('App\Invoice');
+    }
+
+    public function orders() {
+    	return $this->hasMany('App\Order');
     }
 
     public function items() {

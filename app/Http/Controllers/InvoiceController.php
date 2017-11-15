@@ -19,7 +19,7 @@ class InvoiceController extends Controller
                 ->join('users', 'invoices.created_by', '=', 'users.id')
                 ->join('suppliers', 'invoices.supplier_id','=','suppliers.id')
                 ->select('invoices.*', 'users.name as username','suppliers.name as supplier')
-                ->where('editable','=',false)
+                ->where('invoices.editable','=',false)
                 ->get();
 
         return view('invoices.index',compact('invoices'));
@@ -30,7 +30,7 @@ class InvoiceController extends Controller
                 ->join('users', 'invoices.created_by', '=', 'users.id')
                 ->join('suppliers', 'invoices.supplier_id','=','suppliers.id')
                 ->select('invoices.*', 'users.name as username','suppliers.name as supplier')
-                ->where('editable','=',true)
+                ->where('invoices.editable','=',true)
                 ->get();
 
         return view('invoices.backorder',compact('invoices'));

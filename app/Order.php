@@ -14,6 +14,18 @@ class Order extends Model
     	return $this->belongsToMany('App\Item', 'items_orders','order_id','item_id')->withPivot('order_qty','orders_dollar_amount')->withTimestamps();
     }
 
+    public function supplier() {
+    	return $this->belongsTo('App\Supplier');
+    }
+
+    public function store() {
+    	return $this->belongsTo('App\Store');
+    }
+
+    public function user() {
+    	return $this->belongsTo('App\User','created_by','id');
+    }
+
     // public function invoices() {
     // 	return $this->hasOne('App\Invoice');
     // }

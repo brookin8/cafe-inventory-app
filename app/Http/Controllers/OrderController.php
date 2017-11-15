@@ -13,11 +13,12 @@ class OrderController extends Controller
      */
     public function index()
     {
-         $orders = \DB::table('orders')
+        $orders = \DB::table('orders')
                 ->join('users', 'orders.created_by', '=', 'users.id')
                 ->join('suppliers', 'orders.supplier_id','=','suppliers.id')
                 ->select('orders.*', 'users.name as username','suppliers.name as supplier')
                 ->get();
+        
         return view('orders.index',compact('orders'));
     }
 
@@ -50,7 +51,18 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        //
+        $order = \App\Order::find($id);
+        $items = \DB::table('items_orders')
+                ->join('orders', 'items_orders.order_id', '=', 'orders.id')
+                ->join('items', 'items_orders.item_id','=','items.id')
+                ->join('suppliers', 'orders.supplier_id','=','suppliers.id')
+                ->join('uoms', 'items.uom_id','=','uoms.id')
+                ->join('users', 'orders.created_by','=','users.id')
+                ->select('items_orders.*', 'users.name as username','orders.id as ordernumber','suppliers.name as supplier','uoms.unit as uom','items.name as itemname')
+                ->where('items_orders.order_id','=',$id)
+                ->get();
+
+        return view('orders.show',compact('order','items'));
     }
 
     /**

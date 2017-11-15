@@ -13,7 +13,24 @@ class InventoryCountController extends Controller
      */
     public function index()
     {
-        //
+        $counts = \DB::table('inventorycounts')
+                ->join('users', 'inventorycounts.created_by', '=', 'users.id')
+                ->select('inventorycounts.*', 'users.name as username')
+                ->where('inventorycounts.editable','=',false)
+                ->get();
+
+        return view('inventorycounts.index',compact('counts'));
+    }
+
+    public function saved() {
+        $counts = \DB::table('inventorycounts')
+                ->join('users', 'inventorycounts.created_by', '=', 'users.id')
+                ->select('inventorycounts.*', 'users.name as username')
+                ->where('inventorycounts.editable','=',true)
+                ->get();
+
+        return view('inventorycounts.saved',compact('counts'));
+
     }
 
     /**

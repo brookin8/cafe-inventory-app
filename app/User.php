@@ -34,4 +34,8 @@ class User extends Authenticatable
     public function access_levels() {
         return $this->belongsTo('App\AccessLevel');
     }
+
+    public function orders() {
+        return $this->hasMany('App\Order','id','created_by');
+    }
 }
