@@ -1,0 +1,201 @@
+
+@media only screen and (max-width: 765px) {
+	.userCard {
+		width:270px;
+		height:150px;
+	}
+
+	.filler {
+		width:175px;
+		height:175px;
+	}
+
+	.cardText {
+		font-size:180%;
+	}
+
+}
+
+@media only screen and (min-width:765px) and (max-width: 800px) {
+	.userCard {
+		width:200px;
+		height:175px;
+	}
+
+	.filler {
+		width:175px;
+		height:175px;
+	}
+
+	.cardText {
+		font-size:170%;
+	}
+
+}
+
+@media only screen and (min-width: 800px) {
+	.userCard {
+		width:270px;
+		height:270px;
+	}
+
+	.filler {
+		width:100%;
+		height:100%;
+	}
+
+	.cardText {
+		font-size:225%;
+	}
+}
+
+.filler {
+	background-color:transparent;
+	border:none;
+	display:block;
+}
+
+.userCard {
+	color:#fff;
+	background-color:#39628A;
+	border:none;
+	display:flex;
+	box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0), 0 8px 22px 0 rgba(0, 0, 0, 0.19);
+}
+
+.btn-sm {
+	width:30px;
+	padding-right:5px;
+	padding-left:5px;
+}
+
+.glyphicon {
+	width:10px;
+}
+
+.adminCard {
+	
+	background-color:#70658A;
+}
+
+
+.cardText {
+	margin-top:auto;
+	margin-bottom:auto;
+	/*display:block;*/
+	position:relative;
+	float:none;
+}
+
+/*.cardText a {
+	margin-top:auto;
+	margin-bottom:auto;
+	color:#fff;
+	text-decoration:none;
+	font-size:100%;
+}*/
+
+
+a:hover, a:visited, a:link, a:active {
+	text-decoration:none;
+	color:#13C183;
+}
+
+.addMargin {
+	margin-top:10%;
+}
+
+nav {
+	font-size:145%;
+}
+
+a.navbar-brand {
+	font-size:125%;
+}
+
+.navbar-default {
+	background-color: #2ACA81;
+	color:#fff;
+}
+
+.navbar-default .navbar-brand{
+	color:#fff;
+}
+
+.navbar-default .navbar-brand:hover {
+	color:#39628A;
+}
+
+.navbar-default .navbar-nav>li>a, a:visited{
+	color:#fff;
+}
+
+.navbar-default .navbar-nav>li> a:hover{
+	color:#39628A;
+}
+
+.navigation {
+	padding-top:2%;
+	padding-bottom:2%;
+}
+
+.dropdown-menu {
+	font-size:85%;
+}
+
+.tableButton {
+	background-color: #39628A;
+	color:#fff;
+	margin-right:2px;
+}
+
+a.tableButton {
+	color:#fff;
+}
+
+a.lastTableButton {
+	color:#fff;
+}
+
+.lastTableButton {
+	background-color: #39628A;
+	color:#fff;
+	margin-right:8px;
+}
+
+label {
+	margin-left:20px;
+	margin-right:20px;
+}
+
+.billing {
+	margin-left:9%;
+}
+
+#category, #supplier, #uom, #order_method {
+	line-height:35px;
+	height:35px;
+}
+
+.createText {
+	margin-right:0px;
+	margin-left:0px;
+}
+
+.submitButtonSpace {
+	margin-right:0px;
+}
+
+.dataTables_paginate{
+	margin-left:10px;
+}
+
+.createForm {
+	background-color:#39628A;
+	color:#fff;
+}
+
+/*form {
+	box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0), 0 8px 22px 0 rgba(0, 0, 0, 0.19);
+}*/
+
