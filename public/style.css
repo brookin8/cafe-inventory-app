@@ -197,6 +197,7 @@ input.orderquantity {
 input.invcountqty {
 	width:70px;
 	height:40px;
+	text-align:center;
 }
 
 .tableButton {

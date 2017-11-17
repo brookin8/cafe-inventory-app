@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form>
+<form method="post" action="/orders">
 	<div class="container">
 		<div class="row">
 			<div class="col">Supplier: {{$supplier->name}}</div>
@@ -13,20 +13,31 @@
 
 	<div class="container">
 
-		@foreach ($categories as $category)
-			<div class="row mb-3 mt-5 ml-5">
+	@foreach ($categories as $category)
+		<div class="row">
+			<button class="btn btn-lg btn-primary mb-3 mt-5 ml-5" data-toggle="collapse" href="#collapse{{$category->id}}" aria-expanded="false" aria-controls="collapse{{$category->id}}">
 			{{$category->name}}
-			</div>
+			</button>
+		</div>
+			<div class="collapse" id="collapse{{$category->id}}">
 			@foreach ($items as $item)
 				@if($item->category_id === $category->id)
-					<div class="row ml-5">
-						{{$item->name}}
-					</div>
+ 						 <div class="card card-block">
+ 						 	<div class="row">
+								<div class="col-3">{{$item->name}}
+									<input class="hidden" name="item_ordered" value="{{$item->id}}">
+								</div>
+								<div class="col">
+									<input class="orderquantity" name="order_qty">
+								</div>
+							</div>
+						</div>
 				@endif
 			@endforeach
-		@endforeach
-
+		</div>
+	@endforeach
 	</div>
+
 	<div class="container">
 		<a href="../orders"><button type="button">Discard</button></a><button type="submit">Submit</button>
 	</div>

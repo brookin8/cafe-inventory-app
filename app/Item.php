@@ -27,7 +27,7 @@ class Item extends Model
     }
 
     public function inventorycounts() {
-    	return $this->belongsToMany('App\Inventorycount','items_inventorycounts','item_id','inventorycount_id')->withPivot('iventorycount_qty,inventory_dollar_amount')->withTimestamps();
+    	return $this->belongsToMany('App\Inventorycount','items_inventorycounts','item_id','inventorycount_id')->withPivot('inventorycount_qty','inventory_dollar_amount')->withTimestamps();
     }
 
     public function orders() {

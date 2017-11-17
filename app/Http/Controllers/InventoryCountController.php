@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class InventoryCountController extends Controller
 {
@@ -52,7 +53,51 @@ class InventoryCountController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $count = new \App\Inventorycount;
+        $count->editable = false;
+        $count->store_id = \Auth::user()->store_id;
+        $count->created_by = \Auth::user()->id;
+        $count->created_at = Carbon::now();
+        $count->updated_at = Carbon::now();
+        $count->total_value_onhand = 0;
+        $count->save();
+
+        $countid = $count->id;
+        //error_log('count id '. $countid);
+
+        $items = \App\Item::all();
+        $numItems = $items->count();
+        $totaldollars = 0;
+
+        for($i=1;$i<=$numItems;$i++) {
+           $stringi = (string)$i;
+           $itemid = request('item'.$stringi);
+           $quantity = request('qty'.$stringi); 
+
+           //error_log('qty '. $quantity);
+
+           if($quantity != '') {
+                $item = \App\Item::find($itemid);
+
+                $invdollars = (int)($quantity * $item->cost);
+                $totaldollars += $invdollars;
+
+                error_log($invdollars);
+
+                $item->inventorycounts()->attach($countid,
+                    ['inventorycount_qty' => $quantity,'inventory_dollar_amount' => $invdollars,'created_at' => Carbon::now(),'updated_at' => Carbon::now()]
+                );
+            }
+           
+        }
+
+        $count2 = \App\Inventorycount::find($countid);
+        $count2->total_value_onhand = $totaldollars;
+        $count2->save();
+
+        
+
+        return redirect('/inventorycounts');
     }
 
     /**

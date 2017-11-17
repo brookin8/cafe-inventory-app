@@ -3,7 +3,8 @@
 @section('content')
 
 <h1 class="text-center mb-5">Inventory Count</h1>
-<form action="/invoices" method="post" class="mb-5">
+<form action="/inventorycounts" method="post" class="mb-5">
+	{{ csrf_field() }}
 	<div class="row justify-content-center mb-5">
 		<button type="submit" class="btn btn-primary">Submit</button>
 	</div>
@@ -41,7 +42,7 @@
 		<td class="text-center cellwidth">{{$item->name}}</td>
 		<td class="text-center cellwidth">{{$item->category->name}}</td>
 		<td class="text-center cellwidth">{{$item->supplier->name}}</td>
-		<td class="text-center cellwidth"><input class="invcountqty" name="qty{{$loop->iteration}}"></td>
+		<td class="text-center cellwidth"><input type="number" class="invcountqty" name="qty{{$loop->iteration}}"></td>
 	</tr>
 	@endforeach
 	</tbody>
