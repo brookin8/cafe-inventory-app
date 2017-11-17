@@ -18,6 +18,10 @@ class Supplier extends Model
     	return $this->hasMany('App\Order');
     }
 
+    public function invoices() {
+    	return $this->hasMany('App\Invoice');
+    }
+
     public function order_methods() {
     	return $this->belongsTo('App\Order_Method');
     }

@@ -1,8 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-	
-<h1 class="text-center">Order {{$order->id}}</h1>
+
+<div class="row justify-content-center">	
+	<div class="col-5 pt-5 pl-5">
+		<a href="/orders" class="back ml-5 mt-5">&#8678; Back</a>
+	</div>
+	<div class="col-7">	
+		<h1>Order {{$order->id}}</h1>
+	</div>
+</div>
 
 <div class="container orderShow">
 <div class="container orderShowHead mt-3">

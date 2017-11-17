@@ -36,27 +36,27 @@
 				<tbody>
 				@foreach($invoices as $invoice)
 				<tr class="">
-					<td>{{$invoice->id}}</td>
-					<td>{{$invoice->order_id}}</td>
-					<td>{{$invoice->supplier}}</td>
-					<td>{{$invoice->total_invoice_amount}}</td>
-					<td>{{Carbon\Carbon::parse($invoice->updated_at)->format('m/d/Y')}}</td>
-					<td>{{$invoice->username}}</td>
+					<td><a href="../invoices/{{$invoice->id}}" class="bodylink"><div>{{$invoice->id}}</div></a></td>
+					<td><a href="../invoices/{{$invoice->id}}" class="bodylink"><div>{{$invoice->order_id}}</div></a></td>
+					<td><a href="../invoices/{{$invoice->id}}" class="bodylink"><div>{{$invoice->supplier}}</div></a></td>
+					<td><a href="../invoices/{{$invoice->id}}" class="bodylink"><div>${{$invoice->total_invoice_amount}}</div></a></td>
+					<td><a href="../invoices/{{$invoice->id}}" class="bodylink"><div>{{Carbon\Carbon::parse($invoice->updated_at)->format('m/d/Y')}}</div></a></td>
+					<td><a href="../invoices/{{$invoice->id}}" class="bodylink"><div>{{$invoice->username}}</div></a></td>
 					<td>
-						<a href="">
-							<button class="edit-modal btn btn-sm btn-info"
-						data-info="">
-								<span class="glyphicon glyphicon-edit"></span>
-							</button>
-						</a>
+						
+					<div class="row justify-content-center"><a href=""><button class="edit-modal btn btn-sm btn-info mr-2"
+							data-info="">
+							<span class="glyphicon glyphicon-edit"></span>
+						</button></a>
 						<form method="post" action="">
                                 {{ method_field('DELETE') }}
                                 {{ csrf_field() }}
                             <button class="delete-modal btn btn-sm btn-danger"
 							data-info="">
-								<span class="glyphicon glyphicon-trash"></span>
-							</button>
-						</form>
+							<span class="glyphicon glyphicon-trash"></span>
+						</button></form>
+						</div>
+				
 					</td>
 				</tr>
 				@endforeach

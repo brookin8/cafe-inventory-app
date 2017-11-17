@@ -41,22 +41,26 @@
 				<tbody>
 				@foreach($orders as $order)
 				<tr class="">
-					<td>{{$order->id}}</td>
-					<td>{{$order->supplier}}</td>
-					<td>{{Carbon\Carbon::parse($order->updated_at)->format('m/d/Y')}}</td>
-					<td>{{$order->total_order_cost}}</td>
-					<td>saved (not sent)</td>
-					<td><a href=""><button class="edit-modal btn btn-sm btn-info"
-							data-info="">
-							<span class="glyphicon glyphicon-edit"></span>
-						</button></a>
-						<form method="post" action="">
-                                {{ method_field('DELETE') }}
-                                {{ csrf_field() }}
-                            <button class="delete-modal btn btn-sm btn-danger"
-							data-info="">
-							<span class="glyphicon glyphicon-trash"></span>
-						</button></form></td>
+					<td><a href="../orders/{{$order->id}}" class="bodylink"><div>{{$order->id}}</div></a></td>
+					<td><a href="../orders/{{$order->id}}" class="bodylink"><div>{{$order->supplier}}</div></a></td>
+					<td><a href="../orders/{{$order->id}}" class="bodylink"><div>{{Carbon\Carbon::parse($order->updated_at)->format('m/d/Y')}}</div></a></td>
+					<td><a href="../orders/{{$order->id}}" class="bodylink"><div>${{$order->total_order_cost}}</div></a></td>
+					<td><a href="../orders/{{$order->id}}" class="bodylink"><div>saved (not sent)</div></a></td>
+					<td>
+						<div class="row">
+							<a href=""><button class="ml-5 mr-2 edit-modal btn btn-sm btn-info"
+								data-info="">
+								<span class="glyphicon glyphicon-edit"></span>
+							</button></a>
+							<form method="post" action="">
+	                                {{ method_field('DELETE') }}
+	                                {{ csrf_field() }}
+	                            <button class="delete-modal btn btn-sm btn-danger"
+								data-info="">
+								<span class="glyphicon glyphicon-trash"></span>
+							</button></form>
+						</div>
+					</td>
 				</tr>
 				@endforeach
 				</tbody>

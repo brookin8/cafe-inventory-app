@@ -97,7 +97,7 @@ class ItemsInventoryCountsTableSeeder extends Seeder
       'inventorycount_id' => 3,
       'item_id' => 172,
       'inventorycount_qty' => 1,
-      'inventory_dollar_amount' => 50.0,
+      'inventory_dollar_amount' => 9.25,
       'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
       'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
       ]);

@@ -48,17 +48,21 @@
 					<td>{{$supplier->billing_state}}</td>
 					<td>{{$supplier->billing_zip}}</td>
 					<td>{{Carbon\Carbon::parse($supplier->updated_at)->format('m/d/Y')}}</td>
-					<td><a href="/suppliers/{{$supplier->id}}/edit"><button class="edit-modal btn btn-sm btn-info"
+					<td>
+						<div class="row">
+					<a href="/suppliers/{{$supplier->id}}/edit"><button class="edit-modal btn btn-sm btn-info ml-3"
 							data-info="">
 							<span class="glyphicon glyphicon-edit"></span>
 						</button></a>
 						<form method="post" action="/suppliers/{{ $supplier->id }}">
                                 {{ method_field('DELETE') }}
                                 {{ csrf_field() }}
-                            <button class="delete-modal btn btn-sm btn-danger"
+                            <button class="ml-2 delete-modal btn btn-sm btn-danger"
 							data-info="">
 							<span class="glyphicon glyphicon-trash"></span>
-						</button></form></td>
+						</button></form>
+						</div>
+					</td>
 				</tr>
 				@endforeach
 				</tbody>

@@ -20,7 +20,7 @@
 						<th class="text-center">Name</th>
 						<th class="text-center">Supplier</th>
 						<th class="text-center">UOM</th>
-						<th class="text-center">Cost($)</th>
+						<th class="text-center">Cost</th>
 						<th class="text-center">Category</th>
 						<th class="text-center">Last Edited</th>
 						<th class="text-center">Actions</th>
@@ -33,7 +33,7 @@
 					<td>{{$item->name}}</td>
 					<td>{{$item->supplier}}</td>
 					<td>{{$item->uom}}</td>
-					<td>{{$item->cost}}</td>
+					<td>${{$item->cost}}</td>
 					<td>{{$item->category}}</td>
 					<td>{{$item->username}}</td>
 					<td><a href="/items/{{$item->id}}/edit"><button class="edit-modal btn btn-sm btn-info">
@@ -51,7 +51,7 @@
 					<td>{{$item2->name}}</td>
 					<td>NO SUPPLIER</td>
 					<td>{{$item2->uom}}</td>
-					<td>{{$item2->cost}}</td>
+					<td>${{$item2->cost}}</td>
 					<td>{{$item2->category}}</td>
 					<td>{{$item2->username}}</td>
 					<td><a href="/items/{{$item2->id}}/edit"><button class="edit-modal btn btn-sm btn-info">

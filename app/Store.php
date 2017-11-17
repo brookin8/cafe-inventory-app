@@ -15,7 +15,11 @@ class Store extends Model
     }
 
     public function orders() {
-    	return $this->hasMany('App\Order');
+    	return $this->hasMany('App\Order','store_id','id');
+    }
+
+    public function users() {
+        return $this->hasMany('App\User');
     }
 
     public function items() {

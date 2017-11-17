@@ -6,7 +6,7 @@
 
 	<div class="container">
 	<div class="row mt-3 mb-4">
-		<a href="/orders/create"><button class="btn btn-default ml-4">New Order</button></a>
+		<a href="/orders/supplierselect"><button class="btn btn-default ml-4">New Order</button></a>
 	</div>
 	</div>
 
@@ -30,35 +30,35 @@
 			<table class="table table-borderless table-striped table-hover" id="table">
 				<thead>
 					<tr>
-						<th class="text-center">Order Number</th>
+						<th class="text-center">Order No</th>
 						<th class="text-center">Supplier</th>
 						<th class="text-center">Submitted Date</th>
 						<th class="text-center">Expected Delivery Date</th>
 						<th class="text-center">Total $ Amount</th>
 						<th class="text-center">Status</th>
-						<th class="text-center">Actions</th>
+						<th class="text-center actions">Actions</th>
 					</tr>
 				</thead>
 				<tbody>
 				@foreach($orders as $order)
 				<tr class="">
-					<td>{{$order->id}}</td>
-					<td>{{$order->supplier}}</td>
-					<td>{{Carbon\Carbon::parse($order->updated_at)->format('m/d/Y')}}</td>
-					<td>{{Carbon\Carbon::parse($order->expected_delivery_date)->format('m/d/Y')}}</td>
-					<td>{{$order->total_order_cost}}</td>
+					<td><a href="orders/{{$order->id}}" class="bodylink"><div>{{$order->id}}</div></a></td>
+					<td><a href="orders/{{$order->id}}" class="bodylink"><div>{{$order->supplier}}</div></a></td>
+					<td><a href="orders/{{$order->id}}" class="bodylink"><div>{{Carbon\Carbon::parse($order->updated_at)->format('m/d/Y')}}</div></a></td>
+					<td><a href="orders/{{$order->id}}" class="bodylink"><div>{{Carbon\Carbon::parse($order->expected_delivery_date)->format('m/d/Y')}}</div></a></td>
+					<td><a href="orders/{{$order->id}}" class="bodylink"><div>${{$order->total_order_cost}}</div></a></td>
 					
 					@if ($order->editable === true && $order->received === false)
-						<td>saved (not sent)</td>
+						<td><a href="orders/{{$order->id}}" class="bodylink"><div>saved (not sent)</div></a></td>
 					@elseif ($order->editable === false && $order->received === false)
-						<td>open</td>
+						<td><a href="orders/{{$order->id}}" class="bodylink"><div>open</div></a></td>
 					@else
-						<td>closed</td>
+						<td><a href="orders/{{$order->id}}" class="bodylink"><div>closed</div></a></td>
 					@endif
 					
 					@if ($order->editable === true && $order->received === false)
 						<td>
-					<a href=""><button class="edit-modal btn btn-sm btn-info"
+					<div class="row justify-content-center"><a href=""><button class="edit-modal btn btn-sm btn-info mr-2"
 							data-info="">
 							<span class="glyphicon glyphicon-edit"></span>
 						</button></a>
@@ -69,13 +69,18 @@
 							data-info="">
 							<span class="glyphicon glyphicon-trash"></span>
 						</button></form>
+						</div>
 						</td>
 					@elseif ($order->editable === false && $order->received === false)
 						<td>
-							<a href=""><button class="invoiceButton btn btn-sm btn-info"
-							data-info="">
-							Invoice
-						</button></a>
+							<form action="../invoices/create" method="post">
+							{{ csrf_field() }}
+									<button class="invoiceButton btn btn-sm btn-info"
+								data-info="" type="submit">
+									<input type="hidden" name="order" value="{{$order->id}}">
+									Invoice
+									</button>
+							</form>
 						</td>
 					@else
 						<td></td>
@@ -106,6 +111,15 @@
     	],
     	filterSelectClass: 'customFilter',
     	filterText: 'Search'
+    	// "columns" : [
+    	// null,
+    	// null,
+    	// null,
+    	// null,
+    	// null,
+    	// null,
+    	// { "width": "15%" }
+    	// ]
 	});
 
 	table.buttons().container()

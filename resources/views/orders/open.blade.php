@@ -43,17 +43,21 @@
 				<tbody>
 				@foreach($orders as $order)
 				<tr class="">
-					<td>{{$order->id}}</td>
-					<td>{{$order->supplier}}</td>
-					<td>{{Carbon\Carbon::parse($order->updated_at)->format('m/d/Y')}}</td>
-					<td>{{$order->username}}</td>
-					<td>{{Carbon\Carbon::parse($order->expected_delivery_date)->format('m/d/Y')}}</td>
-					<td>{{$order->total_order_cost}}</td>
-					<td>open</td>
-					<td><a href=""><button class="invoiceButton btn btn-sm btn-info"
-							data-info="">
-							Invoice</span>
-						</button></a>
+					<td><a href="../orders/{{$order->id}}" class="bodylink"><div>{{$order->id}}</div></a></td>
+					<td><a href="../orders/{{$order->id}}" class="bodylink"><div>{{$order->supplier}}</div></a></td>
+					<td><a href="../orders/{{$order->id}}" class="bodylink"><div>{{Carbon\Carbon::parse($order->updated_at)->format('m/d/Y')}}</div></a></td>
+					<td><a href="../orders/{{$order->id}}" class="bodylink"><div>{{$order->username}}</div></a></td>
+					<td><a href="../orders/{{$order->id}}" class="bodylink"><div>{{Carbon\Carbon::parse($order->expected_delivery_date)->format('m/d/Y')}}</div></a></td>
+					<td><a href="../orders/{{$order->id}}" class="bodylink"><div>${{$order->total_order_cost}}</div></a></td>
+					<td><a href="../orders/{{$order->id}}" class="bodylink"><div>open</div></a></td>
+					<td><form action="../invoices/create" method="post">
+							{{ csrf_field() }}
+									<button class="invoiceButton btn btn-sm btn-info"
+								data-info="" type="submit">
+									<input type="hidden" name="order" value="{{$order->id}}">
+									Invoice
+									</button>
+									</form>
                             </td>
 				</tr>
 				@endforeach

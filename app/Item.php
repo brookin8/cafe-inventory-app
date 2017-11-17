@@ -10,7 +10,7 @@ class Item extends Model
     use SoftDeletes;
     protected $dates = ['deleted_at'];
 
-    public function categories() {
+    public function category() {
     	return $this->belongsTo('App\Category');
     }
 
@@ -18,7 +18,7 @@ class Item extends Model
     	return $this->belongsTo('App\Uom');
     }
 
-    public function suppliers() {
+    public function supplier() {
     	return $this->belongsTo('App\Supplier');
     }
 

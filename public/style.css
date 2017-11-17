@@ -105,6 +105,20 @@ a:hover, a:visited, a:link, a:active {
 	color:#13C183;
 }
 
+a.bodylink:visited, a.bodylink:link, a.bodylink:active {
+	color:#636B6F;
+}
+
+a.back:visited, a.back:link, a.back:active {
+	color:#636B6F;
+	font-size:150%;
+}
+
+a.back:hover {
+	color:#2ACA81;
+	font-size:150%;
+}
+
 .addMargin {
 	margin-top:10%;
 }
@@ -143,14 +157,56 @@ a.navbar-brand {
 	padding-bottom:2%;
 }
 
+input.typeahead.tt-input{
+	width:300px;
+	height:50px;
+}
+
+input.typeahead.tt-hint{
+	width:300px;
+	height:50px;
+}
+
+input.orderquantity {
+	width:70px;
+	height:50px;
+	border-style: inset;
+	border-color: #F0F0F0;
+	border-width: 2px;
+	text-align:center;
+}
+
+.tt-menu {
+	background-color:white;
+}
+
 .dropdown-menu {
 	font-size:85%;
+}
+
+.invoicetable {
+	width:70%;
+	margin-left:15%;
+}
+
+.invcountwidth {
+	width:100%;
+	
+}
+
+input.invcountqty {
+	width:70px;
+	height:40px;
 }
 
 .tableButton {
 	background-color: #39628A;
 	color:#fff;
 	margin-right:2px;
+}
+
+.cellwidth {
+	width:150px;
 }
 
 a.tableButton {
@@ -173,6 +229,18 @@ a.nav-link:hover {
 ul.nav.nav-tabs {
 	margin-left:40px;
 	margin-bottom:30px;
+}
+
+.orderselect {
+	width:50%;
+	margin-left:25%;
+	border: 2px solid #636B6F;
+}
+
+select.orderdropdown {
+	height: 30px;
+	width: 150px;
+	margin-top:24px;
 }
 
 .orderShow {
@@ -208,6 +276,10 @@ label {
 	margin-left:9%;
 }
 
+.table-top {
+	margin-bottom:2px;
+}
+
 #category, #supplier, #uom, #order_method {
 	line-height:35px;
 	height:35px;
@@ -224,6 +296,10 @@ label {
 
 .dataTables_paginate{
 	margin-left:10px;
+}
+
+select {
+	border:2px solid #808080;
 }
 
 .createForm {

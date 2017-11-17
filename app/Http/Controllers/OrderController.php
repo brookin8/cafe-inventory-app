@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class OrderController extends Controller
 {
@@ -27,9 +28,55 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function supplierselect()
     {
-        //
+        $suppliers = \App\Supplier::all();
+
+        return view('orders.supplierselect',compact('suppliers'));
+    }
+
+    public function supplierselected(Request $request)
+    {
+        $supplier = request('supplier');
+        $request->session()->put('supplier', $supplier);
+
+        return redirect('../orders/create');
+    }
+
+
+    public function create(Request $request)
+    {   
+
+        $supplierId = $request->session()->get('supplier');
+        $supplier = \App\Supplier::find($supplierId);
+        $today = Carbon::today();
+        $deliverydate = Carbon::today();
+        $deliverydate->addDays($supplier->lead_time_days);
+        $categoryids=[];
+
+        $items = \DB::table('items')
+                ->select('items.*')
+                ->whereNull('items.deleted_at')
+                ->where([
+                    ['items.supplier_id','=',$supplierId]
+                ])
+                ->orderBy('items.name')
+                ->get();
+        
+        foreach($items as $item) {
+            array_push($categoryids, $item->category_id);
+        }
+
+        $categoryid = array_unique($categoryids);
+
+        $categories = \DB::table('categories')
+            ->select('categories.*')
+            ->whereNull('categories.deleted_at')
+            ->whereIn('id',$categoryids)
+            ->orderBy('categories.name')
+            ->get();
+
+        return view('orders.create',compact('items','supplier','today','deliverydate','categories'));
     }
 
     /**

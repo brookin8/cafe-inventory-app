@@ -6,7 +6,7 @@
 
 	<div class="container">
 	<div class="row mt-3 mb-4">
-		<a href="/invoices/create"><button class="btn btn-default ml-4">New Invoice</button></a>
+		<a href="/invoices/orderexists"><button class="btn btn-default ml-4">New Invoice</button></a>
 	</div>
 	</div>
 
@@ -24,8 +24,8 @@
 			<table class="table table-borderless table-striped table-hover" id="table">
 				<thead>
 					<tr>
-						<th class="text-center">Invoice Number</th>
-						<th class="text-center">Order Number</th>
+						<th class="text-center">Invoice No</th>
+						<th class="text-center">Order No</th>
 						<th class="text-center">Supplier</th>
 						<th class="text-center">Total $ Amount</th>
 						<th class="text-center">Date Submitted</th>
@@ -35,12 +35,13 @@
 				<tbody>
 				@foreach($invoices as $invoice)
 				<tr class="">
-					<td>{{$invoice->id}}</td>
-					<td>{{$invoice->order_id}}</td>
-					<td>{{$invoice->supplier}}</td>
-					<td>{{$invoice->total_invoice_amount}}</td>
-					<td>{{Carbon\Carbon::parse($invoice->updated_at)->format('m/d/Y')}}</td>
-					<td>{{$invoice->username}}</td>
+					<td><a href="invoices/{{$invoice->id}}" class="bodylink"><div>{{$invoice->id}}</div></a></td>
+					<td><a href="invoices/{{$invoice->id}}" class="bodylink"><div>{{$invoice->order_id}}</div></a></td>
+					<td><a href="invoices/{{$invoice->id}}" class="bodylink"><div>{{$invoice->supplier}}</div></a></td>
+					<td><a href="invoices/{{$invoice->id}}" class="bodylink"><div>${{$invoice->total_invoice_amount}}</div></a></td>
+					<td><a href="invoices/{{$invoice->id}}" class="bodylink"><div>{{Carbon\Carbon::parse($invoice->updated_at)->format('m/d/Y')}}</div>
+					</a></td>
+					<td><a href="invoices/{{$invoice->id}}" class="bodylink"><div>{{$invoice->username}}</div></a></td>
 				</tr>
 				@endforeach
 				</tbody>

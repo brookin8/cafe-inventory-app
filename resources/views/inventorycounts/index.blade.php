@@ -33,10 +33,10 @@
 				<tbody>
 				@foreach($counts as $count)
 				<tr class="">
-					<td>{{$count->id}}</td>
-					<td>{{$count->total_value_onhand}}</td>
-					<td>{{Carbon\Carbon::parse($count->updated_at)->format('m/d/Y')}}</td>
-					<td>{{$count->username}}</td>
+					<td><a href="inventorycounts/{{$count->id}}" class="bodylink"><div>{{$count->id}}</div></a></td>
+					<td><a href="inventorycounts/{{$count->id}}" class="bodylink"><div>${{$count->total_value_onhand}}</div></a></td>
+					<td><a href="inventorycounts/{{$count->id}}" class="bodylink"><div>{{Carbon\Carbon::parse($count->updated_at)->format('m/d/Y')}}</div></a></td>
+					<td><a href="inventorycounts/{{$count->id}}" class="bodylink"><div>{{$count->username}}</div></a></td>
 				</tr>
 				@endforeach
 				</tbody>

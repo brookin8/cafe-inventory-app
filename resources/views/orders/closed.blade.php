@@ -37,21 +37,19 @@
 						<th class="text-center">Actual Delivery Date</th>
 						<th class="text-center">Total $ Amount</th>
 						<th class="text-center">Status</th>
-						<th class="text-center">Actions</th>
 					</tr>
 				</thead>
 				<tbody>
 				@foreach($orders as $order)
 				<tr class="">
-					<td>{{$order->id}}</td>
-					<td>{{$order->supplier}}</td>
-					<td>{{Carbon\Carbon::parse($order->updated_at)->format('m/d/Y')}}</td>
-					<td> PLACEHOLDER - INVOICE DATE
+					<td><a href="../orders/{{$order->id}}" class="bodylink"><div>{{$order->id}}</div></a></td>
+					<td><a href="../orders/{{$order->id}}" class="bodylink"><div>{{$order->supplier}}</div></a></td>
+					<td><a href="../orders/{{$order->id}}" class="bodylink"><div>{{Carbon\Carbon::parse($order->updated_at)->format('m/d/Y')}}</div></a></td>
+					<td><a href="../orders/{{$order->id}}" class="bodylink"><div>PLACEHOLDER - INVOICE DATE</div></a>
 					</td>
-					<td>{{Carbon\Carbon::parse($order->expected_delivery_date)->format('m/d/Y')}}</td>
-					<td>{{$order->total_order_cost}}</td>
-					<td>closed</td>
-					<td></td>
+					<td><a href="../orders/{{$order->id}}" class="bodylink"><div>{{Carbon\Carbon::parse($order->expected_delivery_date)->format('m/d/Y')}}</div></a></td>
+					<td><a href="../orders/{{$order->id}}" class="bodylink"><div>${{$order->total_order_cost}}</div></a></td>
+					<td><a href="../orders/{{$order->id}}" class="bodylink"><div>closed</div></a></td>
 				</tr>
 				@endforeach
 				</tbody>

@@ -40,7 +40,8 @@ class InventoryCountController extends Controller
      */
     public function create()
     {
-        //
+        $items = \App\Item::all();
+        return view('inventorycounts.create',compact('items'));
     }
 
     /**
@@ -62,7 +63,34 @@ class InventoryCountController extends Controller
      */
     public function show($id)
     {
-        //
+        $count = \App\Inventorycount::find($id);
+
+        $categories = [];
+
+        $suppliers = [];
+        
+        $items = \DB::table('items_inventorycounts')
+                ->join('inventorycounts', 'items_inventorycounts.inventorycount_id', '=', 'inventorycounts.id')
+                ->join('items', 'items_inventorycounts.item_id','=','items.id')
+                ->join('suppliers', 'items.supplier_id','=','suppliers.id')
+                ->join('uoms', 'items.uom_id','=','uoms.id')
+                ->join('users', 'inventorycounts.created_by','=','users.id')
+                ->join('categories','items.category_id','=','categories.id')
+                ->select('items_inventorycounts.*', 'users.name as username','suppliers.name as supplier','uoms.unit as uom','items.name as itemname','categories.name as category','items.cost as cost')
+                ->where([
+                    ['items_inventorycounts.inventorycount_id','=',$id],
+                ])
+                ->get();
+        
+        foreach ($items as $item) {
+            array_push($categories,$item->category);
+            array_push($suppliers,$item->supplier);
+        }
+
+        $categories = array_unique($categories);
+        $suppliers = array_unique($suppliers);
+
+        return view('inventorycounts.show',compact('count','items','categories','suppliers'));
     }
 
     /**
