@@ -81,7 +81,14 @@ class SupplierController extends Controller
      */
     public function show($id)
     {
-        //
+        $supplier = \App\Supplier::find($id);
+        $items = \DB::table('items')
+            ->where('items.supplier_id','=',$id)
+            ->select('items.*')
+            ->get();
+        $itemcount = $items->count();
+
+        return view('suppliers.show',compact('supplier','items','itemcount'));
     }
 
     /**

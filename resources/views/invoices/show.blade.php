@@ -7,7 +7,7 @@
 		<a href="/invoices" class="back ml-5 mt-5">&#8678; Back</a>
 	</div>
 	<div class="col-7">
-		<h1>Invoice {{$invoice->id}}</h1>
+		<h1>Invoice # {{$invoice->id}}</h1>
 	</div>
 </div>
 
@@ -36,10 +36,10 @@
 		  	</div>
 		  	
 		  	@if (is_null($invoice->order))
-		  		<div class="ml-4 mr-4"><strong class="mr-1">No Order</strong></div>
+		  		<div class="ml-4 mr-4"><strong class="mr-1">No Order Data</strong></div>
 		  	@else
 		  		@if($invoice->total_invoice_amount < $invoice->order->total_order_cost)
-		  		<div class="ml-4 mr-4"><strong class="mr-1">Delivery Short</strong></div> 
+		  		<div class="ml-4 mr-4"><strong class="mr-1">Delivery Short : ${{ $invoice->order->total_order_cost - $invoice->total_invoice_amount}}</strong></div> 
 		  		@elseif($invoice->total_invoice_amount < $invoice->order->total_order_cost)
 		  		<div class="ml-4 mr-4"><strong class="mr-1">Delivery Over</strong> </div>
 		  		@endif
@@ -57,6 +57,7 @@
 						<th class="text-center">Item Number</th>
 						<th class="text-center">Item Name</th>
 						<th class="text-center">UOM</th>
+						<th class="text-center">Item Cost</th>
 						@if (is_null($invoice->order))
 						@else
 							<th class="text-center">Ordered Qty</th>
@@ -66,18 +67,34 @@
 				</thead>
 
 				<tbody>
-				@foreach($items as $item)
-				<tr class="">
-					<td>{{$item->item_id}}</td>
-					<td>{{$item->itemname}}</td>
-					<td>{{$item->uom}}</td>
-					@if (is_null($invoice->order))
-					@else
-						<td>{{$item->orderqty}}</td>
-					@endif
-					<td>{{$item->invoice_qty}}</td>
-				</tr>
-				@endforeach
+				@if (is_null($invoice->order))
+					@foreach($items as $item)
+					<tr class="">
+						<td>{{$item->item_id}}</td>
+						<td>{{$item->itemname}}</td>
+						<td>{{$item->uom}}</td>
+						<td>${{$item->cost}}</td>
+						<td>{{$item->invoice_qty}}</td>
+					</tr>
+					@endforeach
+				@else
+					@foreach($orderitems as $orderitem)
+					<tr class="">
+						<td>{{$orderitem->item_id}}</td>
+						<td>{{$orderitem->itemname}}</td>
+						<td>{{$orderitem->uom}}</td>
+						<td>${{$orderitem->cost}}</td>
+						<td>{{$orderitem->order_qty}}</td>
+						@foreach($items as $item)
+							@if ($item->item_id === $orderitem->item_id)
+								<td>{{$item->invoice_qty}}</td>
+							@else
+							@endif
+						@endforeach
+					</tr>
+					@endforeach
+				@endif
+				
 				</tbody>
 			</table>
 		</div>

@@ -7,7 +7,7 @@
 		<a href="/orders" class="back ml-5 mt-5">&#8678; Back</a>
 	</div>
 	<div class="col-7">	
-		<h1>Order {{$order->id}}</h1>
+		<h1>Order # {{$order->id}}</h1>
 	</div>
 </div>
 
@@ -53,7 +53,9 @@
 					<th class="text-center">Item Number</th>
 					<th class="text-center">Item Name</th>
 					<th class="text-center">UOM</th>
+					<th class="text-center">Unit Cost</th>
 					<th class="text-center">Ordered Qty</th>
+					<th class="text-center">Total $</th>
 				</tr>
 			</thead>
 
@@ -63,7 +65,9 @@
 				<td>{{$item->item_id}}</td>
 				<td>{{$item->itemname}}</td>
 				<td>{{$item->uom}}</td>
+				<td>${{$item->cost}}</td>
 				<td>{{$item->order_qty}}</td>
+				<td>${{$item->orders_dollar_amount}}</td>
 			</tr>
 			@endforeach
 			</tbody>

@@ -6,7 +6,7 @@
 
 	<div class="container">
 	<div class="row mt-3 mb-4">
-		<a href="/orders/create"><button class="btn btn-default ml-4">New Order</button></a>
+		<a href="/orders/supplierselect"><button class="btn btn-default ml-4">New Order</button></a>
 	</div>
 	</div>
 
@@ -48,7 +48,7 @@
 					<td><a href="../orders/{{$order->id}}" class="bodylink"><div>saved (not sent)</div></a></td>
 					<td>
 						<div class="row">
-							<a href=""><button class="ml-5 mr-2 edit-modal btn btn-sm btn-info"
+							<a href="../orders/{{$order->id}}/edit"><button class="ml-5 mr-2 edit-modal btn btn-sm btn-info"
 								data-info="">
 								<span class="glyphicon glyphicon-edit"></span>
 							</button></a>

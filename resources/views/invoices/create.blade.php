@@ -2,64 +2,70 @@
 
 @section('content')
 
-<form>
-	
-	@if($orderexists === '2')
-	<div class="row mb-5 mt-3 justify-content-center">
-		<div class="col-4 mr-5">
-				{{$supplierselect->name}}
-		</div>
-	</div>
+@if($orderexists === '2')
 
-	@foreach ($allitems as $allitem)
-	<div class="row mb-5 mt-3 justify-content-center">
-		<div class="col-4 mr-5">
-			<form class="typeahead" role="search">
-		      	<div id="iteminput">
-				  <input class="typeahead iteminput" type="text" placeholder="Add Item" name="item{{$loop->iteration}}">
+		<form class="typeahead" method="post" action="../invoices" role="search">
+			{{ csrf_field() }}
+			<div class="row mb-5 mt-3 justify-content-center">
+				<div class="col-2 mr-5">
+						{{$supplierselect->name}}
+						<input name="supplier" value="$supplierselect" type="hidden">
+				</div>
+				<div class="col-4">
+				Order No: <input name="order">
+				</div>
+			</div>
+		@foreach ($allitems as $allitem)
+			<div class="row mb-5 mt-3 justify-content-center">
+					<div class="col-4 mr-5">
+				      	<div id="iteminput">
+						  <input class="typeahead iteminput" type="text" placeholder="Add Item" name="item{{$loop->iteration}}">
+						</div>
+					</div>
+					<div class="col-4">
+						<input name="qty{{$loop->iteration}}" class="orderquantity">
+					</div>
+				</div>
+			@endforeach
+				<div class="container">
+					<a href="../orders"><button type="button">Discard</button></a><button type="submit">Submit</button>
 				</div>
 			</form>
-		</div>
-		<div class="col-4">
-			<input name="quantity{{$loop->iteration}}" class="orderquantity">
-		</div>
-	</div>
-	@endforeach
 
-
-	@else
-	<h1 class="text-center mb-5">Invoice For: Order {{ $order }}</h1>
-	
-	<table class="table table-bordered invoicetable">
-		
-		<thead>
+@else
+	<form method="post" action="../invoices">
+		{{ csrf_field() }}
+		<h1 class="text-center mb-5">Invoice For: Order {{ $order }}</h1>
+		<input type="hidden" value="{{$order}}" name="order">
+		<table class="table table-bordered invoicetable">
+			
+			<thead>
+				<tr>
+					<th>Item No</th>
+					<th>Item Name</th>
+					<th>Ordered Qty</th>
+					<th>Received Qty</th>
+				</tr>
+			</thead>	
+			
+			<tbody>
+			@foreach ($items as $item)
 			<tr>
-				<th>Item No</th>
-				<th>Item Name</th>
-				<th>Ordered Qty</th>
-				<th>Received Qty</th>
+				<td>{{$item->item_id}}<input type="hidden" name="item{{$loop->iteration}}" value="{{$item->item_id}}"></td>
+				<td>{{$item->itemname}}</td>
+				<td>{{$item->order_qty}}</td>
+				<td><input value="{{$item->order_qty}}" type="number" class="orderquantity" name="qty{{$loop->iteration}}""></td>
 			</tr>
-		</thead>	
-		
-		<tbody>
-		@foreach ($items as $item)
-		<tr>
-			<td>{{$item->id}}</td>
-			<td>{{$item->itemname}}</td>
-			<td>{{$item->order_qty}}</td>
-			<td><input value="{{$item->order_qty}}" type="number" class="orderquantity" name="invoiced_qty"></td>
-		</tr>
-		@endforeach
-		</tbody>
+			@endforeach
+			</tbody>
 
-	</table>
-	@endif
+		</table>
 
-	<div class="container">
-		<a href="../orders"><button type="button">Discard</button></a><button type="submit">Submit</button>
-	</div>
-</form>
-
+		<div class="container">
+			<a href="../orders"><button type="button">Discard</button></a><button type="submit">Submit</button>
+		</div>
+	</form>
+@endif
 <script>
 
 //Type-ahead
@@ -110,7 +116,6 @@
 
 
 </script>
-
 
 
 @endsection

@@ -3,13 +3,14 @@
 @section('content')
 
 <div class="row justify-content-center">	
-	<div class="col-5 pt-5 pl-5">
-		<a href="/invoices" class="back ml-5 mt-5">&#8678; Back</a>
+	<div class="col-4 pt-5 pl-5">
+		<a href="/inventorycounts" class="back ml-5 mt-5">&#8678; Back</a>
 	</div>
-	<div class="col-7">	
-		<h1>Inventory Count {{$count->id}}</h1>
+	<div class="col-8">	
+		<h1>Inventory Count # {{$count->id}}</h1>
 	</div>
 </div>
+
 
 <div class="container orderShow">
 	<div class="container orderShowHead mt-3">
@@ -57,7 +58,7 @@
 						<th class="text-center">UOM</th>
 						<th class="text-center">Unit Cost</th>
 						<th class="text-center">Qty Onhand</th>
-						<th class="text-center">$ Onhand</th>
+						<th class="text-center">Total $ Onhand</th>
 					</tr>
 				</thead>
 
@@ -69,7 +70,7 @@
 					<td>{{$item->uom}}</td>
 					<td>${{$item->cost}}</td>
 					<td>{{$item->inventorycount_qty}}</td>
-					<td>{{$item->inventory_dollar_amount}}</td>
+					<td>${{$item->inventory_dollar_amount}}</td>
 				</tr>
 				@endforeach
 				</tbody>

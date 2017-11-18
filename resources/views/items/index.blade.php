@@ -11,7 +11,6 @@
 	</div>
 
 	<div class="container ">
-		{{ csrf_field() }}
 		<div class="table-responsive text-center">
 			<table class="table table-borderless table-striped table-hover" id="table">
 				<thead>
@@ -39,10 +38,10 @@
 					<td><a href="/items/{{$item->id}}/edit"><button class="edit-modal btn btn-sm btn-info">
 							<span class="glyphicon glyphicon-edit"></span>
 						</button></a>
-						<button class="delete-modal btn btn-sm btn-danger"
-							data-info="{{$item->id}},{{$item->name}},{{$item->supplier_id}},{{$item->uom_id}},{{$item->cost}},{{$item->category_id}}">
+						<a href="/items/{{$item->id}}"><button type="button" class="delete-modal btn btn-sm btn-danger">
 							<span class="glyphicon glyphicon-trash"></span>
-						</button></td>
+						</button></a>
+					</td>
 				</tr>
 				@endforeach
 				@foreach($items2 as $item2)
@@ -57,10 +56,10 @@
 					<td><a href="/items/{{$item2->id}}/edit"><button class="edit-modal btn btn-sm btn-info">
 							<span class="glyphicon glyphicon-edit"></span>
 						</button></a>
-						<button class="delete-modal btn btn-sm btn-danger"
-							data-info="{{$item->id}},{{$item->name}},{{$item->supplier_id}},{{$item->uom_id}},{{$item->cost}},{{$item->category_id}}">
+						<a href="/items/{{$item2->id}}"><button type="button" class="delete-modal btn btn-sm btn-danger">
 							<span class="glyphicon glyphicon-trash"></span>
-						</button></td>
+						</button></a>
+					</td>
 				</tr>
 				@endforeach
 				</tbody>
@@ -85,6 +84,7 @@
 
 	table.buttons().container()
     .appendTo( $('.col-sm-6:eq(0)', table.table().container() ) );
+
 
     </script>
 

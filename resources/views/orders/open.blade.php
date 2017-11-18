@@ -6,7 +6,7 @@
 
 	<div class="container">
 	<div class="row mt-3 mb-4">
-		<a href="/orders/create"><button class="btn btn-default ml-4">New Order</button></a>
+		<a href="/orders/supplierselect"><button class="btn btn-default ml-4">New Order</button></a>
 	</div>
 	</div>
 

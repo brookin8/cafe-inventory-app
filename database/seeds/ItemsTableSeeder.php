@@ -102,7 +102,7 @@ class ItemsTableSeeder extends Seeder
       'cost' => 24.69,
       'edited_by' => 1,
       'uom_id' => 2,
-      'category_id' => 10,
+      'category_id' => 3,
       'supplier_id' => 3,
       'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
       'updated_at' => Carbon::now()->format('Y-m-d H:i:s')

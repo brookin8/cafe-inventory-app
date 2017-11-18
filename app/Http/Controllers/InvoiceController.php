@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class InvoiceController extends Controller
 {
@@ -47,7 +48,8 @@ class InvoiceController extends Controller
         $supplierselect0 = $request->session()->get('supplierselect');
         $supplierselect = \App\Supplier::find($supplierselect0);
 
-        error_log($supplierselect0);
+        //error_log($order);
+        //error_log($supplierselect0);
 
         $suppliers = \App\Supplier::all();
         $items = \DB::table('items_orders')
@@ -58,6 +60,8 @@ class InvoiceController extends Controller
             ])
             ->get();
 
+        //error_log('Items :'.$items);
+
         $allitems = \DB::table('items')
                 ->select('items.*')
                 ->where([
@@ -67,7 +71,6 @@ class InvoiceController extends Controller
 
          $allsuppliers = \DB::table('suppliers')
                 ->select('suppliers.*')
-                ->whereNull('suppliers.deleted_at')
                 ->get();
 
         return view('invoices.create',compact('order','suppliers','items','allitems','allsuppliers','orderexists','supplierselect'));
@@ -151,7 +154,137 @@ class InvoiceController extends Controller
      */
     public function store(Request $request)
     {
-        $request->session()->put('order','');
+        $orderexists =  $request->session()->get('orderexist');
+        $order = (int)request('order');
+
+        //error_log($orderexists);
+
+        if( $orderexists === '2') {
+
+            $supplier = $request->session()->get('supplierselect');
+
+        }
+        else {
+
+        
+        // error_log($order);
+
+        $findsupplier =  \App\Order::find($order);
+        $supplier = $findsupplier->supplier_id;
+
+        }
+
+        $invoice = new \App\Invoice;
+        $invoice->editable = false;
+        $invoice->store_id = \Auth::user()->store_id;
+        $invoice->created_by = \Auth::user()->id;
+        $invoice->order_id = $order;
+        $invoice->supplier_id = $supplier;
+        $invoice->actual_delivery_date = Carbon::now();
+        $invoice->created_at = Carbon::now();
+        $invoice->updated_at = Carbon::now();
+        $invoice->total_invoice_amount = 0;
+        $invoice->save();
+
+        $invoiceid = $invoice->id;
+        
+        //error_log('count id '. $countid);
+
+        if( $orderexists !== '2') {
+            
+            $items = \App\Item_Order::where('order_id','=',$order);
+            
+            $numItems = $items->count();
+            $totaldollars = 0;
+
+        
+            for($i=1;$i<=$numItems;$i++) {
+                $stringi = (string)$i;
+                $itemid = request('item'.$stringi);
+                $quantity = request('qty'.$stringi); 
+
+           //error_log('qty '. $quantity);
+
+               if($quantity != '') {
+                    $item = \App\Item::find($itemid);
+
+                    $invoicedollars = (int)($quantity * $item->cost);
+                    $totaldollars += $invoicedollars;
+
+                    //error_log($invdollars);
+
+                    $item->invoices()->attach($invoiceid,
+                        ['invoice_qty' => $quantity,'invoice_dollar_amount' => $invoicedollars,'created_at' => Carbon::now(),'updated_at' => Carbon::now()]
+                    );
+                }
+               
+            }
+
+            $findsupplier->editable = false;
+            $findsupplier->save(); 
+
+            
+
+        } else {
+
+            $items = \DB::table('items')
+                ->where('items.supplier_id','=',$supplier)
+                ->select('items.*');
+            
+            $numItems = $items->count();
+            $totaldollars = 0;
+
+            for($i=1;$i<=$numItems;$i++) {
+                $stringi = (string)$i;
+                $itemname = request('item'.$stringi);
+                $quantity = request('qty'.$stringi); 
+
+           //error_log('qty '. $quantity);
+
+               if($quantity !== '') {
+
+                    $itemIdfind = \DB::table('items')
+                        ->where('items.name','=',$itemname)
+                        ->select('items.id')
+                        ->get();
+
+                    error_log('itemIDfind: '. $itemIdfind);
+
+                    $itemId = 0;
+
+                    foreach($itemIdfind as $itemIdfinds) {
+                            $itemId = $itemIdfinds->id;
+                    }
+
+                    error_log('itemId: '.$itemId);
+
+                    if($itemId > 0) {
+                        $item = \App\Item::find($itemId);
+
+                        //error_log($item->cost);
+
+                        $invoicedollars = (int)($quantity * $item->cost);
+                        $totaldollars += $invoicedollars;
+
+                    //error_log($invdollars);
+
+                        $item->invoices()->attach($invoiceid,
+                            ['invoice_qty' => $quantity,'invoice_dollar_amount' => $invoicedollars,'created_at' => Carbon::now(),'updated_at' => Carbon::now()]
+                         );
+                    }
+                }
+               
+            }
+
+        }
+
+
+        $invoice2 = \App\Invoice::find($invoiceid);
+        $invoice2->total_invoice_amount = $totaldollars;
+        $invoice2->save();
+
+        return redirect('/invoices');
+
     }
 
     /**
@@ -165,6 +298,7 @@ class InvoiceController extends Controller
         $invoice = \App\Invoice::find($id);
         $orderId = $invoice->order_id;
 
+
         if(is_null($invoice->order)) {
 
             $items = \DB::table('items_invoices')
@@ -173,7 +307,7 @@ class InvoiceController extends Controller
                     ->join('suppliers', 'invoices.supplier_id','=','suppliers.id')
                     ->join('uoms', 'items.uom_id','=','uoms.id')
                     ->join('users', 'invoices.created_by','=','users.id')
-                    ->select('items_invoices.*', 'users.name as username','invoices.order_id as ordernumber','suppliers.name as supplier','uoms.unit as uom','items.name as itemname')
+                    ->select('items_invoices.*', 'users.name as username','invoices.order_id as ordernumber','suppliers.name as supplier','uoms.unit as uom','items.name as itemname','items.cost as cost')
                     ->where([
                         ['items_invoices.invoice_id','=',$id]
                     ])
@@ -181,23 +315,49 @@ class InvoiceController extends Controller
 
         } else {
             
+           // error_log('in else!');
+
+           // error_log('invoice ID is '. $id);
+           // error_log('invoice is '. $invoice);
+           // error_log('orderId is '. $orderId);
+
             $items = \DB::table('items_invoices')
                     ->join('invoices', 'items_invoices.invoice_id', '=', 'invoices.id')
-                    ->join('items', 'items_invoices.item_id','=','items.id')
                     ->join('suppliers', 'invoices.supplier_id','=','suppliers.id')
-                    ->join('uoms', 'items.uom_id','=','uoms.id')
                     ->join('users', 'invoices.created_by','=','users.id')
-                    ->join('items_orders','items_orders.item_id','=','items_invoices.item_id')
-                    ->select('items_invoices.*', 'users.name as username','invoices.order_id as ordernumber','suppliers.name as supplier','uoms.unit as uom','items.name as itemname','items_orders.order_qty as orderqty')
+                    ->join('items', 'items_invoices.item_id','=','items.id')
+                    ->join('uoms', 'items.uom_id','=','uoms.id')
+                    ->select('items_invoices.*', 
+                        'users.name as username',
+                        'invoices.order_id as ordernumber',
+                        'suppliers.name as supplier', 
+                        'items.name as itemname',
+                        'items.cost as cost',
+                        'uoms.unit as uom'
+                        )
                     ->where([
                         ['items_invoices.invoice_id','=',$id],
-                        ['items_orders.order_id','=',$orderId]
                     ])
                     ->get();
 
+                $orderitems = \DB::table('items_orders')
+                    ->join('items', 'items_orders.item_id','=','items.id')
+                    ->join('uoms', 'items.uom_id','=','uoms.id')
+                    ->select('items_orders.*',
+                        'items.name as itemname',
+                        'items.cost as cost',
+                        'uoms.unit as uom')
+                    ->where([
+                        ['items_orders.order_id','=',$orderId]
+                        ])
+                    ->get();
+
+            error_log('orderitems: '.$orderitems);
+            error_log('(invoice)items: '. $items);
+
         }
 
-        return view('invoices.show',compact('invoice','items'));
+        return view('invoices.show',compact('invoice','items','orderitems'));
     }
 
     /**

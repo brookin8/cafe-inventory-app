@@ -33,7 +33,7 @@
 			  	<label for="supplier" class="col-4 col-form-label text-right createText">Supplier</label>
 			  	<div class="col-7">
 			  		<select name="supplier" id="supplier" class="form-control createOption">
-			  			@if(is_null($item->suppliers()->first()))
+			  			@if(!is_null($itemsupplier->deleted_at))
 			  					<option value="" disabled selected>Select Supplier</option>
 			  			@endif
 			  			@foreach ($suppliers as $supplier)

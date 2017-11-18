@@ -50,17 +50,14 @@
 					<td>{{Carbon\Carbon::parse($supplier->updated_at)->format('m/d/Y')}}</td>
 					<td>
 						<div class="row">
-					<a href="/suppliers/{{$supplier->id}}/edit"><button class="edit-modal btn btn-sm btn-info ml-3"
+						<a href="/suppliers/{{$supplier->id}}/edit"><button class="edit-modal btn btn-sm btn-info ml-3"
 							data-info="">
 							<span class="glyphicon glyphicon-edit"></span>
 						</button></a>
-						<form method="post" action="/suppliers/{{ $supplier->id }}">
-                                {{ method_field('DELETE') }}
-                                {{ csrf_field() }}
-                            <button class="ml-2 delete-modal btn btn-sm btn-danger"
+                         <a href="/suppliers/{{$supplier->id}}"><button class="ml-2 delete-modal btn btn-sm btn-danger"
 							data-info="">
 							<span class="glyphicon glyphicon-trash"></span>
-						</button></form>
+						</button>
 						</div>
 					</td>
 				</tr>

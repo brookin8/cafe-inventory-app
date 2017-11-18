@@ -42,24 +42,23 @@
 				<tbody>
 				@foreach($orders as $order)
 				<tr class="">
-					<td><a href="orders/{{$order->id}}" class="bodylink"><div>{{$order->id}}</div></a></td>
-					<td><a href="orders/{{$order->id}}" class="bodylink"><div>{{$order->supplier}}</div></a></td>
-					<td><a href="orders/{{$order->id}}" class="bodylink"><div>{{Carbon\Carbon::parse($order->updated_at)->format('m/d/Y')}}</div></a></td>
-					<td><a href="orders/{{$order->id}}" class="bodylink"><div>{{Carbon\Carbon::parse($order->expected_delivery_date)->format('m/d/Y')}}</div></a></td>
-					<td><a href="orders/{{$order->id}}" class="bodylink"><div>${{$order->total_order_cost}}</div></a></td>
+					<td><a href="../orders/{{$order->id}}" class="bodylink"><div>{{$order->id}}</div></a></td>
+					<td><a href="../orders/{{$order->id}}" class="bodylink"><div>{{$order->supplier}}</div></a></td>
+					<td><a href="../orders/{{$order->id}}" class="bodylink"><div>{{Carbon\Carbon::parse($order->updated_at)->format('m/d/Y')}}</div></a></td>
+					<td><a href="../orders/{{$order->id}}" class="bodylink"><div>{{Carbon\Carbon::parse($order->expected_delivery_date)->format('m/d/Y')}}</div></a></td>
+					<td><a href="../orders/{{$order->id}}" class="bodylink"><div>${{$order->total_order_cost}}</div></a></td>
 					
 					@if ($order->editable === true && $order->received === false)
-						<td><a href="orders/{{$order->id}}" class="bodylink"><div>saved (not sent)</div></a></td>
+						<td><a href="../orders/{{$order->id}}" class="bodylink"><div>saved (not sent)</div></a></td>
 					@elseif ($order->editable === false && $order->received === false)
-						<td><a href="orders/{{$order->id}}" class="bodylink"><div>open</div></a></td>
+						<td><a href="../orders/{{$order->id}}" class="bodylink"><div>open</div></a></td>
 					@else
-						<td><a href="orders/{{$order->id}}" class="bodylink"><div>closed</div></a></td>
+						<td><a href="../orders/{{$order->id}}" class="bodylink"><div>closed</div></a></td>
 					@endif
 					
 					@if ($order->editable === true && $order->received === false)
 						<td>
-					<div class="row justify-content-center"><a href=""><button class="edit-modal btn btn-sm btn-info mr-2"
-							data-info="">
+					<div class="row justify-content-center"><a href="../orders/{{$order->id}}/edit""><button class="edit-modal btn btn-sm btn-info mr-2">
 							<span class="glyphicon glyphicon-edit"></span>
 						</button></a>
 						<form method="post" action="">

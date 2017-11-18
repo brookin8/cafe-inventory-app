@@ -206,6 +206,10 @@ input.invcountqty {
 	margin-right:2px;
 }
 
+a.forgot {
+	color:#636B81;
+}
+
 .cellwidth {
 	width:150px;
 }
@@ -305,6 +309,11 @@ select {
 
 .createForm {
 	background-color:#39628A;
+	color:#fff;
+}
+
+.deleteForm {
+	background-color:#E53A40;
 	color:#fff;
 }
 

@@ -2,17 +2,23 @@
 
 @section('content')
 
-<form method="post" action="../orders">
+<form method="post" action="../orders/{{$order->id}}">
 	{{ csrf_field() }}
-	<div class="container">
-		<div class="row">
-			<div class="col">Supplier: {{$supplier->name}}</div>
-			<input type="hidden" name="supplier" value="{{$supplier->id}}">
-			<div class="col">Order Date: {{$today->format('m/d/Y')}}</div>
-			<div class="col">Expected Delivery Date: {{$deliverydate->format('m/d/Y')}}</div>
-			<input type="hidden" name="deliverydate" value="{{$deliverydate}}">
-		</div>
+	{{ method_field('PUT') }}
+
+<div class="container orderShowHead mt-3">
+	<div class="row mt-3 mb-4">
+	  	<div class="ml-5 mr-4"><strong class="mr-1">Order No:</strong> 
+	  		{{$order->id}}
+	  	</div>
+	  	<div class="ml-4 mr-4"><strong class="mr-1">Deliver To:</strong> 
+	  		{{$order->store->name}}
+	  	</div>
+	  	<div class="ml-4 mr-4"><strong class="mr-1">Supplier:</strong> 
+	  		{{$order->supplier->name}}
+	  	</div>
 	</div>
+</div>
 
 	<div class="container">
 		<a href="../orders">
@@ -20,6 +26,25 @@
 		</a>
 			<button class="btn btn-primary mr-3" type="submit" name="button" value="save">Save</button>
 			<button class="btn btn-success" type="submit" name="button" value="submit">Submit</button>
+	</div>
+
+	<div class="container">
+	<h3>Items Currently On Order</h3>
+		<div class="row">
+			<div class="col-4">Item</div>
+			<div class="col-2">Unit Cost</div>
+			<div class="col-3">Order Qty</div>
+		</div>
+		@foreach ($ordereditems as $ordereditem)
+		<div class="row">
+			<div class="col-4">{{$ordereditem->itemname}}</div>
+			<input class="hidden" name="ordereditem{{$loop->iteration}}" value="{{$ordereditem->item_id}}">
+			<div class="col-2">{{$ordereditem->cost}}</div>
+			<div class="col-3">
+				{{$ordereditem->order_qty}}
+			</div>
+		</div>
+		@endforeach
 	</div>
 
 	<div class="container">
@@ -46,8 +71,16 @@
 								<div class="col-2">
 									${{$item->cost}}
 								</div>
-								<div class="col">
+								<div class="col-3">
+								@if (in_array($item->id,$ordereditemsIds))
+									@foreach ($ordereditems as $ordereditem)
+										@if ($ordereditem->item_id === $item->id)
+											<input class="orderquantity" name="qty{{$loop->iteration}}" value="{{$ordereditem->order_qty}}">
+										@endif
+									@endforeach
+								@else
 									<input class="orderquantity" name="qty{{$loop->iteration}}">
+								@endif
 								</div>
 							</div>
 						</div>
@@ -56,6 +89,7 @@
 		</div>
 	@endforeach
 	</div>
+
 
 </form>
 

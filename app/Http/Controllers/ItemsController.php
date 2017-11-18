@@ -93,7 +93,13 @@ class ItemsController extends Controller
      */
     public function show($id)
     {
-        //
+        $item = \App\Item::find($id);
+        $itemsupplier = \DB::table('suppliers')
+                ->join('items', 'items.supplier_id', '=', 'suppliers.id')
+                ->select('suppliers.*')
+                ->where('items.id','=',$id)
+                ->first();
+        return view('items.show', compact('item','itemsupplier'));
     }
 
     /**
@@ -108,8 +114,13 @@ class ItemsController extends Controller
         $categories = \App\Category::all();
         $suppliers = \App\Supplier::all();
         $uoms = \App\UOM::all();
+        $itemsupplier = \DB::table('suppliers')
+                ->join('items', 'items.supplier_id', '=', 'suppliers.id')
+                ->select('suppliers.*')
+                ->where('items.id','=',$id)
+                ->first();
 
-        return view('items.edit', compact('item','categories','suppliers','uoms'));
+        return view('items.edit', compact('item','categories','suppliers','uoms','itemsupplier'));
     }
 
     /**
@@ -148,6 +159,8 @@ class ItemsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item = \App\Item::find($id);
+        $item->delete();
+        return redirect('/items');
     }
 }
