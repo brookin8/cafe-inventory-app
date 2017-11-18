@@ -3,8 +3,9 @@
 @section('content')
 
 <h1 class="text-center mb-5">Inventory Count</h1>
-<form action="/inventorycounts" method="post" class="mb-5">
+<form action="/inventorycounts/{{$count->id}}" method="post" class="mb-5">
 	{{ csrf_field() }}
+	{{ method_field('PUT') }}
 	<div class="row justify-content-center mb-5">
 		<button type="submit" value="save" name="button" class="btn btn-primary">Save for Later</button>
 		<button type="submit" value="submit" name="button" class="btn btn-primary">Submit</button>
@@ -39,11 +40,19 @@
 	<tbody>
 	@foreach($items as $item)
 	<tr class="">
-		<td class="text-center cellwidth"><input type="hidden" name="item{{$loop->iteration}}" value="{{$item->id}}">{{$item->id}}</td>
+		<td class="text-center cellwidth"><input type="hidden" name="item{{$item->id}}" value="{{$item->id}}">{{$item->id}}</td>
 		<td class="text-center cellwidth">{{$item->name}}</td>
 		<td class="text-center cellwidth">{{$item->category->name}}</td>
 		<td class="text-center cellwidth">{{$item->supplier->name}}</td>
-		<td class="text-center cellwidth"><input type="number" class="invcountqty" name="qty{{$loop->iteration}}"></td>
+		@if (in_array($item->id,$counteditemIds))
+			@foreach ($counteditems as $counteditem)
+				@if ($counteditem->item_id === $item->id)
+					<td class="text-center cellwidth"><input type="number" class="invcountqty" value="{{$counteditem->inventorycount_qty}}" name="qty{{$item->id}}"></td>
+				@endif
+			@endforeach
+		@else
+			<td class="text-center cellwidth"><input type="number" class="invcountqty" name="qty{{$item->id}}"></td>
+		@endif
 	</tr>
 	@endforeach
 	</tbody>

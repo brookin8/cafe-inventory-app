@@ -243,7 +243,102 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $button = request('button');
+        $order = \App\Order::find($id);
+
+        //error_log('order: '. $order);
+
+        $supplier = $order->supplier_id;
+
+        $order->received = false;
+        $order->created_by = \Auth::user()->id;
+        $order->updated_at = Carbon::now();
+
+        $order->expected_delivery_date = request('deliverydate');
+        
+        if($button === "save") {
+            $order->editable = true;
+        } else {
+            $order->editable = false;
+        }
+        
+        $order->save();
+        
+        $orderid = $order->id;
+
+        
+        //error_log('count id '. $countid);
+
+         $ordereditems = \DB::table('items_orders')
+            ->where([
+                ['items_orders.order_id','=',$order->id]
+                ])
+            ->get();
+
+       $originalorderrecords = [];
+
+        foreach ($ordereditems as $ordereditem) {
+            array_push($originalorderrecords, $ordereditem->id);
+        }
+
+        $itemIds = [];
+
+        $items = \DB::table('items')
+            ->where('supplier_id','=',$supplier)
+            ->get();
+
+        foreach($items as $item) {
+            array_push($itemIds, $item->id);
+        }
+
+        $totaldollars = 0;
+
+        foreach($itemIds as $itemId) {
+          // error_log($itemId);
+           $stringi = (string)$itemId;
+           $itemfind = request('item'.$stringi);
+          // error_log('item'.$itemId);
+          // error_log('itemfind: ' .$itemfind);
+
+           $quantity = request('qty'.$stringi);
+          // error_log('qty'.$stringi);
+          // error_log('quantity: ' .$quantity); 
+
+
+           if($quantity != '') {
+                //error_log('quantity not blank');
+
+                $item = \App\Item::find($itemfind);
+                //error_log('item is: ' .$item);
+
+                $orderdollars = (int)($quantity * $item->cost);
+                $totaldollars += $orderdollars;
+
+                //error_log('orderdollars: '.$orderdollars);
+
+                $item->orders()->attach($orderid,
+                    ['order_qty' => $quantity,'orders_dollar_amount' => $orderdollars,'created_at' => Carbon::now(),'updated_at' => Carbon::now()]
+                );
+            }
+           
+        }
+
+        foreach($originalorderrecords as $originalrecord) {
+            //error_log('Delete record with id: '. $originalrecord);
+            $deleterecord = \DB::table('items_orders')
+                ->where('id','=',$originalrecord)
+                ->delete();
+        }
+        
+
+        $order2 = \App\Order::find($id);
+        $order2->total_order_cost = $totaldollars;
+        //error_log('totaldollars: '.$orderdollars);
+
+        $order2->save();
+
+        return redirect('../orders');
     }
 
     /**

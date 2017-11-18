@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form method="post" action="../orders/{{$order->id}}">
+<form method="post" action="/orders/{{$order->id}}">
 	{{ csrf_field() }}
 	{{ method_field('PUT') }}
 
@@ -16,6 +16,10 @@
 	  	</div>
 	  	<div class="ml-4 mr-4"><strong class="mr-1">Supplier:</strong> 
 	  		{{$order->supplier->name}}
+	  	</div>
+	  	<div class="ml-4 mr-4"><strong class="mr-1">Expected Delivery Date:</strong> 
+	  		{{$deliverydate->format('m/d/Y')}}
+	  		<input type="hidden" value="{{$deliverydate}}" name="deliverydate">
 	  	</div>
 	</div>
 </div>
@@ -66,7 +70,7 @@
  						 <div class="card card-block">
  						 	<div class="row">
 								<div class="col-3">{{$item->name}}
-									<input class="hidden" name="item{{$loop->iteration}}" value="{{$item->id}}">
+									<input class="hidden" name="item{{$item->id}}" value="{{$item->id}}">
 								</div>
 								<div class="col-2">
 									${{$item->cost}}
@@ -75,11 +79,11 @@
 								@if (in_array($item->id,$ordereditemsIds))
 									@foreach ($ordereditems as $ordereditem)
 										@if ($ordereditem->item_id === $item->id)
-											<input class="orderquantity" name="qty{{$loop->iteration}}" value="{{$ordereditem->order_qty}}">
+											<input class="orderquantity" name="qty{{$item->id}}" value="{{$ordereditem->order_qty}}" type="numeric">
 										@endif
 									@endforeach
 								@else
-									<input class="orderquantity" name="qty{{$loop->iteration}}">
+									<input class="orderquantity" type="numeric" name="qty{{$item->id}}">
 								@endif
 								</div>
 							</div>
@@ -94,70 +98,6 @@
 </form>
 
 <script>
-
-// //Type-ahead
-// 	var substringMatcher = function(strs) {
-//   return function findMatches(q, cb) {
-//     var matches, substringRegex;
-
-//     // an array that will be populated with substring matches
-//     matches = [];
-
-//     // regex used to determine if a string contains the substring `q`
-//     substrRegex = new RegExp(q, 'i');
-
-//     // iterate through the pool of strings and for any string that
-//     // contains the substring `q`, add it to the `matches` array
-//     $.each(strs, function(i, str) {
-//       if (substrRegex.test(str)) {
-//         matches.push(str);
-//       }
-//     });
-
-//     	cb(matches);
-//   	};
-// 	};
-
-// 	var getItems = {!! json_encode($items->toArray()) !!};
-// 	//console.log(getItems);
-
-// 	var items = []
-
-// 	for (var i=0;i<getItems.length;i++) {
-// 		items.push(getItems[i].name);
-// 	}
-
-// 	// console.log(items);
-
-// 	$('#iteminput .typeahead').typeahead({
-// 	  hint: true,
-// 	  highlight: true,
-// 	  minLength: 1
-// 	},
-// 	{
-// 	  name: 'items',
-// 	  source: substringMatcher(items)
-// 	});
-
-//Dynamically add fields
-	// $(document).ready(function() {
-	//     var max_fields      = 1000; //maximum input boxes allowed
-	//     var wrapper         = $(".input_fields_wrap"); //Fields wrapper
-	//     var add_button      = $(".add_field_button"); //Add button ID
-	    
-	//     var x = 1; //initlal text box count
-	//     $(add_button).click(function(e){ //on add input button click
-	//         e.preventDefault();
-	//         if(x < max_fields){ //max input box allowed
-	//             x++; //text box increment
-	//             $(wrapper).append('<div><input class="typeahead" type="text" name="item' + x'"/><a href="#" class="remove_field">Remove</a></div>'); //add input box
-	//         }
-	//     });
-	    
-	//     $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
-	//         e.preventDefault(); $(this).parent('div').remove(); x--;
-	//     })
-	// });
 
 </script>
 

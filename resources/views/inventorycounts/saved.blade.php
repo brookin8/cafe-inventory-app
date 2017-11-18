@@ -39,7 +39,8 @@
 					<td><a href="../inventorycounts/{{$count->id}}" class="bodylink"><div>{{Carbon\Carbon::parse($count->updated_at)->format('m/d/Y')}}</div></a></td>
 					<td><a href="../inventorycounts/{{$count->id}}" class="bodylink"><div>{{$count->username}}</div></a></td>
 					<td>
-					<div class="row justify-content-center"><a href=""><button class="edit-modal btn btn-sm btn-info mr-2"
+					<div class="row justify-content-center">
+						<a href="../inventorycounts/{{$count->id}}/edit"><button class="edit-modal btn btn-sm btn-info mr-2"
 							data-info="">
 							<span class="glyphicon glyphicon-edit"></span>
 						</button></a>

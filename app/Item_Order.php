@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Item_Order extends Model
 {
-    use SoftDeletes;
+
     protected $table = 'items_orders';
-    protected $dates = ['deleted_at'];
+    protected $primaryKey = 'id';
+    
 }

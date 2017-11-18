@@ -53,13 +53,21 @@ class InventoryCountController extends Controller
      */
     public function store(Request $request)
     {
+        $button = request('button');
+
         $count = new \App\Inventorycount;
-        $count->editable = false;
         $count->store_id = \Auth::user()->store_id;
         $count->created_by = \Auth::user()->id;
         $count->created_at = Carbon::now();
         $count->updated_at = Carbon::now();
         $count->total_value_onhand = 0;
+
+        if($button === 'save') {
+             $count->editable = true;
+        } else {
+            $count->editable = false;
+        }
+
         $count->save();
 
         $countid = $count->id;
@@ -146,7 +154,21 @@ class InventoryCountController extends Controller
      */
     public function edit($id)
     {
-        //
+        
+        $count = \App\Inventorycount::find($id);
+        $items = \App\Item::all();
+        $counteditems = \DB::table('items_inventorycounts')
+            ->where('items_inventorycounts.inventorycount_id','=',$id)
+            ->select('items_inventorycounts.*')
+            ->get();
+
+        $counteditemIds = [];
+
+        foreach($counteditems as $counteditem) {
+            array_push($counteditemIds,$counteditem->item_id);
+        }
+
+        return view('inventorycounts.edit',compact('count','items','counteditems','counteditemIds'));
     }
 
     /**
@@ -158,7 +180,88 @@ class InventoryCountController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $button = request('button');
+        $count = \App\Inventorycount::find($id);
+       
+        $count->created_by = \Auth::user()->id;
+        $count->updated_at = Carbon::now();
+
+        if($button === 'save') {
+            $count->editable = true;
+        } else {
+            $count->editable = false;
+        }
+
+        $count->save();
+
+        //error_log('count id '. $countid);
+
+        $counteditems = \DB::table('items_inventorycounts')
+            ->where([
+                ['items_inventorycounts.inventorycount_id','=',$id]
+                ])
+            ->get();
+
+       $originalrecords = [];
+
+        foreach ($counteditems as $counteditem) {
+            array_push($originalrecords, $counteditem->id);
+        }
+
+        $itemIds = [];
+
+        $items = \App\Item::all();
+
+        foreach($items as $item) {
+            array_push($itemIds, $item->id);
+        }
+
+        $totaldollars = 0;
+
+        foreach($itemIds as $itemId) {
+          // error_log($itemId);
+           $stringi = (string)$itemId;
+           $itemfind = request('item'.$stringi);
+          // error_log('item'.$itemId);
+          // error_log('itemfind: ' .$itemfind);
+
+           $quantity = request('qty'.$stringi);
+          // error_log('qty'.$stringi);
+          // error_log('quantity: ' .$quantity); 
+
+
+           if($quantity != '') {
+                //error_log('quantity not blank');
+
+                $item = \App\Item::find($itemfind);
+                //error_log('item is: ' .$item);
+
+                $countdollars = (int)($quantity * $item->cost);
+                $totaldollars += $countdollars;
+
+                //error_log('orderdollars: '.$orderdollars);
+
+                $item->inventorycounts()->attach($id,
+                    ['inventorycount_qty' => $quantity,'inventory_dollar_amount' => $countdollars,'created_at' => Carbon::now(),'updated_at' => Carbon::now()]
+                );
+            }
+           
+        }
+
+        foreach($originalrecords as $originalrecord) {
+            //error_log('Delete record with id: '. $originalrecord);
+            $deleterecord = \DB::table('items_inventorycounts')
+                ->where('id','=',$originalrecord)
+                ->delete();
+        }
+        
+        $count2 = \App\Inventorycount::find($id);
+        $count2->total_order_cost = $totaldollars;
+        //error_log('totaldollars: '.$orderdollars);
+
+        $count2->save();
+
+        return redirect('/inventorycounts');
     }
 
     /**
