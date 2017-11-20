@@ -77,7 +77,16 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = \App\User::find($id);
+
+        $user->name = request('name');
+        $user->email = request('email');
+        $user->access_id = request('access_id');
+        $user->store_id = request('store_id');
+
+        $user->save();
+
+        return redirect('/users');
     }
 
     /**
