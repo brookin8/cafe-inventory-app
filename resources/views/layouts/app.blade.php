@@ -62,7 +62,7 @@
 
                     <!-- Branding Image -->
                         <a id="menu-toggle" href="#" class="sidebartoggle glyphicon ml-2 mt-3" onclick="openNav()">
-                            <i class="fa fa-2x fa-bars"></i>
+                            <i class="fa fa-2x fa-bars" id="toggleimage"></i>
                         </a>
                         <a class="navbar-brand ml-5" href="{{ url('/home') }}">
                             North Lime Inventory
@@ -168,9 +168,11 @@
              <div class="row">
                 <a href="#">Reporting</a>
             </div>
+            @if(Auth::user()->access_id === 1)
              <div class="row">
-                <a href="#">Users</a>
+                <a href="../users">Users</a>
             </div>
+            @endif
         </div>
 
         @yield('content')
@@ -179,12 +181,20 @@
     </div>
 
     <script>
+        
+        $(document).ready(function() {
+            $( ".fa.fa-2x.fa-bars" ).click( function() {
+                $("#toggleimage").toggleClass('flip');
+            });
+        });
+
         function openNav() {
             document.getElementById("mySidenav").style.width = "185px";
         }
 
         function closeNav() {
             document.getElementById("mySidenav").style.width = "0";
+            $("#toggleimage").toggleClass('flip');
         }
     </script>
     

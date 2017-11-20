@@ -8,19 +8,26 @@ use Carbon\Carbon;
 
 class ItemsController extends Controller
 {
+     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-     public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     public function index()
     {
         //$items = \App\Item::all();
+        $store = \Auth::user()->store_id;
         $items = \DB::table('items')
                 ->join('users', 'items.edited_by', '=', 'users.id')
                 ->join('categories', 'category_id','=','categories.id')
@@ -39,7 +46,21 @@ class ItemsController extends Controller
                 ->whereNotNull('suppliers.deleted_at')
                 ->get();
 
-        return view('items.index')->with(compact('items','items2'));
+        $pars = \DB::table('items_stores')
+            ->where('store_id','=',$store)
+            ->select('items_stores.*')
+            ->orderBy('items_stores.updated_at','desc')
+            ->get();
+
+        $itemswithpars = [];
+
+        foreach($pars as $par) {
+            array_push($itemswithpars,$par->item_id);
+        }
+
+        //error_log($pars);
+
+        return view('items.index')->with(compact('items','items2','pars','itemswithpars'));
 
     }
 
@@ -74,6 +95,8 @@ class ItemsController extends Controller
         $item->supplier_item_identifier = request('supplier_item');
         $item->cost = request('cost');
         $item->uom_id = request('uom');
+        $pars = request('pars');
+        $store = \Auth::user()->store_id;
         
         $item->created_at = Carbon::now()->format('Y-m-d H:i:s');
         $item->updated_at = Carbon::now()->format('Y-m-d H:i:s');
@@ -81,6 +104,12 @@ class ItemsController extends Controller
         $item->edited_by = \Auth::user()->id;
      
         $item->save();
+
+        if($pars != '') {
+            $item->stores()->attach($store,
+                ['PARs' => $pars,'created_at' => Carbon::now(),'updated_at' => Carbon::now()]
+            );
+        }
 
         return redirect('/items');
     }
@@ -114,13 +143,23 @@ class ItemsController extends Controller
         $categories = \App\Category::all();
         $suppliers = \App\Supplier::all();
         $uoms = \App\UOM::all();
+        $store = \Auth::user()->store_id;
         $itemsupplier = \DB::table('suppliers')
                 ->join('items', 'items.supplier_id', '=', 'suppliers.id')
                 ->select('suppliers.*')
                 ->where('items.id','=',$id)
                 ->first();
+        
+        $pars = \DB::table('items_stores')
+            ->select('items_stores.*')
+            ->where([
+                ['item_id','=',$id],
+                ['store_id','=',$store]
+            ])
+            ->orderBy('updated_at','desc')
+            ->first();
 
-        return view('items.edit', compact('item','categories','suppliers','uoms','itemsupplier'));
+        return view('items.edit', compact('item','categories','suppliers','uoms','itemsupplier','pars'));
     }
 
     /**
@@ -141,12 +180,18 @@ class ItemsController extends Controller
         $item->supplier_item_identifier = request('supplier_item');
         $item->cost = request('cost');
         $item->uom_id = request('uom');
+        $pars = request('pars');
+        $store = \Auth::user()->store_id;
         
         $item->updated_at = Carbon::now()->format('Y-m-d H:i:s');
 
         $item->edited_by = \Auth::user()->id;
      
         $item->save();
+
+        $item->stores()->attach($store,
+            ['PARs' => $pars,'created_at' => Carbon::now(),'updated_at' => Carbon::now()]
+        );
 
         return redirect('/items');
     }

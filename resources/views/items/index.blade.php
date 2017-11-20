@@ -17,10 +17,11 @@
 					<tr>
 						<th class="text-center">ID</th>
 						<th class="text-center">Name</th>
+						<th class="text-center">Category</th>
 						<th class="text-center">Supplier</th>
 						<th class="text-center">UOM</th>
 						<th class="text-center">Cost</th>
-						<th class="text-center">Category</th>
+						<th class="text-center">PARs</th>
 						<th class="text-center">Last Edited</th>
 						<th class="text-center">Actions</th>
 					</tr>
@@ -30,10 +31,20 @@
 				<tr class="item{{$item->id}}">
 					<td>{{$item->id}}</td>
 					<td>{{$item->name}}</td>
+					<td>{{$item->category}}</td>
 					<td>{{$item->supplier}}</td>
 					<td>{{$item->uom}}</td>
 					<td>${{$item->cost}}</td>
-					<td>{{$item->category}}</td>
+					@if(in_array($item->id,$itemswithpars))
+						@foreach($pars as $par)
+							@if($item->id === $par->item_id)
+								<td>{{$par->PARs}}</td>
+							@break
+							@endif
+						@endforeach
+					@else
+					<td>NO PARs</td>
+					@endif
 					<td>{{$item->username}}</td>
 					<td><a href="/items/{{$item->id}}/edit"><button class="edit-modal btn btn-sm btn-info">
 							<span class="glyphicon glyphicon-edit"></span>

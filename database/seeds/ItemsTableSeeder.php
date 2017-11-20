@@ -518,7 +518,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
        DB::table('items')->insert([
-      'name' => "CONFECTIONER SUGAR",
+      'name' => "CONFECTIONER (POWDERED) SUGAR",
       'supplier_item_identifier' => '5825672',
       'cost' => 34.85,
       'edited_by' => 1,
@@ -1850,10 +1850,10 @@ class ItemsTableSeeder extends Seeder
       'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
       ]);
 
-		DB::table('items')->insert([
-      'name' => "Lavender Syrup (Monin) 750 ml",
-      'supplier_item_identifier' => 'Monin Lavender Syrup 750 ml Bottle(s)',
-      'cost' => 7.23,
+	DB::table('items')->insert([
+      'name' => "Macadamia Nut Syrup (1883) 1 L",
+      'supplier_item_identifier' => '1883 Macadamia Nut Syrup 1 Liter Bottle(s)',
+      'cost' => 9.25,
       'edited_by' => 1,
       'uom_id' => 1,
       'category_id' => 4,
@@ -1862,7 +1862,7 @@ class ItemsTableSeeder extends Seeder
       'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
       ]);
 
-		DB::table('items')->insert([
+	DB::table('items')->insert([
       'name' => "Cinnamon Bun Syrup (Monin) 750 ml",
       'supplier_item_identifier' => 'Monin Cinnamon Bun Syrup 750 ml Bottle(s)',
       'cost' => 6.99,

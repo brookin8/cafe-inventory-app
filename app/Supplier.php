@@ -30,4 +30,10 @@ class Supplier extends Model
     	return $this->belongsToMany('App\Store','suppliers_stores','supplier_id','store_id')->withPivot('lead_time_days')->withTimestamps();
     }
 
+    public function phoneNumber($data) {
+    // add logic to correctly format number here
+    // a more robust ways would be to use a regular expression
+    return "(".substr($data, 0, 3).") ".substr($data, 3, 3)."-".substr($data,6);
+    }
+
 }

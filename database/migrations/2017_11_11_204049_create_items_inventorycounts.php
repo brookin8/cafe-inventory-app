@@ -16,9 +16,8 @@ class CreateItemsInventorycounts extends Migration
         Schema::create('items_inventorycounts', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('inventorycount_id')->unsigned();
-            $table->foreign('inventorycount_id')->references('id')->on('inventorycounts');
+            $table->foreign('inventorycount_id')->references('id')->on('inventorycounts')->onDelete('cascade');
             $table->integer('item_id')->unsigned();
-            $table->foreign('item_id')->references('id')->on('items');
             $table->integer('inventorycount_qty')->unsigned();
             $table->decimal('inventory_dollar_amount',8,2)->nullable();
             $table->timestamps();

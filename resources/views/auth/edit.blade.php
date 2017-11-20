@@ -9,7 +9,7 @@
         </div>
         <div class="col-md-8">
             <div class="panel panel-default">
-                <div class="panel-heading">Register New User</div>
+                <div class="panel-heading">Edit User</div>
 
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('register') }}">
@@ -19,7 +19,7 @@
                             <label for="name" class="col-md-4 control-label">Name</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                                <input id="name" type="text" class="form-control" name="name" value="{{ $user->name }}" required autofocus>
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">
@@ -33,7 +33,7 @@
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                                <input id="email" type="email" class="form-control" name="email" value="{{$user->email}}" required>
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -43,36 +43,17 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                            </div>
-                        </div>
-
                         <div class="form-group">
                             <label for="accessLevel" class="col-md-4 control-label">Access Level</label>
 
                             <div class="col-md-6">
                                 <select class="form-control" id="access_id" name="access_id" required>
-                                    <option value="" disabled selected>Select Access</option>
                                     @foreach($accesslevels as $accesslevel)
-                                        <option class="form-control" value="{{$accesslevel->id}}">{{$accesslevel->access_level}}</option>
+                                        @if($user->access_id === $accesslevel->id)
+                                            <option class="form-control" value="{{$accesslevel->id}}" selected>{{$accesslevel->access_level}}</option>
+                                        @else
+                                            <option class="form-control" value="{{$accesslevel->id}}">{{$accesslevel->access_level}}</option>
+                                        @endif
                                     @endforeach
                                 </select>
                             </div>
@@ -84,7 +65,11 @@
                                  <select class="form-control" id="store_id" name="store_id" required>
                                  <option value="" disabled selected>Select Store</option>
                                     @foreach($stores as $store)
-                                        <option class="form-control" value="{{$store->id}}">{{$store->name}}</option>
+                                        @if($user->store_id === $store->id)
+                                            <option class="form-control" value="{{$store->id}}" selected>{{$store->name}}</option>
+                                        @else
+                                            <option class="form-control" value="{{$store->id}}">{{$store->name}}</option>
+                                        @endif
                                     @endforeach
                                 </select>
                             </div>
@@ -92,8 +77,13 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
+                                <a href="/users">
+                                    <button type="button" class="btn btn-primary">
+                                        Discard
+                                    </button>
+                                </a>
                                 <button type="submit" class="btn btn-primary">
-                                    Register
+                                    Update
                                 </button>
                             </div>
                         </div>

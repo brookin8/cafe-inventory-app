@@ -51,13 +51,14 @@
 								data-info="">
 								<span class="glyphicon glyphicon-edit"></span>
 							</button></a>
-							<form method="post" action="">
-	                                {{ method_field('DELETE') }}
-	                                {{ csrf_field() }}
+							<form method="post" action="/orders/{{$order->id}}">
+                                {{ method_field('DELETE') }}
+                                {{ csrf_field() }}
 	                            <button class="delete-modal btn btn-sm btn-danger"
 								data-info="">
 								<span class="glyphicon glyphicon-trash"></span>
-							</button></form>
+								</button>
+							</form>
 						</div>
 					</td>
 				</tr>

@@ -16,9 +16,8 @@ class CreateItemsOrders extends Migration
         Schema::create('items_orders', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('order_id')->unsigned();
-            $table->foreign('order_id')->references('id')->on('orders');
+            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
             $table->integer('item_id')->unsigned();
-            $table->foreign('item_id')->references('id')->on('items');
             $table->integer('order_qty')->unsigned();
             $table->decimal('orders_dollar_amount',8,2)->nullable();
             $table->boolean('is_backordered')->nullable();

@@ -45,7 +45,7 @@
 							data-info="">
 							<span class="glyphicon glyphicon-edit"></span>
 						</button></a>
-						<form method="post" action="">
+						<form method="post" action="/inventorycounts/{{$count->id}}">
                                 {{ method_field('DELETE') }}
                                 {{ csrf_field() }}
                             <button class="delete-modal btn btn-sm btn-danger"

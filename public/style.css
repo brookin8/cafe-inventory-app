@@ -189,7 +189,7 @@ input.invcountqty {
 	margin-right:2px;
 }
 
-a.forgot {
+a.btn.btn-link.forgot {
 	color:#636B81;
 }
 
@@ -331,6 +331,32 @@ select {
 	color:#fff;
 }
 
+
+.loginside {
+	display:table;
+	width:40%;
+	height:100vh;
+	float:right;
+	display:flex;
+	align-items:center;
+}
+
+.logingroup {
+	width:100%;
+}
+
+.northlimeimage {
+	display: table;
+    width: 60%;
+    height: 100vh;
+    float: left;
+    background: url(northlime.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+
 button.ordercategory, button.ordercategory:visited, button.ordercategory:focus, 
 button.ordercategory:visited {
 	width:90%;
@@ -432,6 +458,21 @@ div.container.navigation.main {
 }
 
 /*Sidebar Menu*/
+#toggleimage {
+  -moz-transition: transform 1s linear;
+  transition: transform 1s linear;
+  -webkit-transition: transform 1s linear;
+  /*transform-origin:40% 40%; 
+  -webkit-transform-origin:40% 40%; 
+  -ms-transform-origin:40% 40%;*/
+ 
+}
+
+.flip {
+  transform: rotate(-90deg);
+}
+
+
 i.fa.fa-bars:hover {
 	color:#2ACA81;
 }

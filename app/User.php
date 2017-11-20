@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'store_id','access_id'
     ];
 
     /**
@@ -31,7 +31,7 @@ class User extends Authenticatable
 
     protected $dates = ['deleted_at'];
 
-    public function access_levels() {
+    public function access_level() {
         return $this->belongsTo('App\AccessLevel','access_id','id');
     }
 

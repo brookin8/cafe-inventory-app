@@ -7,15 +7,21 @@ use Carbon\Carbon;
 
 class SupplierController extends Controller
 {
-    /**
-     * Display a listing of the resource.
+     /**
+     * Create a new controller instance.
      *
-     * @return \Illuminate\Http\Response
+     * @return void
      */
     public function __construct()
     {
         $this->middleware('auth');
     }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
 
     public function index()
     {
@@ -26,6 +32,9 @@ class SupplierController extends Controller
                 ->select('suppliers.*', 'order_methods.method as method')
                 ->whereNull('suppliers.deleted_at')
                 ->get();
+
+    return "(".substr($data, 0, 3).") ".substr($data, 3, 3)."-".substr($data,6);
+
         return view('suppliers.index')->with(compact('suppliers'));
     }
 

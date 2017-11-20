@@ -20,12 +20,12 @@ class DatabaseSeeder extends Seeder
         $this->call(UomsTableSeeder::class);
         $this->call(SuppliersTableSeeder::class);
         $this->call(ItemsTableSeeder::class);
-        
         $this->call(OrdersTableSeeder::class);
         $this->call(ItemsOrdersTableSeeder::class);
         $this->call(InvoicesTableSeeder::class);
         $this->call(ItemsInvoicesTableSeeder::class);
         $this->call(InventoryCountsTableSeeder::class);
         $this->call(ItemsInventoryCountsTableSeeder::class);
+        $this->call(ItemsStoresSeeder::class);
     }
 }

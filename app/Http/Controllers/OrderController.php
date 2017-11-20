@@ -7,6 +7,16 @@ use Carbon\Carbon;
 
 class OrderController extends Controller
 {
+     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -49,10 +59,25 @@ class OrderController extends Controller
 
         $supplierId = $request->session()->get('supplier');
         $supplier = \App\Supplier::find($supplierId);
+        $store = \Auth::user()->store_id;
         $today = Carbon::today();
         $deliverydate = Carbon::today();
         $deliverydate->addDays($supplier->lead_time_days);
+        $countstart = Carbon::now()->subDays(2);
         $categoryids=[];
+        $itemids=[];
+        $itemswithpars = [];
+        $itemswithonhand = [];
+        
+        $pars = \DB::table('items_stores')
+            ->where('store_id','=',$store)
+            ->select('items_stores.*')
+            ->orderBy('items_stores.updated_at','desc')
+            ->get();
+
+        foreach($pars as $par) {
+            array_push($itemswithpars,$par->item_id);
+        }
 
         $items = \DB::table('items')
                 ->select('items.*')
@@ -62,9 +87,11 @@ class OrderController extends Controller
                 ])
                 ->orderBy('items.name')
                 ->get();
+
         
         foreach($items as $item) {
             array_push($categoryids, $item->category_id);
+            array_push($itemids, $item->id);
         }
 
         $categoryid = array_unique($categoryids);
@@ -76,7 +103,23 @@ class OrderController extends Controller
             ->orderBy('categories.name')
             ->get();
 
-        return view('orders.create',compact('items','supplier','today','deliverydate','categories'));
+        $onhand = \DB::table('items_inventorycounts')
+                ->join('inventorycounts','items_inventorycounts.inventorycount_id','=','inventorycounts.id')
+                ->select('items_inventorycounts.*')
+                ->whereIn('items_inventorycounts.item_id',$itemids)
+                ->where([
+                    ['inventorycounts.store_id','=',$store],
+                    ['inventorycounts.editable','=',false],
+                    ['items_inventorycounts.updated_at','<=',Carbon::now()],
+                    ['items_inventorycounts.updated_at','>=',$countstart]
+                ])
+                ->get();
+
+        foreach($onhand as $onhands) {
+            array_push($itemswithonhand,$onhands->item_id);
+        }
+
+        return view('orders.create',compact('items','supplier','today','deliverydate','categories','pars','itemswithpars','onhand','itemswithonhand'));
     }
 
     /**
@@ -270,7 +313,7 @@ class OrderController extends Controller
         
         //error_log('count id '. $countid);
 
-         $ordereditems = \DB::table('items_orders')
+        $ordereditems = \DB::table('items_orders')
             ->where([
                 ['items_orders.order_id','=',$order->id]
                 ])
@@ -349,7 +392,9 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $order = \App\Order::find($id);
+        $order->delete();
+        return redirect('/orders');
     }
 
     // Order Status: 1 - saved, 2 - open, 3 - closed (invoiced), 4 - late (past due date with no invoice)

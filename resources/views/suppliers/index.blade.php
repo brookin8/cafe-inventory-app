@@ -21,8 +21,8 @@
 						<th class="text-center">Lead Time (Days)</th>
 						<th class="text-center">Order Method</th>
 						<th class="text-center">Order Email</th>
-						<th class="text-center">Contact Name</th>
-						<th class="text-center">Contact Number</th>
+						<th class="text-center">Contact</th>
+						<th class="text-center">Contact Phone</th>
 						<th class="text-center">Contact Email</th>
 						<th class="text-center">Billing Address</th>
 						<th class="text-center">Billing City</th>
@@ -41,7 +41,7 @@
 					<td>{{$supplier->method}}</td>
 					<td>{{$supplier->order_email_address}}</td>
 					<td>{{$supplier->contact_name}}</td>
-					<td>{{$supplier->contact_phone_number}}</td>
+					<td>{{substr_replace(substr_replace($supplier->contact_phone_number,'-',3,0),'-',7,0)}}</td>
 					<td>{{$supplier->contact_email}}</td>
 					<td>{{$supplier->billing_street_address}}</td>
 					<td>{{$supplier->billing_city}}</td>

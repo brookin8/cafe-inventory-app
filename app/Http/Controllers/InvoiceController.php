@@ -7,6 +7,16 @@ use Carbon\Carbon;
 
 class InvoiceController extends Controller
 {
+    
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -229,7 +239,7 @@ class InvoiceController extends Controller
                         ->first();
 
                     $item_order_record = \App\Item_Order::find($item_order_record_id->id);
-                    error_log($item_order_record);
+                    //error_log($item_order_record);
 
                     $item_order_record->is_backordered = true;
                     $item_order_record->save();

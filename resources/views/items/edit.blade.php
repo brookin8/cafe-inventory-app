@@ -67,6 +67,16 @@
 			  	</div>
 			</div>
 			<div class="form-group row">
+			  	<label for="cost" class="col-4 col-form-label text-right createText">PARs</label>
+			  	<div class="col-7">
+			  		@if(!is_null($pars))
+			  		<input type="number" value="{{$pars->PARs}}" step="any" id="pars" name="pars" class="form-control">
+			  		@else
+			  		<input type="number" step="any" id="pars" name="pars" class="form-control">
+			  		@endif
+			  	</div>	
+			</div>
+			<div class="form-group row">
 			  	<label for="cost" class="col-4 col-form-label text-right createText">Cost</label>
 			  	<div class="col-7">
 			  		<input type="number" value="{{$item->cost}}" step="any" id="cost" name="cost" class="form-control">

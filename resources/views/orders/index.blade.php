@@ -61,7 +61,7 @@
 					<div class="row justify-content-center"><a href="../orders/{{$order->id}}/edit""><button class="edit-modal btn btn-sm btn-info mr-2">
 							<span class="glyphicon glyphicon-edit"></span>
 						</button></a>
-						<form method="post" action="">
+						<form method="post" action="/orders/{{$order->id}}">
                                 {{ method_field('DELETE') }}
                                 {{ csrf_field() }}
                             <button class="delete-modal btn btn-sm btn-danger"

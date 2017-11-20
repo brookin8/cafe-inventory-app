@@ -12,8 +12,10 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/login');
 });
+
+Route::resource('users','UserController');
 
 Auth::routes();
 
@@ -59,6 +61,8 @@ Route::resource('inventorycounts', 'InventorycountController');
 
 Route::get('/reporting', function() {
 	return view('reporting.index');
+
+
 
 });
 
