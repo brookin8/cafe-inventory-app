@@ -5,26 +5,26 @@
 	<h1 class="text-center">Suppliers</h1>
 
 	<div class="container">
-	<div class="row mt-3 mb-4">
-		<a href="/suppliers/create"><button class="btn btn-default ml-4">New Supplier</button></a>
-	</div>
+		<div class="row mt-3 mb-5">
+			<a href="/suppliers/create"><button class="btn btn-primary newcount mr-5 mb-5">New Supplier</button></a>
+		</div>
 	</div>
 
 	<div class="container ">
 		{{ csrf_field() }}
 		<div class="table-responsive text-center">
-			<table class="table table-borderless table-striped table-hover" id="table">
+			<table class="table tableborder table-striped table-hover" id="table">
 				<thead>
 					<tr>
 						<th class="text-center">ID</th>
 						<th class="text-center">Name</th>
-						<th class="text-center">Default Lead Time (Days)</th>
+						<th class="text-center">Lead Time (Days)</th>
 						<th class="text-center">Order Method</th>
 						<th class="text-center">Order Email</th>
 						<th class="text-center">Contact Name</th>
 						<th class="text-center">Contact Number</th>
 						<th class="text-center">Contact Email</th>
-						<th class="text-center">Billing Street Address</th>
+						<th class="text-center">Billing Address</th>
 						<th class="text-center">Billing City</th>
 						<th class="text-center">Billing State</th>
 						<th class="text-center">Billing Zip</th>

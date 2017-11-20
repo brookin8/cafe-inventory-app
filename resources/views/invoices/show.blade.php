@@ -45,12 +45,26 @@
 		  		@endif
 		  	@endif
 		</div>
+		<div class="row mt-3 mb-5">
+		  	@if ($backorder === true)
+		  		<div class="ml-4 mr-4"><strong class="mr-1">Items on Backorder:</strong>
+		  			<ul>
+		  				@foreach ($backordered_items as $backordered_item)
+		  				<li>
+		  					{{$backordered_item}}
+		  				</li>
+		  				@endforeach
+		  			</ul>
+		  		</div>
+		  	@endif
+		</div>
+
 	</div>
 
 	<div class="container orderShowBody mb-3">
 		{{ csrf_field() }}
 		<div class="table-responsive text-center">
-			<table class="table table-borderless table-striped table-hover" id="table">
+			<table class="table tableborder table-striped table-hover" id="table">
 				
 				<thead>
 					<tr>

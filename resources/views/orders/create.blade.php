@@ -26,13 +26,13 @@
 
 	@foreach ($categories as $category)
 		<div class="row">
-			<button class="btn btn-lg btn-primary mb-3 mt-5 ml-5" data-toggle="collapse" href="#collapse{{$category->id}}" aria-expanded="false" aria-controls="collapse{{$category->id}}">
-			{{$category->name}}
+			<button class="btn btn-lg mb-2 mt-3 ordercategory" data-toggle="collapse" href="#collapse{{$category->id}}" aria-expanded="false" aria-controls="collapse{{$category->id}}">
+			{{ ucfirst(trans($category->name))}}
 			</button>
 		</div>
 			<div class="collapse" id="collapse{{$category->id}}">
-				<div class="row">
-					<div class="col-3">Item</div>
+				<div class="row mt-4 mb-3 ordertop">
+					<div class="col-7">Item</div>
 					<div class="col-2">Unit Cost</div>
 					<div class="col-3">Order Qty</div>
 				</div>
@@ -40,13 +40,13 @@
 				@if($item->category_id === $category->id)
  						 <div class="card card-block">
  						 	<div class="row">
-								<div class="col-3">{{$item->name}}
+								<div class="col-7">{{$item->name}}
 									<input class="hidden" name="item{{$loop->iteration}}" value="{{$item->id}}">
 								</div>
 								<div class="col-2">
 									${{$item->cost}}
 								</div>
-								<div class="col">
+								<div class="col-3">
 									<input class="orderquantity" name="qty{{$loop->iteration}}">
 								</div>
 							</div>

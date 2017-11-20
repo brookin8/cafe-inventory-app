@@ -4,24 +4,18 @@
 	
 	<h1 class="text-center">Invoices</h1>
 
-	<div class="container">
-	<div class="row mt-3 mb-4">
-		<a href="/invoices/orderexists"><button class="btn btn-default ml-4">New Invoice</button></a>
-	</div>
-	</div>
-
-	<ul class="nav nav-tabs">
-	  <li class="nav-item">
-	    <a class="nav-link active" href="#">Closed</a>
-	  </li>
-	  <li class="nav-item">
-	    <a class="nav-link" href="/invoices/backorder">Backorder</a>
-	  </li>
-	</ul>
-	<div class="container ">
-		{{ csrf_field() }}
-		<div class="table-responsive text-center">
-			<table class="table table-borderless table-striped table-hover" id="table">
+		<div class="row mb-5 ml-5 mr-5">
+			<div class="col">
+					<ul class="nav nav-tabs">
+						<li class="nav-item invoicetab"><a class="nav-link invoicelink">a</a></li>
+						<a href="/invoices/orderexists"><button class="btn btn-primary newcount mr-4">New Invoice</button></a>
+					</ul>
+			</div>
+		</div>
+	
+	<div class="row ml-5 mr-3">
+		<div class="table-responsive text-center mr-4 ml-3">
+			<table class="table tableborder table-striped table-hover mr-4" width="98%" id="table">
 				<thead>
 					<tr>
 						<th class="text-center">Invoice No</th>
@@ -36,7 +30,7 @@
 				@foreach($invoices as $invoice)
 				<tr class="">
 					<td><a href="invoices/{{$invoice->id}}" class="bodylink"><div>{{$invoice->id}}</div></a></td>
-					<td><a href="invoices/{{$invoice->id}}" class="bodylink"><div>{{$invoice->order_id}}</div></a></td>
+					<td><a href="invoices/{{$invoice->id}}" class="bodylink"><div>#{{$invoice->order_id}}</div></a></td>
 					<td><a href="invoices/{{$invoice->id}}" class="bodylink"><div>{{$invoice->supplier}}</div></a></td>
 					<td><a href="invoices/{{$invoice->id}}" class="bodylink"><div>${{$invoice->total_invoice_amount}}</div></a></td>
 					<td><a href="invoices/{{$invoice->id}}" class="bodylink"><div>{{Carbon\Carbon::parse($invoice->updated_at)->format('m/d/Y')}}</div>

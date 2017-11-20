@@ -47,6 +47,16 @@
 	.cardText {
 		font-size:225%;
 	}
+
+	/*.navbar-brand{
+		position:absolute;
+		margin-left:2px;
+	}*/
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
 }
 
 .filler {
@@ -82,6 +92,13 @@
 	background-color:#70658A;
 }
 
+div.card.card-block {
+	width:90%;
+}
+
+.ordertop {
+	width:90%;
+}
 
 .cardText {
 	margin-top:auto;
@@ -121,40 +138,6 @@ a.back:hover {
 
 .addMargin {
 	margin-top:10%;
-}
-
-nav {
-	font-size:145%;
-}
-
-a.navbar-brand {
-	font-size:125%;
-}
-
-.navbar-default {
-	background-color: #2ACA81;
-	color:#fff;
-}
-
-.navbar-default .navbar-brand{
-	color:#fff;
-}
-
-.navbar-default .navbar-brand:hover {
-	color:#39628A;
-}
-
-.navbar-default .navbar-nav>li>a, a:visited{
-	color:#fff;
-}
-
-.navbar-default .navbar-nav>li> a:hover{
-	color:#39628A;
-}
-
-.navigation {
-	padding-top:2%;
-	padding-bottom:2%;
 }
 
 input.typeahead.tt-input{
@@ -231,15 +214,46 @@ a.nav-link:hover {
 	color:#636B6F;	
 }
 
-ul.nav.nav-tabs {
-	margin-left:40px;
-	margin-bottom:30px;
+ul.nav.nav-tabs li.nav-item.invoicetab a.nav-link.invoicelink, ul.nav.nav-tabs li.nav-item.invoicetab a.nav-link.invoicelink:hover {
+	background-color:#F5F8FA;
+	border-bottom:1px solid #DDDDDD;
+	border-top:none;
+	border-right:none;
+	border-left:none;
+	color:#F5F8FA;
+}
+
+div.container.openorder {
+	padding-left:0px;
+	padding-right:0px;
+}
+
+
+/*div.table-responsive {
+	width:95%;
+}
+
+/*#table_wrapper{
+	width:100%
+}*/
+
+table .table {
+	width:100%;
+}
+
+button.btn.btn-primary.newcount {
+	position:absolute;
+	float:right;
+	right:0;
 }
 
 .orderselect {
 	width:50%;
 	margin-left:25%;
-	border: 2px solid #636B6F;
+	border:2px solid #636B6F;
+	background-color:#fff;
+	border-radius:5px;
+	box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0), 0 4px 11px 0 rgba(0, 0, 0, 0.19);
 }
 
 select.orderdropdown {
@@ -317,7 +331,147 @@ select {
 	color:#fff;
 }
 
-/*form {
-	box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0), 0 8px 22px 0 rgba(0, 0, 0, 0.19);
-}*/
+button.ordercategory, button.ordercategory:visited, button.ordercategory:focus, 
+button.ordercategory:visited {
+	width:90%;
+	background-color:#636B6F;
+	text-align:left;
+	padding-left:3%;
+	padding-top:2%;
+	padding-bottom:2%;
+	border:#636B6F;
+	color:#fff;
+}
+
+button.ordercategory:hover, button.ordercategory:active {
+	width:90%;
+	background-color:#2ACA81;
+	text-align:left;
+	padding-left:3%;
+	padding-top:2%;
+	padding-bottom:2%;
+	border:#636B6F;
+	color:#fff;
+}
+
+input.backorder {
+	 -webkit-appearance:none;
+    width:30px;
+    height:30px;
+    background:white;
+    border-radius:5px;
+    border:2px solid #C3C5C7;
+}
+
+input.backorder:checked {
+    background-image: url(checkmark.png);
+    background-size:cover;
+}
+
+.table tbody tr td {
+   text-align: center; 
+   vertical-align: middle;  
+}
+
+.table thead tr th {
+   text-align: center; 
+   vertical-align: middle;  
+}
+
+.tableborder {
+	border:1px solid #C3C5C7;
+	background-color:#fff;
+	border-radius:5px;
+}
+
+/*Top Navigation Menu*/
+
+nav {
+	font-size:120%;
+}
+
+a.navbar-brand {
+	font-size:125%;
+	float:right;
+
+}
+
+nav.navbar.navbar-default.navbar-static-top {
+	padding-left:0;
+}
+
+.navbar-default {
+	background-color: #31434C;
+	color:#fff;
+}
+
+.navbar-default .navbar-brand{
+	color:#fff;
+}
+
+.navbar-default .navbar-brand:hover {
+	color:#2ACA81;
+}
+
+.navbar-default .navbar-nav>li>a, a:visited{
+	color:#fff;
+}
+
+.navbar-default .navbar-nav>li> a:hover{
+	color:#2ACA81;
+}
+
+.navigation {
+	/*padding-top:2%;
+	padding-bottom:2%;*/
+	padding-left:0px;
+}
+
+div.container.navigation.main {
+	margin-left:20px;
+}
+
+/*Sidebar Menu*/
+i.fa.fa-bars:hover {
+	color:#2ACA81;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #31434C;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 100%;
+    color: #f1f1f1;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #818181;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    color:#fff;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    margin-top:55px;
+}
+
+
+
 

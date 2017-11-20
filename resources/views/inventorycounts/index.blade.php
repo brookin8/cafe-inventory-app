@@ -4,24 +4,24 @@
 	
 	<h1 class="text-center">Inventory Counts</h1>
 
-	<div class="container">
-	<div class="row mt-3 mb-4">
-		<a href="/inventorycounts/create"><button class="btn btn-default ml-4">New Count</button></a>
-	</div>
-	</div>
+		<div class="row mb-5 ml-5 mr-5">
+			<div class="col">
+				<ul class="nav nav-tabs">
+			  		<li class="nav-item">
+			    		<a class="nav-link active" href="#">Submitted</a>
+			  		</li>
+					<li class="nav-item">
+					    <a class="nav-link" href="/inventorycounts/saved">Saved</a>
+					</li>
+					<a href="/inventorycounts/create"><button class="btn newcount btn-primary mr-3">New Count</button></a>
+				</ul>
+			</div>
+		</div>
 
-	<ul class="nav nav-tabs">
-	  <li class="nav-item">
-	    <a class="nav-link active" href="#">Submitted</a>
-	  </li>
-	  <li class="nav-item">
-	    <a class="nav-link" href="/inventorycounts/saved">Saved</a>
-	  </li>
-	</ul>
-	<div class="container ">
-		{{ csrf_field() }}
-		<div class="table-responsive text-center">
-			<table class="table table-borderless table-striped table-hover" id="table">
+	
+	<div class="row ml-5 mr-3">
+		<div class="table-responsive text-center mr-4 ml-3">
+			<table class="table tableborder table-striped table-hover mr-4" width="98%" id="table">
 				<thead>
 					<tr>
 						<th class="text-center">Count Record ID</th>

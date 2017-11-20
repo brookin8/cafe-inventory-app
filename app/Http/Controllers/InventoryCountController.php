@@ -256,7 +256,7 @@ class InventoryCountController extends Controller
         }
         
         $count2 = \App\Inventorycount::find($id);
-        $count2->total_order_cost = $totaldollars;
+        $count2->total_value_onhand = $totaldollars;
         //error_log('totaldollars: '.$orderdollars);
 
         $count2->save();

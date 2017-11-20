@@ -5,14 +5,14 @@
 	<h1 class="text-center">Items</h1>
 
 	<div class="container">
-	<div class="row mt-3 mb-4">
-		<a href="/items/create"><button class="btn btn-default ml-4">New Item</button></a>
+	<div class="row mt-3 mb-5">
+		<a href="/items/create"><button class="btn btn-primary newcount mr-5 mb-5">New Item</button></a>
 	</div>
 	</div>
 
 	<div class="container ">
 		<div class="table-responsive text-center">
-			<table class="table table-borderless table-striped table-hover" id="table">
+			<table class="table table-striped table-hover tableborder" id="table">
 				<thead>
 					<tr>
 						<th class="text-center">ID</th>

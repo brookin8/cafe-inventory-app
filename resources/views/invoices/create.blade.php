@@ -15,6 +15,14 @@
 				Order No: <input name="order">
 				</div>
 			</div>
+			<div class="row mb-5 mt-3 justify-content-center">
+				<div class="col-4 mr-5">
+				Item
+				</div>
+				<div class="col-2">
+				Qty
+				</div>
+			</div>
 		@foreach ($allitems as $allitem)
 			<div class="row mb-5 mt-3 justify-content-center">
 					<div class="col-4 mr-5">
@@ -22,7 +30,7 @@
 						  <input class="typeahead iteminput" type="text" placeholder="Add Item" name="item{{$loop->iteration}}">
 						</div>
 					</div>
-					<div class="col-4">
+					<div class="col-2">
 						<input name="qty{{$loop->iteration}}" class="orderquantity">
 					</div>
 				</div>
@@ -45,6 +53,7 @@
 					<th>Item Name</th>
 					<th>Ordered Qty</th>
 					<th>Received Qty</th>
+					<th>Backordered?</th>
 				</tr>
 			</thead>	
 			
@@ -55,6 +64,7 @@
 				<td>{{$item->itemname}}</td>
 				<td>{{$item->order_qty}}</td>
 				<td><input value="{{$item->order_qty}}" type="number" class="orderquantity" name="qty{{$loop->iteration}}""></td>
+				<td><input type="checkbox" name="backorder{{$loop->iteration}}" class="backorder" value="yes"></td>
 			</tr>
 			@endforeach
 			</tbody>

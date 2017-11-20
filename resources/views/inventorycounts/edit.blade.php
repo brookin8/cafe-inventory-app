@@ -11,7 +11,7 @@
 		<button type="submit" value="submit" name="button" class="btn btn-primary">Submit</button>
 	</div>
 <div class="container">
-	<table class="table table-borderless table-striped table-hover invcountwidth table-top">
+	<table class="table tableborder table-striped table-hover invcountwidth table-top">
 		<thead>	
 			<tr>
 				<th class="text-center cellwidth">Item No</th>

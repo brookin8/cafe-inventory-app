@@ -202,6 +202,7 @@ class InvoiceController extends Controller
                 $stringi = (string)$i;
                 $itemid = request('item'.$stringi);
                 $quantity = request('qty'.$stringi); 
+                $backorder = request('backorder'.$stringi); 
 
            //error_log('qty '. $quantity);
 
@@ -216,6 +217,23 @@ class InvoiceController extends Controller
                     $item->invoices()->attach($invoiceid,
                         ['invoice_qty' => $quantity,'invoice_dollar_amount' => $invoicedollars,'created_at' => Carbon::now(),'updated_at' => Carbon::now()]
                     );
+                }
+
+                if($backorder === 'yes') {
+                    $item_order_record_id = \DB::table('items_orders')
+                        ->where([
+                            ['items_orders.order_id','=',$order],
+                            ['items_orders.item_id','=',$itemid]
+                        ])
+                        ->select('items_orders.id')
+                        ->first();
+
+                    $item_order_record = \App\Item_Order::find($item_order_record_id->id);
+                    error_log($item_order_record);
+
+                    $item_order_record->is_backordered = true;
+                    $item_order_record->save();
+                    
                 }
                
             }
@@ -352,12 +370,23 @@ class InvoiceController extends Controller
                         ])
                     ->get();
 
-            error_log('orderitems: '.$orderitems);
-            error_log('(invoice)items: '. $items);
+                $backorder = false;
+                $backordered_items = [];
+
+                foreach($orderitems as $orderitem) {
+                    if($orderitem->is_backordered === true) {
+                        $backorder = true;
+                        array_push($backordered_items,$orderitem->itemname);
+                    }
+                }
+
+
+            //error_log('orderitems: '.$orderitems);
+            //error_log('(invoice)items: '. $items);
 
         }
 
-        return view('invoices.show',compact('invoice','items','orderitems'));
+        return view('invoices.show',compact('invoice','items','orderitems','backorder','backordered_items'));
     }
 
     /**

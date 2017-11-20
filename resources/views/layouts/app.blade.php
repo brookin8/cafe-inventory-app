@@ -20,6 +20,7 @@
     href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet"
     href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css">
+    <script src="https://use.fontawesome.com/18cd3f1c1b.js"></script>
     <script
     src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
@@ -45,11 +46,12 @@
 </head>
 
 <body>
+
+    
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
-            <div class="container navigation">
+            <div class="container navigation main">
                 <div class="navbar-header">
-
                     <!-- Collapsed Hamburger -->
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
                         <span class="sr-only">Toggle Navigation</span>
@@ -59,9 +61,12 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/home') }}">
-                        North Lime Inventory
-                    </a>
+                        <a id="menu-toggle" href="#" class="sidebartoggle glyphicon ml-2 mt-3" onclick="openNav()">
+                            <i class="fa fa-2x fa-bars"></i>
+                        </a>
+                        <a class="navbar-brand ml-5" href="{{ url('/home') }}">
+                            North Lime Inventory
+                        </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -102,10 +107,86 @@
             </div>
         </nav>
 
+        <div id="mySidenav" class="sidenav">
+            <div class="row">
+                <a href="javascript:void(0)" style="color:#fff" class="closebtn" onclick="closeNav()">&times;</a>
+            </div>
+            <div class="row mt-5">
+                <a href="../items">Items</a>
+            </div>
+            <div class="row">
+                <a href="../suppliers">Suppliers</a>
+            </div>
+            <div class="row">
+                 <a data-toggle="collapse" href="#collapseorders" aria-expanded="false" aria-controls="#collapseorders">
+                    Orders
+                </a>
+            </div>
+                <div class="collapse" id="collapseorders">
+                    <div class="row ml-2">
+                        <a href="../orders">All Orders</a>
+                    </div>
+                    <div class="row ml-2">
+                        <a href="../orders/open">Open Orders</a>
+                    </div>
+                    <div class="row ml-2">
+                        <a href="../orders/saved">Saved Orders (Drafts)</a>
+                    </div>
+                    <div class="row ml-2">
+                        <a href="../orders/supplierselect">New Order</a>
+                    </div>
+                </div>
+            <div class="row">
+                <a data-toggle="collapse" href="#collapsecounts" aria-expanded="false" aria-controls="#collapsecounts">    
+                    Inventory Counts
+                </a>
+            </div>
+                <div class="collapse" id="collapsecounts">
+                    <div class="row ml-2">
+                        <a href="../inventorycounts">All Counts</a>
+                    </div>
+                    <div class="row ml-2">
+                        <a href="../inventorycounts/saved">Saved Counts</a>
+                    </div>
+                    <div class="row ml-2">
+                        <a href="../inventorycounts/create">New Count</a>
+                    </div>
+                </div>
+            <div class="row">
+               <a data-toggle="collapse" href="#collapseinvoices" aria-expanded="false" aria-controls="#collapseinvoices">
+                    Invoices
+               </a>
+            </div>
+                <div class="collapse" id="collapseinvoices">
+                    <div class="row ml-2">
+                        <a href="../invoices">All Invoices</a>
+                    </div>
+                    <div class="row ml-2">
+                        <a href="../invoices/orderexists">New Invoice</a>
+                    </div>
+                </div>
+             <div class="row">
+                <a href="#">Reporting</a>
+            </div>
+             <div class="row">
+                <a href="#">Users</a>
+            </div>
+        </div>
+
         @yield('content')
+
+
     </div>
 
-    <!-- Scripts -->
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "185px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+    </script>
     
 </body>
 </html>

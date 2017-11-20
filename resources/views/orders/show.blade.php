@@ -46,7 +46,7 @@
 <div class="container orderShowBody mb-3">
 	{{ csrf_field() }}
 	<div class="table-responsive text-center">
-		<table class="table table-borderless table-striped table-hover" id="table">
+		<table class="table tableborder table-striped table-hover" id="table">
 			
 			<thead>
 				<tr>

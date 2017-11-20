@@ -6,11 +6,11 @@
 <form action="/inventorycounts" method="post" class="mb-5">
 	{{ csrf_field() }}
 	<div class="row justify-content-center mb-5">
-		<button type="submit" value="save" name="button" class="btn btn-primary">Save for Later</button>
+		<button type="submit" value="save" name="button" class="btn btn-primary mr-3">Save for Later</button>
 		<button type="submit" value="submit" name="button" class="btn btn-primary">Submit</button>
 	</div>
 <div class="container">
-	<table class="table table-borderless table-striped table-hover invcountwidth table-top">
+	<table class="table tableborder table-striped table-hover invcountwidth table-top">
 		<thead>	
 			<tr>
 				<th class="text-center cellwidth">Item No</th>
