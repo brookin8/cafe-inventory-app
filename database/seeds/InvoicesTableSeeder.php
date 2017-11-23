@@ -20,8 +20,8 @@ class InvoicesTableSeeder extends Seeder
       'total_invoice_amount' => 372.0,
       'store_id' => 1,
       'created_by'=>1,
-      'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-      'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+      'created_at' => Carbon::now()->subDays(7)->format('Y-m-d H:i:s'),
+      'updated_at' => Carbon::now()->subDays(7)->format('Y-m-d H:i:s')
       ]);
 
         DB::table('invoices')->insert([
@@ -32,8 +32,8 @@ class InvoicesTableSeeder extends Seeder
       'total_invoice_amount' => 84.50,
       'store_id' => 1,
       'created_by'=>1,
-      'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-      'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+      'created_at' => Carbon::now()->subDays(7)->format('Y-m-d H:i:s'),
+      'updated_at' => Carbon::now()->subDays(7)->format('Y-m-d H:i:s')
       ]);
 
         DB::table('invoices')->insert([
@@ -44,8 +44,8 @@ class InvoicesTableSeeder extends Seeder
       'total_invoice_amount' => 278.00,
       'store_id' => 1,
       'created_by'=>1,
-      'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-      'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+      'created_at' => Carbon::now()->subDays(7)->format('Y-m-d H:i:s'),
+      'updated_at' => Carbon::now()->subDays(7)->format('Y-m-d H:i:s')
       ]);
     }
 }

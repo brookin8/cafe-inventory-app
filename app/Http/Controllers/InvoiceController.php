@@ -341,6 +341,8 @@ class InvoiceController extends Controller
                     ])
                     ->get();
 
+            $backorder = false;
+
         } else {
             
            // error_log('in else!');

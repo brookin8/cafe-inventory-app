@@ -7,6 +7,12 @@ use Carbon\Carbon;
 
 class SupplierController extends Controller
 {
+     public function details($id) {
+        $supplier = \App\Supplier::find($id);
+        $ordermethod = \App\Order_Method::find($supplier->order_method);
+        return view('suppliers.details',compact('supplier','ordermethod'));
+     }
+
      /**
      * Create a new controller instance.
      *
@@ -33,7 +39,6 @@ class SupplierController extends Controller
                 ->whereNull('suppliers.deleted_at')
                 ->get();
 
-    return "(".substr($data, 0, 3).") ".substr($data, 3, 3)."-".substr($data,6);
 
         return view('suppliers.index')->with(compact('suppliers'));
     }

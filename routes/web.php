@@ -23,6 +23,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('items', 'ItemsController');
 
+Route::get('/suppliers/details/{id}','SupplierController@details');
+
 Route::resource('suppliers', 'SupplierController');
 
 Route::get('/orders/supplierselect', 'OrderController@supplierselect');
@@ -59,11 +61,6 @@ Route::get('/inventorycounts/saved', 'InventorycountController@saved');
 
 Route::resource('inventorycounts', 'InventorycountController');
 
-Route::get('/reporting', function() {
-	return view('reporting.index');
-
-
-
-});
+Route::resource('reporting', 'ReportingController');
 
 

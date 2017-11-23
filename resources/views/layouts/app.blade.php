@@ -11,7 +11,9 @@
     <title>North Lime Inventory</title>
 
     <!-- Styles -->
-    
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+
     <script src="//code.jquery.com/jquery-1.12.3.js"></script>
     <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
     <script
@@ -45,9 +47,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('style.css') }}">
 </head>
 
-<body>
+<body onload="myFunction()">
 
-    
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container navigation main">
@@ -61,11 +62,14 @@
                     </button>
 
                     <!-- Branding Image -->
-                        <a id="menu-toggle" href="#" class="sidebartoggle glyphicon ml-2 mt-3" onclick="openNav()">
-                            <i class="fa fa-2x fa-bars" id="toggleimage"></i>
+                        <a href="#" id="menu-toggle" class="sidebartoggle glyphicon ml-2 mt-3" onclick="openNav()">
+                            <i class="fa fa-bars" id="toggleimage"></i>
                         </a>
-                        <a class="navbar-brand ml-5" href="{{ url('/home') }}">
-                            North Lime Inventory
+                        <a class="navbar-brand ml-2 mt-1" href="{{ url('/home') }}">
+                            <div class="row brandrow">
+                            <img src="../northlime.png" class="logoimage ml-5 mr-2 mt-2">
+                            <div class="mt-3">North Lime Inventory</div>
+                            </div>
                         </a>
                 </div>
 
@@ -183,8 +187,8 @@
     <script>
         
         $(document).ready(function() {
-            $( ".fa.fa-2x.fa-bars" ).click( function() {
-                $("#toggleimage").toggleClass('flip');
+            $( "#toggleimage" ).click( function() {
+                $(".fa.fa-bars").toggleClass('flip');
             });
         });
 
@@ -194,7 +198,18 @@
 
         function closeNav() {
             document.getElementById("mySidenav").style.width = "0";
-            $("#toggleimage").toggleClass('flip');
+            $(".fa.fa-bars").toggleClass('flip');
+
+        }
+
+        document.onreadystatechange = function () {
+          var state = document.readyState
+          if (state == 'complete') {
+              setTimeout(function(){
+                 document.getElementById("loaderDiv").style.display = "block";
+                 document.getElementById('loader').style.display="none";
+              },500);
+          }
         }
     </script>
     

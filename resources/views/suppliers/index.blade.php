@@ -1,54 +1,40 @@
 @extends('layouts.app')
 
 @section('content')
+
+
+<div id="loader"></div>
 	
-	<h1 class="text-center">Suppliers</h1>
+<div style="display:none;" id="loaderDiv">
+	<div class="container page">	
+		<h3 class="ml-5 mr-5">Suppliers</h3>	
+		<hr class="ml-5 mr-5 mb-4">
 
-	<div class="container">
-		<div class="row mt-3 mb-5">
-			<a href="/suppliers/create"><button class="btn btn-primary newcount mr-5 mb-5">New Supplier</button></a>
-		</div>
-	</div>
-
-	<div class="container ">
-		{{ csrf_field() }}
-		<div class="table-responsive text-center">
+	<div class="row ml-5 mr-3">
+		<div class="table-responsive mr-4 ml-3">
 			<table class="table tableborder table-striped table-hover" id="table">
+			<a href="/suppliers/create"><button class="btn btn-primary newcount mr-5">New Supplier</button></a>
 				<thead>
 					<tr>
-						<th class="text-center">ID</th>
-						<th class="text-center">Name</th>
-						<th class="text-center">Lead Time (Days)</th>
-						<th class="text-center">Order Method</th>
-						<th class="text-center">Order Email</th>
-						<th class="text-center">Contact</th>
-						<th class="text-center">Contact Phone</th>
-						<th class="text-center">Contact Email</th>
-						<th class="text-center">Billing Address</th>
-						<th class="text-center">Billing City</th>
-						<th class="text-center">Billing State</th>
-						<th class="text-center">Billing Zip</th>
-						<th class="text-center">Last Updated</th>
-						<th class="text-center">Actions</th>
+						<th class="text-left">ID</th>
+						<th class="text-left">Name</th>
+						<th class="text-left">LT (Days)</th>
+						<th class="text-left">Order Method</th>
+						<th class="text-left">Order Email</th>
+						<th class="text-left">Last Updated</th>
+						<th class="text-left">Actions</th>
 					</tr>
 				</thead>
 				<tbody>
 				@foreach($suppliers as $supplier)
 				<tr class="supplier{{$supplier->id}}">
-					<td>{{$supplier->id}}</td>
-					<td>{{$supplier->name}}</td>
-					<td>{{$supplier->lead_time_days}}</td>
-					<td>{{$supplier->method}}</td>
-					<td>{{$supplier->order_email_address}}</td>
-					<td>{{$supplier->contact_name}}</td>
-					<td>{{substr_replace(substr_replace($supplier->contact_phone_number,'-',3,0),'-',7,0)}}</td>
-					<td>{{$supplier->contact_email}}</td>
-					<td>{{$supplier->billing_street_address}}</td>
-					<td>{{$supplier->billing_city}}</td>
-					<td>{{$supplier->billing_state}}</td>
-					<td>{{$supplier->billing_zip}}</td>
-					<td>{{Carbon\Carbon::parse($supplier->updated_at)->format('m/d/Y')}}</td>
-					<td>
+					<td class="text-left"><a href="../suppliers/details/{{$supplier->id}}" class="bodylink"><div>{{$supplier->id}}</div></a></td>
+					<td class="text-left">><a href="../suppliers/details/{{$supplier->id}}" class="bodylink"><div>{{$supplier->name}}</div></a></td>
+					<td class="text-left">><a href="../suppliers/details/{{$supplier->id}}" class="bodylink"><div>{{$supplier->lead_time_days}}</div></a></td>
+					<td class="text-left">><a href="../suppliers/details/{{$supplier->id}}" class="bodylink"><div>{{$supplier->method}}</div></a></td>
+					<td class="text-left">><a href="../suppliers/details/{{$supplier->id}}" class="bodylink"><div>{{$supplier->order_email_address}}</div></a></td>
+					<td class="text-left">><a href="../suppliers/details/{{$supplier->id}}" class="bodylink"><div>{{Carbon\Carbon::parse($supplier->updated_at)->format('m/d/Y')}}</div></a></td>
+					<td class="text-left">
 						<div class="row">
 						<a href="/suppliers/{{$supplier->id}}/edit"><button class="edit-modal btn btn-sm btn-info ml-3"
 							data-info="">
@@ -57,7 +43,7 @@
                          <a href="/suppliers/{{$supplier->id}}"><button class="ml-2 delete-modal btn btn-sm btn-danger"
 							data-info="">
 							<span class="glyphicon glyphicon-trash"></span>
-						</button>
+						</button></a>
 						</div>
 					</td>
 				</tr>
@@ -66,31 +52,33 @@
 			</table>
 		</div>
 	</div>
+	</div>
+</div>
 
-	<script>
-    
-	//   $(document).ready(function() {
-	//     $('#table').DataTable();
-	// } );
+<script>
+
+//   $(document).ready(function() {
+//     $('#table').DataTable();
+// } );
 
 
-	var table = $('#table').DataTable({
-		 dom: 'Blfrtip', 
-		 buttons: [
-        	{extend:'copy', className:'tableButton'},
-        	{extend:'excel', className:'tableButton'},
-        	{extend:'pdf', className:'tableButton'},
-        	{extend:'csv', className:'lastTableButton'}
-    	],
-    	filterSelectClass: 'customFilter',
-    	filterText: 'Search'
-	});
+var table = $('#table').DataTable({
+	 dom: 'Blfrtip', 
+	 buttons: [
+    	{extend:'copy', className:'tableButton'},
+    	{extend:'excel', className:'tableButton'},
+    	{extend:'pdf', className:'tableButton'},
+    	{extend:'csv', className:'lastTableButton'}
+	],
+	filterSelectClass: 'customFilter',
+	filterText: 'Search'
+});
 
-	table.buttons().container()
-    .appendTo( $('.col-sm-6:eq(0)', table.table().container() ) );
+table.buttons().container()
+.appendTo( $('.col-sm-6:eq(0)', table.table().container() ) );
 
-   
 
-    </script>
+
+</script>
 @endsection
 
