@@ -55,7 +55,7 @@
 
 	@foreach ($categories as $category)
 		<div class="row">
-			<button class="btn btn-lg btn-primary mb-3 mt-5 ml-5" data-toggle="collapse" href="#collapse{{$category->id}}" aria-expanded="false" aria-controls="collapse{{$category->id}}">
+			<button class="btn btn-lg mb-2 mt-3 ordercategory" data-toggle="collapse" href="#collapse{{$category->id}}" aria-expanded="false" aria-controls="collapse{{$category->id}}">
 			{{$category->name}}
 			</button>
 		</div>

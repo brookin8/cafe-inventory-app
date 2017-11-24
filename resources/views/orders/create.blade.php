@@ -2,87 +2,107 @@
 
 @section('content')
 
-<form method="post" action="../orders">
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+        <form method="post" action="../orders">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                	<div class="row">
+                		<div class="col">
+                			New Order
+                		</div>
+                		<div class="col text-right buttoncol">
+							<a href="../orders">
+								<button type="button" class="btn btn-default mr-3">Discard</button>
+							</a>
+							<button class="btn btn-primary mr-3" type="submit" name="button" value="save">Save</button>
+							<button class="btn btn-success" type="submit" name="button" value="submit">Submit</button>
+						</div>
+                	</div>
+                </div>
+
+    <div class="panel-body">
+
+	
 	{{ csrf_field() }}
-	<div class="container">
-		<div class="row">
-			<div class="col">Supplier: {{$supplier->name}}</div>
+
+		<div class="row ml-3">
+			<div class="col-xs-4"><h3 class="orderform">Supplier: <div class="orderform">{{$supplier->name}}</div></h3></div>
 			<input type="hidden" name="supplier" value="{{$supplier->id}}">
-			<div class="col">Order Date: {{$today->format('m/d/Y')}}</div>
-			<div class="col">Expected Delivery Date: {{$deliverydate->format('m/d/Y')}}</div>
+		</div>
+		<div class="row ml-3">
+			<div class="col-xs-4"><h3 class="orderform">Order Date: <div class="orderform">{{$today->format('m/d/Y')}}</div></h3></div>
+			<div class="col-xs-4"><h3 class="orderform">Expected Delivery Date: <div class="orderform">{{$deliverydate->format('m/d/Y')}}</div></h3></div>
 			<input type="hidden" name="deliverydate" value="{{$deliverydate}}">
 		</div>
-	</div>
 
-	<div class="container">
-		<a href="../orders">
-			<button type="button" class="btn btn-default mr-3">Discard</button>
-		</a>
-			<button class="btn btn-primary mr-3" type="submit" name="button" value="save">Save</button>
-			<button class="btn btn-success" type="submit" name="button" value="submit">Submit</button>
-	</div>
+		<div class="container ml-4">
 
-	<div class="container">
-
-	@foreach ($categories as $category)
-		<div class="row">
-			<button class="btn btn-lg mb-2 mt-3 ordercategory" data-toggle="collapse" href="#collapse{{$category->id}}" aria-expanded="false" aria-controls="collapse{{$category->id}}">
-			{{ ucfirst(trans($category->name))}}
-			</button>
-		</div>
-			<div class="collapse" id="collapse{{$category->id}}">
-				<div class="row mt-4 mb-3 ordertop">
-					<div class="col-4">Item</div>
-					<div class="col-2">PARs</div>
-					<div class="col-2">Onhand</div>
-					<div class="col-2">Unit Cost</div>
-					<div class="col-2">Order Qty</div>
-				</div>
-			@foreach ($items as $item)
-				@if($item->category_id === $category->id)
- 						 <div class="card card-block">
- 						 	<div class="row">
-								<div class="col-4">{{$item->name}}
-									<input class="hidden" name="item{{$loop->iteration}}" value="{{$item->id}}">
-								</div>
-								<div class="col-2">
-									@if(in_array($item->id,$itemswithpars))
-										@foreach($pars as $par)
-											@if($item->id === $par->item_id)
-												{{$par->PARs}}
-											@break
-											@endif
-										@endforeach
-									@else
-										NO PARs
-									@endif
-								</div>
-								<div class="col-2">
-									@if(in_array($item->id,$itemswithonhand))
-										@foreach($onhand as $onhands)
-											@if($item->id === $onhands->item_id)
-												{{$onhands->inventorycount_qty}}
-											@endif
-										@endforeach
-									@else
-										No Count within 48 hrs
-									@endif
-								</div>
-								<div class="col-2">
-									${{$item->cost}}
-								</div>
-								<div class="col-2">
-									<input class="orderquantity" name="qty{{$loop->iteration}}">
+		@foreach ($categories as $category)
+			<div class="row">
+				<button class="btn btn-lg mb-2 mt-3 ordercategory" data-toggle="collapse" href="#collapse{{$category->id}}" aria-expanded="false" aria-controls="collapse{{$category->id}}">
+				{{ ucfirst(trans($category->name))}}
+				</button>
+			</div>
+				<div class="collapse" id="collapse{{$category->id}}">
+					<div class="row mt-4 ordertop">
+						<div class="col-4">Item</div>
+						<div class="col-2">PARs</div>
+						<div class="col-2">Onhand</div>
+						<div class="col-2">Unit Cost</div>
+						<div class="col-2">Order Qty</div>
+					</div>
+				@foreach ($items as $item)
+					@if($item->category_id === $category->id)
+	 						 <div class="card card-block">
+	 						 	<div class="row">
+									<div class="col-4">{{$item->name}}
+										<input class="hidden" name="item{{$loop->iteration}}" value="{{$item->id}}">
+									</div>
+									<div class="col-2">
+										@if(in_array($item->id,$itemswithpars))
+											@foreach($pars as $par)
+												@if($item->id === $par->item_id)
+													{{$par->PARs}}
+												@break
+												@endif
+											@endforeach
+										@else
+											NO PARs
+										@endif
+									</div>
+									<div class="col-2">
+										@if(in_array($item->id,$itemswithonhand))
+											@foreach($onhand as $onhands)
+												@if($item->id === $onhands->item_id)
+													{{$onhands->inventorycount_qty}}
+												@endif
+											@endforeach
+										@else
+											No Count within 48 hrs
+										@endif
+									</div>
+									<div class="col-2">
+										${{$item->cost}}
+									</div>
+									<div class="col-2">
+										<input class="orderquantity" name="qty{{$loop->iteration}}">
+									</div>
 								</div>
 							</div>
-						</div>
-				@endif
-			@endforeach
+					@endif
+				@endforeach
+			</div>
+		@endforeach
 		</div>
-	@endforeach
+	
+		</div>
 	</div>
-
-</form>
+	</form>
+</div>
+</div>
+</div>
 
 <script>
 

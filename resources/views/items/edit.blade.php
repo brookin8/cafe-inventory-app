@@ -2,13 +2,29 @@
 
 @section('content')
 
-<div class="row justify-content-center">
-	<form method="post" action="/items/{{$item->id}}" class="col-7 pt-5 pb-5 mb-5 createForm">
+<div class="container">
+    <div class="row">
+    	<div class="col-xs-1">
+    	</div>
+        <div class="col-xs-10">
+        <form method="post" action="/items/{{$item->id}}" class="col-12 pt-5 pb-5 mb-5">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                	<div class="row">
+                		<div class="col">
+                			Edit Item
+                		</div>
+                		<div class="col text-right">
+							<a href="../items"><button class="btn btn-secondary" type="button">Discard</button></a>
+							<button class="btn btn-secondary" type="submit">Save</button>
+						</div>
+                	</div>
+                </div>
+            <div class="panel-body items">
+	
 			{{ csrf_field() }}
 			{{ method_field('PUT') }}
-			<div class="form-group row justify-content-center">
-				<h2>Edit Item</h2>
-			</div>
+			
 			<div class="form-group row">
 			  	<label for="name" class="col-4 col-form-label text-right createText">Name</label>
 			  	<div class="col-7">
@@ -82,15 +98,11 @@
 			  		<input type="number" value="{{$item->cost}}" step="any" id="cost" name="cost" class="form-control">
 			  	</div>	
 			</div>
-		<div class="form-group row">
-			<div class="col-4 col-form-label submitButtonSpace">
-			</div>
-			<div class="col-7 text-right">
-				<a href="\items"><button class="btn btn-success" type="button">Back To Items</button></a>
-				<button class="btn btn-success" type="submit">Submit Changes</button>
-			</div>
+		
+		</div>
 		</div>
 	</form>
+	</div>
 </div>
 
 @endsection

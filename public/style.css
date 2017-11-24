@@ -46,10 +46,10 @@ Limer Green: #67E593;
 		font-size:225%;
 	}
 
-	/*.navbar-brand{
-		position:absolute;
-		margin-left:2px;
-	}*/
+	div.container.navigation.main {
+		width:100%;
+		padding-right:5%;
+	}
 }
 
 @media screen and (max-height: 450px) {
@@ -59,7 +59,7 @@ Limer Green: #67E593;
 
 body {
 	font-family:'Roboto', sans-serif;
-	background-color:#ECEEF1;
+	background-color:#EEEEEE;
 }
 
 div.container.page {
@@ -109,11 +109,30 @@ hr {
 }
 
 div.card.card-block {
-	width:90%;
+	width:95%;
 }
 
 .ordertop {
-	width:90%;
+	width:95%;
+	background-color:#636B6F;
+	color:#fff;
+	font-size:125%;
+	padding-top:5px;
+	padding-bottom:5px;
+	margin-left:1px;
+}
+
+.panel-default>.panel-heading{
+	font-size:150%;
+	color:#636B6F;
+}
+
+div.orderform {
+	background-color:#EEEEEE;
+	padding-top:5px;
+	padding-bottom:5px;
+	padding-left:5px;
+	padding-right:5px;
 }
 
 .pageheaders {
@@ -163,13 +182,15 @@ a.back:hover {
 }
 
 input.typeahead.tt-input{
-	width:300px;
+	width:400px;
 	height:50px;
+	background-color:#EEEEEE /*!important*/;
 }
 
 input.typeahead.tt-hint{
-	width:300px;
+	width:400px;
 	height:50px;
+	background-color:#EEEEEE /*!important*/;
 }
 
 input.orderquantity {
@@ -185,9 +206,12 @@ input.orderquantity {
 	background-color:white;
 }
 
+
+
 .dropdown-menu {
 	font-size:85%;
 }
+
 
 .invoicetable {
 	width:70%;
@@ -197,6 +221,10 @@ input.orderquantity {
 .invcountwidth {
 	width:100%;
 	
+}
+
+.invoiceitems {
+	background-color:;
 }
 
 input.invcountqty {
@@ -322,21 +350,45 @@ select.orderdropdown {
 	background-color:#F5F8FA;
 }
 
+h3.orderform {
+	color:#636B6F;
+	margin-bottom:10px;
+	margin-top:2px;
+	font-size:130%;
+}
+
+div.col-xs-6.text-right.buttoncol {
+	padding-bottom:0;
+	padding-top:3%;
+}
+
+hr.orderform {
+	margin-bottom:5px;
+}
+
 .nav-tabs .nav-link.active {
 	background-color:#F5F8FA;
 	color:#636B6F;
 }
 
 
+.counthead {
+	background-color:#636B6F;
+	color:#fff;
+	font-size:95%;
+}
 
 label {
 	margin-left:20px;
 	margin-right:20px;
 }
 
-.billing {
+h3.mb-5.billing {
 	margin-left:9%;
+	color:#636B6F;
 }
+
+
 
 .table-top {
 	margin-bottom:2px;
@@ -375,8 +427,20 @@ select {
 }
 
 .createForm {
-	background-color:#39628A;
+	background-color:#636B6F;
 	color:#fff;
+	/*North Lime Colors:
+Purple: #4C4C72,
+Blue: #A4D4E0,
+Tan: FFD89F,
+Pink: D295AC
+Green: A8F0C1;
+Limer Green: #67E593;
+*/
+}
+
+button.btn.btn-success {
+	background-color:;
 }
 
 .deleteForm {
@@ -403,6 +467,10 @@ select {
 	width:100%;
 }
 
+h3.billing {
+	color:#fff;
+}
+
 .northlimeimage {
 	display: table;
     width: 60%;
@@ -417,7 +485,7 @@ select {
 
 button.ordercategory, button.ordercategory:visited, button.ordercategory:focus, 
 button.ordercategory:visited {
-	width:90%;
+	width:95%;
 	background-color:#636B6F;
 	text-align:left;
 	padding-left:3%;
@@ -428,7 +496,6 @@ button.ordercategory:visited {
 }
 
 button.ordercategory:hover, button.ordercategory:active {
-	width:90%;
 	background-color:#2ACA81;
 	text-align:left;
 	padding-left:3%;
@@ -488,6 +555,10 @@ div.container.dashboardcontainer {
 	padding-bottom:3%;
 }
 
+div.panel-body.items {
+	font-size:130%;
+}
+
 div.dashboarddiv {
 	max-height:200px;
 	border:1px solid #C3C5C7;
@@ -503,7 +574,7 @@ div.dashboarddiv {
 	padding-left:5px;
 	padding-right:5px;
 	padding-bottom:5px;
-	border-radius:5px;
+/*	border-radius:5px;*/
 	border:2px solid #C3C5C7;
 }
 
@@ -529,6 +600,13 @@ nav.navbar.navbar-default.navbar-static-top {
 	padding-left:0;
 }
 
+.table>tbody>tr>td, .table>tbody>tr>th, 
+.table>tfoot>tr>td, .table>tfoot>tr>th, 
+.table>thead>tr>td, .table>thead>tr>th {
+	border-top:none;
+	border-bottom:none;
+}
+
 .navbar-default {
 	background-color: #4C4C72;
 	color:#fff;
@@ -539,7 +617,7 @@ nav.navbar.navbar-default.navbar-static-top {
 }
 
 .navbar-default .navbar-brand:hover {
-	color:#5cce84;
+	color:#fff;
 }
 
 .navbar-default .navbar-nav>li>a {
@@ -617,6 +695,22 @@ i.fa.fa-bars:hover {
 	color:#5cce84;
 }
 
+.sidenav a.closebtn {
+	/*padding:8px 8px 8px 25px;*/
+	position:absolute;
+	right:10px;
+	padding-top:1px;
+
+}
+
+.sidenav a.closebtn:hover {
+	background-color:#4C4C72;
+}
+
+a.itemsrow {
+	margin-top:20%;
+}
+
 #donut {
 	background-image: url(donut.png);
     background-size:cover;
@@ -641,24 +735,20 @@ i.fa.fa-bars:hover {
 .sidenav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
-    font-size: 100%;
+    font-size: 130%;
     color: #f1f1f1;
     display: block;
     transition: 1s;
 }
 
 .sidenav a:hover {
-    color: #67E593;
+    background-color: #67E593;
 }
 
 .sidenav .closebtn {
-    position: absolute;
     color:#fff;
-    top: 0;
-    right: 25px;
     font-size: 36px;
-    margin-left: 50px;
-    margin-top:55px;
+    text-align:right;
 }
 
 

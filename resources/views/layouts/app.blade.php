@@ -87,7 +87,7 @@
                             <!-- <li><a href="{{ route('register') }}">Register</a></li> -->
                         @else
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                                <a href="#" class="dropdown-toggle logout" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                                     {{ Auth::user()->name }} 
                                 </a>
 
@@ -111,71 +111,47 @@
             </div>
         </nav>
 
-        <div id="mySidenav" class="sidenav">
-            <div class="row">
-                <a href="javascript:void(0)" style="color:#fff" class="closebtn" onclick="closeNav()">&times;</a>
-            </div>
-            <div class="row mt-5">
-                <a href="../items">Items</a>
-            </div>
-            <div class="row">
-                <a href="../suppliers">Suppliers</a>
-            </div>
-            <div class="row">
-                 <a data-toggle="collapse" href="#collapseorders" aria-expanded="false" aria-controls="#collapseorders">
-                    Orders
+         <div id="mySidenav" class="sidenav">
+                <div class="row closerow"><a href="javascript:void(0)" style="color:#fff" class="closebtn" onclick="closeNav()">&times;</a></div>
+            
+                <a href="../items" class="itemsrow"><div class="row">Items</div></a>
+                <a href="../suppliers"><div class="row">Suppliers</div></a>
+            
+                <a data-toggle="collapse" href="#collapseorders" aria-expanded="false" aria-controls="#collapseorders"><div class="row">
+                    Orders </div>
                 </a>
-            </div>
+           
                 <div class="collapse" id="collapseorders">
-                    <div class="row ml-2">
-                        <a href="../orders">All Orders</a>
-                    </div>
-                    <div class="row ml-2">
-                        <a href="../orders/open">Open Orders</a>
-                    </div>
-                    <div class="row ml-2">
-                        <a href="../orders/saved">Saved Orders (Drafts)</a>
-                    </div>
-                    <div class="row ml-2">
-                        <a href="../orders/supplierselect">New Order</a>
-                    </div>
+                    <a href="../orders"><div class="row ml-2">All Orders</div></a>
+                    <a href="../orders/open"><div class="row ml-2">Open Orders</div></a>
+                    <a href="../orders/saved"><div class="row ml-2">Saved Orders (Drafts)</div></a>
+                    <a href="../orders/supplierselect"><div class="row ml-2">New Order</div></a>
                 </div>
-            <div class="row">
-                <a data-toggle="collapse" href="#collapsecounts" aria-expanded="false" aria-controls="#collapsecounts">    
-                    Inventory Counts
+            
+                <a data-toggle="collapse" href="#collapsecounts" aria-expanded="false" aria-controls="#collapsecounts"><div class="row">    
+                    Inventory Counts </div>
                 </a>
-            </div>
+            
                 <div class="collapse" id="collapsecounts">
-                    <div class="row ml-2">
-                        <a href="../inventorycounts">All Counts</a>
-                    </div>
-                    <div class="row ml-2">
-                        <a href="../inventorycounts/saved">Saved Counts</a>
-                    </div>
-                    <div class="row ml-2">
-                        <a href="../inventorycounts/create">New Count</a>
-                    </div>
+                    <a href="../inventorycounts"><div class="row ml-2">All Counts</div></a>
+                    <a href="../inventorycounts/saved"><div class="row ml-2">Saved Counts</div></a>
+                    <a href="../inventorycounts/create"><div class="row ml-2">New Count</div></a>
                 </div>
-            <div class="row">
-               <a data-toggle="collapse" href="#collapseinvoices" aria-expanded="false" aria-controls="#collapseinvoices">
-                    Invoices
+               <a data-toggle="collapse" href="#collapseinvoices" aria-expanded="false" aria-controls="#collapseinvoices"><div class="row">
+                    Invoices </div>
                </a>
-            </div>
+            
                 <div class="collapse" id="collapseinvoices">
-                    <div class="row ml-2">
-                        <a href="../invoices">All Invoices</a>
-                    </div>
-                    <div class="row ml-2">
-                        <a href="../invoices/orderexists">New Invoice</a>
-                    </div>
+                    <a href="../invoices"><div class="row ml-2">All Invoices</div></a>
+                    <a href="../invoices/orderexists"><div class="row ml-2">New Invoice</div></a>
                 </div>
-             <div class="row">
-                <a href="#">Reporting</a>
-            </div>
+            
+                <a href="#"> <div class="row">Reporting</div></a>
+            
             @if(Auth::user()->access_id === 1)
-             <div class="row">
-                <a href="../users">Users</a>
-            </div>
+             
+            <a href="../users"><div class="row">Users</div></a>
+            
             @endif
         </div>
 
