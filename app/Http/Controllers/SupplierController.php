@@ -9,7 +9,7 @@ class SupplierController extends Controller
 {
      public function details($id) {
         $supplier = \App\Supplier::find($id);
-        $ordermethod = \App\Order_Method::find($supplier->order_method);
+        $ordermethod = \App\Order_Method::find($supplier->order_method)->method;
         return view('suppliers.details',compact('supplier','ordermethod'));
      }
 

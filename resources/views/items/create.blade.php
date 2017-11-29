@@ -16,14 +16,13 @@
                 			New Item
                 		</div>
                 		<div class="col text-right">
-							<a href="../items"><button class="btn btn-secondary" type="button">Discard</button></a>
-							<button class="btn btn-secondary" type="submit">Save</button>
+							<a href="../items"><button class="btn btn-default" type="button">Discard</button></a>
+							<button class="btn btn-primary newitem" type="submit">Save</button>
 						</div>
                 	</div>
                 </div>
             <div class="panel-body items">
 				
-						
 						<div class="form-group row">
 						  	<label for="name" class="col-4 col-form-label text-right createText">Name</label>
 						  	<div class="col-8">

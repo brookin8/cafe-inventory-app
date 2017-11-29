@@ -47,5 +47,17 @@ class InvoicesTableSeeder extends Seeder
       'created_at' => Carbon::now()->subDays(7)->format('Y-m-d H:i:s'),
       'updated_at' => Carbon::now()->subDays(7)->format('Y-m-d H:i:s')
       ]);
+
+        DB::table('invoices')->insert([
+      'editable' => false,
+      'order_id' => 7,
+      'supplier_id' => 5,
+      'actual_delivery_date' => Carbon::now()->subDays(5),
+      'total_invoice_amount' => 278.00,
+      'store_id' => 1,
+      'created_by'=>1,
+      'created_at' => Carbon::now()->subDays(5)->format('Y-m-d H:i:s'),
+      'updated_at' => Carbon::now()->subDays(5)->format('Y-m-d H:i:s')
+      ]);
     }
 }

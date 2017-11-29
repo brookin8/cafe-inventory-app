@@ -35,7 +35,7 @@
 									<th class="text-left">UOM</th>
 									<th class="text-left">Cost</th>
 									<th class="text-left">PARs</th>
-									<th class="text-left">Edited By</th>
+									<th class="text-left">Edited</th>
 									<th class="text-left">Actions</th>
 								</tr>
 							</thead>

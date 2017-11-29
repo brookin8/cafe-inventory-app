@@ -15,24 +15,24 @@
 	                <div class="panel-heading">
 	                	<div class="row">
 	                		<div class="col-8">
-	                			Invoice for Order No: <input name="order">
+	                			Invoice for Order #: <input name="order" class="invoiceorder">
 	                			<input type="hidden" value="{{$order}}" name="order">
 	                		</div>
-	                		<div class="col-4">
-	                			<a href="../invoices"><button class="btn btn-default" type="button">Discard</button></a><button type="submit" class="btn btn-default">Submit</button>
+	                		<div class="col-4 text-right">
+	                			<a href="../invoices"><button class="btn btn-default mr-3" type="button">Discard</button></a><button type="submit" class="btn btn-default">Submit</button>
 	                		</div>
 	                	</div>
 	                </div>
-	            <div class="panel-body items">
+	            <div class="panel-body">
 
 	            	<div class="row">
-		               	<div class="col-3 text-right">
+		               	<div class="col-4 text-right">
 	            			<h3 class="orderform">Supplier: <div class="orderform">{{$supplierselect->name}}</div></h3>
 	            			<input name="supplier" value="$supplierselect" type="hidden">
 	            		</div>
 	                </div>
 
-					<div class="row mb-5 mt-3 justify-content-center ordertop ml-5 mr-5">
+					<div class="row mt-3 justify-content-center ordertop ml-4 mr-4">
 						<div class="col-9">
 						Item
 						</div>
@@ -40,9 +40,9 @@
 						Qty
 						</div>
 					</div>
-				<div class="invoiceitems">
+				<div class="invoiceitems ml-4">
 				@foreach ($allitems as $allitem)
-					<div class="row mb-5 mt-3 ml-5 mr-5">
+					<div class="row mb-5 ml-5 mr-5 itemsrow">
 							<div class="col-9">
 						      	<div id="iteminput">
 								  <input class="typeahead iteminput" type="text" placeholder="Add Item" name="item{{$loop->iteration}}">
@@ -79,7 +79,7 @@
 	                			<input type="hidden" value="{{$order}}" name="order">
 	                		</div>
 	                		<div class="col text-right">
-								<a href="../invoices"><button class="btn btn-default" type="button">Discard</button></a><button type="submit" class="btn btn-default">Submit</button>
+								<a href="../invoices"><button class="btn btn-default mr-3" type="button">Discard</button></a><button type="submit" class="btn btn-default">Submit</button>
 							</div>
 	                	</div>
 	                </div>

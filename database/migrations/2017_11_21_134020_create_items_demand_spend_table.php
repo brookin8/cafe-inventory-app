@@ -20,7 +20,6 @@ class CreateItemsDemandSpendTable extends Migration
             $table->integer('item_id');
             $table->integer('store_id');
             $table->integer('demand')->nullable()->default(null);
-            $table->decimal('cost', 10, 2)->nullable()->default(null);
             $table->timestamps();
         });
     }

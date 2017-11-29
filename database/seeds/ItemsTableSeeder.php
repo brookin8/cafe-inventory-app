@@ -13,7 +13,7 @@ class ItemsTableSeeder extends Seeder
     public function run()
     {
       DB::table('items')->insert([
-      'name' => 'SUGAR SUBSTITUTE PACKET YELLOW',
+      'name' => 'Sugar Substitute - Packet Yellow',
       'supplier_item_identifier' => '5817251',
       'cost' => 36.13,
       'edited_by' => 1,
@@ -25,7 +25,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
        DB::table('items')->insert([
-      'name' => 'SANITIZER OASIS 146 MULTI QUAT',
+      'name' => 'Sanitizer Oasis 146 Multi Quat',
       'supplier_item_identifier' => '7006331',
       'cost' => 97.53,
       'edited_by' => 1,
@@ -37,7 +37,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
        DB::table('items')->insert([
-      'name' => 'ORANGE JUICE- PREMIUM, NO PULP',
+      'name' => 'Orange Juice (No Pulp)',
       'supplier_item_identifier' => '4808952',
       'cost' => 42.30,
       'edited_by' => 1,
@@ -49,7 +49,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
        DB::table('items')->insert([
-      'name' => 'SUGAR - ORGANIC RAW',
+      'name' => 'Sugar - Organic Raw',
       'supplier_item_identifier' => '4212504',
       'cost' => 34.89,
       'edited_by' => 1,
@@ -61,7 +61,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
        DB::table('items')->insert([
-      'name' => 'VANILLA EXTRACT PURE',
+      'name' => 'Vanilla Extract - Pure',
       'supplier_item_identifier' => '5230040',
       'cost' => 36.44,
       'edited_by' => 1,
@@ -73,7 +73,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
        DB::table('items')->insert([
-      'name' => 'TOILET TISSUE WRAPPED 4" X 3.75" 2 PLY',
+      'name' => 'Toilet Paper 4" X 3.75" 2 Ply',
       'supplier_item_identifier' => '1993862',
       'cost' => 64.47,
       'edited_by' => 1,
@@ -85,7 +85,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
        DB::table('items')->insert([
-      'name' => 'CLEANER FLOOR OASIS 115XP',
+      'name' => 'Floor Cleaner Oasis 115XP',
       'supplier_item_identifier' => '5926324',
       'cost' => 72.88,
       'edited_by' => 1,
@@ -97,7 +97,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
        DB::table('items')->insert([
-      'name' => 'BUTTERMILK REGULAR',
+      'name' => 'Buttermilk - Regular',
       'supplier_item_identifier' => '2624934',
       'cost' => 24.69,
       'edited_by' => 1,
@@ -109,7 +109,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
        DB::table('items')->insert([
-      'name' => 'PAPER BAG-WHITE 4#',
+      'name' => 'Paper Bag - White 4#',
       'supplier_item_identifier' => '1593997',
       'cost' => 11.95,
       'edited_by' => 1,
@@ -121,7 +121,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
        DB::table('items')->insert([
-      'name' => "TOPPING M&M'S PLAIN CHOPPED",
+      'name' => "Topping M&M'S Plain Chopped",
       'supplier_item_identifier' => '7217490',
       'cost' => 46.01,
       'edited_by' => 1,
@@ -133,7 +133,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
        DB::table('items')->insert([
-      'name' => "PECAN PIECES FANCY MEDIUM",
+      'name' => "Pecan Pieces Medium - Fancy",
       'supplier_item_identifier' => '7217490',
       'cost' => 68.73,
       'edited_by' => 1,
@@ -145,7 +145,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
        DB::table('items')->insert([
-      'name' => "BAND EMERGENCY AID STRIP",
+      'name' => "Band Emergency Aid Strip",
       'supplier_item_identifier' => '3734654',
       'cost' => 40.84,
       'edited_by' => 1,
@@ -157,7 +157,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
        DB::table('items')->insert([
-      'name' => "COCONUT SNOWFLAKE SWEETENED",
+      'name' => "Coconut Snowflake - Sweet",
       'supplier_item_identifier' => '4510921',
       'cost' => 29.80,
       'edited_by' => 1,
@@ -169,7 +169,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
        DB::table('items')->insert([
-      'name' => "PIZZA BOX CUSTOM PRINT - Large",
+      'name' => "Pizza Box Custom - LG",
       'supplier_item_identifier' => '3473170',
       'cost' => 26.39,
       'edited_by' => 1,
@@ -181,7 +181,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
        DB::table('items')->insert([
-      'name' => "GLOVE POLY EMBOSSED FOODSERVICE LARGE",
+      'name' => "Glove Poly Foodservice - LG",
       'supplier_item_identifier' => '8348740',
       'cost' => 33.00,
       'edited_by' => 1,
@@ -193,7 +193,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
        DB::table('items')->insert([
-      'name' => "STIRRER COFFEE WOOD 7.5",
+      'name' => "Wood Stirrer 7.5",
       'supplier_item_identifier' => '2104998',
       'cost' => 31.67,
       'edited_by' => 1,
@@ -205,7 +205,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
        DB::table('items')->insert([
-      'name' => "SYSCO JOE-TO-GO",
+      'name' => "Sysco Joe-To-Go",
       'supplier_item_identifier' => '934109',
       'cost' => 98.35,
       'edited_by' => 1,
@@ -217,7 +217,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
        DB::table('items')->insert([
-      'name' => "FROZEN BLUEBERRIES",
+      'name' => "Frozen Blueberries",
       'supplier_item_identifier' => '1359496',
       'cost' => 26.00,
       'edited_by' => 1,
@@ -229,7 +229,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
        DB::table('items')->insert([
-      'name' => 'WRAP DRY WAX DELI 10" X 10.75"',
+      'name' => 'Wax Deli Wrap - 10" X 10.75"',
       'supplier_item_identifier' => '444042',
       'cost' => 32.68,
       'edited_by' => 1,
@@ -241,7 +241,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
        DB::table('items')->insert([
-      'name' => "COOKIE CRUMBS OREO MEDIUM CRUNCH",
+      'name' => "Oreo Cookie Crumbs Crunch - MD",
       'supplier_item_identifier' => '5524137',
       'cost' => 100.05,
       'edited_by' => 1,
@@ -253,7 +253,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
        DB::table('items')->insert([
-      'name' => "SPRINKLES RAINBOW",
+      'name' => "Rainbow Sprinkles",
       'supplier_item_identifier' => '6044614',
       'cost' => 29.68,
       'edited_by' => 1,
@@ -265,7 +265,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
        DB::table('items')->insert([
-      'name' => "SALT - PLAIN",
+      'name' => "Salt (Plain)",
       'supplier_item_identifier' => '4552840',
       'cost' => 8.33,
       'edited_by' => 1,
@@ -277,7 +277,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
        DB::table('items')->insert([
-      'name' => "CUP - PAPER HOT CUSTOM",
+      'name' => "Paper Hot Cup - Custom",
       'supplier_item_identifier' => '7024984',
       'cost' => 58.30,
       'edited_by' => 1,
@@ -289,7 +289,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
        DB::table('items')->insert([
-      'name' => "BAG PAPER BROWN 6#",
+      'name' => "Brown Paper Bag 6#",
       'supplier_item_identifier' => '1594060',
       'cost' => 11.00,
       'edited_by' => 1,
@@ -302,7 +302,7 @@ class ItemsTableSeeder extends Seeder
 
 
        DB::table('items')->insert([
-      'name' => "YEAST INSTANT DIRECT",
+      'name' => "Yeast Instant Direct",
       'supplier_item_identifier' => '4637864',
       'cost' => 70.00,
       'edited_by' => 1,
@@ -314,7 +314,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
         DB::table('items')->insert([
-      'name' => "CREAMER HALF & HALF",
+      'name' => "Half & Half Creamer",
       'supplier_item_identifier' => '4828554',
       'cost' => 35.13,
       'edited_by' => 1,
@@ -326,7 +326,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
        DB::table('items')->insert([
-      'name' => "SHORTENING SOLID ALL PURPOSE",
+      'name' => "Shortening - Solid, All Purpose",
       'supplier_item_identifier' => '2452575',
       'cost' => 54.49,
       'edited_by' => 1,
@@ -338,7 +338,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
        DB::table('items')->insert([
-      'name' => "TOPPING MARSHMALLOW CONCENTRATE",
+      'name' => "Marshmallow Concentrate Topping",
       'supplier_item_identifier' => '416578',
       'cost' => 30.80,
       'edited_by' => 1,
@@ -350,7 +350,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
         DB::table('items')->insert([
-      'name' => "PIZZA BOX CUSTOM PRINT - Small",
+      'name' => "Pizza Box Custom - SM",
       'supplier_item_identifier' => '3476379',
       'cost' => 19.26,
       'edited_by' => 1,
@@ -362,7 +362,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
          DB::table('items')->insert([
-      'name' => "LIME JUICE",
+      'name' => "Lime Juice",
       'supplier_item_identifier' => '3865730',
       'cost' => 26.00,
       'edited_by' => 1,
@@ -374,7 +374,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
          DB::table('items')->insert([
-      'name' => "GRAHAM CRACKER HONEY",
+      'name' => "Graham Cracker (Honey)",
       'supplier_item_identifier' => '416578',
       'cost' => 35.45,
       'edited_by' => 1,
@@ -386,7 +386,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
         DB::table('items')->insert([
-      'name' => "MILK SKIM GALLON",
+      'name' => "Skim Milk - Gallon",
       'supplier_item_identifier' => '4665792',
       'cost' => 16.00,
       'edited_by' => 1,
@@ -398,7 +398,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
        DB::table('items')->insert([
-      'name' => "BROWN SUGAR LIGHT CANE",
+      'name' => "Brown Sugar - Light, Cane",
       'supplier_item_identifier' => '1854926',
       'cost' => 40.92,
       'edited_by' => 1,
@@ -410,7 +410,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
         DB::table('items')->insert([
-      'name' => "DETERGENT POT & PAN LIQUID SCOUT",
+      'name' => "Scout Liquid Pot & Pan Detergent",
       'supplier_item_identifier' => '3522240',
       'cost' => 132.32,
       'edited_by' => 1,
@@ -422,7 +422,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
       DB::table('items')->insert([
-      'name' => "FLOUR BLEACHED ENRICHED",
+      'name' => "Flour - Bleached, Enriched",
       'supplier_item_identifier' => '8377935',
       'cost' => 18.00,
       'edited_by' => 1,
@@ -434,7 +434,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
         DB::table('items')->insert([
-      'name' => "PAD SCOUR PURPLE SCRUBBER",
+      'name' => "Purple Scour Scrubber Pad",
       'supplier_item_identifier' => '5055068',
       'cost' => 18.89,
       'edited_by' => 1,
@@ -446,7 +446,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
       DB::table('items')->insert([
-      'name' => "SPICE CINNAMON GROUND",
+      'name' => "Ground Cinnamon",
       'supplier_item_identifier' => '5285267',
       'cost' => 164.84,
       'edited_by' => 1,
@@ -458,7 +458,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
         DB::table('items')->insert([
-      'name' => "SOAP HAND CLEAN & SMOOTH LIQUID",
+      'name' => "Clean & Smooth Liquid Hand Soap",
       'supplier_item_identifier' => '2694319',
       'cost' => 40.12,
       'edited_by' => 1,
@@ -470,7 +470,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
        DB::table('items')->insert([
-      'name' => "CREAM CHEESE LOAF",
+      'name' => "Cream Cheese Loaf",
       'supplier_item_identifier' => '1012566',
       'cost' => 65.84,
       'edited_by' => 1,
@@ -482,7 +482,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
        DB::table('items')->insert([
-      'name' => "BUTTERMILK BLEND BAKING",
+      'name' => "Buttermilk Blend - Baking",
       'supplier_item_identifier' => '4232961',
       'cost' => 29.52,
       'edited_by' => 1,
@@ -494,7 +494,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
        DB::table('items')->insert([
-      'name' => "BUTTER SOLID UNSALTED",
+      'name' => "Butter - Solid, Unsalted",
       'supplier_item_identifier' => '5926910',
       'cost' => 101.97,
       'edited_by' => 1,
@@ -506,7 +506,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
        DB::table('items')->insert([
-      'name' => "CREAM HEAVY WHIPPING",
+      'name' => "Heavy Whipping Cream",
       'supplier_item_identifier' => '4828802',
       'cost' => 64.30,
       'edited_by' => 1,
@@ -518,7 +518,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
        DB::table('items')->insert([
-      'name' => "CONFECTIONER (POWDERED) SUGAR",
+      'name' => "Confectioner (Powdered) Sugar",
       'supplier_item_identifier' => '5825672',
       'cost' => 34.85,
       'edited_by' => 1,
@@ -530,7 +530,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
        DB::table('items')->insert([
-      'name' => "BACON BITS REAL COOKED",
+      'name' => "Bacon Bits - Real, Cooked",
       'supplier_item_identifier' => '2548162',
       'cost' => 62.50,
       'edited_by' => 1,
@@ -542,7 +542,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
         DB::table('items')->insert([
-      'name' => 'CUP BAKING PAPER 2" X 1.25" FLUTED',
+      'name' => 'Paper Baking Cup (Fluted) - 2" X 1.25"',
       'supplier_item_identifier' => '2137913',
       'cost' => 19.24,
       'edited_by' => 1,
@@ -554,7 +554,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
        DB::table('items')->insert([
-      'name' => "FLOUR ALL PURPOSE HOTEL & RESTAURANT BLEACHED ENRICHED",
+      'name' => "Flour - Hotel & Restuarant, Bleached, Enriched",
       'supplier_item_identifier' => '8378111',
       'cost' => 19.34,
       'edited_by' => 1,
@@ -566,7 +566,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
        DB::table('items')->insert([
-      'name' => "EGG SHELL LARGE WHITE GRADE A USDA",
+      'name' => "Eggs - Large, White, Grade A USDA",
       'supplier_item_identifier' => '1210673',
       'cost' => 26.84,
       'edited_by' => 1,
@@ -578,7 +578,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
        DB::table('items')->insert([
-      'name' => "PEANUT BUTTER CREAMY",
+      'name' => "Peanut Butter - Creamy",
       'supplier_item_identifier' => '4009189',
       'cost' => 68.00,
       'edited_by' => 1,
@@ -590,7 +590,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
        DB::table('items')->insert([
-      'name' => "PAN LINER",
+      'name' => "Pan Liner",
       'supplier_item_identifier' => '7157365',
       'cost' => 52.71,
       'edited_by' => 1,
@@ -602,7 +602,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
        DB::table('items')->insert([
-      'name' => 'FILTER COFFEE TEA 1.5 GAL',
+      'name' => 'Filter Coffee,Tea- 1.5 Gal',
       'supplier_item_identifier' => '5950688',
       'cost' => 15.74,
       'edited_by' => 1,
@@ -615,7 +615,7 @@ class ItemsTableSeeder extends Seeder
    	
 
        DB::table('items')->insert([
-      'name' => "BAKING POWDER",
+      'name' => "Baking Powder",
       'supplier_item_identifier' => '5517701',
       'cost' => 81.89,
       'edited_by' => 1,
@@ -627,7 +627,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
        DB::table('items')->insert([
-      'name' => "MILK HOMOGENIZED GALLON",
+      'name' => "Milk (Homogenized) - Gallon",
       'supplier_item_identifier' => '4665812',
       'cost' => 14.00,
       'edited_by' => 1,
@@ -639,7 +639,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
        DB::table('items')->insert([
-      'name' => "FLOUR - GLUTEN FREE (DROP SHIP)",
+      'name' => "Gluten Free Flour",
       'supplier_item_identifier' => '811804',
       'cost' => 63.69,
       'edited_by' => 1,
@@ -651,7 +651,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
       DB::table('items')->insert([
-      'name' => "COCOA POWDER 10-12% BUTTERFAT",
+      'name' => "Cocoa Powder - 10-12% Butterfat",
       'supplier_item_identifier' => '5792684',
       'cost' => 127.87,
       'edited_by' => 1,
@@ -663,7 +663,7 @@ class ItemsTableSeeder extends Seeder
       ]);
    		
    	DB::table('items')->insert([
-      'name' => "PUMPKIN SOLID PACK FANCY",
+      'name' => "Pumpkin - Solid, Fancy",
       'supplier_item_identifier' => '4111498',
       'cost' => 50.25,
       'edited_by' => 1,
@@ -675,7 +675,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
       DB::table('items')->insert([
-      'name' => "PEACHES SLICED INDIVIDUALLY QUICK FROZEN",
+      'name' => "Peaches - Sliced, Frozen",
       'supplier_item_identifier' => '1024348',
       'cost' => 30.84,
       'edited_by' => 1,
@@ -687,7 +687,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
       DB::table('items')->insert([
-      'name' => 'TRASH LINER 33" X 39" 1.5ML BLACK',
+      'name' => 'Trash Liner- 33"X39" 1.5 ML Black',
       'supplier_item_identifier' => '1763192',
       'cost' => 19.38,
       'edited_by' => 1,
@@ -699,7 +699,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
        DB::table('items')->insert([
-      'name' => 'PECAN PIECES MEDIUM CHOPPED RAW',
+      'name' => 'Pecan Pieces- Medium, Chopped, Raw',
       'supplier_item_identifier' => '3424704',
       'cost' => 59.17,
       'edited_by' => 1,
@@ -711,7 +711,7 @@ class ItemsTableSeeder extends Seeder
       ]);	
 
        DB::table('items')->insert([
-      'name' => 'LABEL ROLL WATERPROOF (DROP SHIP)',
+      'name' => 'Lable Roll- Waterproof',
       'supplier_item_identifier' => '6198752',
       'cost' => 22.13,
       'edited_by' => 1,
@@ -723,7 +723,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
       DB::table('items')->insert([
-      'name' => 'GLOVE FOODSERVICE EXTRA-LARGE',
+      'name' => 'Glove Foodservice - XL',
       'supplier_item_identifier' => '1522600',
       'cost' => 61.10,
       'edited_by' => 1,
@@ -735,7 +735,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
       DB::table('items')->insert([
-      'name' => 'PAPER TOWEL 9" X 11" 2-PLY JUMBO',
+      'name' => 'Paper Towel - 9"X11" Jumbo 2-Ply',
       'supplier_item_identifier' => '1992603',
       'cost' => 25.00,
       'edited_by' => 1,
@@ -747,7 +747,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
       DB::table('items')->insert([
-      'name' => 'GLOVE NITRILE MEDIUM BLUE',
+      'name' => 'Glove Blue Nitrile - MD',
       'supplier_item_identifier' => '2306753',
       'cost' => 58.88,
       'edited_by' => 1,
@@ -759,7 +759,7 @@ class ItemsTableSeeder extends Seeder
       ]);	
 
       DB::table('items')->insert([
-      'name' => 'LINER ROLL 24" X 24" 6 MICRON NATURAL',
+      'name' => 'Micron Liner Roll (6) - 24" X 24"',
       'supplier_item_identifier' => '5595806',
       'cost' => 22.47,
       'edited_by' => 1,
@@ -771,7 +771,7 @@ class ItemsTableSeeder extends Seeder
       ]);	
 
       DB::table('items')->insert([
-      'name' => 'CHOCOLATE CHIPS 4000 COUNT',
+      'name' => 'Chocolate Chips - 4000 ct',
       'supplier_item_identifier' => '5335724',
       'cost' => 72.27,
       'edited_by' => 1,
@@ -783,7 +783,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
       DB::table('items')->insert([
-      'name' => 'GLOVE NITRILE LARGE BLUE',
+      'name' => 'Glove Blue Nitrile - LG',
       'supplier_item_identifier' => '2306775',
       'cost' => 57.35,
       'edited_by' => 1,
@@ -795,7 +795,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
        DB::table('items')->insert([
-      'name' => 'WALNUT HALVES & PIECES',
+      'name' => 'Walnut Halves & Pieces',
       'supplier_item_identifier' => '4888574',
       'cost' => 38.81,
       'edited_by' => 1,
@@ -807,7 +807,7 @@ class ItemsTableSeeder extends Seeder
       ]);	
 
        DB::table('items')->insert([
-      'name' => 'SUGAR GRANULATED EXTRA-FINE CANE',
+      'name' => 'Sugar - Cane, Granulated, Extra-Fine',
       'supplier_item_identifier' => '4782694',
       'cost' => 33.53,
       'edited_by' => 1,
@@ -1958,7 +1958,7 @@ class ItemsTableSeeder extends Seeder
       'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
       ]);
 
-		DB::table('items')->insert([
+	DB::table('items')->insert([
       'name' => "French Vanilla Syrup (1883) 1 L",
       'supplier_item_identifier' => '1883 French Vanilla Syrup 1 Liter Bottle(s)',
       'cost' => 9.25,

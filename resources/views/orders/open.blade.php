@@ -9,37 +9,34 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="panel panel-default">
-                <div class="panel-heading">
+                <div class="panel-heading withtabs">
                 	<div class="row">
-                		<div class="col text-left">
-                			Open Orders	
+                		<div class="col text-left mt-2">
+                			Orders	
                 		</div>
                 		<div class="col">
+	                			<ul class="nav nav-tabs navbar-right">
+						  		<li class="nav-item">
+								    <a class="nav-link tabs" href="/orders">All</a>
+								  </li>
+								  <li class="nav-item">
+								    <a class="nav-link active tabs" href="#">Open</a>
+								  </li>
+								  <li class="nav-item">
+								    <a class="nav-link tabs" href="/orders/saved">Saved</a>
+								  </li>
+								  <li class="nav-item">
+								    <a class="nav-link tabs" href="/orders/closed">Closed</a>
+								  </li>
+								</ul>
+							</div>
+                		<div class="col-2 mt-1">
                 			<a href="/orders/supplierselect"><button class="ml-5 btn btn-primary newcount">New Order</button></a>
                 		</div>
                 	</div>
 				</div>
 
 				<div class="panel-body">
-					<div class="row mb-5 ml-5 mr-5">
-						<div class="col">
-							<ul class="nav nav-tabs">
-						  		<li class="nav-item">
-								    <a class="nav-link" href="/orders">All</a>
-								  </li>
-								  <li class="nav-item">
-								    <a class="nav-link active" href="#">Open</a>
-								  </li>
-								  <li class="nav-item">
-								    <a class="nav-link" href="/orders/saved">Saved (Unsent)</a>
-								  </li>
-								  <li class="nav-item">
-								    <a class="nav-link" href="/orders/closed">Closed</a>
-								  </li>
-							</ul>
-						</div>
-					</div>
-
 
 					<div class="row ml-5 mr-3">
 						<div class="table-responsive text-center mr-4 ml-3">
@@ -47,12 +44,12 @@
 								
 								<thead>
 									<tr>
-										<th class="text-left">Order Number</th>
+										<th class="text-left">Order #</th>
 										<th class="text-left">Supplier</th>
-										<th class="text-left">Submitted Date</th>
-										<th class="text-left">Submitted By</th>
-										<th class="text-left">Expected Delivery Date</th>
-										<th class="text-left">Total $ Amount</th>
+										<th class="text-left">Submitted</th>
+										<th class="text-left">Placed By</th>
+										<th class="text-left">ETA</th>
+										<th class="text-left">Total $</th>
 										<th class="text-left">Status</th>
 										<th class="text-left">Actions</th>
 									</tr>

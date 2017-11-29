@@ -27,11 +27,11 @@
 						
 								<thead>
 									<tr>
-										<th class="text-left">Invoice No</th>
-										<th class="text-left">Order No</th>
+										<th class="text-left">Invoice #</th>
+										<th class="text-left">Order #</th>
 										<th class="text-left">Supplier</th>
-										<th class="text-left">Total $ Amount</th>
-										<th class="text-left">Date Submitted</th>
+										<th class="text-left">Total $</th>
+										<th class="text-left">Submitted</th>
 										<th class="text-left">Submitted By</th>
 									</tr>
 								</thead>

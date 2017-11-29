@@ -15,8 +15,9 @@
                 		<div class="col text-left">
                 			New Supplier	
                 		</div>
-                		<div class="col">
-                			
+                		<div class="col text-right">
+							<a href="../suppliers"><button class="btn btn-default" type="button">Discard</button></a>
+                			<button class="btn btn-primary newitem" type="submit">Save</button>
                 		</div>
                 	</div>
 				</div>
@@ -94,13 +95,6 @@
 			  	<div class="col-7">
 			  		<input type="text" maxlength="5" id="zip" name="zip" class="form-control">
 			  	</div>
-			</div>
-			<div class="form-group row">
-				<div class="col-4 col-form-label submitButtonSpace">
-				</div>
-				<div class="col-7 text-right">
-					<button class="btn btn-success" type="submit">Save</button>
-				</div>
 			</div>
 		</div>
 		</div>

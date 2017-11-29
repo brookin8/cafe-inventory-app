@@ -8,8 +8,8 @@
 			<h2>Delete Supplier</h2>
 		</div>
 		<div class="form-group row">
-		  	<label for="name" class="col-4 col-form-label text-right createText">Name</label>
-		  	<div class="col-7">
+		  	<label for="name" class="col-4 text-right deleteText">Name</label>
+		  	<div class="col-7 deleteText2">
 		  		{{$supplier->name}}	
 		  	</div>
 		</div>
@@ -17,8 +17,8 @@
 			<strong>This action will affect {{$itemcount}} items.</strong>
 		</div>
 		<div class="form-group row">
-		  	<label for="order_method" class="col-4 col-form-label text-right createText">Items Affected:</label>
-		  	<div class="col-7">
+		  	<label for="order_method" class="col-4 text-right deleteText">Items Affected:</label>
+		  	<div class="col-7 deleteText2">
 		  		
 		  			@foreach ($items as $item)
 		  				{{$item->id}} : {{$item->name}} <br>
@@ -32,7 +32,7 @@
 			</div>
 			<div class="col-7 text-right">
 				<a href="\suppliers"><button class="btn btn-default" type="button">Nevermind</button></a>
-				<button class="btn btn-default" type="button" data-toggle="modal" data-target="#myModal">
+				<button class="btn btn-outline-danger" type="button" data-toggle="modal" data-target="#myModal">
 				Delete</button>
 			</div>
 		</div>

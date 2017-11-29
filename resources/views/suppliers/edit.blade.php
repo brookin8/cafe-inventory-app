@@ -17,8 +17,8 @@
                 			Edit Supplier	
                 		</div>
                 		<div class="col text-right">
-                			<a href="\suppliers"><button class="btn btn-success" type="button">Back To Suppliers</button></a>
-							<button class="btn btn-success" type="submit">Save</button>
+                			<a href="\suppliers"><button class="btn btn-default" type="button">Discard</button></a>
+							<button class="btn btn-primary newitem" type="submit">Save</button>
                 		</div>
                 	</div>
 				</div>

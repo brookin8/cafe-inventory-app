@@ -97,7 +97,7 @@ class InventoryCountController extends Controller
            if($quantity != '') {
                 $item = \App\Item::find($itemid);
 
-                $invdollars = (int)($quantity * $item->cost);
+                $invdollars = ($quantity * $item->cost);
                 $totaldollars += $invdollars;
 
                 error_log($invdollars);
@@ -113,10 +113,254 @@ class InventoryCountController extends Controller
         $count2->total_value_onhand = $totaldollars;
         $count2->save();
 
-        
+    if($count2->editable === false) {
+        //Calculate Demand
+            $allitems = \App\Item::all();
+            $thisweek = Carbon::today()->startOfWeek();
+            $lastweek = Carbon::today()->startOfWeek()->subDays(7);
+            $countitems = \DB::table('items_inventorycounts')
+                ->where([
+                    ['inventorycount_id','=',$countid],
+                ])
+                ->get();
+            $countitemids = [];
+            foreach($countitems as $countitem) {
+                array_push($countitemids,$countitem->item_id);
+            }
 
-        return redirect('/inventorycounts');
+        foreach($allitems as $allitem) {
+            //$count2 == current count
+            error_log('Item: '. $allitem->id);
+            //If item is part of count
+            if(in_array($allitem->id,$countitemids)) {
+
+                //Get most recent previous count (for this item) before the one that was just created
+                $prevcount1 = \DB::table('items_inventorycounts')
+                     ->join('inventorycounts','inventorycounts.id','=','items_inventorycounts.inventorycount_id')
+                    ->where([
+                        ['items_inventorycounts.item_id','=',$allitem->id],
+                        ['inventorycounts.store_id','=',\Auth::user()->store_id]
+                        ])
+                    ->select('items_inventorycounts.*')
+                    ->orderBy('items_inventorycounts.updated_at','desc')
+                    ->skip(1)
+                    ->take(1)
+                    ->get();
+
+                //Grab the count (for this item) that was just created
+                $newcount1 = \DB::table('items_inventorycounts')
+                     ->join('inventorycounts','inventorycounts.id','=','items_inventorycounts.inventorycount_id')
+                    ->where([
+                        ['items_inventorycounts.item_id','=',$allitem->id],
+                        ['inventorycounts.store_id','=',\Auth::user()->store_id]
+                        ])
+                    ->select('items_inventorycounts.*')
+                    ->orderBy('items_inventorycounts.updated_at','desc')
+                    ->first();
+
+                    error_log('newcount1:'.print_r($newcount1,true));
+                    error_log('prevcount1:' . print_r($prevcount1,true));
+
+                    //If previous count exists
+                    if(\DB::table('items_inventorycounts')
+                     ->join('inventorycounts','inventorycounts.id','=','items_inventorycounts.inventorycount_id')
+                    ->where([
+                        ['items_inventorycounts.item_id','=',$allitem->id],
+                        ['inventorycounts.store_id','=',\Auth::user()->store_id]
+                        ])
+                    ->orderBy('items_inventorycounts.updated_at','desc')
+                    ->skip(1)
+                    ->exists()) {
+
+                        //Grab counts in a way that allows us to use the date
+                        $prevcountid = $prevcount1[0]->id;
+                        $prevcount = \App\Item_Inventorycount::find($prevcountid);
+                        $newcountid = $newcount1->id;
+                        $newcount = \App\Item_Inventorycount::find($newcountid);
+                        error_log('newcount id and result:' . $newcountid . $newcount);
+                        error_log('prevcount: ' . $prevcount);
+                        
+                        //Grab the dates of the counts
+                        $newcountdate = $newcount->updated_at;
+                        $prevcountdate = $prevcount->updated_at->startOfDay();
+                        error_log('newcountdate: '. $newcountdate);
+                        error_log('prevcountdate: '. $prevcountdate);
+                        
+                        // Find the total difference between the days
+                        $totaldays = date_diff($newcountdate,$prevcountdate)->d;
+                        error_log('totaldays: ' . $totaldays);
+                        
+                        //And any quantity that was received in between those dates    
+                        $invoicedqty = \DB::table('items_invoices')
+                            ->join('invoices','invoices.id','=','items_invoices.invoice_id')
+                            ->where([
+                                    ['items_invoices.updated_at','<=',$newcountdate],
+                                    ['items_invoices.updated_at','>=',$prevcountdate],
+                                    ['invoices.store_id','=',\Auth::user()->store_id],
+                                    ['items_invoices.item_id','=',$allitem->id]
+                                ])
+                            ->get();
+                        
+                        error_log('invoicedqty: '. $invoicedqty);
+                        
+                        if($prevcountdate->dayOfWeek === 1) {
+                            $weekcounter = 0;
+                        } else {
+                            $weekcounter = 1;
+                        }
+                        
+                        $totalinvoiceamount = 0;
+                        $totalweight = 0;
+                        
+                        $weekweights = array();
+                        $weekstarts = array();
+                        $weekdemands = array();
+
+                        if(\DB::table('items_invoices')
+                            ->join('invoices','invoices.id','=','items_invoices.invoice_id')
+                            ->where([
+                                    ['items_invoices.updated_at','<=',$newcountdate],
+                                    ['items_invoices.updated_at','>=',$prevcountdate],
+                                    ['invoices.store_id','=',\Auth::user()->store_id],
+                                    ['items_invoices.item_id','=',$allitem->id]
+                                ])
+                            ->exists()){
+                                foreach($invoicedqty as $qty) {
+                                    $totalinvoiceamount += $qty->invoice_qty;
+                                }
+                            }
+
+
+
+                        $totaldemand = $prevcount->inventorycount_qty + $totalinvoiceamount - $newcount->inventorycount_qty;
+                        error_log('total demand: '.$totaldemand);
+                       
+                       
+                       $firstweekstart = date_timestamp_get($prevcountdate->startOfWeek());
+                       error_log('firstweekstart: '. $firstweekstart);
+                       array_push($weekstarts,$firstweekstart);
+
+
+                        if($totaldays > 0) {
+                            for($date = $prevcountdate;$date <= $newcountdate; $date->addDay()) {
+                                $day = $date->dayOfWeek;
+                                error_log('date: '.$date);
+                                error_log('day: '.$day);
+                                if($day === 1) {
+                                    $weekcounter += 1;
+                                    $weight = .1093;
+                                    $totalweight += $weight;
+                                    $weekweights[$weekcounter] = $weight;
+                                    $timestamp = date_timestamp_get($date);
+                                    array_push($weekstarts,$timestamp);
+                                } elseif ($day === 2) {
+                                    $weight = .1128;
+                                    $totalweight += $weight;
+                                    if(array_key_exists($weekcounter,$weekweights)){
+                                        $weekweights[$weekcounter] += $weight;
+                                    } else {
+                                        $weekweights[$weekcounter] = $weight;
+                                    }
+                                } elseif ($day === 3) {
+                                    $weight = .1228;
+                                    $totalweight += $weight;
+                                    if(array_key_exists($weekcounter,$weekweights)){
+                                        $weekweights[$weekcounter] += $weight;
+                                    } else {
+                                        $weekweights[$weekcounter] = $weight;
+                                    }
+                                } elseif ($day === 4) {
+                                    $weight = .1215;
+                                    $totalweight += $weight;
+                                    if(array_key_exists($weekcounter,$weekweights)){
+                                        $weekweights[$weekcounter] += $weight;
+                                    } else {
+                                        $weekweights[$weekcounter] = $weight;
+                                    }
+                                } elseif ($day === 5) {
+                                    $weight = .1815;
+                                    $totalweight += $weight;
+                                    if(array_key_exists($weekcounter,$weekweights)){
+                                        $weekweights[$weekcounter] += $weight;
+                                    } else {
+                                        $weekweights[$weekcounter] = $weight;
+                                    }
+                                } elseif ($day === 6) {
+                                    $weight = .2054;
+                                    $totalweight += $weight;
+                                    if(array_key_exists($weekcounter,$weekweights)){
+                                        $weekweights[$weekcounter] += $weight;
+                                    } else {
+                                        $weekweights[$weekcounter] = $weight;
+                                    }
+                                } elseif ($day === 0) {
+                                    $weight = .1467;
+                                    $totalweight += $weight;
+                                    if(array_key_exists($weekcounter,$weekweights)){
+                                        $weekweights[$weekcounter] += $weight;
+                                    } else {
+                                        $weekweights[$weekcounter] = $weight;
+                                    }
+                                }
+                            }
+
+                        $weekstarts = array_unique($weekstarts);
+                        $weekstartsfinal = array_values($weekstarts);
+
+                        error_log('number weeks: ' . $weekcounter);
+                        error_log('weekstartsfinal: ' . print_r($weekstartsfinal,true));
+                        error_log('weekweights: ' . print_r($weekweights,true));
+                        error_log('total weight: '. $totalweight);
+
+                        for($i=0;$i<count($weekstarts);$i++) {
+                            $weekdemands[$weekstartsfinal[$i]] = round(($weekweights[($i+1)]/$totalweight));
+                        }
+                        error_log('week demands:' . print_r($weekdemands,true));
+
+                        foreach ($weekdemands as $week => $demand) {
+                        //Previous Record Exists
+                            $weekconverted = date("Y-m-d H:i:s",$week);
+                            error_log('weekconverted: '.$weekconverted);
+
+                            if(\DB::table('items_demand')
+                            ->where([
+                                ['item_id','=',$allitem->id],
+                                ['store_id','=',\Auth::user()->store_id],
+                                ['week','=',$weekconverted]
+                            ])
+                            ->exists()) {
+
+                                error_log('Updating existing record');
+                                $update = \DB::table('items_demand')
+                                ->where([
+                                    ['item_id','=',$allitem->id],
+                                    ['store_id','=',\Auth::user()->store_id],
+                                    ['week','=',$weekconverted]
+                                ])
+                                ->first();
+
+                                $updateid = $update->id;
+                                $saveupdate = \App\Item_Demand::find($updateid);
+                                $saveupdate->demand += $demand;
+                                $saveupdate->save();
+                        
+                            } else {
+                                error_log('New record');
+                                $newrecord = new \App\Item_Demand;
+                                $newrecord->week = $weekconverted;
+                                $newrecord->item_id = $allitem->id;
+                                $newrecord->store_id = \Auth::user()->store_id;
+                                $newrecord->demand = $demand;
+                                $newrecord->save();
+                            }   
+                         } //Foreach week
+                    } //If there are more than 0 days beween counts
+                } // Previous count exists (close) 
+            } //If item part of count   
+        } //Foreach item     
     }
+        return redirect('/inventorycounts');
+}
 
     /**
      * Display the specified resource.
@@ -246,7 +490,7 @@ class InventoryCountController extends Controller
                 $item = \App\Item::find($itemfind);
                 //error_log('item is: ' .$item);
 
-                $countdollars = (int)($quantity * $item->cost);
+                $countdollars = ($quantity * $item->cost);
                 $totaldollars += $countdollars;
 
                 //error_log('orderdollars: '.$orderdollars);
@@ -270,6 +514,253 @@ class InventoryCountController extends Controller
         //error_log('totaldollars: '.$orderdollars);
 
         $count2->save();
+
+        if($count2->editable === false) {
+        //Calculate Demand
+            $allitems = \App\Item::all();
+            $thisweek = Carbon::today()->startOfWeek();
+            $lastweek = Carbon::today()->startOfWeek()->subDays(7);
+            $countitems = \DB::table('items_inventorycounts')
+                ->where([
+                    ['inventorycount_id','=',$id],
+                ])
+                ->get();
+            $countitemids = [];
+            foreach($countitems as $countitem) {
+                array_push($countitemids,$countitem->item_id);
+            }
+
+        foreach($allitems as $allitem) {
+            //$count2 == current count
+            error_log('Item: '. $allitem->id);
+            //If item is part of count
+            if(in_array($allitem->id,$countitemids)) {
+
+                //Get most recent previous count (for this item) before the one that was just created
+                $prevcount1 = \DB::table('items_inventorycounts')
+                     ->join('inventorycounts','inventorycounts.id','=','items_inventorycounts.inventorycount_id')
+                    ->where([
+                        ['items_inventorycounts.item_id','=',$allitem->id],
+                        ['inventorycounts.store_id','=',\Auth::user()->store_id]
+                        ])
+                    ->select('items_inventorycounts.*')
+                    ->orderBy('items_inventorycounts.updated_at','desc')
+                    ->skip(1)
+                    ->take(1)
+                    ->get();
+
+                //Grab the count (for this item) that was just created
+                $newcount1 = \DB::table('items_inventorycounts')
+                     ->join('inventorycounts','inventorycounts.id','=','items_inventorycounts.inventorycount_id')
+                    ->where([
+                        ['items_inventorycounts.item_id','=',$allitem->id],
+                        ['inventorycounts.store_id','=',\Auth::user()->store_id]
+                        ])
+                    ->select('items_inventorycounts.*')
+                    ->orderBy('items_inventorycounts.updated_at','desc')
+                    ->first();
+
+                    error_log('newcount1:'.print_r($newcount1,true));
+                    error_log('prevcount1:' . print_r($prevcount1,true));
+
+                    //If previous count exists
+                    if(\DB::table('items_inventorycounts')
+                     ->join('inventorycounts','inventorycounts.id','=','items_inventorycounts.inventorycount_id')
+                    ->where([
+                        ['items_inventorycounts.item_id','=',$allitem->id],
+                        ['inventorycounts.store_id','=',\Auth::user()->store_id]
+                        ])
+                    ->orderBy('items_inventorycounts.updated_at','desc')
+                    ->skip(1)
+                    ->exists()) {
+
+                        //Grab counts in a way that allows us to use the date
+                        $prevcountid = $prevcount1[0]->id;
+                        $prevcount = \App\Item_Inventorycount::find($prevcountid);
+                        $newcountid = $newcount1->id;
+                        $newcount = \App\Item_Inventorycount::find($newcountid);
+                        error_log('newcount id and result:' . $newcountid . $newcount);
+                        error_log('prevcount: ' . $prevcount);
+                        
+                        //Grab the dates of the counts
+                        $newcountdate = $newcount->updated_at;
+                        $prevcountdate = $prevcount->updated_at->startOfDay();
+                        error_log('newcountdate: '. $newcountdate);
+                        error_log('prevcountdate: '. $prevcountdate);
+                        
+                        // Find the total difference between the days
+                        $totaldays = date_diff($newcountdate,$prevcountdate)->d;
+                        error_log('totaldays: ' . $totaldays);
+                        
+                        //And any quantity that was received in between those dates    
+                        $invoicedqty = \DB::table('items_invoices')
+                            ->join('invoices','invoices.id','=','items_invoices.invoice_id')
+                            ->where([
+                                    ['items_invoices.updated_at','<=',$newcountdate],
+                                    ['items_invoices.updated_at','>=',$prevcountdate],
+                                    ['invoices.store_id','=',\Auth::user()->store_id],
+                                    ['items_invoices.item_id','=',$allitem->id]
+                                ])
+                            ->get();
+                        
+                        error_log('invoicedqty: '. $invoicedqty);
+                        
+                        if($prevcountdate->dayOfWeek === 1) {
+                            $weekcounter = 0;
+                        } else {
+                            $weekcounter = 1;
+                        }
+                        
+                        $totalinvoiceamount = 0;
+                        $totalweight = 0;
+                        
+                        $weekweights = array();
+                        $weekstarts = array();
+                        $weekdemands = array();
+
+                        if(\DB::table('items_invoices')
+                            ->join('invoices','invoices.id','=','items_invoices.invoice_id')
+                            ->where([
+                                    ['items_invoices.updated_at','<=',$newcountdate],
+                                    ['items_invoices.updated_at','>=',$prevcountdate],
+                                    ['invoices.store_id','=',\Auth::user()->store_id],
+                                    ['items_invoices.item_id','=',$allitem->id]
+                                ])
+                            ->exists()){
+                                foreach($invoicedqty as $qty) {
+                                    $totalinvoiceamount += $qty->invoice_qty;
+                                }
+                            }
+
+
+
+                        $totaldemand = $prevcount->inventorycount_qty + $totalinvoiceamount - $newcount->inventorycount_qty;
+                        error_log('total demand: '.$totaldemand);
+                       
+                       
+                       $firstweekstart = date_timestamp_get($prevcountdate->startOfWeek());
+                       error_log('firstweekstart: '. $firstweekstart);
+                       array_push($weekstarts,$firstweekstart);
+
+
+                        if($totaldays > 0) {
+                            for($date = $prevcountdate;$date <= $newcountdate; $date->addDay()) {
+                                $day = $date->dayOfWeek;
+                                error_log('date: '.$date);
+                                error_log('day: '.$day);
+                                if($day === 1) {
+                                    $weekcounter += 1;
+                                    $weight = .1093;
+                                    $totalweight += $weight;
+                                    $weekweights[$weekcounter] = $weight;
+                                    $timestamp = date_timestamp_get($date);
+                                    array_push($weekstarts,$timestamp);
+                                } elseif ($day === 2) {
+                                    $weight = .1128;
+                                    $totalweight += $weight;
+                                    if(array_key_exists($weekcounter,$weekweights)){
+                                        $weekweights[$weekcounter] += $weight;
+                                    } else {
+                                        $weekweights[$weekcounter] = $weight;
+                                    }
+                                } elseif ($day === 3) {
+                                    $weight = .1228;
+                                    $totalweight += $weight;
+                                    if(array_key_exists($weekcounter,$weekweights)){
+                                        $weekweights[$weekcounter] += $weight;
+                                    } else {
+                                        $weekweights[$weekcounter] = $weight;
+                                    }
+                                } elseif ($day === 4) {
+                                    $weight = .1215;
+                                    $totalweight += $weight;
+                                    if(array_key_exists($weekcounter,$weekweights)){
+                                        $weekweights[$weekcounter] += $weight;
+                                    } else {
+                                        $weekweights[$weekcounter] = $weight;
+                                    }
+                                } elseif ($day === 5) {
+                                    $weight = .1815;
+                                    $totalweight += $weight;
+                                    if(array_key_exists($weekcounter,$weekweights)){
+                                        $weekweights[$weekcounter] += $weight;
+                                    } else {
+                                        $weekweights[$weekcounter] = $weight;
+                                    }
+                                } elseif ($day === 6) {
+                                    $weight = .2054;
+                                    $totalweight += $weight;
+                                    if(array_key_exists($weekcounter,$weekweights)){
+                                        $weekweights[$weekcounter] += $weight;
+                                    } else {
+                                        $weekweights[$weekcounter] = $weight;
+                                    }
+                                } elseif ($day === 0) {
+                                    $weight = .1467;
+                                    $totalweight += $weight;
+                                    if(array_key_exists($weekcounter,$weekweights)){
+                                        $weekweights[$weekcounter] += $weight;
+                                    } else {
+                                        $weekweights[$weekcounter] = $weight;
+                                    }
+                                }
+                            }
+
+                        $weekstarts = array_unique($weekstarts);
+                        $weekstartsfinal = array_values($weekstarts);
+
+                        error_log('number weeks: ' . $weekcounter);
+                        error_log('weekstartsfinal: ' . print_r($weekstartsfinal,true));
+                        error_log('weekweights: ' . print_r($weekweights,true));
+                        error_log('total weight: '. $totalweight);
+
+                        for($i=0;$i<count($weekstarts);$i++) {
+                            $weekdemands[$weekstartsfinal[$i]] = round(($weekweights[($i+1)]/$totalweight));
+                        }
+                        error_log('week demands:' . print_r($weekdemands,true));
+
+                        foreach ($weekdemands as $week => $demand) {
+                        //Previous Record Exists
+                            $weekconverted = date("Y-m-d H:i:s",$week);
+                            error_log('weekconverted: '.$weekconverted);
+
+                            if(\DB::table('items_demand')
+                            ->where([
+                                ['item_id','=',$allitem->id],
+                                ['store_id','=',\Auth::user()->store_id],
+                                ['week','=',$weekconverted]
+                            ])
+                            ->exists()) {
+
+                                error_log('Updating existing record');
+                                $update = \DB::table('items_demand')
+                                ->where([
+                                    ['item_id','=',$allitem->id],
+                                    ['store_id','=',\Auth::user()->store_id],
+                                    ['week','=',$weekconverted]
+                                ])
+                                ->first();
+
+                                $updateid = $update->id;
+                                $saveupdate = \App\Item_Demand::find($updateid);
+                                $saveupdate->demand += $demand;
+                                $saveupdate->save();
+                        
+                            } else {
+                                error_log('New record');
+                                $newrecord = new \App\Item_Demand;
+                                $newrecord->week = $weekconverted;
+                                $newrecord->item_id = $allitem->id;
+                                $newrecord->store_id = \Auth::user()->store_id;
+                                $newrecord->demand = $demand;
+                                $newrecord->save();
+                            }   
+                         } //Foreach week
+                    } //If there are more than 0 days beween counts
+                } // Previous count exists (close) 
+            } //If item part of count   
+        } //Foreach item     
+    }
 
         return redirect('/inventorycounts');
     }

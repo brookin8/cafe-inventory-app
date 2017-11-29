@@ -29,7 +29,9 @@ class OrderController extends Controller
                 ->join('suppliers', 'orders.supplier_id','=','suppliers.id')
                 ->select('orders.*', 'users.name as username','suppliers.name as supplier')
                 ->get();
-        
+
+       
+
         return view('orders.index',compact('orders'));
     }
 
@@ -174,7 +176,7 @@ class OrderController extends Controller
            if($quantity != '') {
                 $item = \App\Item::find($itemid);
 
-                $orderdollars = (int)($quantity * $item->cost);
+                $orderdollars = ($quantity * $item->cost);
                 $totaldollars += $orderdollars;
 
                 //error_log($orderdollars);
@@ -190,7 +192,128 @@ class OrderController extends Controller
         $order2->total_order_cost = $totaldollars;
         $order2->save();
 
-        
+        // Calculate Spend
+
+            // $spendorders = \DB::table('items_orders')
+            //     ->join('orders','orders.id','=','items_orders.order_id')
+            //     ->where([
+            //             ['items_orders.updated_at','<=',$thisweek],
+            //             ['items_orders.updated_at','>=',$lastweek],
+            //             ['items_orders.is_backordered','=',null],
+            //             ['orders.editable','=','false']
+            //         ])
+            //     ->get();
+
+            //     // print_r($spendorders);
+
+            // $itemspend = array();
+
+
+            //     //Create associative array to get spend totals for each item
+            // foreach ($spendorders as $spendorder) {
+            //   $item = $spendorder->item_id;
+            //   $spend = $spendorder->orders_dollar_amount;
+            //   if(array_key_exists($item,$itemspend)) {
+            //     $itemspend[$item] += $spend;  
+            //   } else {
+            //     $itemspend[$item] = $spend;
+            //   }
+            // }
+
+            //print_r($itemspend);
+
+        if($order2->editable === false) {
+            //error_log('false');
+            $thisweek = Carbon::today()->startOfWeek();
+            $lastweek = Carbon::today()->startOfWeek()->subDays(7);
+            $today = Carbon::today();
+
+            $orderitems = \DB::table('items_orders')
+                 ->where([
+                        ['order_id','=',$orderid],
+                        ])
+                ->get();
+            //error_log('orderitems: '. $orderitems);
+
+            $allitems = \DB::table('items')
+                ->whereNull('deleted_at')
+                ->get();
+            //error_log('allitems: '. $allitems);
+
+            $orderitemIds = [];
+            // error_log('order item ids:' . $orderitemIds);
+            foreach ($orderitems as $orderitem) {
+                array_push($orderitemIds,$orderitem->item_id);
+                //error_log('Pushing to orderitemIds: ' . $orderitem->item_id);
+            }
+
+            //For all items active in the system
+            foreach($allitems as $allitem) {
+                //If the item already has an existing record in items_spend
+                if(\DB::table('items_spend')
+                    ->where([
+                        ['item_id','=',$allitem->id],
+                        ['store_id','=',\Auth::user()->store_id],
+                        ['week','=',$thisweek]
+                    ])
+                    ->exists()) {
+                        //error_log('item: '. $allitem->id);
+                        //error_log('item exists in items_spend');
+
+                        $existingspend = \DB::table('items_spend')
+                                ->where([
+                                    ['item_id','=',$allitem->id],
+                                    ['store_id','=',\Auth::user()->store_id],
+                                    ['week','=',$thisweek]
+                                ])
+                                ->first();
+                                //error_log('existing spend: ' . $existingspend->spend);
+                    //If it is on the order
+                        if(in_array($allitem->id,$orderitemIds)) {
+                            $addspend = \DB::table('items_orders')
+                            ->where([
+                                ['order_id','=',$orderid],
+                                ['item_id','=',$allitem->id]
+                                ])
+                                ->first();
+                            //error_log('addspend: '. $addspend->orders_dollar_amount);
+                            
+                            $newspend = $existingspend->spend + $addspend->orders_dollar_amount;
+                            $updaterecord = \App\Item_Spend::find($existingspend->id);
+                            $updaterecord->spend = $newspend;
+                            $updaterecord->save();
+                        }
+                //If there's no record for the item in items_spend
+                } else {
+                    //error_log('item: '. $allitem->id);
+                    //error_log('item does not exist in items_spend');
+                    //If it is on the order
+                    if(in_array($allitem->id,$orderitemIds)) {
+                        $addspend = \DB::table('items_orders')
+                            ->where([
+                                ['order_id','=',$orderid],
+                                ['item_id','=',$allitem->id]
+                                ])
+                            ->first();
+                        $spend = new \App\Item_Spend;
+                        $spend->week = $thisweek;
+                        $spend->item_id = $allitem->id;
+                        $spend->store_id = \Auth::user()->store_id;
+                        $spend->spend = $addspend->orders_dollar_amount;
+                        $spend->save();
+                    //If it is not on the order, set to 0
+                    } else {
+                        $spend = new \App\Item_Spend;
+                        $spend->week = $thisweek;
+                        $spend->item_id = $allitem->id;
+                        $spend->store_id = \Auth::user()->store_id;
+                        $spend->spend = 0;
+                        $spend->save();
+                    } 
+                } 
+            }
+        }
+
 
         return redirect('../orders');
     }
@@ -214,7 +337,10 @@ class OrderController extends Controller
                 ->select('items_orders.*', 'users.name as username','orders.id as ordernumber','suppliers.name as supplier','uoms.unit as uom','items.name as itemname','items.cost as cost')
                 ->where('items_orders.order_id','=',$id)
                 ->get();
-        return view('orders.show',compact('order','items'));
+
+        $invoices = \App\Invoice::all();
+
+        return view('orders.show',compact('order','items','invoices'));
     }
 
     /**
@@ -274,7 +400,7 @@ class OrderController extends Controller
             ->get();
 
 
-        return view('orders.edit',compact('order','items','ordereditems','deliverydate','categories','ordereditemsIds'));
+        return view('orders.edit',compact('order','items','ordereditems','deliverydate','categories','ordereditemsIds','today'));
     }
 
     /**
@@ -307,10 +433,8 @@ class OrderController extends Controller
         }
         
         $order->save();
-        
         $orderid = $order->id;
 
-        
         //error_log('count id '. $countid);
 
         $ordereditems = \DB::table('items_orders')
@@ -355,7 +479,7 @@ class OrderController extends Controller
                 $item = \App\Item::find($itemfind);
                 //error_log('item is: ' .$item);
 
-                $orderdollars = (int)($quantity * $item->cost);
+                $orderdollars = ($quantity * $item->cost);
                 $totaldollars += $orderdollars;
 
                 //error_log('orderdollars: '.$orderdollars);
@@ -380,6 +504,102 @@ class OrderController extends Controller
         //error_log('totaldollars: '.$orderdollars);
 
         $order2->save();
+
+        if($order2->editable === false) {
+            error_log('false');
+            $thisweek = Carbon::today()->startOfWeek();
+            $lastweek = Carbon::today()->startOfWeek()->subDays(7);
+            $today = Carbon::today();
+
+            $orderitems = \DB::table('items_orders')
+                 ->where([
+                        ['order_id','=',$id],
+                        ])
+                ->get();
+            error_log('orderitems: '. $orderitems);
+
+            $allitems = \DB::table('items')
+                ->whereNull('deleted_at')
+                ->get();
+            error_log('allitems: '. $allitems);
+
+            $orderitemIds = [];
+            // error_log('order item ids:' . $orderitemIds);
+            foreach ($orderitems as $orderitem) {
+                array_push($orderitemIds,$orderitem->item_id);
+                error_log('Pushing to orderitemIds: ' . $orderitem->item_id);
+            }
+
+            //For all items active in the system
+            foreach($allitems as $allitem) {
+                //If the item already has an existing record in items_spend
+                if(\DB::table('items_spend')
+                    ->where([
+                        ['item_id','=',$allitem->id],
+                        ['store_id','=',\Auth::user()->store_id],
+                        ['week','=',$thisweek]
+                    ])
+                    ->exists()) {
+                        error_log('item: '. $allitem->id);
+                        error_log('item exists in items_spend');
+
+                        $existingspend = \DB::table('items_spend')
+                                ->where([
+                                    ['item_id','=',$allitem->id],
+                                    ['store_id','=',\Auth::user()->store_id],
+                                    ['week','=',$thisweek]
+                                ])
+                                ->first();
+                                //error_log('existing spend: ' . $existingspend->spend);
+                    //If it is on the order
+                        if(in_array($allitem->id,$orderitemIds)) {
+                            $addspend = \DB::table('items_orders')
+                            ->where([
+                                ['order_id','=',$id],
+                                ['item_id','=',$allitem->id]
+                                ])
+                                ->first();
+                            error_log('exists and in order');
+                            
+                            $newspend = $existingspend->spend + $addspend->orders_dollar_amount;
+                            $updaterecord = \App\Item_Spend::find($existingspend->id);
+                            $updaterecord->spend = $newspend;
+                            $updaterecord->save();
+                        }
+                //If there's no record for the item in items_spend
+                } else {
+                    error_log('item: '. $allitem->id);
+                    error_log('item does not exist in items_spend');
+                    //If it is on the order
+                    if(in_array($allitem->id,$orderitemIds)) {
+                        error_log('in order');
+                        $addspend = \DB::table('items_orders')
+                            ->where([
+                                ['order_id','=',$id],
+                                ['item_id','=',$allitem->id]
+                                ])
+                            ->first();
+                        $spend = new \App\Item_Spend;
+                        $spend->week = $thisweek;
+                        $spend->item_id = $allitem->id;
+                        $spend->store_id = \Auth::user()->store_id;
+                        $spend->spend = $addspend->orders_dollar_amount;
+                        $spend->save();
+                    //If it is not on the order, set to 0
+                    } else {
+                        error_log('not in order');
+                        $spend = new \App\Item_Spend;
+                        $spend->week = $thisweek;
+                        $spend->item_id = $allitem->id;
+                        error_log('spend item: '. $spend->item_id);
+                        $spend->store_id = \Auth::user()->store_id;
+                        $spend->spend = 0;
+                        error_log('spend amount: '. $spend->spend);
+                        $spend->save();
+                    } 
+                } 
+            }
+        }
 
         return redirect('../orders');
     }
@@ -426,7 +646,10 @@ class OrderController extends Controller
                     ['orders.received','=',true],
                     ])
                 ->get();
-        return view('orders.closed',compact('orders'));
+
+         $invoices = \App\Invoice::all();
+
+        return view('orders.closed',compact('orders','invoices'));
     }
 
     public function saved()

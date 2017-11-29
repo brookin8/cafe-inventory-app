@@ -10,42 +10,36 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="panel panel-default">
-                <div class="panel-heading">
+                <div class="panel-heading withtabs">
                 	<div class="row">
-                		<div class="col text-left">
+                		<div class="col text-left mt-2">
                 			Inventory Counts
                 		</div>
                 		<div class="col">
+							<ul class="nav nav-tabs navbar-right">
+						  		<li class="nav-item">
+						    		<a class="nav-link active tabs" href="#">Submitted</a>
+						  		</li>
+								<li class="nav-item">
+								    <a class="nav-link tabs" href="/inventorycounts/saved">Saved</a>
+								</li>
+							</ul>
+						</div>
+                		<div class="col-2 mt-1">
                 			<a href="/inventorycounts/create"><button class="btn newcount btn-primary ml-5">New Count</button></a>
                 		</div>
                 	</div>
 				</div>
-				<div class="panel-body">
-		
-
-			<div class="row mb-5 ml-5 mr-5">
-				<div class="col">
-					<ul class="nav nav-tabs">
-				  		<li class="nav-item">
-				    		<a class="nav-link active" href="#">Submitted</a>
-				  		</li>
-						<li class="nav-item">
-						    <a class="nav-link" href="/inventorycounts/saved">Saved</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-
-		
+				<div class="panel-body">		
 				<div class="row ml-5 mr-3">
 					<div class="table-responsive text-center mr-4 ml-3">
 						<table class="table tableborder table-striped table-hover mr-4" width="98%" id="table">
 						
 							<thead>
 								<tr>
-									<th class="text-left">Count Record ID</th>
-									<th class="text-left">Total $ Amount</th>
-									<th class="text-left">Date Submitted</th>
+									<th class="text-left">ID</th>
+									<th class="text-left">Total $</th>
+									<th class="text-left">Submitted</th>
 									<th class="text-left">Submitted By</th>
 								</tr>
 							</thead>

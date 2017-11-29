@@ -16,7 +16,7 @@
                 			Suppliers	
                 		</div>
                 		<div class="col">
-                			<a href="/suppliers/create"><button class="btn btn-primary newcount mr-5">New Supplier</button></a>
+                			<a href="/suppliers/create"><button class="btn btn-primary newcount ml-5">New Supplier</button></a>
                 		</div>
                 	</div>
 				</div>
@@ -33,7 +33,6 @@
 									<th class="text-left">LT (Days)</th>
 									<th class="text-left">Order Method</th>
 									<th class="text-left">Order Email</th>
-									<th class="text-left">Last Updated</th>
 									<th class="text-left">Actions</th>
 								</tr>
 							</thead>
@@ -45,7 +44,7 @@
 								<td class="text-left"><a href="../suppliers/details/{{$supplier->id}}" class="bodylink"><div>{{$supplier->lead_time_days}}</div></a></td>
 								<td class="text-left"><a href="../suppliers/details/{{$supplier->id}}" class="bodylink"><div>{{$supplier->method}}</div></a></td>
 								<td class="text-left"><a href="../suppliers/details/{{$supplier->id}}" class="bodylink"><div>{{$supplier->order_email_address}}</div></a></td>
-								<td class="text-left"><a href="../suppliers/details/{{$supplier->id}}" class="bodylink"><div>{{Carbon\Carbon::parse($supplier->updated_at)->format('m/d/Y')}}</div></a></td>
+								
 								<td class="text-left">
 									<div class="row">
 									<a href="/suppliers/{{$supplier->id}}/edit"><button class="edit-modal btn btn-sm btn-info ml-3"

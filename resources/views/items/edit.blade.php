@@ -15,8 +15,8 @@
                 			Edit Item
                 		</div>
                 		<div class="col text-right">
-							<a href="../items"><button class="btn btn-secondary" type="button">Discard</button></a>
-							<button class="btn btn-secondary" type="submit">Save</button>
+							<a href="../../items"><button class="btn btn-default" type="button">Discard</button></a>
+							<button class="btn btn-primary newitem" type="submit">Save</button>
 						</div>
                 	</div>
                 </div>

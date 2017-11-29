@@ -62,13 +62,13 @@
                     </button>
 
                     <!-- Branding Image -->
-                        <a href="#" id="menu-toggle" class="sidebartoggle glyphicon ml-2 mt-3" onclick="openNav()">
-                            <i class="fa fa-bars" id="toggleimage"></i>
+                        <a href="#" id="menu-toggle" class="sidebartoggle ml-2 mt-3" onclick="openNav()">
+                            <i class="mt-4 mr-2 fa fa-bars" id="toggleimage"></i>
                         </a>
                         <a class="navbar-brand ml-2 mt-1" href="{{ url('/home') }}">
                             <div class="row brandrow">
-                            <img src="../northlime.png" class="logoimage ml-5 mr-2 mt-2">
-                            <div class="mt-3">North Lime Inventory</div>
+                            <img src="{{ asset('northlime.png') }}" class="logoimage mr-2 mt-1">
+                            <div class="mt-3 mr-2">North Lime Inventory</div>
                             </div>
                         </a>
                 </div>
@@ -114,18 +114,18 @@
          <div id="mySidenav" class="sidenav">
                 <div class="row closerow"><a href="javascript:void(0)" style="color:#fff" class="closebtn" onclick="closeNav()">&times;</a></div>
             
-                <a href="../items" class="itemsrow"><div class="row">Items</div></a>
-                <a href="../suppliers"><div class="row">Suppliers</div></a>
+                <a href="{{ url('/') }}/items" class="itemsrow"><div class="row">Items</div></a>
+                <a href="{{ url('/') }}/suppliers"><div class="row">Suppliers</div></a>
             
                 <a data-toggle="collapse" href="#collapseorders" aria-expanded="false" aria-controls="#collapseorders"><div class="row">
                     Orders </div>
                 </a>
            
                 <div class="collapse" id="collapseorders">
-                    <a href="../orders"><div class="row ml-2">All Orders</div></a>
-                    <a href="../orders/open"><div class="row ml-2">Open Orders</div></a>
-                    <a href="../orders/saved"><div class="row ml-2">Saved Orders (Drafts)</div></a>
-                    <a href="../orders/supplierselect"><div class="row ml-2">New Order</div></a>
+                    <a href="{{ url('/') }}/orders"><div class="row ml-2">All Orders</div></a>
+                    <a href="{{ url('/') }}/orders/open"><div class="row ml-2">Open Orders</div></a>
+                    <a href="{{ url('/') }}/orders/saved"><div class="row ml-2">Saved Orders (Drafts)</div></a>
+                    <a href="{{ url('/') }}/orders/supplierselect"><div class="row ml-2">New Order</div></a>
                 </div>
             
                 <a data-toggle="collapse" href="#collapsecounts" aria-expanded="false" aria-controls="#collapsecounts"><div class="row">    
@@ -133,24 +133,31 @@
                 </a>
             
                 <div class="collapse" id="collapsecounts">
-                    <a href="../inventorycounts"><div class="row ml-2">All Counts</div></a>
-                    <a href="../inventorycounts/saved"><div class="row ml-2">Saved Counts</div></a>
-                    <a href="../inventorycounts/create"><div class="row ml-2">New Count</div></a>
+                    <a href="{{ url('/') }}/inventorycounts"><div class="row ml-2">All Counts</div></a>
+                    <a href="{{ url('/') }}/inventorycounts/saved"><div class="row ml-2">Saved Counts</div></a>
+                    <a href="{{ url('/') }}/inventorycounts/create"><div class="row ml-2">New Count</div></a>
                 </div>
                <a data-toggle="collapse" href="#collapseinvoices" aria-expanded="false" aria-controls="#collapseinvoices"><div class="row">
                     Invoices </div>
                </a>
             
                 <div class="collapse" id="collapseinvoices">
-                    <a href="../invoices"><div class="row ml-2">All Invoices</div></a>
-                    <a href="../invoices/orderexists"><div class="row ml-2">New Invoice</div></a>
+                    <a href="{{ url('/') }}/invoices"><div class="row ml-2">All Invoices</div></a>
+                    <a href="{{ url('/') }}/invoices/orderexists"><div class="row ml-2">New Invoice</div></a>
                 </div>
+                
+                <a data-toggle="collapse" href="#collapsereporting" aria-expanded="false" aria-controls="#collapsereporting"><div class="row">
+                    Reporting </div>
+               </a>
             
-                <a href="#"> <div class="row">Reporting</div></a>
+                <div class="collapse" id="collapsereporting">
+                    <a href="{{ url('/') }}/reporting"><div class="row ml-2">Demand</div></a>
+                    <a href="{{ url('/') }}/reporting/spend"><div class="row ml-2">Spend</div></a>
+                </div>
             
             @if(Auth::user()->access_id === 1)
              
-            <a href="../users"><div class="row">Users</div></a>
+            <a href="{{ url('/') }}/users"><div class="row">Users</div></a>
             
             @endif
         </div>

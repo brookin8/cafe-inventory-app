@@ -219,7 +219,7 @@ class InvoiceController extends Controller
                if($quantity != '') {
                     $item = \App\Item::find($itemid);
 
-                    $invoicedollars = (int)($quantity * $item->cost);
+                    $invoicedollars = ($quantity * $item->cost);
                     $totaldollars += $invoicedollars;
 
                     //error_log($invdollars);
@@ -249,6 +249,7 @@ class InvoiceController extends Controller
             }
 
             $findsupplier->editable = false;
+            $findsupplier->received = true;
             $findsupplier->save(); 
 
             
@@ -291,7 +292,7 @@ class InvoiceController extends Controller
 
                         //error_log($item->cost);
 
-                        $invoicedollars = (int)($quantity * $item->cost);
+                        $invoicedollars = ($quantity * $item->cost);
                         $totaldollars += $invoicedollars;
 
                     //error_log($invdollars);

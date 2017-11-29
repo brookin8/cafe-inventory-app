@@ -61,6 +61,8 @@ Route::get('/inventorycounts/saved', 'InventorycountController@saved');
 
 Route::resource('inventorycounts', 'InventorycountController');
 
+Route::get('/reporting/spend', 'ReportingController@spend');
+
 Route::resource('reporting', 'ReportingController');
 
 
