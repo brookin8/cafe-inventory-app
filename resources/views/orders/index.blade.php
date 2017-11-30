@@ -80,7 +80,7 @@
 				                                {{ csrf_field() }}
 				                            <button class="delete-modal btn btn-sm btn-danger"
 											data-info="">
-											<span class="glyphicon glyphicon-trash"></span>
+											<span class="glyphicon glyphicon-trash mr-1"></span>
 										</button></form>
 										</div>
 										</td>

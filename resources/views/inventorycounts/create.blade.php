@@ -32,7 +32,7 @@
 						<table class="table tableborder table-striped table-hover invcountwidth table-top">
 							<thead>	
 								<tr>
-									<th class="text-center cellwidth counthead">Item No</th>
+									<th class="text-center cellwidth counthead">Item #</th>
 									<th class="text-center cellwidth counthead">Item Name</th>
 									<th class="text-center cellwidth counthead">Category</th>
 									<th class="text-center cellwidth counthead">Supplier</th>

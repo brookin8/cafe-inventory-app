@@ -75,7 +75,7 @@ function drawStuff() {
       	width: 875,
          height: 325,
          legend: {position:'right'},
-         chartArea: { left: 40, width: "60%", height: "80%" },
+         chartArea: { left: 70, width: "60%", height: "80%" },
       	hAxis: {
            	 gridlines: {count: 5}
            },
@@ -87,6 +87,7 @@ function drawStuff() {
 
 
    }
+
 // IF CATEGORY SELECTED
 function categoryselect(category) {
 
@@ -204,7 +205,7 @@ function categoryselect(category) {
          width: 875,
          height: 325,
          legend: {position:'right'},
-         chartArea: { left: 40, width: "60%", height: "70%" },
+         chartArea: { left: 70, width: "60%", height: "70%" },
       	hAxis: {
            	 gridlines: {count: 5}
            },
@@ -331,7 +332,7 @@ function supplierselect(supplier) {
          width: 875,
          height: 325,
          legend: {position:'right'},
-         chartArea: { left: 40, width: "60%", height: "70%" },
+         chartArea: { left: 70, width: "60%", height: "70%" },
       	hAxis: {
            	 gridlines: {count: 5}
            },
@@ -447,7 +448,7 @@ function supplierselect(supplier) {
          width: 875,
          height: 325,
          legend: {position:'right'},
-         chartArea: { left: 40, width: "60%", height: "70%" },
+         chartArea: { left: 70, width: "60%", height: "70%" },
       	hAxis: {
            	 gridlines: {count: 5}
            },
@@ -559,7 +560,7 @@ function endselect(end) {
       	width: 875,
          height: 325,
          legend: {position:'right'},
-         chartArea: { left: 40, width: "60%", height: "70%" },
+         chartArea: { left: 70, width: "60%", height: "70%" },
       	hAxis: {
            	 gridlines: {count: 5}
            },

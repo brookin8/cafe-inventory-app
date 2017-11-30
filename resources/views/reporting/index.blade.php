@@ -9,7 +9,7 @@
 
 @extends('reporting.demandgraph')
 
-<div class="container">
+<div class="container reportinggraphs" style="padding-left:2px;padding-right:2px;">
  <div class="row">
         <div class="col-xs-12">
             <div class="panel panel-default reporting">
@@ -24,7 +24,7 @@
 								    <a class="nav-link tabs active reportingtabs" href="#">Demand</a>
 								  </li>
 								  <li class="nav-item">
-								    <a class="nav-link tabs reportingtabs" href="../reporting/spend">Spend</a>
+								    <a class="nav-link tabs reportingtabs" href="../reporting/demand">demand</a>
 								  </li>
 							</ul>
 						</div>
@@ -47,7 +47,7 @@
 					     <div class="row mt-3">
 					      	<div id="selectdiv" class="ml-3 mb-2">
 					      		Start Date: 
-								<select id="spendstart2" onchange="startselect2(this.value)">
+								<select id="demandstart2" onchange="startselect2(this.value)">
 									@foreach($demanddates as $demanddate)
 									<option value="{{$demanddate}}">{{$demanddate}}</option>
 									@endforeach
@@ -55,7 +55,7 @@
 							</div>
 							<div id="selectdiv" class="ml-3">
 					      		End Date: 
-								<select id="spendend2" onchange="endselect2(this.value)">
+								<select id="demandend2" onchange="endselect2(this.value)">
 									@foreach($demanddatesdesc as $demanddatedesc)
 									<option value="{{$demanddatedesc}}">{{$demanddatedesc}}</option>
 									@endforeach
@@ -65,7 +65,7 @@
 						<div class="row mt-3">
 					      	<div id="selectdiv" class="ml-3">
 					      		Category: 
-								<select id="spendcategory2" onchange="categoryselect2(this.value)">
+								<select id="demandcategory2" onchange="categoryselect2(this.value)">
 									<option value="''">All</option>
 									@foreach($categories as $category)
 									<option value="{{$category->id}}">{{$category->name}}</option>
@@ -74,7 +74,7 @@
 							</div>
 							<div id="selectdiv" class="ml-3">
 					      		Supplier: 
-								<select id="spendsupplier2" onchange="supplierselect2(this.value)">
+								<select id="demandsupplier2" onchange="supplierselect2(this.value)">
 									<option value="''">All</option>
 									@foreach($suppliers as $supplier)
 									<option value="{{$supplier->id}}">{{$supplier->name}}</option>
@@ -90,7 +90,208 @@
 		</div>
 	</div>
 </div>
+
+<div class="container reportingtable">
+	<div class="panel panel-default reporting">
+	 	<div class="panel-heading">
+            	<div class="row">
+            		<div class="col text-left">
+            			Summary	: Week of {{Carbon\Carbon::parse($thisweek)->format('m/d/Y')}}
+            		</div>
+            	</div>
+			</div>
+			<div class="panel-body">
+
+			<div class="row ml-5 mr-3">
+				<div class="table-responsive">
+					<table class="table tableborder table-striped table-hover ml-3" width="98%" id="table">
+						<thead>
+							<tr>
+								<th class="text-left reporting">Store</th>
+								<th class="text-left reporting">#</th>
+								<th class="text-left reporting">Name</th>
+								<th class="text-left reporting">Category</th>
+								<th class="text-left reporting">Supplier</th>
+								<th class="text-left reporting">{{Carbon\Carbon::parse($lastweek)->format('m/d/Y')}}</th>
+								<th class="text-left reporting">5 Week</th>
+								<th class="text-left reporting">10 Week</th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach($itemstores as $itemstore)
+							<tr>
+								<td class="text-left reporting">{{$itemstore->store}}</td>
+								<td class="text-left reporting">{{$itemstore->item_id}}</td>
+								<td class="text-left reporting">{{$itemstore->name}}</td>
+								<td class="text-left reporting">{{$itemstore->category}}</td>
+								<td class="text-left reporting">{{$itemstore->supplier}}</td>
+								
+								@foreach($demand2 as $demands2)
+									@if($demands2->item_id === $itemstore->item_id && Carbon\Carbon::parse($demands2->week)->format('m/d/Y') === $lastweek)
+										<td class="text left reporting">{{$demands2->demand}}</td>
+									@endif
+								@endforeach
+								<td class="text-left reporting">{{$demands2->demand}}</td>
+								@if(array_key_exists($itemstore->item_id,$fiveweek))
+									@foreach($fiveweek as $key=>$value)
+										@if($key === $itemstore->item_id)
+										<td class="text-left reporting">{{$value}}</td>
+										@endif
+									@endforeach
+								@else
+									<td class="text-left reporting">'0'</td>
+								@endif
+								@if(array_key_exists($itemstore->item_id,$tenweek))
+									@foreach($tenweek as $key2=>$value2)
+										@if($key2 === $itemstore->item_id)
+											<td class="text-left reporting">{{$value2}}</td>
+										@endif
+									@endforeach
+								@else
+									<td class="text-left reporting">'0'</td>
+								@endif
+							</tr>
+							@endforeach
+						</tbody>
+						<tfoot>
+							<tr>
+								<td class="text-left reporting">Store</td>
+								<td class="text-left reporting">#</td>
+								<td class="text-left reporting">Name</td>
+								<td class="text-left reporting">Category</td>
+								<td class="text-left reporting">Supplier</td>
+								<td class="text-left reporting">{{Carbon\Carbon::parse($lastweek)->format('m/d/Y')}}</td>
+								<td class="text-left reporting">5 Week</td>
+								<td class="text-left reporting">10 Week</td>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
+<div class="container reportingtable">
+	<div class="panel panel-default reporting">
+	 	<div class="panel-heading">
+            	<div class="row">
+            		<div class="col text-left">
+            			Detail	
+            		</div>
+            	</div>
+			</div>
+			<div class="panel-body">
 
+			<div class="row ml-5 mr-3">
+				<div class="table-responsive">
+					<table class="table tableborder table-striped table-hover ml-3" width="98%" id="table2">
+						<thead>
+							<tr>
+								<th class="text-left reporting">Week</th>
+								<th class="text-left reporting">Store</th>
+								<th class="text-left reporting">#</th>
+								<th class="text-left reporting">Name</th>
+								<th class="text-left reporting">Category</th>
+								<th class="text-left reporting">Supplier</th>
+								<th class="text-left reporting">Demand</th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach($demand2 as $demands2)
+							<tr>
+								<td class="text-left reporting">{{Carbon\Carbon::parse($demands2->week)->format('m/d/Y')}}</td>
+								<td class="text-left reporting">{{$demands2->store}}</td>
+								<td class="text-left reporting">{{$demands2->item_id}}</td>
+								<td class="text-left reporting">{{$demands2->name}}</td>
+								<td class="text-left reporting">{{$demands2->category}}</td>
+								<td class="text-left reporting">{{$demands2->supplier}}</td>
+								<td class="text-left reporting">{{$demands2->demand}}</td>
+							</tr>
+							@endforeach
+						</tbody>
+						<tfoot>
+							<tr>
+								<td class="text-left reporting">Week</td>
+								<td class="text-left reporting">Store</td>
+								<td class="text-left reporting">#</td>
+								<td class="text-left reporting">Name</td>
+								<td class="text-left reporting">Category</td>
+								<td class="text-left reporting">Supplier</td>
+								<td class="text-left reporting">Demand</td>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</div>
+<script>
+$(document).ready(function() {
+    var table2 = $('#table2').DataTable( {
+    	dom: 'Blfrtip',
+    	buttons: [
+    	{extend:'copy', className:'tableButton'},
+    	{extend:'excel', className:'tableButton'},
+    	{extend:'csv', className:'lastTableButton'}],
+        initComplete: function () {
+            this.api().columns().every( function () {
+                var column = this;
+                var select = $('<select><option value=""></option></select>')
+                    .appendTo( $(column.footer()).empty() )
+                    .on( 'change', function () {
+                        var val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
+ 
+                        column
+                            .search( val ? '^'+val+'$' : '', true, false )
+                            .draw();
+                    } );
+ 
+                column.data().unique().sort().each( function ( d, j ) {
+                    select.append( '<option value="'+d+'">'+d+'</option>' )
+                } );
+            } );
+        },
+    } );
+
+    table2.buttons().container()
+	.appendTo( $('.col-sm-6:eq(0)', table2.table().container() ) );
+
+	var table = $('#table').DataTable( {
+    	dom: 'Blfrtip',
+    	buttons: [
+    	{extend:'copy', className:'tableButton'},
+    	{extend:'excel', className:'tableButton'},
+    	{extend:'csv', className:'lastTableButton'}],
+        initComplete: function () {
+            this.api().columns().every( function () {
+                var column = this;
+                var select = $('<select><option value=""></option></select>')
+                    .appendTo( $(column.footer()).empty() )
+                    .on( 'change', function () {
+                        var val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
+ 
+                        column
+                            .search( val ? '^'+val+'$' : '', true, false )
+                            .draw();
+                    } );
+ 
+                column.data().unique().sort().each( function ( d, j ) {
+                    select.append( '<option value="'+d+'">'+d+'</option>' )
+                } );
+            } );
+        },
+    } );
+
+    table.buttons().container()
+	.appendTo( $('.col-sm-6:eq(0)', table.table().container() ) );
+} );
+</script>
 @endsection

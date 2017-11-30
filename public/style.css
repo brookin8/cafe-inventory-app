@@ -25,6 +25,10 @@ Limer Green: #67E593;
 	.navbar-toggle {
 		margin-left:20px;
 	}
+
+	div.googlechart {
+		width:300px;
+	}
 }
 
 
@@ -34,6 +38,14 @@ Limer Green: #67E593;
 	div.container.navigation.main {
 		width:100%;
 		padding-right:5%;
+	}
+
+	div.container.reportingtable {
+		width:92%;
+	}
+
+	div.container.reportinggraphs {
+		width:90%;
 	}
 }
 
@@ -59,7 +71,6 @@ div.container.page {
 	border:none;
 	display:block;
 }
-
 
 
 .btn-sm {
@@ -669,6 +680,26 @@ th.text-left.sorting {
 	color:#fff;
 }
 
+th.text-left.reporting.sorting {
+	background-color:#636B6F;
+	color:#fff;
+	font-size:90%;
+}
+
+th.text-left.reporting.sorting_asc {
+
+	font-size:90%;
+}
+
+th.text-left.reporting.sorting_desc {
+
+	font-size:90%;
+}
+
+td.text-left.reporting {
+	font-size:80%;
+}
+
 table.table.table-striped.dashboardtable {
 	
 	background-color:#fff;
@@ -984,6 +1015,7 @@ a.itemsrow {
     font-size: 36px;
     text-align:right;
 }
+
 
 
 
