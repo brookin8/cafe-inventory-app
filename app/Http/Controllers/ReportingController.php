@@ -128,7 +128,7 @@ class ReportingController extends Controller
         return view('reporting.index',compact('thisweek','lastweek','items','categories','suppliers','demand','demanddates','demanddatesdesc','demand2','itemstores','tenweek','fiveweek','lastweekdata'));
     }
 
-    public function spend() {
+    public function spend(Request $request) {
         $thisweek = Carbon::today()->startOfWeek();
         $lastweek = Carbon::today()->startOfWeek()->subDays(7);
         $today = Carbon::today();
@@ -150,15 +150,19 @@ class ReportingController extends Controller
             ->orderBy('items_spend.week')
             ->get();
 
-        $spend2 = \DB::table('items_spend')
-            ->join('items','items.id','=','items_spend.item_id')
-            ->join('categories','items.category_id','=','categories.id')
-            ->join('suppliers','items.supplier_id','=','suppliers.id')
-            ->join('stores','items_spend.store_id','=','stores.id')
-            ->select('items_spend.week','items_spend.item_id','items.name as name','categories.name as category','items_spend.spend','suppliers.name as supplier','stores.name as store')
-            ->where('items_spend.store_id','=',\Auth::user()->store_id)
-            ->orderBy('items_spend.week')
-            ->get();
+        if($request->session()->exists('spendfilter')) {
+            $spend2 = $request->session()->pull('spendfilter');
+        } else {
+            $spend2 = \DB::table('items_spend')
+                ->join('items','items.id','=','items_spend.item_id')
+                ->join('categories','items.category_id','=','categories.id')
+                ->join('suppliers','items.supplier_id','=','suppliers.id')
+                ->join('stores','items_spend.store_id','=','stores.id')
+                ->select('items_spend.week','items_spend.item_id','items.name as name','categories.name as category','items_spend.spend','suppliers.name as supplier','stores.name as store')
+                ->where('items_spend.store_id','=',\Auth::user()->store_id)
+                ->orderBy('items_spend.week')
+                ->get();
+        }
 
         $itemstores = \DB::table('items_stores')
             ->join('items','items.id','=','items_stores.item_id')
@@ -202,7 +206,7 @@ class ReportingController extends Controller
             $lastweekdata[$lastweekspends->item_id] = $lastweekspends->spend;
         }
 
-        error_log('last week data: '. print_r($lastweekdata,true));
+        //error_log('last week data: '. print_r($lastweekdata,true));
 
         foreach($spend as $spends) {
 
@@ -247,16 +251,40 @@ class ReportingController extends Controller
             ->orderBy('items_demand.week')
             ->get();
 
-        error_log($demand2);
+        //error_log($demand2);
 
         $request->session()->put('demandfilter', $demand2);
       
-        return redirect('../reporting');
+        return redirect('../reporting/spend');
     }
 
     public function spendfilter(Request $request) {
-       $startdate = request('startdate');
-        $enddate = request('enddate');
+    $startdate = Carbon::parse(request('startdate'));
+        error_log('startdate: ' . $startdate);
+        error_log('type: ' . gettype($startdate));
+    $enddate = Carbon::parse(request('enddate'));
+        error_log('enddate: ' . $enddate);
+        error_log('type: ' . gettype($enddate));
+
+        $spend2 = \DB::table('items_spend')
+            ->join('items','items.id','=','items_spend.item_id')
+            ->join('categories','items.category_id','=','categories.id')
+            ->join('suppliers','items.supplier_id','=','suppliers.id')
+            ->join('stores','items_spend.store_id','=','stores.id')
+            ->select('items_spend.week','items_spend.item_id','items.name as name','categories.name as category','items_spend.spend','suppliers.name as supplier','stores.name as store')
+            ->where([
+                ['items_spend.store_id','=',\Auth::user()->store_id],
+                ['items_spend.week','>=',$startdate],
+                ['items_spend.week','<=',$enddate]
+            ])
+            ->orderBy('items_spend.week')
+            ->get();
+
+        error_log('Spend2: '.$spend2);
+
+        $request->session()->put('spendfilter', $spend2);
+      
+        return redirect('../reporting/spend');
     }
     /**
      * Show the form for creating a new resource.
