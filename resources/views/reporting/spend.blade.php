@@ -43,24 +43,31 @@
 						</form>
 					</div>
 				</div>
+
+				 <script>
+					  $( function() {
+					    $( "#datepicker1" ).datepicker({
+					    	dateFormat: "yy-mm-dd"
+					    });
+					  } );
+
+					   $( function() {
+					    $( "#datepicker2" ).datepicker({
+					    	dateFormat: "yy-mm-dd"
+					    });
+					  } );
+				</script>
+
 				<div class="row ml-5 mr-3">	
 				   <div id="dashboard_div">
 				     <div class="row mt-3">
 				      	<div id="selectdiv" class="ml-3">
 				      		Start Date: 
-							<select id="spendstart" onchange="startselect(this.value)">
-								@foreach($spenddates as $spenddate)
-								<option value="{{$spenddate}}">{{$spenddate}}</option>
-								@endforeach
-							</select>
+							<input type="text" id="datepicker1" onchange="startselect(this.value)">
 						</div>
 						<div id="selectdiv" class="ml-3">
 				      		End Date: 
-							<select id="spendend" onchange="endselect(this.value)">
-								@foreach($spenddatesdesc as $spenddatedesc)
-								<option value="{{$spenddatedesc}}">{{$spenddatedesc}}</option>
-								@endforeach
-							</select>
+							<input type="text" id="datepicker2" onchange="endselect2(this.value)">
 						</div>
 					</div>
 					<div class="row mt-3">

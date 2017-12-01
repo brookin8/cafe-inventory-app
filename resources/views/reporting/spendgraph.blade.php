@@ -22,6 +22,7 @@ function drawStuff() {
       var dates= [];
       var rows = [];
 
+
       var data = new google.visualization.DataTable();
 		data.addColumn('date', 'Week');
 
@@ -70,7 +71,11 @@ function drawStuff() {
 
       data.addRows(rows);
 
-      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+      var totalcolumn = data.getNumberOfColumns()-2;
+      console.log(totalcolumn);
+      // console.log('getcolumnlabel: '+ data.getColumnLabel(183));
+
+      var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
       var options = {
       	width: 875,
          height: 325,
@@ -80,8 +85,19 @@ function drawStuff() {
            	 gridlines: {count: 5}
            },
          tooltip: { trigger: 'selection' },
-         pointSize: 10
+         isStacked:true,
+         seriesType: 'bars',
+         series: '',
+         is3D: true,
+         animation:{
+           duration: 1000,
+           easing: 'out'
+      },
       };
+
+      myObj = {};
+      myObj[totalcolumn] = {type : "line"};
+      options.series = myObj;
 
       chart.draw(data, options);
 
@@ -122,19 +138,22 @@ function categoryselect(category) {
 	      	}
 		} else if(startdate != '' && enddate === '') {
 			for (var i = 0; i < spend.length; i++) {
-				if(!dates.includes(spend[i].week) && spend[i].week >= startdate) { 
+            var dateconversion = new Date(spend[i].week);
+				if(!dates.includes(spend[i].week) && dateconversion >= startdate) { 
 		      		dates.push(spend[i].week);
 		      	}
 		    }
 		} else if(startdate === '' && enddate != '') {
 			for (var i = 0; i < spend.length; i++) {
-				if(!dates.includes(spend[i].week) && spend[i].week <= enddate) { 
+            var dateconversion = new Date(spend[i].week);
+				if(!dates.includes(spend[i].week) && dateconversion <= enddate) { 
 		      		dates.push(spend[i].week);
 		      	}
 		    }
 		} else if(startdate != '' && enddate != '') {
 			for (var i = 0; i < spend.length; i++) {
-				if(!dates.includes(spend[i].week) && spend[i].week <= enddate && spend[i].week >= startdate) { 
+            var dateconversion = new Date(spend[i].week);
+				if(!dates.includes(spend[i].week) && dateconversion <= enddate && dateconversion >= startdate) { 
 		      		dates.push(spend[i].week);
 		      	}
 		    }
@@ -178,7 +197,7 @@ function categoryselect(category) {
             for(var k=0;k<spend.length;k++) {
                if(spend[k].week === dates[i] && spend[k].name === headers[j]) {
                   pushing.push(Number(spend[k].spend));
-                   total += Number(spend[k].spend);
+                  total += Number(spend[k].spend);
                   found = true;
                }
             }
@@ -199,8 +218,9 @@ function categoryselect(category) {
 
       data.addRows(rows);
 
+     var totalcolumn = data.getNumberOfColumns()-2;
     
-       var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+      var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
       var options = {
          width: 875,
          height: 325,
@@ -210,8 +230,20 @@ function categoryselect(category) {
            	 gridlines: {count: 5}
            },
          tooltip: { trigger: 'selection' },
-         pointSize: 10
+         seriesType: 'bars',
+         isStacked:true,
+         series: '',
+          is3D: true,
+         animation:{
+           duration: 600,
+           easing: 'out',
+           startup: true
+        }
       };
+
+      myObj = {};
+      myObj[totalcolumn] = {type : "line"};
+      options.series = myObj;
 
       chart.draw(data, options);
 
@@ -249,19 +281,22 @@ function supplierselect(supplier) {
 	      	}
 		} else if(startdate != '' && enddate === '') {
 			for (var i = 0; i < spend.length; i++) {
-				if(!dates.includes(spend[i].week) && spend[i].week >= startdate) { 
+            var dateconversion = new Date(spend[i].week);
+				if(!dates.includes(spend[i].week) && dateconversion >= startdate) { 
 		      		dates.push(spend[i].week);
 		      	}
 		    }
 		} else if(startdate === '' && enddate != '') {
 			for (var i = 0; i < spend.length; i++) {
-				if(!dates.includes(spend[i].week) && spend[i].week <= enddate) { 
+            var dateconversion = new Date(spend[i].week);
+				if(!dates.includes(spend[i].week) && dateconversion <= enddate) { 
 		      		dates.push(spend[i].week);
 		      	}
 		    }
 		} else if(startdate != '' && enddate != '') {
 			for (var i = 0; i < spend.length; i++) {
-				if(!dates.includes(spend[i].week) && spend[i].week <= enddate && spend[i].week >= startdate) { 
+            var dateconversion = new Date(spend[i].week);
+				if(!dates.includes(spend[i].week) && dateconversion <= enddate && dateconversion >= startdate) { 
 		      		dates.push(spend[i].week);
 		      	}
 		    }
@@ -326,8 +361,9 @@ function supplierselect(supplier) {
 
       data.addRows(rows);
 
+      var totalcolumn = data.getNumberOfColumns()-2;
     
-       var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+      var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
       var options = {
          width: 875,
          height: 325,
@@ -337,8 +373,19 @@ function supplierselect(supplier) {
            	 gridlines: {count: 5}
            },
          tooltip: { trigger: 'selection' },
-         pointSize: 10
+         seriesType: 'bars',
+         isStacked:true,
+          series: '',
+          animation:{
+           duration: 600,
+           easing: 'out',
+           startup: true
+        }
       };
+
+      myObj = {};
+      myObj[totalcolumn] = {type : "line"};
+      options.series = myObj;
 
       chart.draw(data, options);
 
@@ -352,8 +399,8 @@ function supplierselect(supplier) {
       var dates= [];
       var rows = [];
       var itemsselected = [];
-      chosedate = start;
-      startdate = start;
+      chosedate = new Date(start);
+      startdate = chosedate;
 
     console.log('chosedate: ' + chosedate);
     console.log('startdate: ' + startdate);
@@ -365,7 +412,8 @@ function supplierselect(supplier) {
 		if(enddate === '') {
 			console.log('enddate is blank');
 			for (var i = 0; i < spend.length; i++) {
-				if(!dates.includes(spend[i].week) && spend[i].week >= chosedate) { 
+            var dateconversion = new Date(spend[i].week);
+				if(!dates.includes(spend[i].week) && dateconversion >= chosedate) { 
 		      		dates.push(spend[i].week);
 		      		console.log(spend[i].week);
 		      	}
@@ -373,7 +421,8 @@ function supplierselect(supplier) {
 		} else if(enddate != '') {
 			console.log('endate is selected');
 			for (var i = 0; i < spend.length; i++) {
-				if(!dates.includes(spend[i].week) && spend[i].week <= enddate && spend[i].week >= chosedate) { 
+            var dateconversion = new Date(spend[i].week);
+				if(!dates.includes(spend[i].week) && dateconversion <= enddate && dateconversion >= chosedate) { 
 		      		dates.push(spend[i].week);
 		      	}
 		    }
@@ -442,8 +491,9 @@ function supplierselect(supplier) {
 
       data.addRows(rows);
 
+      var totalcolumn = data.getNumberOfColumns()-2;
     
-      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+      var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
       var options = {
          width: 875,
          height: 325,
@@ -453,8 +503,21 @@ function supplierselect(supplier) {
            	 gridlines: {count: 5}
            },
          tooltip: { trigger: 'selection' },
-         pointSize: 10
+         pointSize: 10,
+         seriesType: 'bars',
+         isStacked:true,
+         series: '',
+         is3D: true,
+         animation:{
+           duration: 600,
+           easing: 'out',
+           startup: true
+        }
       };
+
+      myObj = {};
+      myObj[totalcolumn] = {type : "line"};
+      options.series = myObj;
 
       chart.draw(data, options);
 
@@ -467,8 +530,8 @@ function endselect(end) {
       var dates= [];
       var rows = [];
       var itemsselected = [];
-      chosedate = end;
-      enddate = end;
+      chosedate = new Date(end);
+      enddate = chosedate;
       // var startdate = Date(startdate);
 
       var data = new google.visualization.DataTable();
@@ -476,13 +539,15 @@ function endselect(end) {
 
 		if(startdate === '') {
 			for (var i = 0; i < spend.length; i++) {
-				if(!dates.includes(spend[i].week) && spend[i].week <= chosedate) { 
+            var dateconversion = new Date(spend[i].week);
+				if(!dates.includes(spend[i].week) && dateconversion <= chosedate) { 
 		      		dates.push(spend[i].week);
 		      	}
 		    }
 		} else if(startdate != '') {
 			for (var i = 0; i < spend.length; i++) {
-				if(!dates.includes(spend[i].week) && spend[i].week >= startdate && spend[i].week <= chosedate) { 
+            var dateconversion = new Date(spend[i].week);
+				if(!dates.includes(spend[i].week) && dateconversion >= startdate && dateconversion <= chosedate) { 
 		      		dates.push(spend[i].week);
 		      	}
 		    }
@@ -554,8 +619,9 @@ function endselect(end) {
 
       data.addRows(rows);
 
-    
-      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+      var totalcolumn = data.getNumberOfColumns()-2;
+
+      var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
       var options = {
       	width: 875,
          height: 325,
@@ -565,8 +631,20 @@ function endselect(end) {
            	 gridlines: {count: 5}
            },
          tooltip: { trigger: 'selection' },
-         pointSize: 10
+         pointSize: 10,
+         seriesType: 'bars',
+         isStacked:true,
+          series: '',
+         animation:{
+           duration: 600,
+           easing: 'out',
+           startup: true
+        }
       };
+
+      myObj = {};
+      myObj[totalcolumn] = {type : "line"};
+      options.series = myObj;
 
       chart.draw(data, options);
 

@@ -2,6 +2,7 @@
 
 @section('content')
 
+ 
 <div id="loader"></div>
 
 <div style="display:none;" id="loaderDiv">
@@ -42,24 +43,43 @@
 						</form>
 					</div>
 				</div>
+				
+				 <script>
+					  $( function() {
+					    $( "#datepicker1" ).datepicker({
+					    	dateFormat: "yy-mm-dd"
+					    });
+					  } );
+
+					   $( function() {
+					    $( "#datepicker2" ).datepicker({
+					    	dateFormat: "yy-mm-dd"
+					    });
+					  } );
+
+					    $( function() {
+					    $( "#datepicker3" ).datepicker({
+					    	dateFormat: "yy-mm-dd"
+					    });
+					  } );
+
+					   $( function() {
+					    $( "#datepicker4" ).datepicker({
+					    	dateFormat: "yy-mm-dd"
+					    });
+					  } );
+				</script>
+
 					<div class="row ml-5 mr-3">	
 						 <div id="dashboard_div2">
 					     <div class="row mt-3">
 					      	<div id="selectdiv" class="ml-3 mb-2">
 					      		Start Date: 
-								<select id="demandstart2" onchange="startselect2(this.value)">
-									@foreach($demanddates as $demanddate)
-									<option value="{{$demanddate}}">{{$demanddate}}</option>
-									@endforeach
-								</select>
+								<input type="text" id="datepicker1" onchange="startselect2(this.value)">
 							</div>
 							<div id="selectdiv" class="ml-3">
 					      		End Date: 
-								<select id="demandend2" onchange="endselect2(this.value)">
-									@foreach($demanddatesdesc as $demanddatedesc)
-									<option value="{{$demanddatedesc}}">{{$demanddatedesc}}</option>
-									@endforeach
-								</select>
+								<input type="text" id="datepicker2" onchange="endselect2(this.value)">
 							</div>
 						</div>
 						<div class="row mt-3">
@@ -185,6 +205,10 @@
             		<div class="col text-left">
             			Detail	
             		</div>
+            		<div class="col">
+            			<input type="text" id="datepicker3" onchange="startselect2(this.value)">
+            			<input type="text" id="datepicker4" onchange="startselect2(this.value)">
+            		</div>
             	</div>
 			</div>
 			<div class="panel-body">
@@ -298,6 +322,9 @@ $(document).ready(function() {
 
     table.buttons().container()
 	.appendTo( $('.col-sm-6:eq(0)', table.table().container() ) );
+
 } );
+
+
 </script>
 @endsection

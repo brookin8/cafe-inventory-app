@@ -37,8 +37,8 @@ function drawStuff2() {
       	data.addColumn('number', items[i].name);
       }
 
-      //TOTALS
-      data.addColumn('number','Total');
+      
+      // data.addColumn('number','Total');
 
       for(var i=0; i<dates.length; i++) {
          var total = 0;
@@ -61,7 +61,7 @@ function drawStuff2() {
       		}
       		
       	}
-      	pushing.push(total);
+      	//pushing.push(total);
       	rows.push(pushing);
       	pushing = [];
          total=0;
@@ -69,8 +69,11 @@ function drawStuff2() {
 
       data.addRows(rows);
 
-      var chart = new google.visualization.LineChart(document.getElementById('chart_div2'));
+      var chart = new google.visualization.ColumnChart(document.getElementById('chart_div2'));
+
+
       var options = {
+         isStacked: true,
       	width: 875,
          height: 325,
       	legend: {position:'right'},
@@ -79,11 +82,15 @@ function drawStuff2() {
            	 gridlines: {count: 5}
            },
          tooltip: { trigger: 'selection' },
-         pointSize: 10
+         // pointSize: 7
+         animation:{
+           duration: 600,
+           easing: 'out',
+           startup: true
+        }
       };
 
       chart.draw(data, options);
-
 
    }
 // IF CATEGORY SELECTED
@@ -120,19 +127,22 @@ function categoryselect2(category) {
 	      	}
 		} else if(startdate2 != '' && enddate2 === '') {
 			for (var i = 0; i < demand.length; i++) {
-				if(!dates.includes(demand[i].week) && demand[i].week >= startdate2) { 
+            var dateconversion = new Date(demand[i].week);
+				if(!dates.includes(demand[i].week) && dateconversion >= startdate2) { 
 		      		dates.push(demand[i].week);
 		      	}
 		    }
 		} else if(startdate2 === '' && enddate2 != '') {
 			for (var i = 0; i < demand.length; i++) {
-				if(!dates.includes(demand[i].week) && demand[i].week <= enddate2) { 
+            var dateconversion = new Date(demand[i].week);
+				if(!dates.includes(demand[i].week) && dateconversion <= enddate2) { 
 		      		dates.push(demand[i].week);
 		      	}
 		    }
 		} else if(startdate2 != '' && enddate2 != '') {
 			for (var i = 0; i < demand.length; i++) {
-				if(!dates.includes(demand[i].week) && demand[i].week <= enddate2 && demand[i].week >= startdate2) { 
+            var dateconversion = new Date(demand[i].week);
+				if(!dates.includes(demand[i].week) && dateconversion <= enddate2 && dateconversion >= startdate2) { 
 		      		dates.push(demand[i].week);
 		      	}
 		    }
@@ -164,8 +174,10 @@ function categoryselect2(category) {
       }
             // rows.push(headers);
 
-      data.addColumn('number','Total');
-
+      if(!itemsselected[0]) {
+          data.addColumn('number','Total');
+      }
+     
       for(var i=0; i<dates.length; i++) {
          var total = 0;
          var pushing = [];
@@ -187,7 +199,9 @@ function categoryselect2(category) {
             }
             
          }
-         pushing.push(total);
+         if(!itemsselected[0]) {
+            pushing.push(total);
+         }
          rows.push(pushing);
          pushing = [];
          total=0;
@@ -196,8 +210,9 @@ function categoryselect2(category) {
       data.addRows(rows);
 
     
-      var chart = new google.visualization.LineChart(document.getElementById('chart_div2'));
+      var chart = new google.visualization.ColumnChart(document.getElementById('chart_div2'));
       var options = {
+         isStacked: true,
          width: 875,
          height: 325,
          legend: {position:'right'},
@@ -206,7 +221,12 @@ function categoryselect2(category) {
            	 gridlines: {count: 5}
            },
          tooltip: { trigger: 'selection' },
-         pointSize: 10
+         animation:{
+           duration: 600,
+           easing: 'out',
+           startup: true
+        }
+         // pointSize: 10
       };
 
       chart.draw(data, options);
@@ -245,19 +265,22 @@ function supplierselect2(supplier) {
 	      	}
 		} else if(startdate2 != '' && enddate2 === '') {
 			for (var i = 0; i < demand.length; i++) {
-				if(!dates.includes(demand[i].week) && demand[i].week >= startdate2) { 
+            var dateconversion = new Date(demand[i].week);
+				if(!dates.includes(demand[i].week) && dateconversion >= startdate2) { 
 		      		dates.push(demand[i].week);
 		      	}
 		    }
 		} else if(startdate2 === '' && enddate2 != '') {
 			for (var i = 0; i < demand.length; i++) {
-				if(!dates.includes(demand[i].week) && demand[i].week <= enddate2) { 
+            var dateconversion = new Date(demand[i].week);
+				if(!dates.includes(demand[i].week) && dateconversion <= enddate2) { 
 		      		dates.push(demand[i].week);
 		      	}
 		    }
 		} else if(startdate2 != '' && enddate2 != '') {
 			for (var i = 0; i < demand.length; i++) {
-				if(!dates.includes(demand[i].week) && demand[i].week <= enddate2 && demand[i].week >= startdate2) { 
+            var dateconversion = new Date(demand[i].week);
+				if(!dates.includes(demand[i].week) && dateconversion <= enddate2 && dateconversion >= startdate2) { 
 		      		dates.push(demand[i].week);
 		      	}
 		    }
@@ -290,8 +313,9 @@ function supplierselect2(supplier) {
 	      }
 
           //console.log(itemsselected); 
-
-      data.addColumn('number','Total');
+      if(!itemsselected[0]) {
+         data.addColumn('number','Total');
+      }
 
       for(var i=0; i<dates.length; i++) {
          var total = 0;
@@ -314,7 +338,9 @@ function supplierselect2(supplier) {
             }
             
          }
-         pushing.push(total);
+         if(!itemsselected[0]) {
+            pushing.push(total);
+         }
          rows.push(pushing);
          pushing = [];
          total=0;
@@ -323,8 +349,9 @@ function supplierselect2(supplier) {
       data.addRows(rows);
 
     
-      var chart = new google.visualization.LineChart(document.getElementById('chart_div2'));
+      var chart = new google.visualization.ColumnChart(document.getElementById('chart_div2'));
       var options = {
+         isStacked: true,
          width: 875,
          height: 325,
          legend: {position:'right'},
@@ -333,7 +360,12 @@ function supplierselect2(supplier) {
            	 gridlines: {count: 5}
            },
          tooltip: { trigger: 'selection' },
-         pointSize: 10
+         animation:{
+           duration: 600,
+           easing: 'out',
+           startup: true
+        }
+         // pointSize: 10
       };
 
       chart.draw(data, options);
@@ -343,13 +375,14 @@ function supplierselect2(supplier) {
 
   function startselect2(start) {
   	console.log('start: ' + start);
+   console.log('start datatype: ' + typeof start);
 
       var headers = ['Week'];
       var dates= [];
       var rows = [];
       var itemsselected = [];
-      chosedate = start;
-      startdate2 = start;
+      chosedate = new Date(start);
+      startdate2 = chosedate;
 
     console.log('chosedate: ' + chosedate);
     console.log('startdate2: ' + startdate2);
@@ -361,15 +394,18 @@ function supplierselect2(supplier) {
 		if(enddate2 === '') {
 			//console.log('enddate is blank');
 			for (var i = 0; i < demand.length; i++) {
-				if(!dates.includes(demand[i].week) && demand[i].week >= chosedate) { 
+            var dateconversion = new Date(demand[i].week);
+				if(!dates.includes(demand[i].week) && dateconversion >= chosedate) { 
 		      		dates.push(demand[i].week);
 		      		console.log(demand[i].week);
+                  console.log(typeof demand[i].week);
 		      	}
 		    }
 		} else if(enddate2 != '') {
 			//console.log('endate is selected');
 			for (var i = 0; i < demand.length; i++) {
-				if(!dates.includes(demand[i].week) && demand[i].week <= enddate2 && demand[i].week >= chosedate) { 
+            var dateconversion = new Date(demand[i].week);
+				if(!dates.includes(demand[i].week) && dateconversion <= enddate2 && dateconversion >= chosedate) { 
 		      		dates.push(demand[i].week);
 		      	}
 		    }
@@ -404,9 +440,10 @@ function supplierselect2(supplier) {
       	headers.push(itemsselected[i]);
       	data.addColumn('number', itemsselected[i]);
       }
-          
-   data.addColumn('number','Total');
-
+   
+   if(!itemsselected[0]) {       
+      data.addColumn('number','Total');
+   }
       for(var i=0; i<dates.length; i++) {
          var total = 0;
          var pushing = [];
@@ -428,7 +465,9 @@ function supplierselect2(supplier) {
             }
             
          }
-         pushing.push(total);
+         if(!itemsselected[0]) {
+            pushing.push(total);
+         }
          rows.push(pushing);
          pushing = [];
          total=0;
@@ -437,8 +476,9 @@ function supplierselect2(supplier) {
       data.addRows(rows);
 
     
-      var chart = new google.visualization.LineChart(document.getElementById('chart_div2'));
+      var chart = new google.visualization.ColumnChart(document.getElementById('chart_div2'));
       var options = {
+         isStacked: true,
          width: 875,
          height: 325,
          legend: {position:'right'},
@@ -447,11 +487,20 @@ function supplierselect2(supplier) {
            	 gridlines: {count: 5}
            },
          tooltip: { trigger: 'selection' },
-         pointSize: 10
+         animation:{
+           duration: 600,
+           easing: 'out',
+           startup: true
+        }
+         // pointSize: 10
       };
 
       chart.draw(data, options);
 
+
+      // google.visualization.events.addListener(chart, 'onmouseout', function(entry) {
+      //    chart.setSelection([]);
+      // }); 
 
    }
 
@@ -461,8 +510,8 @@ function endselect2(end) {
       var dates= [];
       var rows = [];
       var itemsselected = [];
-      chosedate = end;
-      enddate2 = end;
+      chosedate = new Date(end);
+      enddate2 = chosedate;
       // var startdate = Date(startdate);
 
       var data = new google.visualization.DataTable();
@@ -470,13 +519,15 @@ function endselect2(end) {
 
 		if(startdate2 === '') {
 			for (var i = 0; i < demand.length; i++) {
-				if(!dates.includes(demand[i].week) && demand[i].week <= chosedate) { 
+            var dateconversion = new Date(demand[i].week);
+				if(!dates.includes(demand[i].week) && dateconversion <= chosedate) { 
 		      		dates.push(demand[i].week);
 		      	}
 		    }
 		} else if(startdate2 != '') {
 			for (var i = 0; i < demand.length; i++) {
-				if(!dates.includes(demand[i].week) && demand[i].week >= startdate2 && demand[i].week <= chosedate) { 
+            var dateconversion = new Date(demand[i].week);
+				if(!dates.includes(demand[i].week) && dateconversion >= startdate2 && dateconversion <= chosedate) { 
 		      		dates.push(demand[i].week);
 		      	}
 		    }
@@ -514,8 +565,9 @@ function endselect2(end) {
 	      	data.addColumn('number', itemsselected[i]);
 	      }
             
-
-      data.addColumn('number','Total');
+      if(!itemsselected[0]) {
+         data.addColumn('number','Total');
+      }
 
       for(var i=0; i<dates.length; i++) {
          var total = 0;
@@ -538,7 +590,9 @@ function endselect2(end) {
             }
             
          }
-         pushing.push(total);
+         if(!itemsselected[0]) {
+            pushing.push(total);
+         }
          rows.push(pushing);
          pushing = [];
          total=0;
@@ -547,8 +601,10 @@ function endselect2(end) {
       data.addRows(rows);
 
     
-      var chart = new google.visualization.LineChart(document.getElementById('chart_div2'));
+      var chart = new google.visualization.ColumnChart(document.getElementById('chart_div2'));
+
       var options = {
+         isStacked: true,
          width: 875,
          height: 325,
          legend: {position:'right'},
@@ -557,7 +613,12 @@ function endselect2(end) {
            	 gridlines: {count: 5}
            },
          tooltip: { trigger: 'selection' },
-         pointSize: 10
+         animation:{
+           duration: 600,
+           easing: 'out',
+           startup: true
+        }
+         // pointSize: 10
       };
 
       chart.draw(data, options);
