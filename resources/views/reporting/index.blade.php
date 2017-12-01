@@ -24,7 +24,7 @@
 								    <a class="nav-link tabs active reportingtabs" href="#">Demand</a>
 								  </li>
 								  <li class="nav-item">
-								    <a class="nav-link tabs reportingtabs" href="../reporting/demand">demand</a>
+								    <a class="nav-link tabs reportingtabs" href="../reporting/spend">Spend</a>
 								  </li>
 							</ul>
 						</div>
@@ -104,7 +104,7 @@
 
 			<div class="row ml-5 mr-3">
 				<div class="table-responsive">
-					<table class="table tableborder table-striped table-hover ml-3" width="98%" id="table">
+					<table class="table tableborder table-striped table-hover ml-3 nowrap" width="98%" id="table">
 						<thead>
 							<tr>
 								<th class="text-left reporting">Store</th>
@@ -112,9 +112,11 @@
 								<th class="text-left reporting">Name</th>
 								<th class="text-left reporting">Category</th>
 								<th class="text-left reporting">Supplier</th>
-								<th class="text-left reporting">{{Carbon\Carbon::parse($lastweek)->format('m/d/Y')}}</th>
-								<th class="text-left reporting">5 Week</th>
-								<th class="text-left reporting">10 Week</th>
+								<th class="text-left reporting">UOM</th>
+								<th class="text-left reporting">PARs</th>
+								<th class="text-left reporting">Prev Wk</th>
+								<th class="text-left reporting">5 Wk</th>
+								<th class="text-left reporting">10 Wk</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -125,13 +127,17 @@
 								<td class="text-left reporting">{{$itemstore->name}}</td>
 								<td class="text-left reporting">{{$itemstore->category}}</td>
 								<td class="text-left reporting">{{$itemstore->supplier}}</td>
-								
-								@foreach($demand2 as $demands2)
-									@if($demands2->item_id === $itemstore->item_id && Carbon\Carbon::parse($demands2->week)->format('m/d/Y') === $lastweek)
-										<td class="text left reporting">{{$demands2->demand}}</td>
-									@endif
-								@endforeach
-								<td class="text-left reporting">{{$demands2->demand}}</td>
+								<td class="text-left reporting">{{$itemstore->uom}}</td>
+								<td class="text-left reporting">{{$itemstore->PARs}}</td>
+								@if(array_key_exists($itemstore->item_id,$lastweekdata))
+									@foreach($lastweekdata as $key=>$value)
+										@if($key === $itemstore->item_id)
+											<td class="text-left reporting">{{$value}}</td>
+										@endif
+									@endforeach
+								@else
+									<td class="text-left reporting">0</td>
+								@endif
 								@if(array_key_exists($itemstore->item_id,$fiveweek))
 									@foreach($fiveweek as $key=>$value)
 										@if($key === $itemstore->item_id)

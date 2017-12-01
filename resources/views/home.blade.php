@@ -21,35 +21,22 @@
                                 <div class="card-header">
                                     Top 5 Items - Demand
                                 </div>
-                                <div class="card-block" id="demandblock">
-                                  <div class="table-responsive" style="overflow:auto;">
+                                <div class="card-block" id="demandblock" style="overflow:auto;">
+                                  <div class="table-responsive">
                                      <table class="table" id="demandblocktable">
+                                            <thead>
+                                                <th class="text-left borderless">Item</th>
+                                                <th class="text-left borderless">UOM</th>
+                                                <th class="text-left borderless">Demand</th>    
+                                            </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td class="text-left">1</td>
-                                                    <td class="text-left">Milk</td>
-                                                    <td class="text-left">50</td>
+                                            @foreach($top5 as $top5s)
+                                                <tr style="border:none">
+                                                    <td class="text-left borderless">{{$top5s->name}}</td>
+                                                    <td class="text-left borderless">{{$top5s->uom}}</td>
+                                                    <td class="text-left borderless">{{$top5s->demand}}</td>
                                                 </tr>
-                                                <tr>
-                                                    <td class="text-left">2</td>
-                                                    <td class="text-left">Flour</td>
-                                                    <td class="text-left">12</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-left">3</td>
-                                                    <td class="text-left">Vanilla Syrup</td>
-                                                    <td class="text-left">9</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-left">4</td>
-                                                    <td class="text-left">Powdered Sugar</td>
-                                                    <td class="text-left">7</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-left">5</td>
-                                                    <td class="text-left">Vanilla Extract</td>
-                                                    <td class="text-left">6</td>
-                                                </tr>
+                                            @endforeach
                                             </tbody>
                                         </table>
                                     </div>
@@ -65,7 +52,7 @@
                                 Total Spend This Month
                             </div>
                             <div class="card-block" id="spendblock">
-                                <div class="cardblocktext align-middle">$450.00</div>
+                                <div class="cardblocktext align-middle">${{number_format($PTD)}}</div>
                             </div>
                             <div class="card-footer">
                             </div>
@@ -85,31 +72,17 @@
                                         <table class="table" id="notcountedtable">
                                             <thead>
                                                 <tr>
-                                                    <th class="text-left">Item</th>
-                                                    <th class="text-left">Last Count Date</th>
+                                                    <th class="text-left borderless">Item</th>
+                                                    <th class="text-left borderless">Last Count</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                @foreach($notcounted as $key=>$value)
                                                 <tr>
-                                                    <td class="text-left">Urnex</td>
-                                                    <td class="text-left">10/30/2017</td>
+                                                    <td class="text-left">{{$key}}</td>
+                                                    <td class="text-left">{{$value}}</td>
                                                 </tr>
-                                                <tr>
-                                                    <td class="text-left">Grindz</td>
-                                                    <td class="text-left">10/30/2017</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-left">M&M Topping</td>
-                                                    <td class="text-left">10/26/2017</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-left">Band Aids</td>
-                                                    <td class="text-left">10/20/2017</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-left">Hand Soap</td>
-                                                    <td class="text-left">10/20/2017</td>
-                                                </tr>
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>
@@ -129,22 +102,29 @@
                                         <table class="table" id="dueordertable">
                                         <thead>
                                             <tr>
-                                                <th class="text-left">Order</th>
-                                                <th class="text-left">Supplier</th>
-                                                <th class="text-left">Due</th>
+                                                <th class="text-left borderless">Order</th>
+                                                <th class="text-left borderless">Supplier</th>
+                                                <th class="text-left borderless">Due</th>
+                                                <th class="text-left borderless">Invoice</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td class="text-center">2</td>
-                                                <td class="text-left">Barista Pro</td>
-                                                <td class="text-left">11/23/2017</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-center">3</td>
-                                                <td class="text-left">Baumann</td>
-                                                <td class="text-left">11/23/2017</td>
-                                            </tr>
+                                            @foreach($orders as $order)
+                                                <tr>
+                                                    <td class="text-left">{{$order->id}}</td>
+                                                    <td class="text-left">{{$order->supplier}}</td>
+                                                    <td class="text-left">{{$order->expected_delivery_date}}</td>
+                                                    <td>
+                                                        <form action="../invoices/create" method="post">
+                                                            {{ csrf_field() }}
+                                                            <button class="invoiceButton2 btn btn-sm btn-secondary" data-info="" type="submit">
+                                                            <input type="hidden" name="order" value="{{$order->id}}">
+                                                                Invoice
+                                                            </button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>

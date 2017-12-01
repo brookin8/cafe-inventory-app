@@ -21,8 +21,8 @@
                 			<a href="../../inventorycounts">
 								<button type="button" class="btn btn-default mr-3">Discard</button>
 							</a>
-							<button type="submit" value="save" name="button" class="btn btn-primary mr-3">Save</button>
-							<button type="submit" value="submit" name="button" class="btn btn-primary">Submit</button>
+							<button type="submit" value="save" name="button" class="btn btn-outline-primary newitem mr-3">Save</button>
+							<button type="submit" value="submit" name="button" class="btn btn-primary newitem">Submit</button>
 						</div>
                 	</div>
                 </div>

@@ -9,7 +9,23 @@
         </div>
         <div class="col-md-8">
             <div class="panel panel-default">
-                <div class="panel-heading">Edit User</div>
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col text-left">
+                        Edit User
+                        </div>
+                        <div class="col text-right">
+                        <a href="/users">
+                            <button type="button" class="btn btn-default">
+                                Discard
+                            </button>
+                        </a>
+                        <button type="submit" class="btn btn-primary newitem">
+                            Update
+                        </button>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="/users/{{$user->id}}">
@@ -60,19 +76,6 @@
                                         @endif
                                     @endforeach
                                 </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <a href="/users">
-                                    <button type="button" class="btn btn-primary">
-                                        Discard
-                                    </button>
-                                </a>
-                                <button type="submit" class="btn btn-primary">
-                                    Update
-                                </button>
                             </div>
                         </div>
                     </form>

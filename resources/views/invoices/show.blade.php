@@ -14,55 +14,71 @@
 							Invoice # {{$invoice->id}}
                 		</div>
                 		<div class="col text-right">
-                			<a href="../invoices" class="back ml-5 mt-5"><button class="btn btn-primary newcount">Back</button></a>
+                			<a href="../invoices" class="back ml-5 mt-3"><button class="btn btn-primary newcount">Back</button></a>
                 		</div>
                 	</div>
 				</div>
 
 				<div class="panel-body">
-
-				<div class="row mt-3 mb-4">
-				  	<div class="ml-5 mr-4"><strong class="mr-1">Invoice No:</strong> 
-				  		{{$invoice->id}}
+				
+				<div class="row mt-3 mb-4 ml-2">
+					<div class="col-2">
+					  	<h3 class="orderform">Invoice #:</h3> 
+				  		<div class="orderform">{{$invoice->id}}</div>
 				  	</div>
-				  	<div class="ml-4 mr-4"><strong class="mr-1">Order No:</strong> 
-				  		{{$invoice->order_id}}
+				  	<div class="col-2">
+					  	<h3 class="orderform">Order #:</h3> 
+				  		<div class="orderform">{{$invoice->order_id}}</div>
 				  	</div>
-				  	<div class="ml-4 mr-4"><strong class="mr-1">Supplier:</strong> 
-				  		{{$invoice->supplier->name}}
+				  	<div class="col-3">
+				  		<h3 class="orderform">Supplier:</h3> 
+				  		<div class="orderform">{{$invoice->supplier->name}}</div>
 				  	</div>
-				  	<div class="ml-4 mr-4"><strong class="mr-1">Submitted By:</strong> 
-				  		{{$invoice->user->name}}
+				  	<div class="col-4">
+				  		<h3 class="orderform">Submitted By:</h3> 
+				  		<div class="orderform">{{$invoice->user->name}}</div>
 				  	</div>
 				</div>
-				<div class="row mt-3 mb-5">
-				  	<div class="ml-4 mr-4"><strong class="mr-1">Total $ Amount:</strong> 
-				  		${{$invoice->total_invoice_amount}}
+				<div class="row mt-3 mb-4 ml-2">
+				  	<div class="col-3">
+				  		<h3 class="orderform">Total $:</h3> 
+				  		<div class="orderform">${{$invoice->total_invoice_amount}}</div>
 				  	</div>
-				  	<div class="ml-4 mr-4"><strong class="mr-1">Date Submitted:</strong> 
-				  		{{Carbon\Carbon::parse($invoice->updated_at)->format('m/d/Y')}}
+				  	<div class="col-4">
+				  		<h3 class="orderform">Date Submitted:</h3> 
+				  		<div class="orderform">{{Carbon\Carbon::parse($invoice->updated_at)->format('m/d/Y')}}</div>
 				  	</div>
 				  	
 				  	@if (is_null($invoice->order))
-				  		<div class="ml-4 mr-4"><strong class="mr-1">No Order Data</strong></div>
+				  		<div class="col-3">
+				  			<h3 class="ordershow">No Order Data</h3>
+				  		</div>
 				  	@else
 				  		@if($invoice->total_invoice_amount < $invoice->order->total_order_cost)
-				  		<div class="ml-4 mr-4"><strong class="mr-1">Delivery Short : ${{ $invoice->order->total_order_cost - $invoice->total_invoice_amount}}</strong></div> 
+				  		<div class="col-3">
+				  			<h3 class="ordershow">
+				  			Delivery Short : ${{ $invoice->order->total_order_cost - $invoice->total_invoice_amount}}</h3>
+				  		</div> 
 				  		@elseif($invoice->total_invoice_amount < $invoice->order->total_order_cost)
-				  		<div class="ml-4 mr-4"><strong class="mr-1">Delivery Over</strong> </div>
+				  		<div class="col-3">
+				  			<h3 class="ordershow">Delivery Over</h3>
+				  		</div>
 				  		@endif
 				  	@endif
 				</div>
 				<div class="row mt-3 mb-5">
 				  	@if ($backorder === true)
-				  		<div class="ml-4 mr-4"><strong class="mr-1">Items on Backorder:</strong>
-				  			<ul>
-				  				@foreach ($backordered_items as $backordered_item)
-				  				<li>
-				  					{{$backordered_item}}
-				  				</li>
-				  				@endforeach
-				  			</ul>
+				  		<div class="col-4">
+				  			<h3 class="orderform">Items on Backorder:</h3>
+				  			<div class="orderform">
+					  			<ul>
+					  				@foreach ($backordered_items as $backordered_item)
+					  				<li>
+					  					{{$backordered_item}}
+					  				</li>
+					  				@endforeach
+					  			</ul>
+				  			</div>
 				  		</div>
 				  	@endif
 				</div>

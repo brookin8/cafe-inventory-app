@@ -8,47 +8,53 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                 	<div class="row">
-                		<div class="col text-left mt-3">
+                		<div class="col text-left mt-2">
                 			Order # {{$order->id}}
                 		</div>
-                		<div class="col text-right">
-                			<a href="/orders" class="back ml-5 mt-5"><button class="btn btn-primary newcount">Back</button></a>
+                		<div class="col text-right mt-2">
+                			<a href="/orders" class="back ml-5"><button class="btn btn-primary newcount">Back</button></a>
                 		</div>
                 	</div>
 				</div>
 
 				<div class="panel-body">
 
-				<div class="row mt-3 mb-4">
-				  	<div class="ml-5 mr-4"><strong class="mr-1">Order No:</strong> 
-				  		{{$order->id}}
-				  	</div>
-				  	<div class="ml-4 mr-4"><strong class="mr-1">Deliver To:</strong> 
-				  		{{$order->store->name}}
-				  	</div>
-				  	<div class="ml-4 mr-4"><strong class="mr-1">Supplier:</strong> 
-				  		{{$order->supplier->name}}
-				  	</div>
-				  	<div class="ml-4 mr-4"><strong class="mr-1">Total $ Amount:</strong> 
-				  		{{$order->total_order_cost}}
-				  	</div>
-				  	<div class="ml-4 mr-4"><strong class="mr-1">Submitted By:</strong> 
-				  		{{$order->user->name}}
+				<div class="row mt-3 mb-4 ml-2">
+					<div class="col-2">
+					  	<h3 class="orderform">Order #:</h3> 
+					  	<div class="orderform">{{$order->id}}</div>
+					</div>
+					<div class="col-3">
+					  	<h3 class="orderform">Deliver To:</h3> 
+					  	<div class="orderform">{{$order->store->name}}</div>
+					</div>
+					<div class="col-3">
+					  	<h3 class="orderform">Supplier:</h3> 
+					  	<div class="orderform">{{$order->supplier->name}}</div>
+					</div>
+					<div class="col-3">
+						<h3 class="orderform">Submitted By:</h3> 
+				  		<div class="orderform">{{$order->user->name}}</div>
 				  	</div>
 				</div>
-				<div class="row mt-3 mb-5">
-				  	<div class="ml-5 mr-5"><strong class="mr-1">Order Date:</strong> 
-				  		{{Carbon\Carbon::parse($order->updated_at)->format('m/d/Y')}}
+				<div class="row mt-3 mb-5 ml-2">
+					<div class="col-3">
+				  		<h3 class="orderform">Total $ Amount:</h3> 
+				  		<div class="orderform">{{$order->total_order_cost}}</div>
 				  	</div>
-					<div class="ml-4 mr-5"><strong class="mr-1">Expected Delivery Date:</strong> 
-				  		{{Carbon\Carbon::parse($order->expected_delivery_date)->format('m/d/Y')}}
+				  	<div class="col-3">
+				  		<h3 class="orderform">Order Date:</h3> 
+				  		<div class="orderform">{{Carbon\Carbon::parse($order->updated_at)->format('m/d/Y')}}</div>
 				  	</div>
-
-				  	<div class="ml-4 mr-5">
+					<div class="col-3">
+						<h3 class="orderform">Expected Delivery Date:</h3> 
+				  		<div class="orderform">{{Carbon\Carbon::parse($order->expected_delivery_date)->format('m/d/Y')}}</div>
+				  	</div>
+				  	<div class="col-3">
 				  		@foreach($invoices as $invoice)
 							@if($invoice->order_id === $order->id)
-								<strong class="mr-1">Actual Delivery Date:</strong> 
-								{{Carbon\Carbon::parse($invoice->actual_delivery_date)->format('m/d/Y')}}
+								<h3 class="orderform">Actual Delivery Date:</h3> 
+								<div class="orderform">{{Carbon\Carbon::parse($invoice->actual_delivery_date)->format('m/d/Y')}}</div>
 							@break
 							@endif
 						@endforeach

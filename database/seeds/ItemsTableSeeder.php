@@ -554,7 +554,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
        DB::table('items')->insert([
-      'name' => "Flour - Hotel & Restuarant, Bleached, Enriched",
+      'name' => "Flour - Hotel & Restuarant",
       'supplier_item_identifier' => '8378111',
       'cost' => 19.34,
       'edited_by' => 1,
@@ -1563,7 +1563,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
 		DB::table('items')->insert([
-      'name' => "Gift Pack - Bourbon Honey / Peanut Butter",
+      'name' => "Gift Pack- Bourbon Honey/Peanut Butter",
       'supplier_item_identifier' => 'KHF - Gift Pack - Bourbon Honey 11oz. / Peanut Butter 11oz.',
       'cost' => 15.00,
       'edited_by' => 1,
@@ -1575,7 +1575,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
 		DB::table('items')->insert([
-      'name' => "Gift Pack - Whipped Cinnamon / Whipped Wildflower",
+      'name' => "Gift Pack- Whipped Cinnamon/Wildflower",
       'supplier_item_identifier' => 'KHF - Gift Pack - Whipped Cinnamon / Whipped Wildflower',
       'cost' => 12.00,
       'edited_by' => 1,
@@ -2140,7 +2140,7 @@ class ItemsTableSeeder extends Seeder
 
 
 		DB::table('items')->insert([
-      'name' => "Espresso Machine Cleaning Liquid (Urnex) 1 L",
+      'name' => "Urnex 1 L",
       'supplier_item_identifier' => 'Urnex Full Circle™ Espresso Machine Milk Cleaning Liquid 1 Liter Bottle(s)',
       'cost' => 18.90,
       'edited_by' => 1,
@@ -2152,7 +2152,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
 		DB::table('items')->insert([
-      'name' => "Cafiza Espresso Machine Cleaner (Urnex) 20 oz",
+      'name' => "Cafiza Cleaner (Urnex) 20 oz",
       'supplier_item_identifier' => 'Urnex Cafiza® Espresso Machine Cleaner 20 oz. Jar',
       'cost' => 12.30,
       'edited_by' => 1,
@@ -2176,7 +2176,7 @@ class ItemsTableSeeder extends Seeder
       ]);
 
 		DB::table('items')->insert([
-      'name' => "Espresso Machine Group Head Brush Steel Bristle (Urnex)",
+      'name' => "Group Head Brush Steel Bristle (Urnex)",
       'supplier_item_identifier' => 'Urnex 7" Espresso Machine Group Head Brush, Plastic Handle, Steel Bristle',
       'cost' => 4.05,
       'edited_by' => 1,

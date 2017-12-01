@@ -12,7 +12,7 @@
 		</div>
 
 		<div class="row justify-content-center mt-3">
-			<button name="orderexist" class="btn btn-primary mr-3" type="submit" value="1">Yes</button>
+			<button name="orderexist" class="btn btn-primary newitem mr-3" type="submit" value="1">Yes</button>
 			<button name="orderexist" class="btn btn-danger" type="submit" value="2">No</button>
 		</div>
 

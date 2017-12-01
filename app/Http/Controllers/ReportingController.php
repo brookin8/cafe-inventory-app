@@ -33,8 +33,9 @@ class ReportingController extends Controller
             ->join('categories','items.category_id','=','categories.id')
             ->join('suppliers','items.supplier_id','=','suppliers.id')
             ->join('stores','items_stores.store_id','=','stores.id')
+            ->join('uoms','items.uom_id','=','uoms.id')
             ->where('items_stores.store_id','=',\Auth::user()->store_id)
-            ->select('items_stores.*','items.name as name','categories.name as category','suppliers.name as supplier','stores.name as store')
+            ->select('items_stores.*','items.name as name','categories.name as category','suppliers.name as supplier','stores.name as store','uoms.unit as uom')
             ->get();
 
         //error_log('itemstores: ' . $itemstores);
@@ -58,13 +59,15 @@ class ReportingController extends Controller
             ->orderBy('items_demand.week')
             ->get();
 
-        $lastweekdemand = \DB::table('items_demand')
+        $demandlastweek = \DB::table('items_demand')
             ->select('items_demand.*')
             ->where([
                 ['items_demand.store_id','=',\Auth::user()->store_id],
                 ['items_demand.week','=',$lastweek]
                 ])
+            ->orderBy('items_demand.week')
             ->get();
+
 
         $categories = \App\Category::all();
         $suppliers = \App\Supplier::all();
@@ -78,6 +81,10 @@ class ReportingController extends Controller
             $tenweek[$item->id] = 0;
         }
 
+
+        foreach($demandlastweek as $demandlastweeks) {
+            $lastweekdata[$demandlastweeks->item_id] = $demandlastweeks->demand;
+        }
 
         $demanddates1 = [];
         $demanddates = [];
@@ -106,12 +113,7 @@ class ReportingController extends Controller
             $value = round($value/10);
         }
 
-        foreach($lastweekdemand as $lastweekdemands) {
-            $lastweekdata[$lastweekdemands->item_id] = $lastweekdemands->demand;
-        }
-        //error_log('5week: '.print_r($fiveweek,true));
-        //error_log('10week: '.print_r($tenweek,true));
-
+      
         return view('reporting.index',compact('thisweek','lastweek','items','categories','suppliers','demand','demanddates','demanddatesdesc','demand2','itemstores','tenweek','fiveweek','lastweekdata'));
     }
 
@@ -156,6 +158,18 @@ class ReportingController extends Controller
             ->select('items_stores.*','items.name as name','categories.name as category','suppliers.name as supplier','stores.name as store')
             ->get();
 
+        $lastweekspend = \DB::table('items_spend')
+            ->select('items_spend.*')
+            ->where([
+                ['items_spend.store_id','=',\Auth::user()->store_id],
+                ['items_spend.week','>=',$lastweek],
+                ['items_spend.week','<',$thisweek]
+                ])
+            ->orderBy('items_spend.week')
+            ->get();
+
+        //error_log($lastweekspend);
+
         //error_log($spend2);
 
         $categories = \App\Category::all();
@@ -165,13 +179,19 @@ class ReportingController extends Controller
         $spenddates = [];
 
         $ptd = [];
-
         $ytd = [];
+        $lastweekdata = [];
 
         foreach($items as $item) {
             $ptd[$item->id] = 0;
             $ytd[$item->id] = 0;
         }
+
+        foreach($lastweekspend as $lastweekspends) {
+            $lastweekdata[$lastweekspends->item_id] = $lastweekspends->spend;
+        }
+
+        error_log('last week data: '. print_r($lastweekdata,true));
 
         foreach($spend as $spends) {
 
@@ -185,14 +205,14 @@ class ReportingController extends Controller
                 }
         }
 
-        error_log('ptd: ' . print_r($ptd,true));
-        error_log('ytd: ' . print_r($ytd,true));
+        //error_log('ptd: ' . print_r($ptd,true));
+        //error_log('ytd: ' . print_r($ytd,true));
 
         $spenddates = array_unique($spenddates1);
         $spenddatesdesc = array_reverse($spenddates);
 
 
-        return view('reporting.spend',compact('thisweek','lastweek','today','thismonth','thisyear','spend','items','categories','suppliers','spenddates','spenddatesdesc','spend2','itemstores','ytd','ptd'));
+        return view('reporting.spend',compact('thisweek','lastweek','today','thismonth','thisyear','spend','items','categories','suppliers','spenddates','spenddatesdesc','spend2','itemstores','ytd','ptd','lastweekdata'));
     }
 
     /**

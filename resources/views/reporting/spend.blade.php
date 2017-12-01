@@ -126,12 +126,15 @@
 								<td class="text-left reporting">{{$itemstore->name}}</td>
 								<td class="text-left reporting">{{$itemstore->category}}</td>
 								<td class="text-left reporting">{{$itemstore->supplier}}</td>
-								
-								@foreach($spend2 as $spends2)
-									@if($spends2->item_id === $itemstore->item_id && $spends2->week === $lastweek)
-										<td class="text left reporting">{{$spends2->spend}}</td>
-									@endif
-								@endforeach
+								@if(array_key_exists($itemstore->item_id,$lastweekdata))
+									@foreach($lastweekdata as $key=>$value)
+										@if($key === $itemstore->item_id)
+											<td class="text-left reporting">${{$value}}</td>
+										@endif
+									@endforeach
+								@else
+									<td class="text-left reporting">$0</td>
+								@endif
 								@if(array_key_exists($itemstore->item_id,$ptd))
 									@foreach($ptd as $key=>$value)
 										@if($key === $itemstore->item_id)

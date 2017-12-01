@@ -15,7 +15,7 @@
                 			Invoices
                 		</div>
                 		<div class="col">
-                			<a href="/invoices/orderexists"><button class="btn btn-primary newcount ml-5">New Invoice</button></a>
+                			<a href="/invoices/orderexists"><button class="btn btn-primary newcount ml-5 mb-4">New Invoice</button></a>
                 		</div>
                 	</div>
 				</div>

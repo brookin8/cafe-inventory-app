@@ -83,10 +83,21 @@ div.container.page {
 	width:50px;
 }
 
+.invoiceButton2 {
+	width:50px;
+}
+
 .glyphicon {
 	width:10px;
 }
 
+td.text-left.borderless  {
+    border: none !important;
+}
+
+th.text-left.borderless {
+	border-bottom:2px solid #fff;
+}
 
 h3 {
 	font-size:150%;
@@ -404,6 +415,18 @@ button.btn.btn-primary.newitem {
 	border-color:#5cce84
 }
 
+button.btn.btn-outline-primary.newitem {
+	background-color:#91C9D8;
+	border-color:#91C9D8;
+	color:#fff;
+}
+
+button.btn.btn-outline-primary.newitem:hover {
+	background-color:#82b4c2;
+	border-color:#82b4c2;
+	color:#fff;
+}
+
 button.btn.btn-primary.newitem:hover {
 	background-color:#1EA74C;
 	border-color:#1EA74C;
@@ -445,6 +468,11 @@ h3.orderform {
 	color:#636B6F;
 	margin-bottom:10px;
 	margin-top:2px;
+	font-size:130%;
+}
+
+h3.ordershow {
+	color:#E53A40;
 	font-size:130%;
 }
 
@@ -503,15 +531,25 @@ h3.mb-5.billing {
 }
 
 button.btn.btn-default {
-	border-color:#636B6F;
+	/*border-color:#636B6F;*/
+	background-color:#9c9d9f;
+	color:#fff;
+}
+
+button.btn.btn-default:hover {
+	/*border-color:#636B6F;*/
+	background-color:#636B6F;
+	color:#fff;
 }
 
 button.btn.btn-outline-danger {
-	border-color:#E53A40;
+	background-color:#E53A40;
+	color:#fff;
 }
 
 button.btn.btn-outline-danger:hover {
 	color:#fff;
+	background-color:#b72e33;
 }
 
 .submitButtonSpace {
@@ -748,11 +786,13 @@ div.dashboarddiv {
 
 #demandblocktable {
 	color:white;
-	width:70%;
-	font-size:130%;
-	margin-left:15%;
+	width:85%;
+	font-size:120%;
+	margin-left:7%;
 	margin-top:2%;
 	margin-bottom:2%;
+	border:none;
+
 }
 
 #dueorderblock {
@@ -765,9 +805,9 @@ div.dashboarddiv {
 
 #dueordertable {
 	color:white;
-	width:70%;
-	font-size:130%;
-	margin-left:15%;
+	width:85%;
+	font-size:120%;
+	margin-left:7%;
 	margin-top:2%;
 	margin-bottom:2%;
 }
@@ -793,9 +833,9 @@ div.dashboarddiv {
 
 #notcountedtable {
 	color:white;
-	width:70%;
-	font-size:130%;
-	margin-left:15%;
+	width:85%;
+	font-size:120%;
+	margin-left:7%;
 	margin-top:2%;
 	margin-bottom:2%;
 }

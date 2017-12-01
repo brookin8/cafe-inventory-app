@@ -18,8 +18,8 @@
 							<a href="../../orders">
 								<button type="button" class="btn btn-default mr-3">Discard</button>
 							</a>
-							<button class="btn btn-primary mr-3" type="submit" name="button" value="save">Save</button>
-							<button class="btn btn-success" type="submit" name="button" value="submit">Submit</button>
+							<button class="btn btn-outline-primary newitem mr-3" type="submit" name="button" value="save">Save</button>
+							<button class="btn btn-primary newitem" type="submit" name="button" value="submit">Submit</button>
 						</div>
                 	</div>
                 </div>

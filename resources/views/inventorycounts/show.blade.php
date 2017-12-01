@@ -19,34 +19,44 @@
 
 				<div class="panel-body">
 
-				<div class="row mt-4 mb-4 justify-content-center">
-				  	<div class="ml-5 mr-4"><strong class="mr-1">Count No:</strong> 
-				  		{{$count->id}}
+				<div class="row mt-3 mb-4 ml-2">
+					<div class="col-2">
+					  	<h3 class="orderform">Count #:</h3> 
+				  		<div class="orderform">{{$count->id}}</div>
 				  	</div>
-				  	<div class="ml-4 mr-4"><strong class="mr-1">Total $ Amount:</strong> 
-				  		${{$count->total_value_onhand}}
+				  	<div class="col-2">
+					  	<h3 class="orderform">Total $:</h3> 
+				  		<div class="orderform">${{$count->total_value_onhand}}</div>
 				  	</div>
-				  	<div class="ml-4 mr-4"><strong class="mr-1">Submitted By:</strong> 
-				  		{{$count->user->name}}
+				  	<div class="col-3">
+					  	<h3 class="orderform">Submitted By:</h3> 
+				  		<div class="orderform">{{$count->user->name}}</div>
 				  	</div>
-				  	<div class="ml-4 mr-4"><strong class="mr-1">Date Submitted:</strong> 
-				  		{{Carbon\Carbon::parse($count->updated_at)->format('m/d/Y')}}
+				  	<div class="col-4">
+				  		<h3 class="orderform">Date Submitted:</h3> 
+				  		<div class="orderform">{{Carbon\Carbon::parse($count->updated_at)->format('m/d/Y')}}</div>
 				  	</div>
 				</div>
-				<div class="row mt-3 mb-5 justify-content-center">
-				  	<div class="invcountcat mr-5"><strong>Categories</strong>
-				  		<ul>
-						  	@foreach($categories as $category)
-						  	<li>{{ $category }}</li>
-						  	@endforeach	
-						</ul>
+				<div class="row mt-3 mb-5 ml-2">
+				  	<div class="col-4">
+				  		<h3 class="orderform">Categories</h3>
+				  		<div class="orderform">
+					  		<ul>
+							  	@foreach($categories as $category)
+							  	<li>{{ $category }}</li>
+							  	@endforeach	
+							</ul>
+						</div>
 				  	</div>
-				  	<div class="ml-5 mr-5"><strong>Suppliers</strong>
-				  		<ul>
-						  	@foreach($suppliers as $supplier)
-						  	<li>{{ $supplier }}</li>
-						  	@endforeach	
-						</ul>
+				  	<div class="col-4">
+				  		<h3 class="orderform">Suppliers</h3>
+				  		<div class="orderform">
+					  		<ul>
+							  	@foreach($suppliers as $supplier)
+							  	<li>{{ $supplier }}</li>
+							  	@endforeach	
+							</ul>
+						</div>
 				  	</div>
 				</div>
 

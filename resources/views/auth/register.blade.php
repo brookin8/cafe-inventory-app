@@ -18,7 +18,12 @@
                         Register New User
                         </div>
                         <div class="col text-right">
-                            <button type="submit" class="btn btn-primary">
+                             <a href="/users">
+                                <button type="button" class="btn btn-default">
+                                    Discard
+                                </button>
+                            </a>
+                            <button type="submit" class="btn btn-primary newitem">
                                 Register
                             </button>
                         </div>

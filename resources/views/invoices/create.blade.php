@@ -19,7 +19,8 @@
 	                			<input type="hidden" value="{{$order}}" name="order">
 	                		</div>
 	                		<div class="col-4 text-right">
-	                			<a href="../invoices"><button class="btn btn-default mr-3" type="button">Discard</button></a><button type="submit" class="btn btn-default">Submit</button>
+	                			<a href="../invoices"><button class="btn btn-default mr-3" type="button">Discard</button></a>
+	                			<button type="submit" class="btn btn-primary newitem">Submit</button>
 	                		</div>
 	                	</div>
 	                </div>
@@ -40,9 +41,9 @@
 						Qty
 						</div>
 					</div>
-				<div class="invoiceitems ml-4">
+				<div class="invoiceitems ml-4" style="margin-right:2.1em">
 				@foreach ($allitems as $allitem)
-					<div class="row mb-5 ml-5 mr-5 itemsrow">
+					<div class="row mb-5 ml-5 itemsrow">
 							<div class="col-9">
 						      	<div id="iteminput">
 								  <input class="typeahead iteminput" type="text" placeholder="Add Item" name="item{{$loop->iteration}}">

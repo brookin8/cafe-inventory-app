@@ -81,7 +81,7 @@
 										<span class="glyphicon glyphicon-edit"></span>
 									</button></a>
 									<a href="/items/{{$item2->id}}"><button type="button" class="delete-modal btn btn-sm btn-danger">
-										<span class="glyphicon glyphicon-trash"></span>
+										<span class="glyphicon glyphicon-trash mr-4"></span>
 									</button></a>
 								</td>
 							</tr>
