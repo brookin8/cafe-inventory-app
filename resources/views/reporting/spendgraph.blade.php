@@ -14,6 +14,7 @@ var supplierselected = '';
 var categoryselected = '';
 var startdate = '';
 var enddate = '';
+var itemchosen = '';
 
 //Original Draw
 function drawStuff() {
@@ -120,8 +121,9 @@ function categoryselect(category) {
       	categoryselected = categorynum;
       }
 
-      console.log('categoryselected value: ' + categoryselected);
-      console.log('categoryselected datetype: ' + typeof categoryselected);
+      $('#spenditem').val("''");
+      //console.log('categoryselected value: ' + categoryselected);
+      //console.log('categoryselected datetype: ' + typeof categoryselected);
 
       
    //    var categoryselect = document.getElementById("itemcategory");
@@ -267,8 +269,9 @@ function supplierselect(supplier) {
       	supplierselected = suppliernum;
       }
 
-      console.log('supplierselected value: ' + supplierselected);
-      console.log('supplierselected datetype: ' + typeof supplierselected);
+      $('#spenditem').val("''");
+      //console.log('supplierselected value: ' + supplierselected);
+      //console.log('supplierselected datetype: ' + typeof supplierselected);
 
       var data = new google.visualization.DataTable();
 		data.addColumn('date', 'Week');
@@ -648,8 +651,137 @@ function endselect(end) {
 
       chart.draw(data, options);
 
-
    }
 
+function itemselect(item) {
+      var headers = ['Week'];
+      var dates= [];
+      var rows = [];
+      var itemsselected = [];
+      var itemnum = Number(item);
+
+      supplierselected = '';
+      categoryselected = '';
+
+      $('#spendsupplier').val("''");
+      $('#spendcategory').val("''");
+
+      if(isNaN(itemnum)){
+         itemchosen = '';
+         itemnum = '';
+      }else {
+         itemchosen = itemnum;
+      }
+
+      //console.log('supplierselected2 value: ' + supplierselected2);
+      //console.log('supplierselected2 datetype: ' + typeof supplierselected2);
+
+      var data = new google.visualization.DataTable();
+      data.addColumn('date', 'Week');
+
+      if(startdate === '' && enddate === '') {
+         for (var i = 0; i < spend.length; i++) {
+               if(!dates.includes(spend[i].week)) {
+                  dates.push(spend[i].week);
+               }
+            }
+      } else if(startdate != '' && enddate === '') {
+         for (var i = 0; i < spend.length; i++) {
+            var dateconversion = new Date(spend[i].week);
+            if(!dates.includes(spend[i].week) && dateconversion >= startdate) { 
+                  dates.push(spend[i].week);
+               }
+          }
+      } else if(startdate === '' && enddate != '') {
+         for (var i = 0; i < spend.length; i++) {
+            var dateconversion = new Date(spend[i].week);
+            if(!dates.includes(spend[i].week) && dateconversion <= enddate) { 
+                  dates.push(spend[i].week);
+               }
+          }
+      } else if(startdate != '' && enddate != '') {
+         for (var i = 0; i < spend.length; i++) {
+            var dateconversion = new Date(spend[i].week);
+            if(!dates.includes(spend[i].week) && dateconversion <= enddate && dateconversion >= startdate) { 
+                  dates.push(spend[i].week);
+               }
+          }
+      }
+
+      for (var i = 0;i<items.length;i++) {
+            if(items[i].id === itemnum) {
+               itemsselected.push(items[i].name);
+            }
+         } 
+
+      for(var i=0; i<itemsselected.length; i++) {
+            headers.push(itemsselected[i]);
+            data.addColumn('number', itemsselected[i]);
+         }
+
+          console.log('itemsselected: ' + itemsselected); 
+
+      data.addColumn('number','Total');
+
+      for(var i=0; i<dates.length; i++) {
+         var total = 0;
+         var pushing = [];
+         var weekformatted = new Date(dates[i]);
+         pushing.push(weekformatted);
+         for(var j=1;j<headers.length;j++) {
+            var found = false;
+            for(var k=0;k<spend.length;k++) {
+               if(spend[k].week === dates[i] && spend[k].name === headers[j]) {
+                  pushing.push(Number(spend[k].spend));
+                  total += Number(spend[k].spend);
+                  found = true;
+               }
+            }
+            if(found === false) {
+               pushing.push(0);
+            } else {
+               found = false;
+            }
+            
+         }
+
+         pushing.push(total);
+         rows.push(pushing);
+         pushing = [];
+         total=0;
+
+      }
+
+      data.addRows(rows);
+
+      var totalcolumn = data.getNumberOfColumns()-2;
+
+      var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+      var options = {
+         width: 875,
+         height: 325,
+         legend: {position:'right'},
+         chartArea: { left: 70, width: "60%", height: "70%" },
+         hAxis: {
+             gridlines: {count: 5}
+           },
+         tooltip: { trigger: 'selection' },
+         pointSize: 10,
+         seriesType: 'bars',
+         isStacked:true,
+          series: '',
+         animation:{
+           duration: 600,
+           easing: 'out',
+           startup: true
+        }
+      };
+
+      myObj = {};
+      myObj[totalcolumn] = {type : "line"};
+      options.series = myObj;
+
+      chart.draw(data, options);
+}
 
 </script>

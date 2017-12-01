@@ -140,6 +140,7 @@ class ReportingController extends Controller
             ->join('categories','items.category_id','=','categories.id')
             ->whereNull('items.deleted_at')
             ->select('items.*','categories.name as category')
+            ->orderBy('items.name')
             ->get();
 
         $spend = \DB::table('items_spend')

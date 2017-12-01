@@ -83,6 +83,15 @@
 						</div>
 					</div>
 					<div class="row mt-3">
+						<div id="selectdiv" class="ml-3">
+				      		Supplier: 
+							<select id="spendsupplier" onchange="supplierselect(this.value)">
+								<option value="''">All</option>
+								@foreach($suppliers as $supplier)
+								<option value="{{$supplier->id}}">{{$supplier->name}}</option>
+								@endforeach
+							</select>
+						</div>
 				      	<div id="selectdiv" class="ml-3">
 				      		Category: 
 							<select id="spendcategory" onchange="categoryselect(this.value)">
@@ -93,11 +102,11 @@
 							</select>
 						</div>
 						<div id="selectdiv" class="ml-3">
-				      		Supplier: 
-							<select id="spendsupplier" onchange="supplierselect(this.value)">
+				      		Item: 
+							<select id="spenditem" onchange="itemselect(this.value)">
 								<option value="''">All</option>
-								@foreach($suppliers as $supplier)
-								<option value="{{$supplier->id}}">{{$supplier->name}}</option>
+								@foreach($items as $item)
+								<option value="{{$item->id}}">{{$item->name}}</option>
 								@endforeach
 							</select>
 						</div>
