@@ -486,7 +486,9 @@ hr.orderform {
 }
 
 
-
+.datefilters {
+	font-size:80%;
+}
 
 .counthead {
 	background-color:#636B6F;

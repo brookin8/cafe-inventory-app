@@ -13,7 +13,7 @@ class ReportingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
 
         $thisweek = Carbon::today()->startOfWeek();
@@ -48,7 +48,10 @@ class ReportingController extends Controller
             ->orderBy('items_demand.week')
             ->get();
 
-        $demand2 = \DB::table('items_demand')
+        if($request->session()->exists('demandfilter')) {
+            $demand2 = $request->session()->pull('demandfilter');
+        } else {
+            $demand2 = \DB::table('items_demand')
             ->join('items','items.id','=','items_demand.item_id')
             ->join('categories','items.category_id','=','categories.id')
             ->join('suppliers','items.supplier_id','=','suppliers.id')
@@ -58,6 +61,13 @@ class ReportingController extends Controller
             ->where('items_demand.store_id','=',\Auth::user()->store_id)
             ->orderBy('items_demand.week')
             ->get();
+        }
+
+        
+            // foreach($demand2 as $demands2) {
+            //     error_log(gettype($demands2->week));
+            //     error_log($demands2->week);
+            // }
 
         $demandlastweek = \DB::table('items_demand')
             ->select('items_demand.*')
@@ -68,6 +78,7 @@ class ReportingController extends Controller
             ->orderBy('items_demand.week')
             ->get();
 
+            error_log($demandlastweek);
 
         $categories = \App\Category::all();
         $suppliers = \App\Supplier::all();
@@ -215,6 +226,38 @@ class ReportingController extends Controller
         return view('reporting.spend',compact('thisweek','lastweek','today','thismonth','thisyear','spend','items','categories','suppliers','spenddates','spenddatesdesc','spend2','itemstores','ytd','ptd','lastweekdata'));
     }
 
+
+    public function demandfilter(Request $request) {
+        $startdate = request('startdate');
+        $enddate = request('enddate');
+
+
+        $demand2 = \DB::table('items_demand')
+            ->join('items','items.id','=','items_demand.item_id')
+            ->join('categories','items.category_id','=','categories.id')
+            ->join('suppliers','items.supplier_id','=','suppliers.id')
+            ->join('stores','items_demand.store_id','=','stores.id')
+            ->join('uoms','items.uom_id','=','uoms.id')
+            ->select('items_demand.week','items_demand.item_id','items.name as name','categories.name as category','items_demand.demand','suppliers.name as supplier','stores.name as store','uoms.unit as uom')
+            ->where([
+                ['items_demand.store_id','=',\Auth::user()->store_id],
+                ['items_demand.week','>=',$startdate],
+                ['items_demand.week','<=',$enddate]
+                ])
+            ->orderBy('items_demand.week')
+            ->get();
+
+        error_log($demand2);
+
+        $request->session()->put('demandfilter', $demand2);
+      
+        return redirect('../reporting');
+    }
+
+    public function spendfilter(Request $request) {
+       $startdate = request('startdate');
+        $enddate = request('enddate');
+    }
     /**
      * Show the form for creating a new resource.
      *

@@ -65,4 +65,6 @@ Route::get('/reporting/spend', 'ReportingController@spend');
 
 Route::resource('reporting', 'ReportingController');
 
+Route::post('/reporting/demandfilter','ReportingController@demandfilter');
 
+Route::post('/reporting/spendfilter','ReportingController@spendfilter');

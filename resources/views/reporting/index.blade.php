@@ -59,13 +59,13 @@
 
 					    $( function() {
 					    $( "#datepicker3" ).datepicker({
-					    	dateFormat: "yy-mm-dd"
+					    	dateFormat: "mm-dd-yy"
 					    });
 					  } );
 
 					   $( function() {
 					    $( "#datepicker4" ).datepicker({
-					    	dateFormat: "yy-mm-dd"
+					    	dateFormat: "mm-dd-yy"
 					    });
 					  } );
 				</script>
@@ -202,12 +202,20 @@
 	<div class="panel panel-default reporting">
 	 	<div class="panel-heading">
             	<div class="row">
-            		<div class="col text-left">
+            		<div class="col-2 text-left">
             			Detail	
             		</div>
-            		<div class="col">
-            			<input type="text" id="datepicker3" onchange="startselect2(this.value)">
-            			<input type="text" id="datepicker4" onchange="startselect2(this.value)">
+            		<div class="col-2">
+            		</div>
+            		<div class="col-8 text-right">
+            		<form action = "../reporting/demandfilter" method="post" class="">
+            			{{csrf_field()}}
+            			<div class="form-group row">
+            			<label for="startdate" class="datefilters">Start Date: </label><input type="text" id="datepicker3" name ="startdate"">
+            			<label for="startdate" class="datefilters">End Date: </label><input type="text" id="datepicker4" name="enddate"">
+            			<button type="submit" class="btn btn-primary newitem ml-2">Submit</button>
+            			</div>
+            		</form>
             		</div>
             	</div>
 			</div>
