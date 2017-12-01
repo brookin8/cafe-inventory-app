@@ -410,6 +410,7 @@ button.btn.btn-primary.newcount:hover {
 	border-color:#1EA74C;
 }
 
+
 button.btn.btn-primary.newitem {
 	background-color:#5cce84;
 	border-color:#5cce84
@@ -430,6 +431,18 @@ button.btn.btn-outline-primary.newitem:hover {
 button.btn.btn-primary.newitem:hover {
 	background-color:#1EA74C;
 	border-color:#1EA74C;
+}
+
+button.btn.btn-outline-primary.login {
+	background-color:#0F144E;
+	border-color:#0F144E;
+	color:#fff;
+}
+
+button.btn.btn-outline-primary.login:hover {
+	background-color:#4C4C72;
+	border-color:#4C4C72;
+	color:#fff;
 }
 
 .pagination>li>a, .pagination>li>span {

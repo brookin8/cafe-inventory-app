@@ -46,7 +46,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
      <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
-    
+
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset('style.css') }}">
 </head>
@@ -158,11 +158,12 @@
                     <a href="{{ url('/') }}/reporting"><div class="row ml-2">Demand</div></a>
                     <a href="{{ url('/') }}/reporting/spend"><div class="row ml-2">Spend</div></a>
                 </div>
-            
-            @if(Auth::user()->access_id === 1)
-             
-            <a href="{{ url('/') }}/users"><div class="row">Users</div></a>
-            
+            @if(isset(Auth::user()->access_id))
+                @if(Auth::user()->access_id === 1)
+                 
+                <a href="{{ url('/') }}/users"><div class="row">Users</div></a>
+                
+                @endif
             @endif
         </div>
 
