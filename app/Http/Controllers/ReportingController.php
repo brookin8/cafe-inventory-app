@@ -256,7 +256,7 @@ class ReportingController extends Controller
 
         $request->session()->put('demandfilter', $demand2);
       
-        return redirect('../reporting/spend');
+        return redirect('../reporting');
     }
 
     public function spendfilter(Request $request) {
