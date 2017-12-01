@@ -490,6 +490,10 @@ hr.orderform {
 	font-size:80%;
 }
 
+#datepicker1,#datepicker2,#datepicker3,#datepicker4 {
+	border:1px solid #d3e0e9;
+}
+
 .counthead {
 	background-color:#636B6F;
 	color:#fff;

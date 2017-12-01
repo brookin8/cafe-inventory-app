@@ -78,7 +78,7 @@ function drawStuff() {
 
       var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
       var options = {
-      	width: 875,
+      	width: 675,
          height: 325,
          legend: {position:'right'},
          chartArea: { left: 70, width: "60%", height: "80%" },
@@ -224,10 +224,10 @@ function categoryselect(category) {
     
       var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
       var options = {
-         width: 875,
+        width: 675,
          height: 325,
          legend: {position:'right'},
-         chartArea: { left: 70, width: "60%", height: "70%" },
+         chartArea: { left: 70, width: "60%", height: "80%" },
       	hAxis: {
            	 gridlines: {count: 5}
            },
@@ -368,10 +368,10 @@ function supplierselect(supplier) {
     
       var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
       var options = {
-         width: 875,
+         width: 675,
          height: 325,
          legend: {position:'right'},
-         chartArea: { left: 70, width: "60%", height: "70%" },
+         chartArea: { left: 70, width: "60%", height: "80%" },
       	hAxis: {
            	 gridlines: {count: 5}
            },
@@ -498,10 +498,10 @@ function supplierselect(supplier) {
     
       var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
       var options = {
-         width: 875,
+         width: 675,
          height: 325,
          legend: {position:'right'},
-         chartArea: { left: 70, width: "60%", height: "70%" },
+         chartArea: { left: 70, width: "60%", height: "80%" },
       	hAxis: {
            	 gridlines: {count: 5}
            },
@@ -626,10 +626,10 @@ function endselect(end) {
 
       var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
       var options = {
-      	width: 875,
+      	width: 675,
          height: 325,
          legend: {position:'right'},
-         chartArea: { left: 70, width: "60%", height: "70%" },
+         chartArea: { left: 70, width: "60%", height: "80%" },
       	hAxis: {
            	 gridlines: {count: 5}
            },
@@ -758,10 +758,10 @@ function itemselect(item) {
 
       var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
       var options = {
-         width: 875,
+         width: 675,
          height: 325,
          legend: {position:'right'},
-         chartArea: { left: 70, width: "60%", height: "70%" },
+         chartArea: { left: 70, width: "60%", height: "80%" },
          hAxis: {
              gridlines: {count: 5}
            },

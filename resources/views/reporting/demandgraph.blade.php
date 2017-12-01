@@ -75,10 +75,10 @@ function drawStuff2() {
 
       var options = {
          isStacked: true,
-      	width: 875,
+      	width: 675,
          height: 325,
-      	legend: {position:'right'},
-      	chartArea: { left: 40, width: "60%", height: "70%" },
+         legend: {position:'right'},
+         chartArea: { left: 70, width: "60%", height: "80%" },
       	hAxis: {
            	 gridlines: {count: 5}
            },
@@ -214,10 +214,10 @@ function categoryselect2(category) {
       var chart = new google.visualization.ColumnChart(document.getElementById('chart_div2'));
       var options = {
          isStacked: true,
-         width: 875,
+        width: 675,
          height: 325,
          legend: {position:'right'},
-         chartArea: { left: 40, width: "60%", height: "70%" },
+         chartArea: { left: 70, width: "60%", height: "80%" },
       	hAxis: {
            	 gridlines: {count: 5}
            },
@@ -355,10 +355,10 @@ function supplierselect2(supplier) {
       var chart = new google.visualization.ColumnChart(document.getElementById('chart_div2'));
       var options = {
          isStacked: true,
-         width: 875,
+         width: 675,
          height: 325,
          legend: {position:'right'},
-         chartArea: { left: 40, width: "60%", height: "70%" },
+         chartArea: { left: 70, width: "60%", height: "80%" },
       	hAxis: {
            	 gridlines: {count: 5}
            },
@@ -482,10 +482,10 @@ function supplierselect2(supplier) {
       var chart = new google.visualization.ColumnChart(document.getElementById('chart_div2'));
       var options = {
          isStacked: true,
-         width: 875,
+         width: 675,
          height: 325,
          legend: {position:'right'},
-         chartArea: { left: 40, width: "60%", height: "70%" },
+         chartArea: { left: 70, width: "60%", height: "80%" },
       	hAxis: {
            	 gridlines: {count: 5}
            },
@@ -608,10 +608,10 @@ function endselect2(end) {
 
       var options = {
          isStacked: true,
-         width: 875,
+         width: 675,
          height: 325,
          legend: {position:'right'},
-         chartArea: { left: 40, width: "60%", height: "70%" },
+         chartArea: { left: 70, width: "60%", height: "80%" },
       	hAxis: {
            	 gridlines: {count: 5}
            },
@@ -735,10 +735,10 @@ function itemselect2(item) {
       var chart = new google.visualization.ColumnChart(document.getElementById('chart_div2'));
       var options = {
          isStacked: true,
-         width: 875,
+         width: 675,
          height: 325,
          legend: {position:'right'},
-         chartArea: { left: 40, width: "60%", height: "70%" },
+         chartArea: { left: 70, width: "60%", height: "80%" },
          hAxis: {
              gridlines: {count: 5}
            },
