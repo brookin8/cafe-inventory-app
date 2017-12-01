@@ -83,7 +83,16 @@
 							</div>
 						</div>
 						<div class="row mt-3">
-					      	<div id="selectdiv" class="ml-3">
+							<div id="selectdiv" class="ml-3">
+					      		Supplier: 
+								<select id="demandsupplier2" onchange="supplierselect2(this.value)">
+									<option value="''">All</option>
+									@foreach($suppliers as $supplier)
+									<option value="{{$supplier->id}}">{{$supplier->name}}</option>
+									@endforeach
+								</select>
+							</div>
+							<div id="selectdiv" class="ml-3">
 					      		Category: 
 								<select id="demandcategory2" onchange="categoryselect2(this.value)">
 									<option value="''">All</option>
@@ -93,11 +102,11 @@
 								</select>
 							</div>
 							<div id="selectdiv" class="ml-3">
-					      		Supplier: 
-								<select id="demandsupplier2" onchange="supplierselect2(this.value)">
+					      		Item: 
+								<select id="demanditem2" onchange="itemselect2(this.value)">
 									<option value="''">All</option>
-									@foreach($suppliers as $supplier)
-									<option value="{{$supplier->id}}">{{$supplier->name}}</option>
+									@foreach($items as $item)
+									<option value="{{$item->id}}">{{$item->name}}</option>
 									@endforeach
 								</select>
 							</div>
@@ -186,7 +195,9 @@
 								<td class="text-left reporting">Name</td>
 								<td class="text-left reporting">Category</td>
 								<td class="text-left reporting">Supplier</td>
-								<td class="text-left reporting">{{Carbon\Carbon::parse($lastweek)->format('m/d/Y')}}</td>
+								<td class="text-left reporting"></td>
+								<td class="text-left reporting"></td>
+								<td class="text-left reporting"></td>
 								<td class="text-left reporting">5 Week</td>
 								<td class="text-left reporting">10 Week</td>
 							</tr>
@@ -211,8 +222,8 @@
             		<form action = "../reporting/demandfilter" method="post" class="">
             			{{csrf_field()}}
             			<div class="form-group row">
-            			<label for="startdate" class="datefilters">Start Date: </label><input type="text" id="datepicker3" name ="startdate"">
-            			<label for="startdate" class="datefilters">End Date: </label><input type="text" id="datepicker4" name="enddate"">
+            			<label for="startdate" class="datefilters">Start Date: </label><input type="text" id="datepicker3" name ="startdate" size="12">
+            			<label for="startdate" class="datefilters">End Date: </label><input type="text" id="datepicker4" name="enddate" size="12">
             			<button type="submit" class="btn btn-primary newitem ml-2">Submit</button>
             			</div>
             		</form>

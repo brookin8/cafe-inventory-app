@@ -207,8 +207,8 @@
             		<form action = "/reporting/spend/spendfilter" method="post" class="">
             			{{csrf_field()}}
             			<div class="form-group row">
-            			<label for="startdate" class="datefilters">Start Date: </label><input type="text" id="datepicker3" name ="startdate"">
-            			<label for="startdate" class="datefilters">End Date: </label><input type="text" id="datepicker4" name="enddate"">
+            			<label for="startdate" class="datefilters">Start Date: </label><input type="text" id="datepicker3" name ="startdate" size="12">
+            			<label for="startdate" class="datefilters">End Date: </label><input type="text" id="datepicker4" name="enddate" size="12">
             			<button type="submit" class="btn btn-primary newitem ml-2">Submit</button>
             			</div>
             		</form>

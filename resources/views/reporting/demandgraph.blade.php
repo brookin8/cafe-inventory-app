@@ -12,6 +12,7 @@ var demand = {!! $demand !!};
 var items = {!! $items !!};
 var supplierselected2 = '';
 var categoryselected2 = '';
+var itemselected2 = '';
 var startdate2 = '';
 var enddate2 = '';
 
@@ -109,9 +110,9 @@ function categoryselect2(category) {
       	categoryselected2 = categorynum;
       }
 
-      console.log('categoryselected2 value: ' + categoryselected2);
-      console.log('categoryselected2 datetype: ' + typeof categoryselected2);
-
+      //console.log('categoryselected2 value: ' + categoryselected2);
+      //console.log('categoryselected2 datetype: ' + typeof categoryselected2);
+      $('#demanditem2').val("''");
       
    //    var categoryselect = document.getElementById("itemcategory");
 	  // var category = categoryselect.value;
@@ -244,6 +245,8 @@ function supplierselect2(supplier) {
       var itemsselected = [];
       var suppliernum = Number(supplier);
 
+      $('#demanditem2').val("''");
+
       if(isNaN(suppliernum)){
       	supplierselected2 = '';
       	suppliernum = '';
@@ -251,8 +254,8 @@ function supplierselect2(supplier) {
       	supplierselected2 = suppliernum;
       }
 
-      console.log('supplierselected2 value: ' + supplierselected2);
-      console.log('supplierselected2 datetype: ' + typeof supplierselected2);
+      //console.log('supplierselected2 value: ' + supplierselected2);
+      //console.log('supplierselected2 datetype: ' + typeof supplierselected2);
 
       var data = new google.visualization.DataTable();
 		data.addColumn('date', 'Week');
@@ -625,6 +628,131 @@ function endselect2(end) {
 
 
    }
+
+function itemselect2(item) {
+     var headers = ['Week'];
+      var dates= [];
+      var rows = [];
+      var itemsselected = [];
+      var itemnum = Number(item);
+
+      supplierselected2 = '';
+      categoryselected2 = '';
+
+      $('#demandsupplier2').val("''");
+      $('#demandcategory2').val("''");
+
+      if(isNaN(itemnum)){
+         itemselected2 = '';
+         itemnum = '';
+      }else {
+         itemselected2 = itemnum;
+      }
+
+      //console.log('supplierselected2 value: ' + supplierselected2);
+      //console.log('supplierselected2 datetype: ' + typeof supplierselected2);
+
+      var data = new google.visualization.DataTable();
+      data.addColumn('date', 'Week');
+
+      if(startdate2 === '' && enddate2 === '') {
+         for (var i = 0; i < demand.length; i++) {
+               if(!dates.includes(demand[i].week)) {
+                  dates.push(demand[i].week);
+               }
+            }
+      } else if(startdate2 != '' && enddate2 === '') {
+         for (var i = 0; i < demand.length; i++) {
+            var dateconversion = new Date(demand[i].week);
+            if(!dates.includes(demand[i].week) && dateconversion >= startdate2) { 
+                  dates.push(demand[i].week);
+               }
+          }
+      } else if(startdate2 === '' && enddate2 != '') {
+         for (var i = 0; i < demand.length; i++) {
+            var dateconversion = new Date(demand[i].week);
+            if(!dates.includes(demand[i].week) && dateconversion <= enddate2) { 
+                  dates.push(demand[i].week);
+               }
+          }
+      } else if(startdate2 != '' && enddate2 != '') {
+         for (var i = 0; i < demand.length; i++) {
+            var dateconversion = new Date(demand[i].week);
+            if(!dates.includes(demand[i].week) && dateconversion <= enddate2 && dateconversion >= startdate2) { 
+                  dates.push(demand[i].week);
+               }
+          }
+      }
+
+      for (var i = 0;i<items.length;i++) {
+            if(items[i].id === itemnum) {
+               itemsselected.push(items[i].name);
+            }
+         } 
+
+      for(var i=0; i<itemsselected.length; i++) {
+            headers.push(itemsselected[i]);
+            data.addColumn('number', itemsselected[i]);
+         }
+
+          //console.log(itemsselected); 
+      if(!itemsselected[0]) {
+         data.addColumn('number','Total');
+      }
+
+      for(var i=0; i<dates.length; i++) {
+         var total = 0;
+         var pushing = [];
+         var weekformatted = new Date(dates[i]);
+         pushing.push(weekformatted);
+         for(var j=1;j<headers.length;j++) {
+            var found = false;
+            for(var k=0;k<demand.length;k++) {
+               if(demand[k].week === dates[i] && demand[k].name === headers[j]) {
+                  pushing.push(Number(demand[k].demand));
+                  total += Number(demand[k].demand);
+                  found = true;
+               }
+            }
+            if(found === false) {
+               pushing.push(0);
+            } else {
+               found = false;
+            }
+            
+         }
+         if(!itemsselected[0]) {
+            pushing.push(total);
+         }
+         rows.push(pushing);
+         pushing = [];
+         total=0;
+      }
+
+      data.addRows(rows);
+
+    
+      var chart = new google.visualization.ColumnChart(document.getElementById('chart_div2'));
+      var options = {
+         isStacked: true,
+         width: 875,
+         height: 325,
+         legend: {position:'right'},
+         chartArea: { left: 40, width: "60%", height: "70%" },
+         hAxis: {
+             gridlines: {count: 5}
+           },
+         tooltip: { trigger: 'selection' },
+         animation:{
+           duration: 600,
+           easing: 'out',
+           startup: true
+        }
+         // pointSize: 10
+      };
+
+      chart.draw(data, options);
+}
 
 
 </script>
