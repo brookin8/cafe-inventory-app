@@ -32,7 +32,7 @@ class User extends Authenticatable
     protected $dates = ['deleted_at'];
 
     public function access_level() {
-        return $this->belongsTo('App\AccessLevel','access_id','id');
+        return $this->belongsTo('App\Access_Level','access_id','id');
     }
 
     public function store() {

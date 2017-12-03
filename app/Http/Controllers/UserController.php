@@ -64,7 +64,7 @@ class UserController extends Controller
     {
         $user = \App\User::find($id);
         $stores = \App\Store::all();
-        $accesslevels = \App\AccessLevel::all();
+        $accesslevels = \App\Access_Level::all();
         return view('auth.edit',compact('user','stores','accesslevels'));
     }
 

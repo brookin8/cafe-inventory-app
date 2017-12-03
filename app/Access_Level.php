@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class AccessLevel extends Model
+class Access_Level extends Model
 {
     public function users() {
     	return $this->hasMany('App\User');
