@@ -57,9 +57,9 @@ Route::get('/invoices/backorder', 'InvoiceController@backorder');
 
 Route::resource('invoices', 'InvoiceController');
 
-Route::get('/inventorycounts/saved', 'InventorycountController@saved');
+Route::get('/inventorycounts/saved', 'CountController@saved');
 
-Route::resource('inventorycounts', 'InventorycountController');
+Route::resource('inventorycounts', 'CountController');
 
 Route::get('/reporting/details', 'ReportingController@details');
 
