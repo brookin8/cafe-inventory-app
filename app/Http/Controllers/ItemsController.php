@@ -142,7 +142,7 @@ class ItemsController extends Controller
         $item = \App\Item::find($id);
         $categories = \App\Category::all();
         $suppliers = \App\Supplier::all();
-        $uoms = \App\UOM::all();
+        $uoms = \App\Uom::all();
         $store = \Auth::user()->store_id;
         $itemsupplier = \DB::table('suppliers')
                 ->join('items', 'items.supplier_id', '=', 'suppliers.id')

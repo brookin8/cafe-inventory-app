@@ -18,7 +18,7 @@
 
 
 		<div class="row justify-content-center mt-3">
-			<button class="btn btn-primary" type="submit">Submit</button>
+			<button class="btn btn-primary newitem" type="submit">Submit</button>
 		</div>
 	</form>
 </div>

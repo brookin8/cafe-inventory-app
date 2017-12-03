@@ -50,7 +50,7 @@ class SupplierController extends Controller
      */
     public function create()
     {
-        $ordermethods = \App\Order_method::all();
+        $ordermethods = \App\Order_Method::all();
 
         return view('suppliers.create', compact('ordermethods'));
     }
