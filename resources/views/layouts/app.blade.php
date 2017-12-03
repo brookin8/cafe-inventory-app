@@ -155,8 +155,8 @@
                </a>
             
                 <div class="collapse" id="collapsereporting">
-                    <a href="{{ url('/') }}/reporting"><div class="row ml-2">Demand</div></a>
-                    <a href="{{ url('/') }}/reporting/spend"><div class="row ml-2">Spend</div></a>
+                    <a href="{{ url('/') }}/reporting"><div class="row ml-2">Summary</div></a>
+                    <a href="{{ url('/') }}/reporting/details"><div class="row ml-2">Details</div></a>
                 </div>
             @if(isset(Auth::user()->access_id))
                 @if(Auth::user()->access_id === 1)

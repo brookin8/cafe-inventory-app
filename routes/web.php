@@ -61,10 +61,8 @@ Route::get('/inventorycounts/saved', 'InventorycountController@saved');
 
 Route::resource('inventorycounts', 'InventorycountController');
 
-Route::get('/reporting/spend', 'ReportingController@spend');
+Route::get('/reporting/details', 'ReportingController@details');
 
 Route::resource('reporting', 'ReportingController');
 
-Route::post('/reporting/demandfilter','ReportingController@demandfilter');
-
-Route::post('/reporting/spend/spendfilter','ReportingController@spendfilter');
+Route::post('/reporting/details/filter','ReportingController@detailsfilter');

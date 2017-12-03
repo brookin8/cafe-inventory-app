@@ -3,7 +3,7 @@
 <script type="text/javascript">
 
 
-      google.charts.load('current', {'packages':['corechart', 'controls']});
+      //google.charts.load('current', {'packages':['corechart', 'controls']});
       google.charts.setOnLoadCallback(drawStuff);
 
       // $("#itemcategory").onchange(categoryselect);
@@ -73,15 +73,15 @@ function drawStuff() {
       data.addRows(rows);
 
       var totalcolumn = data.getNumberOfColumns()-2;
-      console.log(totalcolumn);
+      //console.log(totalcolumn);
       // console.log('getcolumnlabel: '+ data.getColumnLabel(183));
 
       var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
       var options = {
-      	width: 675,
-         height: 325,
+      	width: 730,
+         height: 200,
          legend: {position:'right'},
-         chartArea: { left: 70, width: "60%", height: "80%" },
+         chartArea: { left: 60, width: "65%", height: "90%" },
       	hAxis: {
            	 gridlines: {count: 5}
            },
@@ -224,10 +224,10 @@ function categoryselect(category) {
     
       var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
       var options = {
-        width: 675,
-         height: 325,
+         width: 730,
+         height: 200,
          legend: {position:'right'},
-         chartArea: { left: 70, width: "60%", height: "80%" },
+         chartArea: { left: 60, width: "65%", height: "90%" },
       	hAxis: {
            	 gridlines: {count: 5}
            },
@@ -368,10 +368,10 @@ function supplierselect(supplier) {
     
       var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
       var options = {
-         width: 675,
-         height: 325,
+         width: 730,
+         height: 200,
          legend: {position:'right'},
-         chartArea: { left: 70, width: "60%", height: "80%" },
+         chartArea: { left: 60, width: "65%", height: "90%" },
       	hAxis: {
            	 gridlines: {count: 5}
            },
@@ -498,10 +498,10 @@ function supplierselect(supplier) {
     
       var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
       var options = {
-         width: 675,
-         height: 325,
+         width: 730,
+         height: 200,
          legend: {position:'right'},
-         chartArea: { left: 70, width: "60%", height: "80%" },
+         chartArea: { left: 60, width: "65%", height: "90%" },
       	hAxis: {
            	 gridlines: {count: 5}
            },
@@ -626,10 +626,10 @@ function endselect(end) {
 
       var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
       var options = {
-      	width: 675,
-         height: 325,
+         width: 730,
+         height: 200,
          legend: {position:'right'},
-         chartArea: { left: 70, width: "60%", height: "80%" },
+         chartArea: { left: 60, width: "65%", height: "90%" },
       	hAxis: {
            	 gridlines: {count: 5}
            },
@@ -758,10 +758,10 @@ function itemselect(item) {
 
       var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
       var options = {
-         width: 675,
-         height: 325,
+         width: 730,
+         height: 200,
          legend: {position:'right'},
-         chartArea: { left: 70, width: "60%", height: "80%" },
+         chartArea: { left: 60, width: "65%", height: "90%" },
          hAxis: {
              gridlines: {count: 5}
            },
