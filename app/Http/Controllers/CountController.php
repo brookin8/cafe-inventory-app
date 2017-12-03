@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
-class InventoryCountController extends Controller
+class CountController extends Controller
 {
     
      /**
