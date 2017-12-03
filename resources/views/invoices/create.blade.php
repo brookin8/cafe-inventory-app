@@ -80,7 +80,7 @@
 	                			<input type="hidden" value="{{$order}}" name="order">
 	                		</div>
 	                		<div class="col text-right">
-								<a href="../invoices"><button class="btn btn-default mr-3" type="button">Discard</button></a><button type="submit" class="btn btn-default">Submit</button>
+								<a href="../invoices"><button class="btn btn-default mr-3" type="button">Discard</button></a><button type="submit" class="btn btn-primary newitem">Submit</button>
 							</div>
 	                	</div>
 	                </div>
