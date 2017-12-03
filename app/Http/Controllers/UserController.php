@@ -28,7 +28,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $accesslevels = \App\Access_Level::all();
+        $stores = \App\Store::all();
+        return view('auth.register',compact('accesslevels','stores'));
     }
 
     /**
