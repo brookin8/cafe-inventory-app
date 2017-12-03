@@ -15,7 +15,7 @@ Route::get('/', function () {
     return redirect('/login');
 });
 
-Route::get('/register','UserController@create');
+//Route::get('/register','UserController@create');
 
 Route::resource('users','UserController');
 

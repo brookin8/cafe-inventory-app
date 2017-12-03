@@ -14,7 +14,7 @@
                 			Users
                 		</div>
                 		<div class="col">
-                			<a href="../register"><button class="btn btn-primary newcount ml-5">New User</button></a>
+                			<a href="../users/create"><button class="btn btn-primary newcount ml-5">New User</button></a>
                 		</div>
                 	</div>
 				</div>
