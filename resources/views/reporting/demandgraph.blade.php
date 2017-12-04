@@ -833,14 +833,14 @@ function drawStuff() {
 
       var totalcolumn = data.getNumberOfColumns()-2;
 
-      // var formatter = new google.visualization.NumberFormat({
-      //     prefix: '$'
-      // });
+      var formatter = new google.visualization.NumberFormat({
+          prefix: '$'
+      });
 
 
-      // for(var i=1;i<=totalcolumn+1;i++) {
-      //    formatter.format(data,i);
-      // }
+      for(var i=1;i<=totalcolumn+1;i++) {
+         formatter.format(data,i);
+      }
       
       //console.log(totalcolumn);
       // console.log('getcolumnlabel: '+ data.getColumnLabel(183));
@@ -850,7 +850,7 @@ function drawStuff() {
 
 
       var options = {
-         pointSize: 10,
+         // pointSize: 10,
          width: 700,
          height: 250,
          legend: {position:'right'},
@@ -962,6 +962,7 @@ function categoryselect(category) {
 
       data.addColumn('number','Total');
 
+
       for(var i=0; i<dates.length; i++) {
          var total = 0;
          var pushing = [];
@@ -994,10 +995,19 @@ function categoryselect(category) {
       data.addRows(rows);
 
      var totalcolumn = data.getNumberOfColumns()-2;
+
+
+      var formatter = new google.visualization.NumberFormat({
+          prefix: '$'
+      });
+
+
+      for(var i=1;i<=totalcolumn+1;i++) {
+         formatter.format(data,i);
+      }
     
       var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
       var options = {
-         pointSize: 10,
          width: 700,
          height: 250,
          legend: {position:'right'},
@@ -1139,10 +1149,19 @@ function supplierselect(supplier) {
       data.addRows(rows);
 
       var totalcolumn = data.getNumberOfColumns()-2;
+
+
+      var formatter = new google.visualization.NumberFormat({
+          prefix: '$'
+      });
+
+
+      for(var i=1;i<=totalcolumn+1;i++) {
+         formatter.format(data,i);
+      }
     
       var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
       var options = {
-         pointSize: 10,
          width: 700,
          height: 250,
          legend: {position:'right'},
@@ -1270,10 +1289,19 @@ function supplierselect(supplier) {
       data.addRows(rows);
 
       var totalcolumn = data.getNumberOfColumns()-2;
+
+
+      var formatter = new google.visualization.NumberFormat({
+          prefix: '$'
+      });
+
+
+      for(var i=1;i<=totalcolumn+1;i++) {
+         formatter.format(data,i);
+      }
     
       var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
       var options = {
-         pointSize: 10,
          width: 700,
          height: 250,
          legend: {position:'right'},
@@ -1282,7 +1310,6 @@ function supplierselect(supplier) {
              gridlines: {count: 5}
            },
          tooltip: { trigger: 'selection' },
-         pointSize: 10,
          seriesType: 'bars',
          isStacked:true,
          series: '',
@@ -1400,9 +1427,18 @@ function endselect(end) {
 
       var totalcolumn = data.getNumberOfColumns()-2;
 
+
+      var formatter = new google.visualization.NumberFormat({
+          prefix: '$'
+      });
+
+
+      for(var i=1;i<=totalcolumn+1;i++) {
+         formatter.format(data,i);
+      }
+
       var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
       var options = {
-         pointSize: 10,
          width: 700,
          height: 250,
          legend: {position:'right'},
@@ -1411,7 +1447,6 @@ function endselect(end) {
              gridlines: {count: 5}
            },
          tooltip: { trigger: 'selection' },
-         pointSize: 10,
          seriesType: 'bars',
          isStacked:true,
           series: '',
@@ -1533,9 +1568,18 @@ function itemselect(item) {
 
       var totalcolumn = data.getNumberOfColumns()-2;
 
+
+      var formatter = new google.visualization.NumberFormat({
+          prefix: '$'
+      });
+
+
+      for(var i=1;i<=totalcolumn+1;i++) {
+         formatter.format(data,i);
+      }
+
       var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
       var options = {
-         pointSize: 10,
          width: 700,
           height: 250,
          legend: {position:'right'},
@@ -1544,7 +1588,6 @@ function itemselect(item) {
              gridlines: {count: 5}
            },
          tooltip: { trigger: 'selection' },
-         pointSize: 10,
          seriesType: 'bars',
          isStacked:true,
           series: '',
