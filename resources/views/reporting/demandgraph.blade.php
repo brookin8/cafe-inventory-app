@@ -789,6 +789,7 @@ function drawStuff() {
             dates.push(spend[i].week);
          } 
       }
+      console.log('dates: ' + dates);
 
       for(var i=0; i<items.length; i++) {
          headers.push(items[i].name);

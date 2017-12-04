@@ -189,7 +189,7 @@
 							</select>
 						</div>
 				      </div>
-				      <div id="chart_div" class="mt-3 mb-4 ml-4 googlechart" style="width:800px;margin-left:auto;margin-right:auto"></div>
+				      <div id="chart_div" class="mt-3 mb-4 ml-4" style="width:800px;margin-left:auto;margin-right:auto"></div>
 				    </div>
 				</div>
 			</div>
