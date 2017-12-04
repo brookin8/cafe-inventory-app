@@ -52,7 +52,7 @@
                                 Total Spend This Month
                             </div>
                             <div class="card-block dashboard" id="spendblock">
-                                <a href="../reporting"><div class="cardblocktext align-middle">${{number_format($PTD)}}</div></a>
+                                <a href="../reporting" class='reportinglink'><div class="cardblocktext align-middle">${{number_format($PTD)}}</div></a>
                             </div>
                             <div class="card-footer">
                             </div>
