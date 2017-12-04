@@ -784,9 +784,9 @@ function drawStuff() {
       data.addColumn('date', 'Week');
 
       for (var i = 0; i < spend.length; i++) {
-      var dateconversion = new Date(spend[i].week);
-      if(!dates.includes(spend[i].week) && dateconversion >= startdate) {
-            dates.push(spend[i].week);
+      var dateconversion = new Date(spend[i].week).setHours(0,0,0,0);
+      if(!dates.includes(dateconversion) && dateconversion >= startdate) {
+            dates.push(dateconversion);
          } 
       }
       console.log('dates: ' + dates);
@@ -806,7 +806,8 @@ function drawStuff() {
          for(var j=1;j<headers.length;j++) {
             var found = false;
             for(var k=0;k<spend.length;k++) {
-               if(spend[k].week === dates[i] && spend[k].name === headers[j]) {
+               var dateconversion = new Date(spend[k].week).setHours(0,0,0,0);
+               if(dateconversion === dates[i] && spend[k].name === headers[j]) {
                   pushing.push(Number(spend[k].spend));
                   total += Number(spend[k].spend);
                   found = true;
