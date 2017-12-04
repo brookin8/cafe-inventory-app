@@ -226,6 +226,7 @@ class OrderController extends Controller
             //error_log('false');
             $thisweek = Carbon::today()->startOfWeek();
             $lastweek = Carbon::today()->startOfWeek()->subDays(7);
+            error_log('This: '.$thisweek);
             $today = Carbon::today();
 
             $orderitems = \DB::table('items_orders')
@@ -254,7 +255,7 @@ class OrderController extends Controller
                     ->where([
                         ['item_id','=',$allitem->id],
                         ['store_id','=',\Auth::user()->store_id],
-                        ['week','=',$thisweek]
+                        ['week','>=',$thisweek]
                     ])
                     ->exists()) {
                         //error_log('item: '. $allitem->id);
@@ -264,10 +265,11 @@ class OrderController extends Controller
                                 ->where([
                                     ['item_id','=',$allitem->id],
                                     ['store_id','=',\Auth::user()->store_id],
-                                    ['week','=',$thisweek]
+                                    ['week','>=',$thisweek]
                                 ])
                                 ->first();
-                                //error_log('existing spend: ' . $existingspend->spend);
+
+                                error_log('existing spend: ' . $existingspend->spend);
                     //If it is on the order
                         if(in_array($allitem->id,$orderitemIds)) {
                             $addspend = \DB::table('items_orders')
@@ -276,10 +278,12 @@ class OrderController extends Controller
                                 ['item_id','=',$allitem->id]
                                 ])
                                 ->first();
-                            //error_log('addspend: '. $addspend->orders_dollar_amount);
+                            error_log('addspend: '. $addspend->orders_dollar_amount);
                             
                             $newspend = $existingspend->spend + $addspend->orders_dollar_amount;
                             $updaterecord = \App\Item_Spend::find($existingspend->id);
+                            error_log('Update Record: ' . $updaterecord);
+                            error_log('New Spend: ' . $newspend);
                             $updaterecord->spend = $newspend;
                             $updaterecord->save();
                         }

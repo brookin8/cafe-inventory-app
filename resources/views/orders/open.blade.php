@@ -2,8 +2,8 @@
 
 @section('content')
 
-<div id="loader"></div>
 
+<div id="loader"></div>
 <div style="display:none;" id="loaderDiv">
 	<div class="container">
     <div class="row">
@@ -49,7 +49,7 @@
 										<th class="text-left">Submitted</th>
 										<th class="text-left">Placed By</th>
 										<th class="text-left">ETA</th>
-										<th class="text-left">Total $</th>
+										<th class="text-left">Total($)</th>
 										<th class="text-left">Status</th>
 										<th class="text-left">Actions</th>
 									</tr>

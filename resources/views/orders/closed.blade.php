@@ -49,7 +49,7 @@
 										<th class="text-left">Submitted</th>
 										<th class="text-left">ETA</th>
 										<th class="text-left">Actual Delivery</th>
-										<th class="text-left">Total $</th>
+										<th class="text-left">Total($)</th>
 										<th class="text-left">Status</th>
 									</tr>
 								</thead>

@@ -38,7 +38,7 @@
 							<thead>
 								<tr>
 									<th class="text-left">ID</th>
-									<th class="text-left">Total $</th>
+									<th class="text-left">Total($)</th>
 									<th class="text-left">Last Updated</th>
 									<th class="text-left">Updated By</th>
 									<th class="text-left">Actions</th>

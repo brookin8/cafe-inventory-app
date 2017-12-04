@@ -48,7 +48,7 @@
 										<th class="text-left">Supplier</th>
 										<th class="text-left">Submitted</th>
 										<th class="text-left">ETA</th>
-										<th class="text-left">Total $</th>
+										<th class="text-left">Total($)</th>
 										<th class="text-left">Status</th>
 										<th class="text-left actions">Actions</th>
 									</tr>

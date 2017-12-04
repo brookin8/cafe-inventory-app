@@ -71,7 +71,7 @@
 							<th class="text-left">UOM</th>
 							<th class="text-left">Unit Cost</th>
 							<th class="text-left">Ordered Qty</th>
-							<th class="text-left">Total $</th>
+							<th class="text-left">Total($)</th>
 						</tr>
 					</thead>
 

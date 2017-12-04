@@ -70,6 +70,7 @@ Limer Green: #67E593;
 	th.text-left.cellwidth.counthead.d {
 		width:150px;
 	}
+
 }
 
 
@@ -120,6 +121,14 @@ Limer Green: #67E593;
 body {
 	font-family:'Roboto', sans-serif;
 	background-color:#EEEEEE;
+}
+
+#app {
+	width:100%;
+	margin-left:0;
+	margin-right:0;
+	padding-left:0;
+	padding-right:0;
 }
 
 #access_id {
@@ -1017,6 +1026,7 @@ nav.navbar.navbar-default.navbar-static-top {
 .navbar-default {
 	background-color: #0F144E;
 	color:#fff;
+	width:100%;
 }
 
 .navbar-default .navbar-brand{
@@ -1163,7 +1173,7 @@ a.itemsrow {
     transition: 1s;
 }
 
-.sidenav a:hover {
+.sidenav a:hover, .sidenav a:active {
     background-color: #4C4C72;
 }
 

@@ -30,7 +30,7 @@
 										<th class="text-left">Invoice #</th>
 										<th class="text-left">Order #</th>
 										<th class="text-left">Supplier</th>
-										<th class="text-left">Total $</th>
+										<th class="text-left">Total($)</th>
 										<th class="text-left">Submitted</th>
 										<th class="text-left">Submitted By</th>
 									</tr>

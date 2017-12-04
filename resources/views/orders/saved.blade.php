@@ -47,7 +47,7 @@
 									<th class="text-left">Order #</th>
 									<th class="text-left">Supplier</th>
 									<th class="text-left">Last Updated</th>
-									<th class="text-left">Total $</th>
+									<th class="text-left">Total($)</th>
 									<th class="text-left">Status</th>
 									<th class="text-left">Actions</th>
 								</tr>

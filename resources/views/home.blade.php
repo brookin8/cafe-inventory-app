@@ -4,11 +4,11 @@
 
     <div class="container">
         <div class="row">
-            <h1>Welcome, {{$user->name}}</h1>
+            <h2>Welcome, {{$user->name}}</h2>
         </div>
     </div>
 
-        <div class="container mt-3 mt-5">
+        <div class="container mt-5 mb-5">
             @if (session('status'))
                 <div class="alert alert-success">
                     {{ session('status') }}
@@ -52,7 +52,7 @@
                                 Total Spend This Month
                             </div>
                             <div class="card-block dashboard" id="spendblock">
-                                <div class="cardblocktext align-middle">${{number_format($PTD)}}</div>
+                                <a href="../reporting"><div class="cardblocktext align-middle">${{number_format($PTD)}}</div></a>
                             </div>
                             <div class="card-footer">
                             </div>
