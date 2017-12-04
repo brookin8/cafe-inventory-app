@@ -35,6 +35,7 @@ class ItemsController extends Controller
                 ->join('uoms', 'uom_id','=','uoms.id')
                 ->select('items.*', 'users.name as username','categories.name as category','suppliers.name as supplier','uoms.unit as uom')
                 ->whereNull('suppliers.deleted_at')
+                ->whereNull('items.deleted_at')
                 ->get();
 
         $items2 = \DB::table('items')
@@ -44,6 +45,7 @@ class ItemsController extends Controller
                 ->join('uoms', 'uom_id','=','uoms.id')
                 ->select('items.*', 'users.name as username','categories.name as category','uoms.unit as uom')
                 ->whereNotNull('suppliers.deleted_at')
+                ->whereNull('items.deleted_at')
                 ->get();
 
         $pars = \DB::table('items_stores')

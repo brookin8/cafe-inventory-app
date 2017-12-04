@@ -99,6 +99,7 @@ class SupplierController extends Controller
         $items = \DB::table('items')
             ->where('items.supplier_id','=',$id)
             ->select('items.*')
+            ->whereNull('items.deleted_at')
             ->get();
         $itemcount = $items->count();
 
