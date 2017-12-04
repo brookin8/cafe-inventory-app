@@ -798,6 +798,7 @@ function drawStuff() {
       data.addColumn('number','Total');
 
       for(var i=0; i<dates.length; i++) {
+         console.log('CURRENT DATE!! : ' + dates[i]);
          var total = 0;
          var pushing = [];
          var weekformatted = new Date(dates[i]);
@@ -809,10 +810,14 @@ function drawStuff() {
                   pushing.push(Number(spend[k].spend));
                   total += Number(spend[k].spend);
                   found = true;
+                  console.log('MATCH');
+                  console.log('spendweek: ' + spend[k].week);
+                  console.log('spendname: ' + spend[k].name);
                }
             }
             if(found === false) {
                pushing.push(0);
+               
             } else {
                found = false;
             }
@@ -820,7 +825,9 @@ function drawStuff() {
          }
 
          pushing.push(total);
+         console.log(pushing);
          rows.push(pushing);
+         //console.log(rows);
          pushing = [];
          total=0;
 
