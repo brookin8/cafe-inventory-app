@@ -795,7 +795,7 @@ function drawStuff() {
          data.addColumn('number', items[i].name);
       }
 
-      // data.addColumn('number','Total');
+      data.addColumn('number','Total');
 
       for(var i=0; i<dates.length; i++) {
          var total = 0;
@@ -820,7 +820,7 @@ function drawStuff() {
             
          }
 
-         // pushing.push(total);
+         pushing.push(total);
          console.log(pushing);
          rows.push(pushing);
          //console.log(rows);
@@ -831,19 +831,19 @@ function drawStuff() {
 
       data.addRows(rows);
 
-      // var totalcolumn = data.getNumberOfColumns()-2;
+      var totalcolumn = data.getNumberOfColumns()-2;
 
-      // var formatter = new google.visualization.NumberFormat({
-      //     prefix: '$'
-      // });
+      var formatter = new google.visualization.NumberFormat({
+          prefix: '$'
+      });
 
 
-      // for(var i=1;i<=totalcolumn+1;i++) {
-      //    formatter.format(data,i);
-      // }
+      for(var i=1;i<=totalcolumn+1;i++) {
+         formatter.format(data,i);
+      }
       
       //console.log(totalcolumn);
-      // console.log('getcolumnlabel: '+ data.getColumnLabel(183));
+      //console.log('getcolumnlabel: '+ data.getColumnLabel(183));
 
       var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
 
