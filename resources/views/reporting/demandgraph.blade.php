@@ -833,14 +833,14 @@ function drawStuff() {
 
       var totalcolumn = data.getNumberOfColumns()-2;
 
-      var formatter = new google.visualization.NumberFormat({
-          prefix: '$'
-      });
+      // var formatter = new google.visualization.NumberFormat({
+      //     prefix: '$'
+      // });
 
 
-      for(var i=1;i<=totalcolumn+1;i++) {
-         formatter.format(data,i);
-      }
+      // for(var i=1;i<=totalcolumn+1;i++) {
+      //    formatter.format(data,i);
+      // }
       
       //console.log(totalcolumn);
       // console.log('getcolumnlabel: '+ data.getColumnLabel(183));
