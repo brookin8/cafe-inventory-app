@@ -3,11 +3,9 @@
 @section('content')
 
 <div class="container">
-    <div class="row">
-    	<div class="col-xs-1">
-    	</div>
-        <div class="col-xs-10 createitem">
-        	<form method="post" action="/items" class="col-12">
+    <div class="row justify-content-center">
+        <div class="col-xs-11 col-md-11 col-lg-10 col-xl-10 createitem">
+        	<form method="post" action="/items" class="col-12 createitem">
         	{{ csrf_field() }}
             <div class="panel panel-default">
                 <div class="panel-heading">

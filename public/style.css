@@ -55,6 +55,11 @@ Limer Green: #67E593;
 		padding-right:0px !important;
 	}
 
+	form.col-12.createitem{
+		padding-left:0;
+		padding-right:0;
+	}
+
 	th.text-left.cellwidth.counthead.a {
 		width:55px;
 	}
