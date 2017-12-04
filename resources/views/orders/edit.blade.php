@@ -89,7 +89,7 @@
 												@endif
 											@endforeach
 										@else
-											<input class="orderquantity" type="numeric" name="qty{{$item->id}}">
+											<input class="orderquantity" type="number" name="qty{{$item->id}}">
 										@endif
 										</div>
 									</div>

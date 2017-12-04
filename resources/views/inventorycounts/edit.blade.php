@@ -27,56 +27,107 @@
                 	</div>
                 </div>
 
+                
+
    		 		<div class="panel-body">
-
-
-					<div class="container">
-						<table class="table tableborder table-striped table-hover invcountwidth table-top">
-							<thead>	
-								<tr>
-									<th class="text-center cellwidth counthead">Item No</th>
-									<th class="text-center cellwidth counthead">Item Name</th>
-									<th class="text-center cellwidth counthead">Category</th>
-									<th class="text-center cellwidth counthead">Supplier</th>
-									<th class="text-center cellwidth counthead">Qty Onhand</th>
-								</tr>
-							</thead>
-						</table>
+   		 			<div class="row mt-3 mb-4 ml-2">
+					<div class="col-2">
+					  	<h3 class="orderform">Count #:</h3> 
+				  		<div class="orderform">{{$count->id}}</div>
+				  	</div>
+				  	<div class="col-2">
+					  	<h3 class="orderform">Total $:</h3> 
+				  		<div class="orderform">${{$count->total_value_onhand}}</div>
+				  	</div>
+				  	<div class="col-3">
+					  	<h3 class="orderform">Submitted By:</h3> 
+				  		<div class="orderform">{{$count->user->name}}</div>
+				  	</div>
+				  	<div class="col-4">
+				  		<h3 class="orderform">Date Submitted:</h3> 
+				  		<div class="orderform">{{Carbon\Carbon::parse($count->updated_at)->format('m/d/Y')}}</div>
+				  	</div>
+					</div>
+					<div class="row mt-3 mb-5 ml-2">
+					  	<div class="col-4">
+					  		<h3 class="orderform">Categories Counted</h3>
+					  		<div class="orderform">
+						  		<ul>
+								  	@foreach($categoriesused as $categoryused)
+								  	<li class="text-left">{{ $categoryused }}</li>
+								  	@endforeach	
+								</ul>
+							</div>
+					  	</div>
+					  	<div class="col-4">
+					  		<h3 class="orderform">Suppliers Counted</h3>
+					  		<div class="orderform">
+						  		<ul>
+								  	@foreach($suppliersused as $supplierused)
+								  	<li class="text-left">{{ $supplierused }}</li>
+								  	@endforeach	
+								</ul>
+							</div>
+					  	</div>
+					</div>
+					<div class="row mt-3 mb-5 ml-2">
+					  	<div class="col-6">
+					  		<h3 class="orderform">Items Counted</h3>
+					  		<div class="orderform">
+						  		<ul>
+								  	@foreach($counteditems as $counteditem)
+								  	<li class="text-left">{{ $counteditem->itemname }}</li>
+								  	@endforeach	
+								</ul>
+							</div>
+					  	</div>
 					</div>
 
-					<div class="container">
-					<table class="table table-borderless table-striped table-hover invcountwidth" id="table">
+						<div class="container ml-4 mr-4">
 
-						<thead>
-							<tr>
-								<th class="text-center cellwidth"></th>
-								<th class="text-center cellwidth"></th>
-								<th class="text-center cellwidth"></th>
-								<th class="text-center cellwidth"></th>
-								<th class="text-center cellwidth"></th>
-							</tr>
-						</thead>
-
-						<tbody>
-						@foreach($items as $item)
-						<tr class="">
-							<td class="text-center cellwidth"><input type="hidden" name="item{{$item->id}}" value="{{$item->id}}">{{$item->id}}</td>
-							<td class="text-center cellwidth">{{$item->name}}</td>
-							<td class="text-center cellwidth">{{$item->category->name}}</td>
-							<td class="text-center cellwidth">{{$item->supplier->name}}</td>
-							@if (in_array($item->id,$counteditemIds))
-								@foreach ($counteditems as $counteditem)
-									@if ($counteditem->item_id === $item->id)
-										<td class="text-center cellwidth"><input type="number" class="invcountqty" value="{{$counteditem->inventorycount_qty}}" name="qty{{$item->id}}"></td>
-									@endif
-								@endforeach
-							@else
-								<td class="text-center cellwidth"><input type="number" class="invcountqty" name="qty{{$item->id}}"></td>
-							@endif
-						</tr>
+						@foreach ($categories as $category)
+						<div class="row">
+							<button class="btn btn-lg mb-2 mt-3 ordercategory" data-toggle="collapse" href="#collapse{{$category->id}}" aria-expanded="false" aria-controls="collapse{{$category->id}}">
+							{{ ucfirst(trans($category->name))}}
+							</button>
+						</div>
+						<div class="collapse" id="collapse{{$category->id}}">
+							<div class="row mt-4 mb-3 ordertop">
+								<div class="col-2">Item #</div>
+								<div class="col-5 text-left">Name</div>
+								<div class="col-3">Supplier</div>
+								<div class="col-2">Qty Onhand</div>
+							</div>
+						@foreach ($items as $item)
+						@if($item->category_id === $category->id)
+	 						 <div class="card card-block" style="width:95%">
+	 						 	<div class="row">
+	 						 		<div class="col-2">
+	 						 		{{$item->id}}
+	 						 		<input class="hidden" name="item{{$item->id}}" value="{{$item->id}}">
+	 						 		</div>
+									<div class="col-5 text-left">{{$item->name}}
+									</div>
+									<div class="col-3">
+										{{$item->supplier->name}}
+									</div>
+									<div class="col-2">
+										@if (in_array($item->id,$counteditemIds))
+											@foreach ($counteditems as $counteditem)
+												@if ($counteditem->item_id === $item->id)
+													<td class="text-center cellwidth"><input type="number" class="invcountqty" value="{{$counteditem->inventorycount_qty}}" name="qty{{$item->id}}"></td>
+												@endif
+											@endforeach
+										@else
+											<td class="text-center cellwidth"><input type="number" class="invcountqty" name="qty{{$item->id}}"></td>
+										@endif
+									</div>
+								</div>
+							</div>
+						@endif
 						@endforeach
-						</tbody>
-					</table>
+					</div>
+					@endforeach
 					</div>
 				</div>
 			</form>

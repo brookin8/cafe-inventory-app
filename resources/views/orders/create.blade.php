@@ -91,7 +91,7 @@
 										${{$item->cost}}
 									</div>
 									<div class="col-2">
-										<input class="orderquantity" name="qty{{$loop->iteration}}">
+										<input class="orderquantity" name="qty{{$loop->iteration}}" type="number">
 									</div>
 								</div>
 							</div>

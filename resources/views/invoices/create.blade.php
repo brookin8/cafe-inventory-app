@@ -15,7 +15,7 @@
 	                <div class="panel-heading">
 	                	<div class="row">
 	                		<div class="col-8">
-	                			Invoice for Order #: <input name="order" class="invoiceorder">
+	                			Invoice for Order #: <input name="order" class="invoiceorder" type="number">
 	                			<input type="hidden" value="{{$order}}" name="order">
 	                		</div>
 	                		<div class="col-4 text-right">
@@ -50,7 +50,7 @@
 								</div>
 							</div>
 							<div class="col-2 ml-2">
-								<input name="qty{{$loop->iteration}}" class="orderquantity">
+								<input name="qty{{$loop->iteration}}" class="orderquantity" type="number">
 							</div>
 					</div>
 					@endforeach

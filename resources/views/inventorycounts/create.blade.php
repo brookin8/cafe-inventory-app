@@ -28,47 +28,46 @@
 
    		 		<div class="panel-body">
 
-					<div class="container">
-						<table class="table tableborder table-striped table-hover invcountwidth table-top">
-							<thead>	
-								<tr>
-									<th class="text-left cellwidth counthead a">Item #</th>
-									<th class="text-left cellwidth counthead b">Item Name</th>
-									<th class="text-left cellwidth counthead c">Category</th>
-									<th class="text-left cellwidth counthead d">Supplier</th>
-									<th class="text-left cellwidth counthead e">Qty Onhand</th>
-								</tr>
-							</thead>
-						</table>
+   		 			<div class="container ml-4 mr-4">
+
+					@foreach ($categories as $category)
+					<div class="row">
+						<button class="btn btn-lg mb-2 mt-3 ordercategory" data-toggle="collapse" href="#collapse{{$category->id}}" aria-expanded="false" aria-controls="collapse{{$category->id}}">
+						{{ ucfirst(trans($category->name))}}
+						</button>
 					</div>
-
-					<div class="container">
-					<table class="table table-borderless table-striped table-hover invcountwidth" id="table">
-
-						<thead>
-							<tr>
-								<th class="text-center cellwidth a"></th>
-								<th class="text-center cellwidth b"></th>
-								<th class="text-center cellwidth c"></th>
-								<th class="text-center cellwidth d"></th>
-								<th class="text-center cellwidth e"></th>
-							</tr>
-						</thead>
-
-						<tbody>
-						@foreach($items as $item)
-						<tr class="">
-							<td class="text-left cellwidth a"><input type="hidden" name="item{{$loop->iteration}}" value="{{$item->id}}">{{$item->id}}</td>
-							<td class="text-left cellwidth b">{{$item->name}}</td>
-							<td class="text-left cellwidth c">{{$item->category->name}}</td>
-							<td class="text-left cellwidth d">{{$item->supplier->name}}</td>
-							<td class="text-left cellwidth e"><input type="number" class="invcountqty" name="qty{{$loop->iteration}}"></td>
-						</tr>
-						@endforeach
-						</tbody>
-					</table>
-				</div>
+					<div class="collapse" id="collapse{{$category->id}}">
+						<div class="row mt-4 mb-3 ordertop">
+							<div class="col-2">Item #</div>
+							<div class="col-5 text-left">Name</div>
+							<div class="col-3">Supplier</div>
+							<div class="col-2">Qty Onhand</div>
+						</div>
+					@foreach ($items as $item)
+					@if($item->category_id === $category->id)
+ 						 <div class="card card-block" style="width:95%">
+ 						 	<div class="row">
+ 						 		<div class="col-2">
+ 						 		{{$item->id}}
+ 						 		<input class="hidden" name="item{{$loop->iteration}}" value="{{$item->id}}">
+ 						 		</div>
+								<div class="col-5 text-left">{{$item->name}}
+								</div>
+								<div class="col-3">
+									{{$item->supplier->name}}
+								</div>
+								<div class="col-2">
+									<input class="orderquantity" name="qty{{$loop->iteration}}" type="number">
+								</div>
+							</div>
+						</div>
+					@endif
+				@endforeach
 			</div>
+		@endforeach
+			</div>
+					
+				</div>
 			</div>
 		</form>
 		</div>

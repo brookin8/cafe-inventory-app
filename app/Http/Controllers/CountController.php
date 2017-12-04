@@ -51,8 +51,9 @@ class CountController extends Controller
      */
     public function create()
     {
-        $items = \App\Item::all();
-        return view('inventorycounts.create',compact('items'));
+        $items = \App\Item::orderBy('items.name')->get();
+        $categories = \App\Category::all();
+        return view('inventorycounts.create',compact('items','categories'));
     }
 
     /**
@@ -410,19 +411,29 @@ class CountController extends Controller
     {
         
         $count = \App\Inventorycount::find($id);
-        $items = \App\Item::all();
+        $items = \App\Item::orderBy('items.name')->get();;
         $counteditems = \DB::table('items_inventorycounts')
+            ->join('items','items_inventorycounts.item_id','=','items.id')
+            ->join('categories','items.category_id','=','categories.id')
+            ->join('suppliers','items.supplier_id','=','suppliers.id')
             ->where('items_inventorycounts.inventorycount_id','=',$id)
-            ->select('items_inventorycounts.*')
+            ->select('items_inventorycounts.*','categories.name as categoryname','suppliers.name as suppliername','items.name as itemname')
             ->get();
-
+        $categories = \App\Category::all();
+        $categoriesused = [];
+        $suppliersused = [];
         $counteditemIds = [];
 
         foreach($counteditems as $counteditem) {
             array_push($counteditemIds,$counteditem->item_id);
+            array_push($categoriesused,$counteditem->categoryname);
+            array_push($suppliersused,$counteditem->suppliername);
         }
 
-        return view('inventorycounts.edit',compact('count','items','counteditems','counteditemIds'));
+        $categoriesused = array_unique($categoriesused);
+        $suppliersused = array_unique($suppliersused);
+
+        return view('inventorycounts.edit',compact('count','items','counteditems','counteditemIds','categories','suppliersused','categoriesused'));
     }
 
     /**
