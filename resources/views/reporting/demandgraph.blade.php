@@ -850,7 +850,7 @@ function drawStuff() {
 
 
       var options = {
-         // pointSize: 10,
+         pointSize: 10,
          width: 700,
          height: 250,
          legend: {position:'right'},
@@ -1017,6 +1017,7 @@ function categoryselect(category) {
            },
          tooltip: { trigger: 'selection' },
          seriesType: 'bars',
+         pointSize: 10,
          isStacked:true,
          series: '',
           is3D: true,
@@ -1163,6 +1164,7 @@ function supplierselect(supplier) {
       var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
       var options = {
          width: 700,
+         pointSize: 10,
          height: 250,
          legend: {position:'right'},
          chartArea: { left: 60, width: "65%", height: "80%" },
@@ -1303,6 +1305,7 @@ function supplierselect(supplier) {
       var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
       var options = {
          width: 700,
+         pointSize: 10,
          height: 250,
          legend: {position:'right'},
          chartArea: { left: 60, width: "65%", height: "80%" },
@@ -1440,6 +1443,7 @@ function endselect(end) {
       var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
       var options = {
          width: 700,
+         pointSize: 10,
          height: 250,
          legend: {position:'right'},
          chartArea: { left: 60, width: "65%", height: "80%" },
@@ -1578,9 +1582,11 @@ function itemselect(item) {
          formatter.format(data,i);
       }
 
+//Adding some minor changes to help push
       var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
       var options = {
          width: 700,
+         pointSize: 10,
           height: 250,
          legend: {position:'right'},
          chartArea: { left: 60, width: "65%", height: "80%" },
