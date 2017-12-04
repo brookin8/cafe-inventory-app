@@ -354,7 +354,7 @@ class OrderController extends Controller
         
         $order = \App\Order::find($id);
         $supplierId = $order->supplier_id;
-        $supplier = \App\Order::find($supplierId);
+        $supplier = \App\Supplier::find($supplierId);
         
         $ordereditems = \DB::table('items_orders')
                 ->join('orders', 'items_orders.order_id', '=', 'orders.id')
