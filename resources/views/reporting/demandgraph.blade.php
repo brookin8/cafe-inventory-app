@@ -862,6 +862,7 @@ function drawStuff() {
          isStacked:true,
          seriesType: 'bars',
          series: '',
+         bar: {groupWidth: "61.8%"},
          is3D: true,
          animation:{
            duration: 1000,
