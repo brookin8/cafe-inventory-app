@@ -13,6 +13,7 @@
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
 
     <script src="//code.jquery.com/jquery-1.12.3.js"></script>
     <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
@@ -72,7 +73,18 @@
                         <a class="navbar-brand ml-2 mt-1" href="{{ url('/home') }}">
                             <div class="row brandrow">
                             <img src="{{ asset('northlime.png') }}" class="logoimage mr-2 mt-1">
-                            <div class="mt-3 mr-2">North Lime Inventory</div>
+                            <div class="mt-3 mr-2" style="
+                            font-family: 'Lobster', cursive;
+                            font-size:160%;  
+                            z-index webkit-text-stroke: 2px #4C4C72;
+                            color: #fff;
+                            text-shadow:
+                               2px 2px 0 #4C4C72,
+                             -2px -2px 0 #4C4C72,  
+                              2px -2px 0 #4C4C72,
+                              -2px 2px 0 #4C4C72,
+                               2px 2px 0 #4C4C72;"
+                            >North Lime Inventory</div>
                             </div>
                         </a>
                 </div>
@@ -91,7 +103,7 @@
                             <!-- <li><a href="{{ route('register') }}">Register</a></li> -->
                         @else
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle logout" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                                <a href="#" class="dropdown-toggle logout" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" style="font-size:120%">
                                     {{ Auth::user()->name }} 
                                 </a>
 
