@@ -63,13 +63,13 @@
 			  	</div>
 			</div>
 			<div class="form-group row">
-			  	<label for="supplier_item" class="col-4 col-form-label text-right createText">Supplier Item Identifier</label>
+			  	<label for="supplier_item" class="col-4 col-form-label text-right createText">Supplier Item ID</label>
 			  	<div class="col-7">
 			  		<input type="text" id="supplier_item" value="{{$item->supplier_item_identifier}}" name="supplier_item" class="form-control">
 			  	</div>	
 			</div>
 			<div class="form-group row">
-			  	<label for="uom" class="col-4 col-form-label text-right createText">Unit of Measure (order)</label>
+			  	<label for="uom" class="col-4 col-form-label text-right createText">Unit of Measure</label>
 			  	<div class="col-7">
 			  		<select name="uom" id="uom" class="form-control createOption">
 			  			@foreach ($uoms as $uom)

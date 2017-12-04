@@ -22,8 +22,8 @@
 				</div>
 				<div class="panel-body">
 
-				<div class="row ml-5 mr-3">
-					<div class="table-responsive mr-4 ml-3">
+				<div class="row">
+					<div class="table-responsive mr-4 ml-4">
 						<table class="table tableborder table-striped table-hover" id="table">
 						
 							<thead>

@@ -37,7 +37,7 @@
 			<input type="hidden" name="deliverydate" value="{{$deliverydate}}">
 		</div>
 
-		<div class="container ml-4">
+		<div class="container ml-4 mr-4">
 
 		@foreach ($categories as $category)
 			<div class="row">
@@ -46,7 +46,7 @@
 				</button>
 			</div>
 				<div class="collapse" id="collapse{{$category->id}}">
-					<div class="row mt-4 ordertop">
+					<div class="row mt-4 mb-3 ordertop">
 						<div class="col-4">Item</div>
 						<div class="col-2">PARs</div>
 						<div class="col-2">Onhand</div>
@@ -55,7 +55,7 @@
 					</div>
 				@foreach ($items as $item)
 					@if($item->category_id === $category->id)
-	 						 <div class="card card-block">
+	 						 <div class="card card-block" style="width:95%">
 	 						 	<div class="row">
 									<div class="col-4">{{$item->name}}
 										<input class="hidden" name="item{{$loop->iteration}}" value="{{$item->id}}">
@@ -64,7 +64,11 @@
 										@if(in_array($item->id,$itemswithpars))
 											@foreach($pars as $par)
 												@if($item->id === $par->item_id)
+													@if(empty($par->PARs))
+													NO PARs
+													@else
 													{{$par->PARs}}
+													@endif
 												@break
 												@endif
 											@endforeach

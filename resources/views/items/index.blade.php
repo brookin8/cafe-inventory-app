@@ -8,7 +8,7 @@
 
 	<div class="container">
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-xs-12 tablecol">
             <div class="panel panel-default">
                 <div class="panel-heading">
                 	<div class="row">
@@ -22,8 +22,8 @@
 				</div>
 				<div class="panel-body">
 
-				<div class="row ml-5 mr-3">
-					<div class="table-responsive mr-4 ml-3">
+				<div class="row">
+					<div class="table-responsive mr-4 ml-4">
 						<table class="table table-striped table-hover tableborder" id="table">
 						
 							<thead>

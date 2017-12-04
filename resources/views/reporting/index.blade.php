@@ -43,7 +43,7 @@
 								    <a class="nav-link tabs active" href="">Summary</a>
 								  </li>
 								  <li class="nav-item">
-								    <a class="nav-link tabs" href="../reporting/details">Details</a>
+								    <a class="nav-link tabs" href="../reporting/spend">Details</a>
 								  </li>
 							</ul>
 						</div>
@@ -95,19 +95,19 @@
 											<option value="{{$category->id}}">{{$category->name}}</option>
 											@endforeach
 										</select>
-										<label for="demanditem2">
+								 </div>
+								 <div class="row mt-3 mb-3 ml-5">
+								 		<label for="demanditem2" class="mr-5">
 								      		Item: 
 								      	</label>
-										<select id="demanditem2" onchange="itemselect2(this.value)" style="width:185px">
+										<select id="demanditem2" onchange="itemselect2(this.value)" style="width:185px" class="ml-3">
 											<option value="''">All</option>
 											@foreach($items as $item)
 											<option value="{{$item->id}}">{{$item->name}}</option>
 											@endforeach
 										</select>
 						      	</div>
-						      	<div class="row mt-5" style="text-align:center;">
-							    	<div id="chart_div2" style="width:800px;margin-left:auto;margin-right:auto" class="mb-4"></div>
-							    </div>
+							    <div id="chart_div2" style="width:800px;margin-left:auto;margin-right:auto" class="mb-4 ml-3 mt-3"></div>
 						    </div>
 					    </div>
 					</div>
@@ -145,7 +145,7 @@
 					  // } );
 				</script>
 
-				<div class="row ml-5 mr-3 mt-3">	
+				<div class="row mr-3 mt-3">	
 				   <div id="dashboard_div">
 				    	<div class="row mt-3 ml-5">
 						    <label for="datepicker5">
@@ -176,10 +176,12 @@
 								<option value="{{$category->id}}">{{$category->name}}</option>
 								@endforeach
 							</select>
-							<label for="spenditem">
+				      	</div>
+				      	<div class="row mt-3 mb-3 ml-5">
+				      		<label for="spenditem" class="mr-5">
 				      			Item: 
 				      		</label>
-							<select id="spenditem" onchange="itemselect(this.value)" style="width:185px">
+							<select id="spenditem" onchange="itemselect(this.value)" style="width:185px" class="ml-3">
 								<option value="''">All</option>
 								@foreach($items as $item)
 								<option value="{{$item->id}}">{{$item->name}}</option>
@@ -187,7 +189,7 @@
 							</select>
 						</div>
 				      </div>
-				      <div id="chart_div" class="mt-3 googlechart" style="width:800px;margin-left:auto;margin-right:auto" class="mb-4"></div>
+				      <div id="chart_div" class="mt-3 mb-4 ml-4 googlechart" style="width:800px;margin-left:auto;margin-right:auto"></div>
 				    </div>
 				</div>
 			</div>

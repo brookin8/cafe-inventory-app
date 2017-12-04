@@ -6,7 +6,7 @@
     <div class="row">
     	<div class="col-xs-1">
     	</div>
-        <div class="col-xs-10">
+        <div class="col-xs-10 createitem">
         	<form method="post" action="/items" class="col-12">
         	{{ csrf_field() }}
             <div class="panel panel-default">
@@ -52,13 +52,13 @@
 						  	</div>
 						</div>
 						<div class="form-group row">
-						  	<label for="supplier_item" class="col-4 col-form-label text-right createText">Supplier Item Identifier</label>
+						  	<label for="supplier_item" class="col-4 col-form-label text-right createText">Supplier Item ID</label>
 						  	<div class="col-8">
 						  		<input type="text" id="supplier_item" name="supplier_item" class="form-control">
 						  	</div>	
 						</div>
 						<div class="form-group row">
-						  	<label for="uom" class="col-4 col-form-label text-right createText">Unit of Measure (order)</label>
+						  	<label for="uom" class="col-4 col-form-label text-right createText">Unit of Measure</label>
 						  	<div class="col-8">
 						  		<select name="uom" id="uom" class="form-control createOption">
 						  			<option value="" disabled selected>Select UOM</option>

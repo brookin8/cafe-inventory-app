@@ -32,11 +32,11 @@
 						<table class="table tableborder table-striped table-hover invcountwidth table-top">
 							<thead>	
 								<tr>
-									<th class="text-center cellwidth counthead">Item #</th>
-									<th class="text-center cellwidth counthead">Item Name</th>
-									<th class="text-center cellwidth counthead">Category</th>
-									<th class="text-center cellwidth counthead">Supplier</th>
-									<th class="text-center cellwidth counthead">Qty Onhand</th>
+									<th class="text-left cellwidth counthead a">Item #</th>
+									<th class="text-left cellwidth counthead b">Item Name</th>
+									<th class="text-left cellwidth counthead c">Category</th>
+									<th class="text-left cellwidth counthead d">Supplier</th>
+									<th class="text-left cellwidth counthead e">Qty Onhand</th>
 								</tr>
 							</thead>
 						</table>
@@ -47,22 +47,22 @@
 
 						<thead>
 							<tr>
-								<th class="text-center cellwidth"></th>
-								<th class="text-center cellwidth"></th>
-								<th class="text-center cellwidth"></th>
-								<th class="text-center cellwidth"></th>
-								<th class="text-center cellwidth"></th>
+								<th class="text-center cellwidth a"></th>
+								<th class="text-center cellwidth b"></th>
+								<th class="text-center cellwidth c"></th>
+								<th class="text-center cellwidth d"></th>
+								<th class="text-center cellwidth e"></th>
 							</tr>
 						</thead>
 
 						<tbody>
 						@foreach($items as $item)
 						<tr class="">
-							<td class="text-center cellwidth"><input type="hidden" name="item{{$loop->iteration}}" value="{{$item->id}}">{{$item->id}}</td>
-							<td class="text-center cellwidth">{{$item->name}}</td>
-							<td class="text-center cellwidth">{{$item->category->name}}</td>
-							<td class="text-center cellwidth">{{$item->supplier->name}}</td>
-							<td class="text-center cellwidth"><input type="number" class="invcountqty" name="qty{{$loop->iteration}}"></td>
+							<td class="text-left cellwidth a"><input type="hidden" name="item{{$loop->iteration}}" value="{{$item->id}}">{{$item->id}}</td>
+							<td class="text-left cellwidth b">{{$item->name}}</td>
+							<td class="text-left cellwidth c">{{$item->category->name}}</td>
+							<td class="text-left cellwidth d">{{$item->supplier->name}}</td>
+							<td class="text-left cellwidth e"><input type="number" class="invcountqty" name="qty{{$loop->iteration}}"></td>
 						</tr>
 						@endforeach
 						</tbody>

@@ -82,10 +82,10 @@ function drawStuff2() {
 
       var options = {
          isStacked: true,
-         width: 725,
+         width: 700,
          height: 250,
          legend: {position:'right'},
-         chartArea: { left: 50, width: "65%", height: "80%" },
+         chartArea: { left: 60, width: "65%", height: "80%" },
          hAxis: {
              gridlines: {count: 5}
            },
@@ -221,10 +221,10 @@ function categoryselect2(category) {
    
       var options = {
          isStacked: true,
-         width: 725,
+         width: 700,
          height: 250,
          legend: {position:'right'},
-         chartArea: { left: 50, width: "65%", height: "80%" },
+         chartArea: { left: 60, width: "65%", height: "80%" },
          hAxis: {
              gridlines: {count: 5}
            },
@@ -362,7 +362,7 @@ function supplierselect2(supplier) {
       
       var options = {
          isStacked: true,
-         width: 725,
+         width: 700,
          height: 250,
          legend: {position:'right'},
          chartArea: { left: 50, width: "65%", height: "80%" },
@@ -489,7 +489,7 @@ function supplierselect2(supplier) {
       
        var options = {
          isStacked: true,
-         width: 725,
+         width: 700,
          height: 250,
          legend: {position:'right'},
          chartArea: { left: 50, width: "65%", height: "80%" },
@@ -615,7 +615,7 @@ function endselect2(end) {
 
       var options = {
          isStacked: true,
-         width: 725,
+         width: 700,
          height: 250,
          legend: {position:'right'},
          chartArea: { left: 50, width: "65%", height: "80%" },
@@ -742,7 +742,7 @@ function itemselect2(item) {
       
        var options = {
          isStacked: true,
-         width: 725,
+         width: 700,
          height: 250,
          legend: {position:'right'},
          chartArea: { left: 50, width: "65%", height: "80%" },
@@ -835,7 +835,7 @@ function drawStuff() {
       var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
       var options = {
          pointSize: 10,
-         width: 730,
+         width: 700,
          height: 250,
          legend: {position:'right'},
          chartArea: { left: 60, width: "65%", height: "80%" },
@@ -982,7 +982,7 @@ function categoryselect(category) {
       var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
       var options = {
          pointSize: 10,
-         width: 730,
+         width: 700,
          height: 250,
          legend: {position:'right'},
          chartArea: { left: 60, width: "65%", height: "80%" },
@@ -1127,7 +1127,7 @@ function supplierselect(supplier) {
       var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
       var options = {
          pointSize: 10,
-         width: 730,
+         width: 700,
          height: 250,
          legend: {position:'right'},
          chartArea: { left: 60, width: "65%", height: "80%" },
@@ -1258,7 +1258,7 @@ function supplierselect(supplier) {
       var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
       var options = {
          pointSize: 10,
-         width: 730,
+         width: 700,
          height: 250,
          legend: {position:'right'},
          chartArea: { left: 60, width: "65%", height: "80%" },
@@ -1387,7 +1387,7 @@ function endselect(end) {
       var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
       var options = {
          pointSize: 10,
-         width: 730,
+         width: 700,
          height: 250,
          legend: {position:'right'},
          chartArea: { left: 60, width: "65%", height: "80%" },
@@ -1520,7 +1520,7 @@ function itemselect(item) {
       var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
       var options = {
          pointSize: 10,
-         width: 730,
+         width: 700,
           height: 250,
          legend: {position:'right'},
          chartArea: { left: 60, width: "65%", height: "80%" },

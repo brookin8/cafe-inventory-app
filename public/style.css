@@ -8,7 +8,7 @@ Limer Green: #67E593;
 */
 
 
-@media only screen and (max-width: 765px) {
+@media only screen and (max-width: 780px) {
 
 	.container-fluid>.navbar-collapse, 
 	.container-fluid>.navbar-header, .container>.navbar-collapse, 
@@ -29,6 +29,47 @@ Limer Green: #67E593;
 	div.googlechart {
 		width:300px;
 	}
+
+	label.rememberme {
+		margin-left:10px;
+		margin-right:0px;
+	}
+
+	div.remembermediv {
+		padding-right:5px;
+		padding-left:5px;
+	}
+
+	.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, 
+	.table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+		font-size:90%;
+	}
+
+	.orderselect {
+		width:70%;
+		margin-left:15%;
+	}
+
+	div.col-xs-10.createitem {
+		padding-left:0px !important;
+		padding-right:0px !important;
+	}
+
+	th.text-left.cellwidth.counthead.a {
+		width:55px;
+	}
+
+	th.text-left.cellwidth.counthead.b {
+		width:170px;
+	}
+
+	th.text-left.cellwidth.counthead.c {
+		width:195px;
+	}
+
+	th.text-left.cellwidth.counthead.d {
+		width:150px;
+	}
 }
 
 
@@ -47,6 +88,28 @@ Limer Green: #67E593;
 	div.container.reportinggraphs {
 		width:90%;
 	}
+
+	.orderselect {
+		width:50%;
+		margin-left:25%;
+	}
+
+	div.invoiceitems {
+		margin-right:2.2rem !important;
+
+	}
+
+	input.typeahead.tt-input {
+		width:500px !important;
+	}
+
+	input.typeahead.tt-hint {
+		width:500px !important;
+	}
+
+	.cellwidth {
+		width:150px;
+	}
 }
 
 @media screen and (max-height: 450px) {
@@ -58,6 +121,19 @@ body {
 	font-family:'Roboto', sans-serif;
 	background-color:#EEEEEE;
 }
+
+#access_id {
+	height:36px;
+}
+
+#store_id {
+	height:36px;
+}
+
+div.col-xs-12.tablecol {
+		padding-left:5px;
+		padding-right:5px;
+	}
 
 div.container.page {
 	background-color:#fff;
@@ -250,7 +326,7 @@ div.invoiceitems {
 	background-color:#EEEEEE;
 	padding-top:5%;
 	margin-top:0;
-	margin-right:1.6em;
+	margin-right:0;
 
 }
 
@@ -272,6 +348,7 @@ input.invcountqty {
 	width:70px;
 	height:40px;
 	text-align:center;
+	border:2px solid #C3C5C7;;
 }
 
 .tableButton {
@@ -290,9 +367,7 @@ a.btn.btn-link.forgot {
 	color:#636B81;
 }
 
-.cellwidth {
-	width:150px;
-}
+
 
 a.tableButton {
 	color:#fff;
@@ -468,8 +543,6 @@ button.btn.btn-outline-primary.login:hover {
 }
 
 .orderselect {
-	width:50%;
-	margin-left:25%;
 	border:2px solid #636B6F;
 	background-color:#fff;
 	border-radius:5px;
@@ -815,9 +888,10 @@ div.dashboarddiv {
 	font-size:125%;
 }
 
-.card-block {
+div.card-block.dashboard {
 	height:250px;
 }
+
 
 #demandblock {
 	background-color:#91C9D8;

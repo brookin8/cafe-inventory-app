@@ -84,14 +84,14 @@
                     </div>
 
                     <div class="form-group row">
-                        <div class="col-md-6 col-offset-md-3">
+                        <div class="col-md-6 col-offset-md-3 remembermediv">
                             <div class="checkbox ml-5">
-                                <label>
+                                <label class="rememberme">
                                     <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
                                 </label>
                             </div>
                         </div>
-                        <div class="col-md-3 ml-5">
+                        <div class="col-md-3">
                             <button type="submit" class="btn btn-outline-primary newitem">
                                 Login
                             </button>

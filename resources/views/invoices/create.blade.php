@@ -37,19 +37,19 @@
 						<div class="col-9">
 						Item
 						</div>
-						<div class="col-3">
+						<div class="col-3" style="padding-left:40px">
 						Qty
 						</div>
 					</div>
-				<div class="invoiceitems ml-4" style="margin-right:2.1em">
+				<div class="invoiceitems ml-4 mr-4">
 				@foreach ($allitems as $allitem)
-					<div class="row mb-5 ml-5 itemsrow">
-							<div class="col-9">
+					<div class="row mb-5 itemsrow">
+							<div class="col-9 ml-4">
 						      	<div id="iteminput">
 								  <input class="typeahead iteminput" type="text" placeholder="Add Item" name="item{{$loop->iteration}}">
 								</div>
 							</div>
-							<div class="col-3">
+							<div class="col-2 ml-2">
 								<input name="qty{{$loop->iteration}}" class="orderquantity">
 							</div>
 					</div>

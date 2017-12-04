@@ -10,21 +10,21 @@
 				<h2>Delete User</h2>
 			</div>
 			<div class="form-group row">
-			  	<label for="name" class="col-6 text-right deleteText">Name</label>
+			  	<div class="col-6 text-right deleteText">Name</div>
 			  	<div class="col-6 deleteText2">
 			  		{{$user->name}}
 			  	</div>
 			</div>	
 
 			<div class="form-group row">
-			  	<label for="name" class="col-6 text-right deleteText">Store</label>
+			  	<div class="col-6 text-right deleteText">Store</div>
 			  	<div class="col-6 deleteText2">
 			  		{{$user->store->name}}
 			  	</div>
 			</div>
 
 			<div class="form-group row">
-			  	<label for="supplier_item" class="col-6 text-right deleteText">Access Level</label>
+			  	<div class="col-6 text-right deleteText">Access Level</div>
 			  	<div class="col-6 deleteText2">
 			  		{{$user->access_level->access_level}}
 			  	</div>	

@@ -21,7 +21,7 @@
                                 <div class="card-header">
                                     Top 5 Items - Demand
                                 </div>
-                                <div class="card-block" id="demandblock" style="overflow:auto;">
+                                <div class="card-block dashboard" id="demandblock" style="overflow:auto;">
                                   <div class="table-responsive">
                                      <table class="table" id="demandblocktable">
                                             <thead>
@@ -51,7 +51,7 @@
                             <div class="card-header">
                                 Total Spend This Month
                             </div>
-                            <div class="card-block" id="spendblock">
+                            <div class="card-block dashboard" id="spendblock">
                                 <div class="cardblocktext align-middle">${{number_format($PTD)}}</div>
                             </div>
                             <div class="card-footer">
@@ -67,7 +67,7 @@
                                 <div class="card-header">
                                     Not Counted In Over 7 Days
                                 </div>
-                                <div class="card-block" id="notcountedblock" style="overflow:auto;">
+                                <div class="card-block dashboard" id="notcountedblock" style="overflow:auto;">
                                     <div class="table-responsive">
                                         <table class="table" id="notcountedtable">
                                             <thead>
@@ -97,7 +97,7 @@
                             <div class="card-header">
                             Orders Due
                             </div>
-                                <div class="card-block" id="dueorderblock">
+                                <div class="card-block dashboard" id="dueorderblock">
                                     <div class="table-responsive" style="overflow:auto;">
                                         <table class="table" id="dueordertable">
                                         <thead>
