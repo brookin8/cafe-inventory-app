@@ -101,7 +101,7 @@ class CountController extends Controller
                 $invdollars = ($quantity * $item->cost);
                 $totaldollars += $invdollars;
 
-                error_log($invdollars);
+                //error_log($invdollars);
 
                 $item->inventorycounts()->attach($countid,
                     ['inventorycount_qty' => $quantity,'inventory_dollar_amount' => $invdollars,'created_at' => Carbon::now(),'updated_at' => Carbon::now()]
@@ -196,7 +196,7 @@ class CountController extends Controller
                             ->join('invoices','invoices.id','=','items_invoices.invoice_id')
                             ->where([
                                     ['items_invoices.updated_at','<=',$newcountdate],
-                                    ['items_invoices.updated_at','>=',$prevcountdate],
+                                    ['items_invoices.updated_at','>=',$prevcount->updated_at],
                                     ['invoices.store_id','=',\Auth::user()->store_id],
                                     ['items_invoices.item_id','=',$allitem->id]
                                 ])
@@ -314,7 +314,7 @@ class CountController extends Controller
                         error_log('total weight: '. $totalweight);
 
                         for($i=0;$i<count($weekstarts);$i++) {
-                            $weekdemands[$weekstartsfinal[$i]] = round(($weekweights[($i+1)]/$totalweight));
+                            $weekdemands[$weekstartsfinal[$i]] = round($totaldemand * ($weekweights[($i+1)]/$totalweight));
                         }
                         error_log('week demands:' . print_r($weekdemands,true));
 
@@ -608,7 +608,7 @@ class CountController extends Controller
                             ->join('invoices','invoices.id','=','items_invoices.invoice_id')
                             ->where([
                                     ['items_invoices.updated_at','<=',$newcountdate],
-                                    ['items_invoices.updated_at','>=',$prevcountdate],
+                                    ['items_invoices.updated_at','>=',$prevcount->updated_at],
                                     ['invoices.store_id','=',\Auth::user()->store_id],
                                     ['items_invoices.item_id','=',$allitem->id]
                                 ])
@@ -726,7 +726,7 @@ class CountController extends Controller
                         error_log('total weight: '. $totalweight);
 
                         for($i=0;$i<count($weekstarts);$i++) {
-                            $weekdemands[$weekstartsfinal[$i]] = round(($weekweights[($i+1)]/$totalweight));
+                            $weekdemands[$weekstartsfinal[$i]] = round($totaldemand * ($weekweights[($i+1)]/$totalweight));
                         }
                         error_log('week demands:' . print_r($weekdemands,true));
 

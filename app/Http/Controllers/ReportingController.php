@@ -136,11 +136,11 @@ class ReportingController extends Controller
            $demands->week = Carbon::parse($demands->week)->format('Y/m/d');
             array_push($demanddates1,$demands->week);
             if($demands->week >= $fiveweeks) {
-                $fiveweek[$demands->item_id] += $demands->demand;
+                $fiveweek[$demands->item_id] += ($demands->demand)/5;
             }
 
             if($demands->week >= $tenweeks) {
-                $tenweek[$demands->item_id] += $demands->demand;
+                $tenweek[$demands->item_id] += ($demands->demand)/10;
             }
         }
 
@@ -148,11 +148,11 @@ class ReportingController extends Controller
         $demanddatesdesc = array_reverse($demanddates);
 
         foreach($fiveweek as $key=>$value) {
-            $value = round($value/5);
+            $value = round($value);
         }
 
         foreach($tenweek as $key=>$value) {
-            $value = round($value/10);
+            $value = round($value);
         }
 
         $lastweekspend = \DB::table('items_spend')
@@ -175,6 +175,7 @@ class ReportingController extends Controller
         $ptd = [];
         $ytd = [];
         $lastweekdata2 = [];
+        error_log('This month:' .$thismonth);
 
         foreach($items as $item) {
             $ptd[$item->id] = 0;
@@ -189,7 +190,7 @@ class ReportingController extends Controller
 
         foreach($spend as $spends) {
 
-           $spends->week = Carbon::parse($spends->week)->format('Y/m/d');
+           // $spends->week = Carbon::parse($spends->week)->format('Y/m/d');
             // array_push($spenddates1,$spends->week);
                 if($spends->week >= $thismonth) {
                     $ptd[$spends->item_id] += $spends->spend;

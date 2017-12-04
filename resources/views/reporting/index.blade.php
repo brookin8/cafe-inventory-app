@@ -245,7 +245,7 @@
 								@if(array_key_exists($itemstore->item_id,$fiveweek))
 									@foreach($fiveweek as $key=>$value)
 										@if($key === $itemstore->item_id)
-										<td class="text-left reporting">{{$value}}</td>
+										<td class="text-left reporting">{{ round($value)}}</td>
 										@endif
 									@endforeach
 								@else

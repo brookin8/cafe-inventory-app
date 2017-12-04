@@ -16,7 +16,7 @@
 	                	<div class="row">
 	                		<div class="col-8">
 	                			Invoice for Order #: <input name="order" class="invoiceorder" type="number">
-	                			<input type="hidden" value="{{$order}}" name="order">
+	                			
 	                		</div>
 	                		<div class="col-4 text-right">
 	                			<a href="../invoices"><button class="btn btn-default mr-3" type="button">Discard</button></a>

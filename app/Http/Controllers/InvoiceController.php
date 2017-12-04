@@ -166,6 +166,7 @@ class InvoiceController extends Controller
     {
         $orderexists =  $request->session()->get('orderexist');
         $order = (int)request('order');
+        error_log('$order: ' . $order);
 
         //error_log($orderexists);
 
