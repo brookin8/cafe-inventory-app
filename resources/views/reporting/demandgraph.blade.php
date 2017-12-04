@@ -4,9 +4,9 @@
 
 
       google.charts.load('current', {'packages':['corechart', 'controls']});
-      google.charts.setOnLoadCallback(drawStuff2);
       google.charts.setOnLoadCallback(drawStuff);
-
+      google.charts.setOnLoadCallback(drawStuff2);
+      
       // $("#itemcategory").onchange(categoryselect);
 
 var demand = {!! $demand !!};
@@ -845,7 +845,7 @@ function drawStuff() {
       //console.log(totalcolumn);
       //console.log('getcolumnlabel: '+ data.getColumnLabel(183));
 
-      var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+      var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
 
 
 
@@ -860,9 +860,8 @@ function drawStuff() {
            },
          tooltip: { trigger: 'selection' },
          isStacked:true,
-         // // seriesType: 'bars',
-         // series: '',
-         // // bar: {groupWidth: "61.8%"},
+         seriesType: 'bars',
+         series: '',
          is3D: true,
          animation:{
            duration: 1000,
@@ -870,9 +869,9 @@ function drawStuff() {
       },
       };
 
-      // myObj = {};
-      // myObj[totalcolumn] = {type : "line"};
-      // options.series = myObj;
+      myObj = {};
+      myObj[totalcolumn] = {type : "line"};
+      options.series = myObj;
 
       chart.draw(data, options);
 
