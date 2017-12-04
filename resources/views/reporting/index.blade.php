@@ -43,11 +43,11 @@
 								    <a class="nav-link tabs active" href="">Summary</a>
 								  </li>
 								  <li class="nav-item">
-								    <a class="nav-link tabs" href="../reporting/spend">Details</a>
+								    <a class="nav-link tabs" href="../reporting/details">Details</a>
 								  </li>
 							</ul>
 						</div>
-						<div class="col-1">
+						<div class="col-2 text-right">
 							<form>
 						    	<input type=button class="btn btn-primary newitem mt-1" name=print value="Print" onClick="window.print()">
 							</form>

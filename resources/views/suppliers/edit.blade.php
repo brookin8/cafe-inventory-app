@@ -28,7 +28,7 @@
 			<div class="form-group row">
 			  	<label for="name" class="col-4 col-form-label text-right createText">Name</label>
 			  	<div class="col-7">
-			  		<input type="text" value="{{$supplier->name}}" id="name" name="name" class="form-control">	
+			  		<input type="text" value="{{$supplier->name}}" id="name" name="name" class="form-control" required>	
 			  	</div>
 			</div>
 			<div class="form-group row">

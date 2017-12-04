@@ -27,13 +27,13 @@
 			<div class="form-group row">
 			  	<label for="name" class="col-4 col-form-label text-right createText">Name</label>
 			  	<div class="col-7">
-			  		<input type="text" id="name" name="name" class="form-control">	
+			  		<input type="text" id="name" name="name" class="form-control" required>	
 			  	</div>
 			</div>
 			<div class="form-group row">
 			  	<label for="order_method" class="col-4 col-form-label text-right createText">Order Method</label>
 			  	<div class="col-7">
-			  		<select name="order_method" id="order_method" class="form-control createOption">
+			  		<select name="order_method" id="order_method" class="form-control createOption" required>
 			  				<option value="" disabled selected>Select Method</option>
 			  			@foreach ($ordermethods as $method)
 			  				<option value="{{ $method->id }}">{{ $method->method }}</option>
@@ -44,7 +44,7 @@
 			<div class="form-group row">
 			  	<label for="lead_time" class="col-4 col-form-label text-right createText">Lead Time (Days)</label>
 			  	<div class="col-7">
-			  		<input type="number" id="lead_time" name="lead_time" class="form-control">	
+			  		<input type="number" id="lead_time" name="lead_time" class="form-control" required>	
 			  	</div>
 			</div>
 			<div class="form-group row">
@@ -75,25 +75,25 @@
 			<div class="form-group row">
 			  	<label for="street_address" class="col-4 col-form-label text-right createText">Street Address</label>
 			  	<div class="col-7">
-			  		<input type="text" id="street_address" name="street_address" class="form-control">
+			  		<input type="text" id="street_address" name="street_address" class="form-control" required>
 			  	</div>
 			</div>
 			<div class="form-group row">
 			  	<label for="city" class="col-4 col-form-label text-right createText">City</label>
 			  	<div class="col-7">
-			  		<input type="text" id="city" name="city" class="form-control">
+			  		<input type="text" id="city" name="city" class="form-control" required>
 			  	</div>
 			</div>
 			<div class="form-group row">
 			  	<label for="state" class="col-4 col-form-label text-right createText">State</label>
 			  	<div class="col-7">
-			  		<input type="text" maxlength="2" id="state" name="state" class="form-control">
+			  		<input type="text" maxlength="2" id="state" name="state" class="form-control" required>
 			  	</div>
 			</div>
 			<div class="form-group row">
 			  	<label for="zip" class="col-4 col-form-label text-right createText">Zip</label>
 			  	<div class="col-7">
-			  		<input type="text" maxlength="5" id="zip" name="zip" class="form-control">
+			  		<input type="text" maxlength="5" id="zip" name="zip" class="form-control" required>
 			  	</div>
 			</div>
 		</div>

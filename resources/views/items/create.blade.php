@@ -26,13 +26,13 @@
 						<div class="form-group row">
 						  	<label for="name" class="col-4 col-form-label text-right createText">Name</label>
 						  	<div class="col-8">
-						  		<input type="text" id="name" name="name" class="form-control">	
+						  		<input type="text" id="name" name="name" class="form-control" required>	
 						  	</div>
 						</div>
 						<div class="form-group row">
 						  	<label for="category" class="col-4 col-form-label text-right createText">Category</label>
 						  	<div class="col-8">
-						  		<select name="category" id="category" class="form-control createOption">
+						  		<select name="category" id="category" class="form-control createOption" required>
 						  				<option value="" disabled selected>Select Category</option>
 						  			@foreach ($categories as $category)
 						  				<option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -43,7 +43,7 @@
 						<div class="form-group row">
 						  	<label for="supplier" class="col-4 col-form-label text-right createText">Supplier</label>
 						  	<div class="col-8">
-						  		<select name="supplier" id="supplier" class="form-control createOption">
+						  		<select name="supplier" id="supplier" class="form-control createOption" required>
 						  				<option value="" disabled selected>Select Supplier</option>
 						  			@foreach ($suppliers as $supplier)
 						  				<option value="{{ $supplier->id }}">{{ $supplier->name }}</option>
@@ -54,13 +54,13 @@
 						<div class="form-group row">
 						  	<label for="supplier_item" class="col-4 col-form-label text-right createText">Supplier Item ID</label>
 						  	<div class="col-8">
-						  		<input type="text" id="supplier_item" name="supplier_item" class="form-control">
+						  		<input type="text" id="supplier_item" name="supplier_item" class="form-control" required>
 						  	</div>	
 						</div>
 						<div class="form-group row">
 						  	<label for="uom" class="col-4 col-form-label text-right createText">Unit of Measure</label>
 						  	<div class="col-8">
-						  		<select name="uom" id="uom" class="form-control createOption">
+						  		<select name="uom" id="uom" class="form-control createOption" required>
 						  			<option value="" disabled selected>Select UOM</option>
 						  			@foreach ($uoms as $uom)
 						  				<option value="{{ $uom->id }}">{{ $uom->unit }}</option>
@@ -75,10 +75,11 @@
 						  	</div>	
 						</div>
 						<div class="form-group row">
-						  	<label for="cost" class="col-4 col-form-label text-right createText">Cost</label>
-						  	<div class="col-8">
+						  	<label for="cost" class="col-4 col-form-label text-right createText">Cost ($)</label>
+						  	<div class="col-8" required>
 						  		<input type="number" step="any" id="cost" name="cost" class="form-control">
-						  	</div>	
+						  	</div>
+						
 						</div>
 				</div>
 			</div>

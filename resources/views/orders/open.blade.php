@@ -38,8 +38,8 @@
 
 				<div class="panel-body">
 
-					<div class="row ml-5 mr-3">
-						<div class="table-responsive text-center mr-4 ml-3">
+					<div class="row ml-4 mr-4">
+						<div class="table-responsive text-center">
 							<table class="table tableborder table-striped table-hover mr-4" width="98%" id="table">
 								
 								<thead>

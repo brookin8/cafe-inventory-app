@@ -27,7 +27,7 @@
 								  </li>
 							</ul>
 						</div>
-						<div class="col-1">
+						<div class="col-2 text-right">
 							<form>
 						    	<input type=button class="btn btn-primary newitem mt-1" name=print value="Print" onClick="window.print()">
 							</form>
