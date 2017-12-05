@@ -13,7 +13,7 @@ class ItemsSpendTableSeeder extends Seeder
     public function run()
     {
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
       'item_id' => 5,
       'store_id' => 1,
       'spend' => 157.88,
@@ -22,7 +22,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11', '27','0','0','0'),
       'item_id' => 5,
       'store_id' => 1,
       'spend' => 36.44,
@@ -31,7 +31,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '20'),
+      'week' => Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 5,
       'store_id' => 1,
       'spend' => 72.88,
@@ -40,7 +40,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '13'),
+      'week' => Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 5,
       'store_id' => 1,
       'spend' => 54.66,
@@ -49,7 +49,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '6'),
+      'week' => Carbon::create('2017', '11', '6','0','0','0'),
       'item_id' => 5,
       'store_id' => 1,
       'spend' => 36.44,
@@ -58,7 +58,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
       'item_id' => 81,
       'store_id' => 1,
       'spend' => 26,
@@ -67,7 +67,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11', '27','0','0','0'),
       'item_id' => 81,
       'store_id' => 1,
       'spend' => 26,
@@ -76,7 +76,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '20'),
+      'week' =>  Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 81,
       'store_id' => 1,
       'spend' => 39,
@@ -85,7 +85,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '13'),
+      'week' =>  Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 81,
       'store_id' => 1,
       'spend' => 13,
@@ -94,7 +94,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '6'),
+      'week' =>  Carbon::create('2017', '11', '6','0','0','0'),
       'item_id' => 81,
       'store_id' => 1,
       'spend' => 26,
@@ -103,7 +103,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
       'item_id' => 163,
       'store_id' => 1,
       'spend' => 9.25,
@@ -112,7 +112,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11', '27','0','0','0'),
       'item_id' => 163,
       'store_id' => 1,
       'spend' => 18.5,
@@ -121,7 +121,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '20'),
+      'week' =>  Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 163,
       'store_id' => 1,
       'spend' => 9.25,
@@ -130,7 +130,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '13'),
+      'week' =>  Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 163,
       'store_id' => 1,
       'spend' => 9.25,
@@ -139,7 +139,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '6'),
+      'week' =>  Carbon::create('2017', '11', '6','0','0','0'),
       'item_id' => 163,
       'store_id' => 1,
       'spend' => 27.75,
@@ -148,7 +148,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
       'item_id' => 10,
       'store_id' => 1,
       'spend' => 46.01,
@@ -157,7 +157,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11', '27','0','0','0'),
       'item_id' => 10,
       'store_id' => 1,
       'spend' => 0,
@@ -166,7 +166,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '20'),
+      'week' =>  Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 10,
       'store_id' => 1,
       'spend' => 0,
@@ -175,7 +175,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '13'),
+      'week' =>  Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 10,
       'store_id' => 1,
       'spend' => 46.01,
@@ -184,7 +184,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '6'),
+      'week' =>  Carbon::create('2017', '11', '6','0','0','0'),
       'item_id' => 10,
       'store_id' => 1,
       'spend' => 0,
@@ -193,7 +193,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
       'item_id' => 17,
       'store_id' => 1,
       'spend' => 98.36,
@@ -202,7 +202,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11', '27','0','0','0'),
       'item_id' => 17,
       'store_id' => 1,
       'spend' => 0,
@@ -211,7 +211,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '20'),
+      'week' =>  Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 17,
       'store_id' => 1,
       'spend' => 0,
@@ -220,7 +220,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '13'),
+      'week' =>  Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 17,
       'store_id' => 1,
       'spend' => 98.35,
@@ -229,7 +229,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '6'),
+      'week' =>  Carbon::create('2017', '11', '6','0','0','0'),
       'item_id' => 17,
       'store_id' => 1,
       'spend' => 0,
@@ -238,7 +238,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
       'item_id' => 22,
       'store_id' => 1,
       'spend' => 16.66,
@@ -247,7 +247,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11', '27','0','0','0'),
       'item_id' => 22,
       'store_id' => 1,
       'spend' => 8.33,
@@ -256,7 +256,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '20'),
+      'week' =>  Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 22,
       'store_id' => 1,
       'spend' => 16.66,
@@ -265,7 +265,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '13'),
+      'week' =>  Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 22,
       'store_id' => 1,
       'spend' => 24.99,
@@ -274,7 +274,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '6'),
+      'week' =>  Carbon::create('2017', '11', '6','0','0','0'),
       'item_id' => 22,
       'store_id' => 1,
       'spend' => 8.33,
@@ -283,7 +283,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
       DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
       'item_id' => 32,
       'store_id' => 1,
       'spend' => 80,
@@ -292,7 +292,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11', '27','0','0','0'),
       'item_id' => 32,
       'store_id' => 1,
       'spend' => 96,
@@ -301,7 +301,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '20'),
+      'week' =>  Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 32,
       'store_id' => 1,
       'spend' => 80,
@@ -310,7 +310,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '13'),
+      'week' =>  Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 32,
       'store_id' => 1,
       'spend' => 80,
@@ -319,7 +319,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '6'),
+      'week' =>  Carbon::create('2017', '11', '6','0','0','0'),
       'item_id' => 32,
       'store_id' => 1,
       'spend' => 112,
@@ -328,7 +328,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
       'item_id' => 35,
       'store_id' => 1,
       'spend' => 72,
@@ -337,7 +337,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11', '27','0','0','0'),
       'item_id' => 35,
       'store_id' => 1,
       'spend' => 88,
@@ -346,7 +346,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '20'),
+      'week' =>  Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 35,
       'store_id' => 1,
       'spend' => 72,
@@ -355,7 +355,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '13'),
+      'week' =>  Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 35,
       'store_id' => 1,
       'spend' => 96,
@@ -364,7 +364,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '6'),
+      'week' =>  Carbon::create('2017', '11', '6','0','0','0'),
       'item_id' => 35,
       'store_id' => 1,
       'spend' => 80,
@@ -373,7 +373,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
       DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
       'item_id' => 41,
       'store_id' => 1,
       'spend' => 101.97,
@@ -382,7 +382,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11', '27','0','0','0'),
       'item_id' => 41,
       'store_id' => 1,
       'spend' => 101.97,
@@ -391,7 +391,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '20'),
+      'week' =>  Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 41,
       'store_id' => 1,
       'spend' => 203.94,
@@ -400,7 +400,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '13'),
+      'week' =>  Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 41,
       'store_id' => 1,
       'spend' => 101.97,
@@ -409,7 +409,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '6'),
+      'week' =>  Carbon::create('2017', '11', '6','0','0','0'),
       'item_id' => 41,
       'store_id' => 1,
       'spend' => 101.97,
@@ -418,7 +418,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
       DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
       'item_id' => 47,
       'store_id' => 1,
       'spend' => 80.52,
@@ -427,7 +427,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11', '27','0','0','0'),
       'item_id' => 47,
       'store_id' => 1,
       'spend' => 53.68,
@@ -436,7 +436,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '20'),
+      'week' =>  Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 47,
       'store_id' => 1,
       'spend' => 80.52,
@@ -445,7 +445,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '13'),
+      'week' =>  Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 47,
       'store_id' => 1,
       'spend' => 80.52,
@@ -454,7 +454,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '6'),
+      'week' =>  Carbon::create('2017', '11', '6','0','0','0'),
       'item_id' => 47,
       'store_id' => 1,
       'spend' => 53.68,
@@ -463,7 +463,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
       'item_id' => 52,
       'store_id' => 1,
       'spend' => 364,
@@ -472,7 +472,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11', '27','0','0','0'),
       'item_id' => 52,
       'store_id' => 1,
       'spend' => 308,
@@ -481,7 +481,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '20'),
+      'week' =>  Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 52,
       'store_id' => 1,
       'spend' => 322,
@@ -490,7 +490,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '13'),
+      'week' =>  Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 52,
       'store_id' => 1,
       'spend' => 322,
@@ -499,7 +499,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '6'),
+      'week' =>  Carbon::create('2017', '11', '6','0','0','0'),
       'item_id' => 52,
       'store_id' => 1,
       'spend' => 364,
@@ -508,7 +508,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
       'item_id' => 57,
       'store_id' => 1,
       'spend' => 38.76,
@@ -517,7 +517,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11', '27','0','0','0'),
       'item_id' => 57,
       'store_id' => 1,
       'spend' => 0,
@@ -526,7 +526,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '20'),
+      'week' =>  Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 57,
       'store_id' => 1,
       'spend' => 19.38,
@@ -535,7 +535,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '13'),
+      'week' =>  Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 57,
       'store_id' => 1,
       'spend' => 0,
@@ -544,7 +544,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '6'),
+      'week' =>  Carbon::create('2017', '11', '6','0','0','0'),
       'item_id' => 57,
       'store_id' => 1,
       'spend' => 38.76,
@@ -553,7 +553,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
       'item_id' => 62,
       'store_id' => 1,
       'spend' => 58.88,
@@ -562,7 +562,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11', '27','0','0','0'),
       'item_id' => 62,
       'store_id' => 1,
       'spend' => 0,
@@ -571,7 +571,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '20'),
+      'week' =>  Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 62,
       'store_id' => 1,
       'spend' => 0,
@@ -580,7 +580,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '13'),
+      'week' =>  Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 62,
       'store_id' => 1,
       'spend' => 0,
@@ -589,7 +589,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '6'),
+      'week' =>  Carbon::create('2017', '11', '6','0','0','0'),
       'item_id' => 62,
       'store_id' => 1,
       'spend' => 58.88,
@@ -598,7 +598,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
       'item_id' => 69,
       'store_id' => 1,
       'spend' => 76.35,
@@ -607,7 +607,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11', '27','0','0','0'),
       'item_id' => 69,
       'store_id' => 1,
       'spend' => 76.35,
@@ -616,7 +616,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '20'),
+      'week' =>  Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 69,
       'store_id' => 1,
       'spend' => 76.35,
@@ -625,7 +625,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '13'),
+      'week' =>  Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 69,
       'store_id' => 1,
       'spend' => 0,
@@ -634,7 +634,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '6'),
+      'week' =>  Carbon::create('2017', '11', '6','0','0','0'),
       'item_id' => 69,
       'store_id' => 1,
       'spend' => 76.35,
@@ -643,7 +643,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
       'item_id' => 76,
       'store_id' => 1,
       'spend' => 26.20,
@@ -652,7 +652,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11', '27','0','0','0'),
       'item_id' => 76,
       'store_id' => 1,
       'spend' => 0,
@@ -661,7 +661,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '20'),
+      'week' =>  Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 76,
       'store_id' => 1,
       'spend' => 26.20,
@@ -670,7 +670,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '13'),
+      'week' =>  Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 76,
       'store_id' => 1,
       'spend' => 0,
@@ -679,7 +679,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '6'),
+      'week' =>  Carbon::create('2017', '11','6','0','0','0'),
       'item_id' => 76,
       'store_id' => 1,
       'spend' => 52.40,
@@ -688,7 +688,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
       'item_id' => 90,
       'store_id' => 1,
       'spend' => 150,
@@ -697,7 +697,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11', '27','0','0','0'),
       'item_id' => 90,
       'store_id' => 1,
       'spend' => 0,
@@ -706,7 +706,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '20'),
+      'week' =>  Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 90,
       'store_id' => 1,
       'spend' => 0,
@@ -715,7 +715,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '13'),
+      'week' =>  Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 90,
       'store_id' => 1,
       'spend' => 0,
@@ -724,7 +724,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '6'),
+      'week' =>  Carbon::create('2017', '11', '6','0','0','0'),
       'item_id' => 90,
       'store_id' => 1,
       'spend' => 50,
@@ -733,7 +733,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
       'item_id' => 99,
       'store_id' => 1,
       'spend' => 270,
@@ -742,7 +742,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11', '27','0','0','0'),
       'item_id' => 99,
       'store_id' => 1,
       'spend' => 270,
@@ -751,7 +751,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '20'),
+      'week' =>  Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 99,
       'store_id' => 1,
       'spend' => 270,
@@ -760,7 +760,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '13'),
+      'week' =>  Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 99,
       'store_id' => 1,
       'spend' => 378,
@@ -769,7 +769,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '6'),
+      'week' =>  Carbon::create('2017', '11', '6','0','0','0'),
       'item_id' => 99,
       'store_id' => 1,
       'spend' => 432,
@@ -778,7 +778,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
       'item_id' => 104,
       'store_id' => 1,
       'spend' => 39,
@@ -787,7 +787,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11', '27','0','0','0'),
       'item_id' => 104,
       'store_id' => 1,
       'spend' => 39,
@@ -796,7 +796,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '20'),
+      'week' =>  Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 104,
       'store_id' => 1,
       'spend' => 52,
@@ -805,7 +805,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '13'),
+      'week' =>  Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 104,
       'store_id' => 1,
       'spend' => 39,
@@ -814,7 +814,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '6'),
+      'week' =>  Carbon::create('2017', '11', '6','0','0','0'),
       'item_id' => 104,
       'store_id' => 1,
       'spend' => 26,
@@ -823,7 +823,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
       DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
       'item_id' => 109,
       'store_id' => 1,
       'spend' => 150,
@@ -832,7 +832,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11', '27','0','0','0'),
       'item_id' => 109,
       'store_id' => 1,
       'spend' => 0,
@@ -841,7 +841,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '20'),
+      'week' =>  Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 109,
       'store_id' => 1,
       'spend' => 0,
@@ -850,7 +850,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '13'),
+      'week' =>  Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 109,
       'store_id' => 1,
       'spend' => 150,
@@ -859,7 +859,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '6'),
+      'week' =>  Carbon::create('2017', '11', '6','0','0','0'),
       'item_id' => 109,
       'store_id' => 1,
       'spend' => 0,
@@ -868,7 +868,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
       DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
       'item_id' => 113,
       'store_id' => 1,
       'spend' => 173.75,
@@ -877,7 +877,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11','27','0','0','0'),
       'item_id' => 113,
       'store_id' => 1,
       'spend' => 0,
@@ -886,7 +886,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '20'),
+      'week' =>  Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 113,
       'store_id' => 1,
       'spend' => 0,
@@ -895,7 +895,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '13'),
+      'week' =>  Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 113,
       'store_id' => 1,
       'spend' => 0,
@@ -904,7 +904,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '6'),
+      'week' =>  Carbon::create('2017', '11', '6','0','0','0'),
       'item_id' => 113,
       'store_id' => 1,
       'spend' => 69.5,
@@ -913,7 +913,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
       DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
       'item_id' => 118,
       'store_id' => 1,
       'spend' => 0,
@@ -922,7 +922,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11', '27','0','0','0'),
       'item_id' => 118,
       'store_id' => 1,
       'spend' => 0,
@@ -931,7 +931,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '20'),
+      'week' =>  Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 118,
       'store_id' => 1,
       'spend' => 22.5,
@@ -940,7 +940,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '13'),
+      'week' =>  Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 118,
       'store_id' => 1,
       'spend' => 0,
@@ -949,7 +949,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '6'),
+      'week' =>  Carbon::create('2017', '11', '6','0','0','0'),
       'item_id' => 118,
       'store_id' => 1,
       'spend' => 0,
@@ -958,7 +958,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
       'item_id' => 123,
       'store_id' => 1,
       'spend' => 0,
@@ -967,7 +967,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11', '27','0','0','0'),
       'item_id' => 123,
       'store_id' => 1,
       'spend' => 36,
@@ -976,7 +976,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '20'),
+      'week' =>  Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 123,
       'store_id' => 1,
       'spend' => 0,
@@ -985,7 +985,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '13'),
+      'week' =>  Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 123,
       'store_id' => 1,
       'spend' => 0,
@@ -994,7 +994,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '6'),
+      'week' =>  Carbon::create('2017', '11', '6','0','0','0'),
       'item_id' => 123,
       'store_id' => 1,
       'spend' => 6,
@@ -1003,7 +1003,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
       DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
       'item_id' => 128,
       'store_id' => 1,
       'spend' => 0,
@@ -1012,7 +1012,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11', '27','0','0','0'),
       'item_id' => 128,
       'store_id' => 1,
       'spend' => 120,
@@ -1021,7 +1021,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '20'),
+      'week' =>  Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 128,
       'store_id' => 1,
       'spend' => 0,
@@ -1030,7 +1030,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '13'),
+      'week' =>  Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 128,
       'store_id' => 1,
       'spend' => 0,
@@ -1039,7 +1039,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '6'),
+      'week' =>  Carbon::create('2017', '11', '6','0','0','0'),
       'item_id' => 128,
       'store_id' => 1,
       'spend' => 0,
@@ -1048,7 +1048,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
       DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
       'item_id' => 132,
       'store_id' => 1,
       'spend' => 0,
@@ -1057,7 +1057,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11', '27','0','0','0'),
       'item_id' => 132,
       'store_id' => 1,
       'spend' => 0,
@@ -1066,7 +1066,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '20'),
+      'week' =>  Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 132,
       'store_id' => 1,
       'spend' => 0,
@@ -1075,7 +1075,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '13'),
+      'week' =>  Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 132,
       'store_id' => 1,
       'spend' => 0,
@@ -1084,7 +1084,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '6'),
+      'week' =>  Carbon::create('2017', '11', '6','0','0','0'),
       'item_id' => 132,
       'store_id' => 1,
       'spend' => 150,
@@ -1093,7 +1093,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
       DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
       'item_id' => 136,
       'store_id' => 1,
       'spend' => 0,
@@ -1102,7 +1102,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11', '27','0','0','0'),
       'item_id' => 136,
       'store_id' => 1,
       'spend' => 60,
@@ -1111,7 +1111,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '20'),
+      'week' =>  Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 136,
       'store_id' => 1,
       'spend' => 0,
@@ -1120,7 +1120,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '13'),
+      'week' =>  Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 136,
       'store_id' => 1,
       'spend' => 0,
@@ -1129,7 +1129,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '6'),
+      'week' =>  Carbon::create('2017', '11', '6','0','0','0'),
       'item_id' => 136,
       'store_id' => 1,
       'spend' => 0,
@@ -1138,7 +1138,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
       'item_id' => 141,
       'store_id' => 1,
       'spend' => 0,
@@ -1147,7 +1147,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11', '27','0','0','0'),
       'item_id' => 141,
       'store_id' => 1,
       'spend' => 36,
@@ -1156,7 +1156,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '20'),
+      'week' =>  Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 141,
       'store_id' => 1,
       'spend' => 0,
@@ -1165,7 +1165,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '13'),
+      'week' =>  Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 141,
       'store_id' => 1,
       'spend' => 0,
@@ -1174,7 +1174,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '6'),
+      'week' =>  Carbon::create('2017', '11', '6','0','0','0'),
       'item_id' => 141,
       'store_id' => 1,
       'spend' => 0,
@@ -1183,7 +1183,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
       'item_id' => 147,
       'store_id' => 1,
       'spend' => 51.74,
@@ -1192,7 +1192,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11', '27','0','0','0'),
       'item_id' => 147,
       'store_id' => 1,
       'spend' => 51.74,
@@ -1201,7 +1201,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '20'),
+      'week' =>  Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 147,
       'store_id' => 1,
       'spend' => 0,
@@ -1210,7 +1210,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '13'),
+      'week' =>  Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 147,
       'store_id' => 1,
       'spend' => 51.74,
@@ -1219,7 +1219,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '6'),
+      'week' =>  Carbon::create('2017', '11', '6','0','0','0'),
       'item_id' => 147,
       'store_id' => 1,
       'spend' => 51.74,
@@ -1228,7 +1228,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
       'item_id' => 146,
       'store_id' => 1,
       'spend' => 0,
@@ -1237,7 +1237,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11', '27','0','0','0'),
       'item_id' => 146,
       'store_id' => 1,
       'spend' => 0,
@@ -1246,7 +1246,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '20'),
+      'week' =>  Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 146,
       'store_id' => 1,
       'spend' => 29.27,
@@ -1255,7 +1255,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '13'),
+      'week' =>  Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 146,
       'store_id' => 1,
       'spend' => 0,
@@ -1264,7 +1264,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '6'),
+      'week' =>  Carbon::create('2017', '11', '6','0','0','0'),
       'item_id' => 146,
       'store_id' => 1,
       'spend' => 29.27,
@@ -1273,7 +1273,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
       'item_id' => 150,
       'store_id' => 1,
       'spend' => 7.23,
@@ -1282,7 +1282,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11', '27','0','0','0'),
       'item_id' => 150,
       'store_id' => 1,
       'spend' => 0,
@@ -1291,7 +1291,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '20'),
+      'week' =>  Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 150,
       'store_id' => 1,
       'spend' => 14.46,
@@ -1300,7 +1300,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '13'),
+      'week' =>  Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 150,
       'store_id' => 1,
       'spend' => 0,
@@ -1309,7 +1309,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '6'),
+      'week' =>  Carbon::create('2017', '11', '6','0','0','0'),
       'item_id' => 150,
       'store_id' => 1,
       'spend' => 7.23,
@@ -1318,7 +1318,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
       'item_id' => 153,
       'store_id' => 1,
       'spend' => 13.34,
@@ -1327,7 +1327,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11', '27','0','0','0'),
       'item_id' => 153,
       'store_id' => 1,
       'spend' => 0,
@@ -1336,7 +1336,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '20'),
+      'week' =>  Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 153,
       'store_id' => 1,
       'spend' => 26.68,
@@ -1345,7 +1345,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '13'),
+      'week' =>  Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 153,
       'store_id' => 1,
       'spend' => 0,
@@ -1354,7 +1354,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '6'),
+      'week' =>  Carbon::create('2017', '11', '6','0','0','0'),
       'item_id' => 153,
       'store_id' => 1,
       'spend' => 0,
@@ -1364,7 +1364,7 @@ class ItemsSpendTableSeeder extends Seeder
 
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
       'item_id' => 154,
       'store_id' => 1,
       'spend' => 0,
@@ -1373,7 +1373,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11', '27','0','0','0'),
       'item_id' => 154,
       'store_id' => 1,
       'spend' => 9.25,
@@ -1382,7 +1382,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '20'),
+      'week' =>  Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 154,
       'store_id' => 1,
       'spend' => 0,
@@ -1391,7 +1391,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '13'),
+      'week' =>  Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 154,
       'store_id' => 1,
       'spend' => 0,
@@ -1400,7 +1400,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '6'),
+      'week' =>  Carbon::create('2017', '11','6','0','0','0'),
       'item_id' => 154,
       'store_id' => 1,
       'spend' => 9.25,
@@ -1409,7 +1409,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
       DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
       'item_id' => 162,
       'store_id' => 1,
       'spend' => 0,
@@ -1418,7 +1418,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11', '27','0','0','0'),
       'item_id' => 162,
       'store_id' => 1,
       'spend' => 0,
@@ -1427,7 +1427,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '20'),
+      'week' =>  Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 162,
       'store_id' => 1,
       'spend' => 0,
@@ -1436,7 +1436,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '13'),
+      'week' =>  Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 162,
       'store_id' => 1,
       'spend' => 7.5,
@@ -1445,7 +1445,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '6'),
+      'week' =>  Carbon::create('2017', '11', '6','0','0','0'),
       'item_id' => 162,
       'store_id' => 1,
       'spend' => 0,
@@ -1454,7 +1454,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
       DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
       'item_id' => 166,
       'store_id' => 1,
       'spend' => 9.25,
@@ -1463,7 +1463,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11', '27','0','0','0'),
       'item_id' => 166,
       'store_id' => 1,
       'spend' => 0,
@@ -1472,7 +1472,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '20'),
+      'week' =>  Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 166,
       'store_id' => 1,
       'spend' => 0,
@@ -1481,7 +1481,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '13'),
+      'week' =>  Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 166,
       'store_id' => 1,
       'spend' => 0,
@@ -1490,7 +1490,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '6'),
+      'week' =>  Carbon::create('2017', '11', '6','0','0','0'),
       'item_id' => 166,
       'store_id' => 1,
       'spend' => 9.25,
@@ -1499,7 +1499,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
       'item_id' => 170,
       'store_id' => 1,
       'spend' => 0,
@@ -1508,7 +1508,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11', '27','0','0','0'),
       'item_id' => 170,
       'store_id' => 1,
       'spend' => 9.5,
@@ -1517,7 +1517,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '20'),
+      'week' =>  Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 170,
       'store_id' => 1,
       'spend' => 0,
@@ -1526,7 +1526,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '13'),
+      'week' =>  Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 170,
       'store_id' => 1,
       'spend' => 9.5,
@@ -1535,7 +1535,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '6'),
+      'week' =>  Carbon::create('2017', '11', '6','0','0','0'),
       'item_id' => 170,
       'store_id' => 1,
       'spend' => 0,
@@ -1544,7 +1544,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
       'item_id' => 176,
       'store_id' => 1,
       'spend' => 0,
@@ -1553,7 +1553,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11', '27','0','0','0'),
       'item_id' => 176,
       'store_id' => 1,
       'spend' => 9.25,
@@ -1562,7 +1562,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '20'),
+      'week' =>  Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 176,
       'store_id' => 1,
       'spend' => 0,
@@ -1571,7 +1571,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '13'),
+      'week' =>  Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 176,
       'store_id' => 1,
       'spend' => 9.25,
@@ -1580,7 +1580,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '6'),
+      'week' =>  Carbon::create('2017', '11', '6','0','0','0'),
       'item_id' => 176,
       'store_id' => 1,
       'spend' => 0,
@@ -1589,7 +1589,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
       'item_id' => 180,
       'store_id' => 1,
       'spend' => 0,
@@ -1598,7 +1598,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11', '27','0','0','0'),
       'item_id' => 180,
       'store_id' => 1,
       'spend' => 35.38,
@@ -1607,7 +1607,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '20'),
+      'week' =>  Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 180,
       'store_id' => 1,
       'spend' => 0,
@@ -1616,7 +1616,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '13'),
+      'week' =>  Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 180,
       'store_id' => 1,
       'spend' => 0,
@@ -1625,7 +1625,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '6'),
+      'week' =>  Carbon::create('2017', '11', '6','0','0','0'),
       'item_id' => 180,
       'store_id' => 1,
       'spend' => 0,
@@ -1634,7 +1634,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
       'item_id' => 182,
       'store_id' => 1,
       'spend' => 0,
@@ -1643,7 +1643,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11', '27','0','0','0'),
       'item_id' => 182,
       'store_id' => 1,
       'spend' => 61,
@@ -1652,7 +1652,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '20'),
+      'week' =>  Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 182,
       'store_id' => 1,
       'spend' => 0,
@@ -1661,7 +1661,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '13'),
+      'week' =>  Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 182,
       'store_id' => 1,
       'spend' => 0,
@@ -1670,7 +1670,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '6'),
+      'week' =>  Carbon::create('2017', '11', '6','0','0','0'),
       'item_id' => 182,
       'store_id' => 1,
       'spend' => 61,
@@ -1679,7 +1679,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
       'item_id' => 15,
       'store_id' => 1,
       'spend' => 66,
@@ -1688,7 +1688,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11', '27','0','0','0'),
       'item_id' => 15,
       'store_id' => 1,
       'spend' => 0,
@@ -1697,7 +1697,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '20'),
+      'week' =>  Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 15,
       'store_id' => 1,
       'spend' => 33,
@@ -1706,7 +1706,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '13'),
+      'week' =>  Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 15,
       'store_id' => 1,
       'spend' => 0,
@@ -1715,7 +1715,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '6'),
+      'week' =>  Carbon::create('2017', '11','06','0','0','0'),
       'item_id' => 15,
       'store_id' => 1,
       'spend' => 33,
@@ -1724,7 +1724,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12','04','0','0','0'),
       'item_id' => 27,
       'store_id' => 1,
       'spend' => 163.47,
@@ -1733,7 +1733,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11', '27','0','0','0'),
       'item_id' => 27,
       'store_id' => 1,
       'spend' => 163.47,
@@ -1742,7 +1742,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '20'),
+      'week' =>  Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 27,
       'store_id' => 1,
       'spend' => 217.96,
@@ -1751,7 +1751,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '13'),
+      'week' =>  Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 27,
       'store_id' => 1,
       'spend' => 163.47,
@@ -1760,7 +1760,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '6'),
+      'week' =>  Carbon::create('2017', '11', '6','0','0','0'),
       'item_id' => 27,
       'store_id' => 1,
       'spend' => 108.98,
@@ -1769,7 +1769,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
       DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
       'item_id' => 40,
       'store_id' => 1,
       'spend' => 295.2,
@@ -1778,7 +1778,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11', '27','0','0','0'),
       'item_id' => 40,
       'store_id' => 1,
       'spend' => 265.68,
@@ -1787,7 +1787,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '20'),
+      'week' =>  Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 40,
       'store_id' => 1,
       'spend' => 295.2,
@@ -1796,7 +1796,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '13'),
+      'week' =>  Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 40,
       'store_id' => 1,
       'spend' => 295.2,
@@ -1805,7 +1805,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '6'),
+      'week' =>  Carbon::create('2017', '11', '6','0','0','0'),
       'item_id' => 40,
       'store_id' => 1,
       'spend' => 324.72,
@@ -1814,7 +1814,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
       'item_id' => 43,
       'store_id' => 1,
       'spend' => 295.2,
@@ -1823,7 +1823,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11', '27','0','0','0'),
       'item_id' => 43,
       'store_id' => 1,
       'spend' => 265.68,
@@ -1832,7 +1832,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '20'),
+      'week' =>  Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 43,
       'store_id' => 1,
       'spend' => 295.2,
@@ -1841,7 +1841,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '13'),
+      'week' =>  Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 43,
       'store_id' => 1,
       'spend' => 295.2,
@@ -1850,7 +1850,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '6'),
+      'week' =>  Carbon::create('2017', '11', '6','0','0','0'),
       'item_id' => 43,
       'store_id' => 1,
       'spend' => 324.72,
@@ -1859,7 +1859,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
       'item_id' => 49,
       'store_id' => 1,
       'spend' => 52.71,
@@ -1868,7 +1868,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11', '27','0','0','0'),
       'item_id' => 49,
       'store_id' => 1,
       'spend' => 0,
@@ -1877,7 +1877,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '20'),
+      'week' =>  Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 49,
       'store_id' => 1,
       'spend' => 52.71,
@@ -1886,7 +1886,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '13'),
+      'week' =>  Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 49,
       'store_id' => 1,
       'spend' => 52.71,
@@ -1895,7 +1895,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '6'),
+      'week' =>  Carbon::create('2017', '11', '6','0','0','0'),
       'item_id' => 49,
       'store_id' => 1,
       'spend' => 0,
@@ -1904,7 +1904,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
       'item_id' => 59,
       'store_id' => 1,
       'spend' => 22.13,
@@ -1913,7 +1913,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11', '27','0','0','0'),
       'item_id' => 59,
       'store_id' => 1,
       'spend' => 0,
@@ -1922,7 +1922,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '20'),
+      'week' =>  Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 59,
       'store_id' => 1,
       'spend' => 0,
@@ -1931,7 +1931,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '13'),
+      'week' =>  Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 59,
       'store_id' => 1,
       'spend' => 0,
@@ -1940,7 +1940,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '6'),
+      'week' =>  Carbon::create('2017', '11', '6','0','0','0'),
       'item_id' => 59,
       'store_id' => 1,
       'spend' => 0,
@@ -1949,7 +1949,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
       'item_id' => 85,
       'store_id' => 1,
       'spend' => 0,
@@ -1958,7 +1958,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11', '27','0','0','0'),
       'item_id' => 85,
       'store_id' => 1,
       'spend' => 0,
@@ -1967,7 +1967,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '20'),
+      'week' =>  Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 85,
       'store_id' => 1,
       'spend' => 130,
@@ -1976,7 +1976,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '13'),
+      'week' =>  Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 85,
       'store_id' => 1,
       'spend' => 0,
@@ -1985,7 +1985,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '6'),
+      'week' =>  Carbon::create('2017', '11', '6','0','0','0'),
       'item_id' => 85,
       'store_id' => 1,
       'spend' => 0,
@@ -1994,7 +1994,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
       DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
       'item_id' => 94,
       'store_id' => 1,
       'spend' => 0,
@@ -2003,7 +2003,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11', '27','0','0','0'),
       'item_id' => 94,
       'store_id' => 1,
       'spend' => 70,
@@ -2012,7 +2012,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '20'),
+      'week' =>  Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 94,
       'store_id' => 1,
       'spend' => 0,
@@ -2021,7 +2021,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '13'),
+      'week' =>  Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 94,
       'store_id' => 1,
       'spend' => 0,
@@ -2030,7 +2030,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '6'),
+      'week' =>  Carbon::create('2017', '11', '6','0','0','0'),
       'item_id' => 94,
       'store_id' => 1,
       'spend' => 28,
@@ -2039,7 +2039,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
       'item_id' => 100,
       'store_id' => 1,
       'spend' => 800,
@@ -2048,7 +2048,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11', '27','0','0','0'),
       'item_id' => 100,
       'store_id' => 1,
       'spend' => 480,
@@ -2057,7 +2057,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '20'),
+      'week' =>  Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 100,
       'store_id' => 1,
       'spend' => 480,
@@ -2066,7 +2066,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '13'),
+      'week' =>  Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 100,
       'store_id' => 1,
       'spend' => 480,
@@ -2075,7 +2075,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '6'),
+      'week' =>  Carbon::create('2017', '11', '6','0','0','0'),
       'item_id' => 100,
       'store_id' => 1,
       'spend' => 640,
@@ -2084,7 +2084,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
       'item_id' => 116,
       'store_id' => 1,
       'spend' => 0,
@@ -2093,7 +2093,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11', '27','0','0','0'),
       'item_id' => 116,
       'store_id' => 1,
       'spend' => 173.75,
@@ -2102,7 +2102,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '20'),
+      'week' =>  Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 116,
       'store_id' => 1,
       'spend' => 0,
@@ -2111,7 +2111,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '13'),
+      'week' =>  Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 116,
       'store_id' => 1,
       'spend' => 0,
@@ -2120,7 +2120,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '6'),
+      'week' =>  Carbon::create('2017', '11', '6','0','0','0'),
       'item_id' => 116,
       'store_id' => 1,
       'spend' => 0,
@@ -2129,7 +2129,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
       'item_id' => 129,
       'store_id' => 1,
       'spend' => 0,
@@ -2138,7 +2138,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11', '27','0','0','0'),
       'item_id' => 129,
       'store_id' => 1,
       'spend' => 225,
@@ -2147,7 +2147,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '20'),
+      'week' =>  Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 129,
       'store_id' => 1,
       'spend' => 0,
@@ -2156,7 +2156,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '13'),
+      'week' =>  Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 129,
       'store_id' => 1,
       'spend' => 0,
@@ -2165,7 +2165,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '6'),
+      'week' =>  Carbon::create('2017', '11', '6','0','0','0'),
       'item_id' => 129,
       'store_id' => 1,
       'spend' => 0,
@@ -2174,7 +2174,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2016', '12', '5'),
+      'week' =>  Carbon::create('2016', '12', '5','0','0','0'),
       'item_id' => 129,
       'store_id' => 1,
       'spend' => 225,
@@ -2183,7 +2183,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
       DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
       'item_id' => 164,
       'store_id' => 1,
       'spend' => 18.5,
@@ -2192,7 +2192,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11', '27','0','0','0'),
       'item_id' => 164,
       'store_id' => 1,
       'spend' => 18.5,
@@ -2201,7 +2201,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '20'),
+      'week' =>  Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 164,
       'store_id' => 1,
       'spend' => 27.75,
@@ -2210,7 +2210,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '13'),
+      'week' =>  Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 164,
       'store_id' => 1,
       'spend' => 27.75,
@@ -2219,7 +2219,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '6'),
+      'week' =>  Carbon::create('2017', '11', '6','0','0','0'),
       'item_id' => 164,
       'store_id' => 1,
       'spend' => 18.5,
@@ -2228,7 +2228,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2016', '12', '5'),
+      'week' =>  Carbon::create('2016', '12', '5','0','0','0'),
       'item_id' => 164,
       'store_id' => 1,
       'spend' => 27.75,
@@ -2237,7 +2237,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
       DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
       'item_id' => 173,
       'store_id' => 1,
       'spend' => 0,
@@ -2246,7 +2246,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11', '27','0','0','0'),
       'item_id' => 173,
       'store_id' => 1,
       'spend' => 0,
@@ -2255,7 +2255,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '20'),
+      'week' =>  Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 173,
       'store_id' => 1,
       'spend' => 0,
@@ -2264,7 +2264,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '13'),
+      'week' =>  Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 173,
       'store_id' => 1,
       'spend' => 9.25,
@@ -2273,7 +2273,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '6'),
+      'week' =>  Carbon::create('2017', '11', '6','0','0','0'),
       'item_id' => 173,
       'store_id' => 1,
       'spend' => 0,
@@ -2282,7 +2282,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2016', '12', '5'),
+      'week' =>  Carbon::create('2016', '12', '5','0','0','0'),
       'item_id' => 173,
       'store_id' => 1,
       'spend' => 9.25,
@@ -2291,7 +2291,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '12', '04'),
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
       'item_id' => 73,
       'store_id' => 1,
       'spend' => 26.2,
@@ -2300,7 +2300,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' => Carbon::create('2017', '11', '27'),
+      'week' => Carbon::create('2017', '11', '27','0','0','0'),
       'item_id' => 73,
       'store_id' => 1,
       'spend' => 0,
@@ -2309,7 +2309,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
        DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '20'),
+      'week' =>  Carbon::create('2017', '11', '20','0','0','0'),
       'item_id' => 73,
       'store_id' => 1,
       'spend' => 26.2,
@@ -2318,7 +2318,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '13'),
+      'week' =>  Carbon::create('2017', '11', '13','0','0','0'),
       'item_id' => 73,
       'store_id' => 1,
       'spend' => 0,
@@ -2327,7 +2327,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2017', '11', '6'),
+      'week' =>  Carbon::create('2017', '11', '6','0','0','0'),
       'item_id' => 73,
       'store_id' => 1,
       'spend' => 0,
@@ -2336,7 +2336,7 @@ class ItemsSpendTableSeeder extends Seeder
       ]);
 
         DB::table('items_spend')->insert([
-      'week' =>  Carbon::create('2016', '12', '5'),
+      'week' =>  Carbon::create('2016', '12', '5','0','0','0'),
       'item_id' => 73,
       'store_id' => 1,
       'spend' => 26.2,
