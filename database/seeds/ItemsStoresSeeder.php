@@ -612,12 +612,6 @@ class ItemsStoresSeeder extends Seeder
       'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
       ]);
 
-      DB::table('items_stores')->insert([
-      'item_id' => 54,
-      'store_id' => 1,
-      'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-      'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-      ]);
 
       DB::table('items_stores')->insert([
       'item_id' => 55,

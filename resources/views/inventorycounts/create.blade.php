@@ -48,16 +48,16 @@
  						 <div class="card card-block" style="width:95%">
  						 	<div class="row">
  						 		<div class="col-2">
- 						 		{{$item->id}}
- 						 		<input class="hidden" name="item{{$loop->iteration}}" value="{{$item->id}}">
+ 						 		{{$item->item_id}}
+ 						 		<input class="hidden" name="item{{$item->item_id}}" value="{{$item->item_id}}">
  						 		</div>
 								<div class="col-5 text-left">{{$item->name}}
 								</div>
 								<div class="col-3">
-									{{$item->supplier->name}}
+									{{$item->supplier}}
 								</div>
 								<div class="col-2">
-									<input class="orderquantity" name="qty{{$loop->iteration}}" type="number">
+									<input class="orderquantity" name="qty{{$item->item_id}}" type="number">
 								</div>
 							</div>
 						</div>

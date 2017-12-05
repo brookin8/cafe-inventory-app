@@ -51,7 +51,14 @@ class CountController extends Controller
      */
     public function create()
     {
-        $items = \App\Item::orderBy('items.name')->get();
+        $items = \DB::table('items_stores')
+            ->join('items','items.id','=','items_stores.item_id')
+            ->join('suppliers','suppliers.id','=','items.supplier_id')
+            ->where('items_stores.store_id','=',\Auth::user()->store_id)
+            ->orderBy('items.name')
+            ->select('items.name as name','items.*','items_stores.*','suppliers.name as supplier')
+            ->get();
+
         $categories = \App\Category::all();
         return view('inventorycounts.create',compact('items','categories'));
     }
@@ -411,7 +418,14 @@ class CountController extends Controller
     {
         
         $count = \App\Inventorycount::find($id);
-        $items = \App\Item::orderBy('items.name')->get();;
+        $items = \DB::table('items_stores')
+            ->join('items','items.id','=','items_stores.item_id')
+            ->join('suppliers','suppliers.id','=','items.supplier_id')
+            ->where('items_stores.store_id','=',\Auth::user()->store_id)
+            ->orderBy('items.name')
+            ->select('items.name as name','items.*','items_stores.*','suppliers.name as supplier')
+            ->get();
+            
         $counteditems = \DB::table('items_inventorycounts')
             ->join('items','items_inventorycounts.item_id','=','items.id')
             ->join('categories','items.category_id','=','categories.id')
@@ -419,6 +433,10 @@ class CountController extends Controller
             ->where('items_inventorycounts.inventorycount_id','=',$id)
             ->select('items_inventorycounts.*','categories.name as categoryname','suppliers.name as suppliername','items.name as itemname')
             ->get();
+
+        error_log($id);
+        error_log($counteditems);
+
         $categories = \App\Category::all();
         $categoriesused = [];
         $suppliersused = [];

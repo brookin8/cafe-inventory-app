@@ -103,23 +103,23 @@
 	 						 <div class="card card-block" style="width:95%">
 	 						 	<div class="row">
 	 						 		<div class="col-2">
-	 						 		{{$item->id}}
-	 						 		<input class="hidden" name="item{{$item->id}}" value="{{$item->id}}">
+	 						 		{{$item->item_id}}
+	 						 		<input class="hidden" name="item{{$item->item_id}}" value="{{$item->id}}">
 	 						 		</div>
 									<div class="col-5 text-left">{{$item->name}}
 									</div>
 									<div class="col-3">
-										{{$item->supplier->name}}
+										{{$item->supplier}}
 									</div>
 									<div class="col-2">
-										@if (in_array($item->id,$counteditemIds))
+										@if (in_array($item->item_id,$counteditemIds))
 											@foreach ($counteditems as $counteditem)
-												@if ($counteditem->item_id === $item->id)
-													<td class="text-center cellwidth"><input type="number" class="invcountqty" value="{{$counteditem->inventorycount_qty}}" name="qty{{$item->id}}"></td>
+												@if ($counteditem->item_id === $item->item_id)
+													<td class="text-center cellwidth"><input type="number" class="invcountqty" value="{{$counteditem->inventorycount_qty}}" name="qty{{$item->item_id}}"></td>
 												@endif
 											@endforeach
 										@else
-											<td class="text-center cellwidth"><input type="number" class="invcountqty" name="qty{{$item->id}}"></td>
+											<td class="text-center cellwidth"><input type="number" class="invcountqty" name="qty{{$item->item_id}}"></td>
 										@endif
 									</div>
 								</div>
