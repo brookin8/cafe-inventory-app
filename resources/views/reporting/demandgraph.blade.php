@@ -903,35 +903,42 @@ function categoryselect(category) {
       
    //    var categoryselect = document.getElementById("itemcategory");
      // var category = categoryselect.value;
+     for (var i = 0; i < spend.length; i++) {
+      var dateconversion = new Date(spend[i].week).setHours(0,0,0,0);
+      if(!dates.includes(dateconversion) && dateconversion >= startdate) {
+            dates.push(dateconversion);
+         } 
+      }
 
       var data = new google.visualization.DataTable();
       data.addColumn('date', 'Week');
 
       if(startdate === '' && enddate === '') {
          for (var i = 0; i < spend.length; i++) {
-               if(!dates.includes(spend[i].week)) {
-                  dates.push(spend[i].week);
-               }
+            var dateconversion = new Date(spend[i].week).setHours(0,0,0,0);
+            if(!dates.includes(dateconversion) && dateconversion >= startdate) {
+                  dates.push(dateconversion);
+               } 
             }
       } else if(startdate != '' && enddate === '') {
          for (var i = 0; i < spend.length; i++) {
-            var dateconversion = new Date(spend[i].week);
-            if(!dates.includes(spend[i].week) && dateconversion >= startdate) { 
-                  dates.push(spend[i].week);
+             var dateconversion = new Date(spend[i].week).setHours(0,0,0,0);
+            if(!dates.includes(dateconversion) && dateconversion >= startdate) { 
+                  dates.push(dateconversion);
                }
           }
       } else if(startdate === '' && enddate != '') {
          for (var i = 0; i < spend.length; i++) {
-            var dateconversion = new Date(spend[i].week);
-            if(!dates.includes(spend[i].week) && dateconversion <= enddate) { 
-                  dates.push(spend[i].week);
+            var dateconversion = new Date(spend[i].week).setHours(0,0,0,0);
+            if(!dates.includes(dateconversion) && dateconversion <= enddate) { 
+                  dates.push(dateconversion);
                }
           }
       } else if(startdate != '' && enddate != '') {
          for (var i = 0; i < spend.length; i++) {
-            var dateconversion = new Date(spend[i].week);
-            if(!dates.includes(spend[i].week) && dateconversion <= enddate && dateconversion >= startdate) { 
-                  dates.push(spend[i].week);
+            var dateconversion = new Date(spend[i].week).setHours(0,0,0,0);
+            if(!dates.includes(dateconversion) && dateconversion <= enddate && dateconversion >= startdate) { 
+                  dates.push(dateconversion);
                }
           }
       }
@@ -973,7 +980,8 @@ function categoryselect(category) {
          for(var j=1;j<headers.length;j++) {
             var found = false;
             for(var k=0;k<spend.length;k++) {
-               if(spend[k].week === dates[i] && spend[k].name === headers[j]) {
+               var dateconversion = new Date(spend[k].week).setHours(0,0,0,0);
+               if(dateconversion === dates[i] && spend[k].name === headers[j]) {
                   pushing.push(Number(spend[k].spend));
                   total += Number(spend[k].spend);
                   found = true;
@@ -1064,30 +1072,31 @@ function supplierselect(supplier) {
       data.addColumn('date', 'Week');
 
       if(startdate === '' && enddate === '') {
-         for (var i = 0; i < spend.length; i++) {
-               if(!dates.includes(spend[i].week)) {
-                  dates.push(spend[i].week);
-               }
+          for (var i = 0; i < spend.length; i++) {
+            var dateconversion = new Date(spend[i].week).setHours(0,0,0,0);
+            if(!dates.includes(dateconversion) && dateconversion >= startdate) {
+                  dates.push(dateconversion);
+               } 
             }
       } else if(startdate != '' && enddate === '') {
          for (var i = 0; i < spend.length; i++) {
-            var dateconversion = new Date(spend[i].week);
-            if(!dates.includes(spend[i].week) && dateconversion >= startdate) { 
-                  dates.push(spend[i].week);
+           var dateconversion = new Date(spend[i].week).setHours(0,0,0,0);
+            if(!dates.includes(dateconversion) && dateconversion >= startdate) { 
+                  dates.push(dateconversion);
                }
           }
       } else if(startdate === '' && enddate != '') {
          for (var i = 0; i < spend.length; i++) {
-            var dateconversion = new Date(spend[i].week);
-            if(!dates.includes(spend[i].week) && dateconversion <= enddate) { 
-                  dates.push(spend[i].week);
+            var dateconversion = new Date(spend[i].week).setHours(0,0,0,0);
+            if(!dates.includes(dateconversion) && dateconversion <= enddate) { 
+                  dates.push(dateconversion);
                }
           }
       } else if(startdate != '' && enddate != '') {
          for (var i = 0; i < spend.length; i++) {
-            var dateconversion = new Date(spend[i].week);
-            if(!dates.includes(spend[i].week) && dateconversion <= enddate && dateconversion >= startdate) { 
-                  dates.push(spend[i].week);
+           var dateconversion = new Date(spend[i].week).setHours(0,0,0,0);
+            if(!dates.includes(dateconversion) && dateconversion <= enddate && dateconversion >= startdate) { 
+                  dates.push(dateconversion);
                }
           }
       }
@@ -1128,7 +1137,8 @@ function supplierselect(supplier) {
          for(var j=1;j<headers.length;j++) {
             var found = false;
             for(var k=0;k<spend.length;k++) {
-               if(spend[k].week === dates[i] && spend[k].name === headers[j]) {
+               var dateconversion = new Date(spend[k].week).setHours(0,0,0,0);
+               if(dateconversion === dates[i] && spend[k].name === headers[j]) {
                   pushing.push(Number(spend[k].spend));
                   total += Number(spend[k].spend);
                   found = true;
@@ -1210,21 +1220,23 @@ function supplierselect(supplier) {
       var data = new google.visualization.DataTable();
       data.addColumn('date', 'Week');
 
+   
+
       if(enddate === '') {
          console.log('enddate is blank');
          for (var i = 0; i < spend.length; i++) {
-            var dateconversion = new Date(spend[i].week);
-            if(!dates.includes(spend[i].week) && dateconversion >= chosedate) { 
-                  dates.push(spend[i].week);
-                  console.log(spend[i].week);
+            var dateconversion = new Date(spend[i].week).setHours(0,0,0,0);
+            if(!dates.includes(dateconversion) && dateconversion >= chosedate) { 
+                  dates.push(dateconversion);
+                  // console.log(spend[i].week);
                }
           }
       } else if(enddate != '') {
          console.log('endate is selected');
          for (var i = 0; i < spend.length; i++) {
-            var dateconversion = new Date(spend[i].week);
-            if(!dates.includes(spend[i].week) && dateconversion <= enddate && dateconversion >= chosedate) { 
-                  dates.push(spend[i].week);
+            var dateconversion = new Date(spend[i].week).setHours(0,0,0,0);;
+            if(!dates.includes(dateconversion) && dateconversion <= enddate && dateconversion >= chosedate) { 
+                  dates.push(dateconversion);
                }
           }
       }
@@ -1269,7 +1281,8 @@ function supplierselect(supplier) {
          for(var j=1;j<headers.length;j++) {
             var found = false;
             for(var k=0;k<spend.length;k++) {
-               if(spend[k].week === dates[i] && spend[k].name === headers[j]) {
+               var dateconversion = new Date(spend[k].week).setHours(0,0,0,0);
+               if(dateconversion === dates[i] && spend[k].name === headers[j]) {
                   pushing.push(Number(spend[k].spend));
                   total += Number(spend[k].spend);
                   found = true;
@@ -1350,16 +1363,16 @@ function endselect(end) {
 
       if(startdate === '') {
          for (var i = 0; i < spend.length; i++) {
-            var dateconversion = new Date(spend[i].week);
-            if(!dates.includes(spend[i].week) && dateconversion <= chosedate) { 
-                  dates.push(spend[i].week);
+            var dateconversion = new Date(spend[i].week).setHours(0,0,0,0);
+            if(!dates.includes(dateconversion) && dateconversion <= chosedate) { 
+                  dates.push(dateconversion);
                }
           }
       } else if(startdate != '') {
          for (var i = 0; i < spend.length; i++) {
-            var dateconversion = new Date(spend[i].week);
-            if(!dates.includes(spend[i].week) && dateconversion >= startdate && dateconversion <= chosedate) { 
-                  dates.push(spend[i].week);
+            var dateconversion = new Date(spend[i].week).setHours(0,0,0,0);
+            if(!dates.includes(dateconversion) && dateconversion >= startdate && dateconversion <= chosedate) { 
+                  dates.push(dateconversion);
                }
           }
       }
@@ -1407,7 +1420,8 @@ function endselect(end) {
          for(var j=1;j<headers.length;j++) {
             var found = false;
             for(var k=0;k<spend.length;k++) {
-               if(spend[k].week === dates[i] && spend[k].name === headers[j]) {
+               var dateconversion = new Date(spend[k].week).setHours(0,0,0,0);
+               if(dateconversion === dates[i] && spend[k].name === headers[j]) {
                   pushing.push(Number(spend[k].spend));
                   total += Number(spend[k].spend);
                   found = true;
@@ -1499,29 +1513,30 @@ function itemselect(item) {
 
       if(startdate === '' && enddate === '') {
          for (var i = 0; i < spend.length; i++) {
-               if(!dates.includes(spend[i].week)) {
-                  dates.push(spend[i].week);
+            var dateconversion = new Date(spend[i].week).setHours(0,0,0,0);
+               if(!dates.includes(dateconversion)) {
+                  dates.push(dateconversion);
                }
             }
       } else if(startdate != '' && enddate === '') {
          for (var i = 0; i < spend.length; i++) {
-            var dateconversion = new Date(spend[i].week);
-            if(!dates.includes(spend[i].week) && dateconversion >= startdate) { 
-                  dates.push(spend[i].week);
+            var dateconversion = new Date(spend[i].week).setHours(0,0,0,0);
+            if(!dates.includes(dateconversion) && dateconversion >= startdate) { 
+                  dates.push(dateconversion);
                }
           }
       } else if(startdate === '' && enddate != '') {
          for (var i = 0; i < spend.length; i++) {
-            var dateconversion = new Date(spend[i].week);
-            if(!dates.includes(spend[i].week) && dateconversion <= enddate) { 
-                  dates.push(spend[i].week);
+            var dateconversion = new Date(spend[i].week).setHours(0,0,0,0);
+            if(!dates.includes(dateconversion) && dateconversion <= enddate) { 
+                  dates.push(dateconversion);
                }
           }
       } else if(startdate != '' && enddate != '') {
          for (var i = 0; i < spend.length; i++) {
-            var dateconversion = new Date(spend[i].week);
-            if(!dates.includes(spend[i].week) && dateconversion <= enddate && dateconversion >= startdate) { 
-                  dates.push(spend[i].week);
+            var dateconversion = new Date(spend[i].week).setHours(0,0,0,0);
+            if(!dates.includes(dateconversion) && dateconversion <= enddate && dateconversion >= startdate) { 
+                  dates.push(dateconversion);
                }
           }
       }
@@ -1549,7 +1564,8 @@ function itemselect(item) {
          for(var j=1;j<headers.length;j++) {
             var found = false;
             for(var k=0;k<spend.length;k++) {
-               if(spend[k].week === dates[i] && spend[k].name === headers[j]) {
+               var dateconversion = new Date(spend[k].week).setHours(0,0,0,0);
+               if(dateconversion === dates[i] && spend[k].name === headers[j]) {
                   pushing.push(Number(spend[k].spend));
                   total += Number(spend[k].spend);
                   found = true;
