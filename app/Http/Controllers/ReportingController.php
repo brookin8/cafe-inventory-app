@@ -36,7 +36,7 @@ class ReportingController extends Controller
             ->orderBy('items.name')
             ->get();
 
-        $itemstores = \DB::table('items_stores')
+        $itemstores1 = \DB::table('items_stores')
             ->join('items','items.id','=','items_stores.item_id')
             ->join('categories','items.category_id','=','categories.id')
             ->join('suppliers','items.supplier_id','=','suppliers.id')
@@ -44,7 +44,18 @@ class ReportingController extends Controller
             ->join('uoms','items.uom_id','=','uoms.id')
             ->where('items_stores.store_id','=',\Auth::user()->store_id)
             ->select('items_stores.*','items.name as name','categories.name as category','suppliers.name as supplier','stores.name as store','uoms.unit as uom')
+            ->orderBy('items_stores.updated_at','desc')
             ->get();
+
+        $itemstores = [];
+        $itemstoresids = [];
+
+        foreach ($itemstores1 as $itemstore1) {
+            if(!in_array($itemstore1->item_id,$itemstoresids)) {
+                array_push($itemstores,$itemstore1);
+                array_push($itemstoresids,$itemstore1->item_id);
+            }
+        }
 
         //error_log('itemstores: ' . $itemstores);
 
