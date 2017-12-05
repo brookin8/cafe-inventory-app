@@ -654,7 +654,7 @@ function itemselect2(item) {
       }else {
          itemselected2 = itemnum;
       }
-
+      //console.log(itemnum);
       //console.log('supplierselected2 value: ' + supplierselected2);
       //console.log('supplierselected2 datetype: ' + typeof supplierselected2);
 
@@ -695,6 +695,12 @@ function itemselect2(item) {
                itemsselected.push(items[i].name);
             }
          } 
+
+      if(itemnum === '') {
+         for (var i = 0;i<items.length;i++) {
+            itemsselected.push(items[i].name);
+         } 
+      }
 
       for(var i=0; i<itemsselected.length; i++) {
             headers.push(itemsselected[i]);
@@ -1546,6 +1552,12 @@ function itemselect(item) {
                itemsselected.push(items[i].name);
             }
          } 
+
+      if(itemnum === '') {
+         for (var i = 0;i<items.length;i++) {
+            itemsselected.push(items[i].name);
+         } 
+      }
 
       for(var i=0; i<itemsselected.length; i++) {
             headers.push(itemsselected[i]);
