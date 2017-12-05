@@ -22,10 +22,6 @@
 				<div class="panel-body">
 				
 				<div class="row mt-3 mb-4 ml-2">
-					<div class="col-2">
-					  	<h3 class="orderform">Invoice #:</h3> 
-				  		<div class="orderform">{{$invoice->id}}</div>
-				  	</div>
 				  	<div class="col-2">
 					  	<h3 class="orderform">Order #:</h3> 
 				  		<div class="orderform">{{$invoice->order_id}}</div>
@@ -66,7 +62,7 @@
 				  		@endif
 				  	@endif
 				</div>
-				<div class="row mt-3 mb-5">
+				<div class="row mt-3 mb-5 ml-2">
 				  	@if ($backorder === true)
 				  		<div class="col-4">
 				  			<h3 class="orderform">Items on Backorder:</h3>

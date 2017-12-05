@@ -20,10 +20,6 @@
 				<div class="panel-body">
 
 				<div class="row mt-3 mb-4 ml-2">
-					<div class="col-2">
-					  	<h3 class="orderform">Order #:</h3> 
-					  	<div class="orderform">{{$order->id}}</div>
-					</div>
 					<div class="col-3">
 					  	<h3 class="orderform">Deliver To:</h3> 
 					  	<div class="orderform">{{$order->store->name}}</div>

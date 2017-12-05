@@ -20,10 +20,6 @@
 				<div class="panel-body">
 
 				<div class="row mt-3 mb-4 ml-2">
-					<div class="col-2">
-					  	<h3 class="orderform">Count #:</h3> 
-				  		<div class="orderform">{{$count->id}}</div>
-				  	</div>
 				  	<div class="col-2">
 					  	<h3 class="orderform">Total $:</h3> 
 				  		<div class="orderform">${{$count->total_value_onhand}}</div>
