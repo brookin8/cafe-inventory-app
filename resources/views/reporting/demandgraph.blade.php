@@ -801,6 +801,7 @@ function drawStuff() {
          headers.push(items[i].name);
          data.addColumn('number', items[i].name);
       }
+      console.log('headers: ' + headers);
 
       data.addColumn('number','Total');
 
