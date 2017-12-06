@@ -63,7 +63,8 @@ class HomeController extends Controller
             ->join('suppliers','orders.supplier_id','=','suppliers.id')
             ->where([
                 ['orders.received','=',false],
-                ['orders.editable','=',false]
+                ['orders.editable','=',false],
+                ['orders.store_id','=',\Auth::user()->store_id]
                 ])
             ->select('orders.id','orders.supplier_id','orders.expected_delivery_date','suppliers.name as supplier')
             ->get();

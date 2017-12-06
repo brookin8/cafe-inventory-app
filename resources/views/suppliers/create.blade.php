@@ -70,7 +70,7 @@
 			<div class="form-group row">
 			  	<label for="contact_number" class="col-4 col-form-label text-right createText">Contact Number</label>
 			  	<div class="col-7">
-			  		<input placeholder="5555555555" type="tel" maxlength="10" id="contact_number" name="contact_number" class="form-control">
+			  		<input placeholder="5555555555" type="tel" maxlength="10" id="contact_phone_number" name="contact_phone_number" class="form-control">
 			  	</div>
 			</div>
 			<div class="form-group row">

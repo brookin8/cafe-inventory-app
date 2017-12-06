@@ -27,6 +27,7 @@ class OrderController extends Controller
         $orders = \DB::table('orders')
                 ->join('users', 'orders.created_by', '=', 'users.id')
                 ->join('suppliers', 'orders.supplier_id','=','suppliers.id')
+                ->where('orders.store_id','=',\Auth::user()->store_id)
                 ->select('orders.*', 'users.name as username','suppliers.name as supplier')
                 ->get();
 
@@ -637,6 +638,7 @@ class OrderController extends Controller
                 ->where([
                     ['orders.editable','=',false],
                     ['orders.received','=',false],
+                    ['orders.store_id','=',\Auth::user()->store_id]
                     ])
                 ->get();
 
@@ -652,6 +654,7 @@ class OrderController extends Controller
                 ->where([
                     ['orders.editable','=',false],
                     ['orders.received','=',true],
+                    ['orders.store_id','=',\Auth::user()->store_id]
                     ])
                 ->get();
 
@@ -669,6 +672,7 @@ class OrderController extends Controller
                 ->where([
                     ['orders.editable','=',true],
                     ['orders.received','=',false],
+                    ['orders.store_id','=',\Auth::user()->store_id]
                     ])
                 ->get();
         return view('orders.saved',compact('orders'));

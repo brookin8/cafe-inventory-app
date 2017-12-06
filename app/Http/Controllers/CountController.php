@@ -27,7 +27,10 @@ class CountController extends Controller
         $counts = \DB::table('inventorycounts')
                 ->join('users', 'inventorycounts.created_by', '=', 'users.id')
                 ->select('inventorycounts.*', 'users.name as username')
-                ->where('inventorycounts.editable','=',false)
+                ->where([
+                    ['inventorycounts.editable','=',false],
+                    ['inventorycounts.store_id','=',\Auth::user()->store_id]
+                    ])
                 ->get();
 
         return view('inventorycounts.index',compact('counts'));
@@ -37,7 +40,10 @@ class CountController extends Controller
         $counts = \DB::table('inventorycounts')
                 ->join('users', 'inventorycounts.created_by', '=', 'users.id')
                 ->select('inventorycounts.*', 'users.name as username')
-                ->where('inventorycounts.editable','=',true)
+                ->where([
+                    ['inventorycounts.editable','=',true],
+                    ['inventorycounts.store_id','=',\Auth::user()->store_id]
+                    ])
                 ->get();
 
         return view('inventorycounts.saved',compact('counts'));
@@ -56,10 +62,25 @@ class CountController extends Controller
             ->join('suppliers','suppliers.id','=','items.supplier_id')
             ->where('items_stores.store_id','=',\Auth::user()->store_id)
             ->orderBy('items.name')
-            ->select('items.name as name','items.*','items_stores.*','suppliers.name as supplier')
+            ->select('items.name as name','items.*','items_stores.*','suppliers.name as supplier','items.category_id as category')
             ->get();
 
-        $categories = \App\Category::all();
+        $categoryids = [];
+
+        foreach($items as $item) {
+            array_push($categoryids, $item->category);
+        }
+
+        $categoryid = array_unique($categoryids);
+
+        $categories = \DB::table('categories')
+            ->select('categories.*')
+            ->whereNull('categories.deleted_at')
+            ->whereIn('id',$categoryids)
+            ->orderBy('categories.name')
+            ->get();
+
+        //$categories = \App\Category::all();
         return view('inventorycounts.create',compact('items','categories'));
     }
 

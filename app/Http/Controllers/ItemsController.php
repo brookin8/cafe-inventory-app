@@ -73,9 +73,9 @@ class ItemsController extends Controller
      */
     public function create()
     {
-        $categories = \App\Category::all();
+        $categories = \DB::table('categories')->whereNull('deleted_at')->orderBy('name')->get();
         $uoms = \App\Uom::all();
-        $suppliers = \App\Supplier::all();
+        $suppliers = \DB::table('suppliers')->whereNull('deleted_at')->orderBy('name')->get();
 
         return view('items.create', compact('categories','uoms','suppliers'));
     }
@@ -109,7 +109,7 @@ class ItemsController extends Controller
 
         $request->validate([
             'name' => 'required|unique:items',
-            'supplier_item_identifier' => 'required|unique:items',
+            'supplier_item_identifier' => 'required|unique:items'
         ]);
      
         $item->save();

@@ -30,7 +30,10 @@ class InvoiceController extends Controller
                 ->join('users', 'invoices.created_by', '=', 'users.id')
                 ->join('suppliers', 'invoices.supplier_id','=','suppliers.id')
                 ->select('invoices.*', 'users.name as username','suppliers.name as supplier')
-                ->where('invoices.editable','=',false)
+                ->where([
+                    ['invoices.editable','=',false],
+                    ['invoices.store_id','=',\Auth::user()->store_id]
+                    ])
                 ->get();
 
         return view('invoices.index',compact('invoices'));

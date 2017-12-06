@@ -74,7 +74,7 @@ class SupplierController extends Controller
         $supplier->billing_state = request('state');
         $supplier->billing_zip = request('zip');
         $supplier->contact_name = request('contact_name');
-        $supplier->contact_phone_number = request('contact_number');
+        $supplier->contact_phone_number = request('contact_phone_number');
         $supplier->contact_email = request('contact_email');
         $supplier->order_method = request('order_method');
     
@@ -85,6 +85,7 @@ class SupplierController extends Controller
         $request->validate([
             'name' => 'required|unique:suppliers',
             'order_email_address' => 'required|unique:suppliers',
+            'contact_phone_number' => 'nullable|max:10|min:10'
         ]);
 
         $supplier->save();
