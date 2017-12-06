@@ -816,7 +816,7 @@ function drawStuff() {
                var dateconversion = new Date(spend[k].week).setHours(0,0,0,0);
                if(dateconversion === dates[i] && spend[k].name === headers[j]) {
                   pushing.push(Number(spend[k].spend));
-                  console.log('header: ' + headers[j]);
+                  //console.log('header: ' + headers[j]);
                   total += Number(spend[k].spend);
                   found = true;
                }
