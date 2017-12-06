@@ -29,6 +29,8 @@ Route::get('/suppliers/details/{id}','SupplierController@details');
 
 Route::resource('suppliers', 'SupplierController');
 
+Route::post('/invoices/createfromorders','InvoiceController@fromorderpage');
+
 Route::get('/orders/supplierselect', 'OrderController@supplierselect');
 
 Route::post('/orders/supplierselect', 'OrderController@supplierselected');

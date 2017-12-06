@@ -137,6 +137,16 @@ class InvoiceController extends Controller
             }
         }
 
+    public function fromorderpage (Request $request) {
+        $request->session()->put('orderexist', '1');
+        $order = request('orderselect');
+        $request->session()->put('order', $order);
+        $supplierselected = request('supplierselect');
+        $request->session()->put('supplierselect', $supplierselected);
+
+        return redirect('../invoices/create');
+    }
+
     public function supplierselect(Request $request)
         {   
             $suppliers = \App\Supplier::all();

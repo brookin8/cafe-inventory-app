@@ -115,10 +115,11 @@
                                                     <td class="text-left">{{$order->supplier}}</td>
                                                     <td class="text-left">{{$order->expected_delivery_date}}</td>
                                                     <td>
-                                                        <form action="../invoices/create" method="post">
+                                                        <form action="/invoices/createfromorders" method="post">
                                                             {{ csrf_field() }}
                                                             <button class="invoiceButton2 btn btn-sm btn-secondary" data-info="" type="submit">
-                                                            <input type="hidden" name="order" value="{{$order->id}}">
+                                                            <input type="hidden" name="orderselect" value="{{$order->id}}">
+                                                            <input type="hidden" name="supplierselect" value="{{$order->supplier_id}}">
                                                                 Invoice
                                                             </button>
                                                         </form>

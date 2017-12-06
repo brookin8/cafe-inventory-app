@@ -65,7 +65,7 @@ class HomeController extends Controller
                 ['orders.received','=',false],
                 ['orders.editable','=',false]
                 ])
-            ->select('orders.id','orders.expected_delivery_date','suppliers.name as supplier')
+            ->select('orders.id','orders.supplier_id','orders.expected_delivery_date','suppliers.name as supplier')
             ->get();
 
         $recentcounts = [];

@@ -88,8 +88,8 @@
 				<table class="table table-striped table-hover table-bordered">
 					<thead>
 						<tr>
-							<th class="counthead">Item No</th>
-							<th class="counthead">Item Name</th>
+							<th class="counthead">Item#</th>
+							<th class="counthead text-left">Item Name</th>
 							<th class="counthead">Ordered Qty</th>
 							<th class="counthead">Received Qty</th>
 							<th class="counthead">Backordered?</th>
@@ -100,7 +100,7 @@
 					@foreach ($items as $item)
 					<tr>
 						<td>{{$item->item_id}}<input type="hidden" name="item{{$loop->iteration}}" value="{{$item->item_id}}"></td>
-						<td>{{$item->itemname}}</td>
+						<td class="text-left">{{$item->itemname}}</td>
 						<td>{{$item->order_qty}}</td>
 						<td><input value="{{$item->order_qty}}" type="number" class="orderquantity" name="qty{{$loop->iteration}}""></td>
 						<td><input type="checkbox" name="backorder{{$loop->iteration}}" class="backorder" value="yes"></td>

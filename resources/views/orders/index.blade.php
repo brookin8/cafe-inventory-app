@@ -86,11 +86,12 @@
 										</td>
 									@elseif ($order->editable === false && $order->received === false)
 										<td class="text-left">
-											<form action="../invoices/create" method="post">
+											<form action="/invoices/createfromorders" method="post">
 											{{ csrf_field() }}
 													<button class="invoiceButton btn btn-sm btn-info"
 												data-info="" type="submit">
-													<input type="hidden" name="order" value="{{$order->id}}">
+													<input type="hidden" name="orderselect" value="{{$order->id}}">
+													<input type="hidden" name="supplierselect" value="{{$order->supplier_id}}">
 													Invoice
 													</button>
 											</form>
