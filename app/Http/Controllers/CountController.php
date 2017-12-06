@@ -182,9 +182,9 @@ class CountController extends Controller
 
                         //Grab counts in a way that allows us to use the date
                         $prevcountid = $prevcount1[0]->id;
-                        $prevcount = \App\Item_Inventorycount::find($prevcountid);
+                        $prevcount = \App\Iteminventorycount::find($prevcountid);
                         $newcountid = $newcount1->id;
-                        $newcount = \App\Item_Inventorycount::find($newcountid);
+                        $newcount = \App\Iteminventorycount::find($newcountid);
                         error_log('newcount id and result:' . $newcountid . $newcount);
                         error_log('prevcount: ' . $prevcount);
                         
@@ -425,7 +425,7 @@ class CountController extends Controller
             ->orderBy('items.name')
             ->select('items.name as name','items.*','items_stores.*','suppliers.name as supplier')
             ->get();
-            
+
         $counteditems = \DB::table('items_inventorycounts')
             ->join('items','items_inventorycounts.item_id','=','items.id')
             ->join('categories','items.category_id','=','categories.id')
@@ -605,9 +605,9 @@ class CountController extends Controller
 
                         //Grab counts in a way that allows us to use the date
                         $prevcountid = $prevcount1[0]->id;
-                        $prevcount = \App\Item_Inventorycount::find($prevcountid);
+                        $prevcount = \App\Iteminventorycount::find($prevcountid);
                         $newcountid = $newcount1->id;
-                        $newcount = \App\Item_Inventorycount::find($newcountid);
+                        $newcount = \App\Iteminventorycount::find($newcountid);
                         error_log('newcount id and result:' . $newcountid . $newcount);
                         error_log('prevcount: ' . $prevcount);
                         
