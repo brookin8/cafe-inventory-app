@@ -82,11 +82,13 @@ class OrderController extends Controller
         }
 
         $items = \DB::table('items')
-                ->select('items.*')
+                ->join('items_stores','items_stores.item_id','=','items.id')
                 ->whereNull('items.deleted_at')
                 ->where([
-                    ['items.supplier_id','=',$supplierId]
+                    ['items.supplier_id','=',$supplierId],
+                    ['items_stores.store_id','=',\Auth::user()->store_id]
                 ])
+                ->select('items.*')
                 ->orderBy('items.name')
                 ->get();
 
@@ -382,11 +384,13 @@ class OrderController extends Controller
         $categoryids=[];
 
         $items = \DB::table('items')
-                ->select('items.*')
+                ->join('items_stores','items_stores.item_id','=','items.id')
                 ->whereNull('items.deleted_at')
                 ->where([
-                    ['items.supplier_id','=',$supplierId]
+                    ['items.supplier_id','=',$supplierId],
+                    ['items_stores.store_id','=',\Auth::user()->store_id]
                 ])
+                ->select('items.*')
                 ->orderBy('items.name')
                 ->get();
         
