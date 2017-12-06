@@ -155,7 +155,7 @@
 							<label for="datepicker6">
 				      			End Date: 
 				      		</label>
-							<input type="text" id="datepicker6" onchange="endselect2(this.value)">
+							<input type="text" id="datepicker6" onchange="endselect(this.value)">
 						</div>
 						<div class="row mt-3 mb-3 ml-5">
 							<label for="spendsupplier">
