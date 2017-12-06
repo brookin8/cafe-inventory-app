@@ -1180,6 +1180,10 @@ a.itemsrow {
     padding-top: 60px;
 }
 
+a.reportinglink, a.reportinglink:hover, a.reportinglink:visited, a.reportinglink:hover{
+	color:white;
+}
+
 .sidenav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;

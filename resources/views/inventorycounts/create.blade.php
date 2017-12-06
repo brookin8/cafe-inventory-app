@@ -7,7 +7,7 @@
 <div style="display:none;" id="loaderDiv">
 <div class="container">
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-12">
         <form action="/inventorycounts" method="post" class="mb-5">
 			{{ csrf_field() }}
             <div class="panel panel-default">
