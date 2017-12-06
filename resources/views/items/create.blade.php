@@ -20,7 +20,15 @@
                 	</div>
                 </div>
             <div class="panel-body items">
-				
+					@if ($errors->any())
+					    <div class="alert alert-danger">
+					        <ul>
+					            @foreach ($errors->all() as $error)
+					                <li>{{ $error }}</li>
+					            @endforeach
+					        </ul>
+					    </div>
+					@endif
 						<div class="form-group row">
 						  	<label for="name" class="col-4 col-form-label text-right createText">Name</label>
 						  	<div class="col-8">
@@ -52,7 +60,7 @@
 						<div class="form-group row">
 						  	<label for="supplier_item" class="col-4 col-form-label text-right createText">Supplier Item ID</label>
 						  	<div class="col-8">
-						  		<input type="text" id="supplier_item" name="supplier_item" class="form-control" required>
+						  		<input type="text" id="supplier_item_identifier" name="supplier_item_identifier" class="form-control" required>
 						  	</div>	
 						</div>
 						<div class="form-group row">

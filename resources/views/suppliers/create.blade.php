@@ -23,7 +23,15 @@
 				</div>
 				
 			<div class="panel-body">
-	
+			@if ($errors->any())
+			    <div class="alert alert-danger">
+			        <ul>
+			            @foreach ($errors->all() as $error)
+			                <li>{{ $error }}</li>
+			            @endforeach
+			        </ul>
+			    </div>
+			@endif
 			<div class="form-group row">
 			  	<label for="name" class="col-4 col-form-label text-right createText">Name</label>
 			  	<div class="col-7">
@@ -50,7 +58,7 @@
 			<div class="form-group row">
 			  	<label for="order_email" class="col-4 col-form-label text-right createText">Order Email</label>
 			  	<div class="col-7">
-			  		<input type="email" id="order_email" name="order_email" class="form-control">	
+			  		<input type="email" id="order_email_address" name="order_email_address" class="form-control">	
 			  	</div>
 			</div>
 			<div class="form-group row">

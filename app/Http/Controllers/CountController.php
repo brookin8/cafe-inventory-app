@@ -191,11 +191,15 @@ class CountController extends Controller
                         //Grab the dates of the counts
                         $newcountdate = $newcount->updated_at;
                         $prevcountdate = $prevcount->updated_at->startOfDay();
+                        $firstweekdateget = $prevcount->updated_at->startOfDay();
                         error_log('newcountdate: '. $newcountdate);
                         error_log('prevcountdate: '. $prevcountdate);
                         
                         // Find the total difference between the days
                         $totaldays = date_diff($newcountdate,$prevcountdate)->d;
+                        if($totaldays === 0) {
+                            $totaldays = 1;
+                        }
                         error_log('totaldays: ' . $totaldays);
                         
                         //And any quantity that was received in between those dates    
@@ -244,10 +248,12 @@ class CountController extends Controller
                         error_log('total demand: '.$totaldemand);
                        
                        
-                       $firstweekstart = date_timestamp_get($prevcountdate->startOfWeek());
+
+                       $firstweekstart = date_timestamp_get($firstweekdateget->startOfWeek());
                        error_log('firstweekstart: '. $firstweekstart);
                        array_push($weekstarts,$firstweekstart);
-
+                       
+                       error_log('after start of week:' . $prevcountdate);
 
                         if($totaldays > 0) {
                             for($date = $prevcountdate;$date <= $newcountdate; $date->addDay()) {
@@ -614,11 +620,15 @@ class CountController extends Controller
                         //Grab the dates of the counts
                         $newcountdate = $newcount->updated_at;
                         $prevcountdate = $prevcount->updated_at->startOfDay();
+                        $firstweekdateget = $prevcount->updated_at->startOfDay();
                         error_log('newcountdate: '. $newcountdate);
                         error_log('prevcountdate: '. $prevcountdate);
                         
                         // Find the total difference between the days
                         $totaldays = date_diff($newcountdate,$prevcountdate)->d;
+                        if($totaldays === 0) {
+                            $totaldays = 1;
+                        }
                         error_log('totaldays: ' . $totaldays);
                         
                         //And any quantity that was received in between those dates    
@@ -667,7 +677,7 @@ class CountController extends Controller
                         error_log('total demand: '.$totaldemand);
                        
                        
-                       $firstweekstart = date_timestamp_get($prevcountdate->startOfWeek());
+                       $firstweekstart = date_timestamp_get($firstweekdateget->startOfWeek());
                        error_log('firstweekstart: '. $firstweekstart);
                        array_push($weekstarts,$firstweekstart);
 

@@ -68,7 +68,7 @@ class SupplierController extends Controller
         
         $supplier->name = request('name');
         $supplier->lead_time_days = request('lead_time');
-        $supplier->order_email_address = request('order_email');
+        $supplier->order_email_address = request('order_email_address');
         $supplier->billing_street_address = request('street_address');
         $supplier->billing_city = request('city');
         $supplier->billing_state = request('state');
@@ -82,6 +82,11 @@ class SupplierController extends Controller
         $supplier->created_at = Carbon::now()->format('Y-m-d H:i:s');
         $supplier->updated_at = Carbon::now()->format('Y-m-d H:i:s');
      
+        $request->validate([
+            'name' => 'required|unique:suppliers',
+            'order_email_address' => 'required|unique:suppliers',
+        ]);
+
         $supplier->save();
 
         return redirect('/suppliers');

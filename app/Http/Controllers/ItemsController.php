@@ -88,13 +88,15 @@ class ItemsController extends Controller
      */
     public function store(Request $request)
     {
+        
+
         $item = new \App\Item;
         // $recipients = request('recipient');
         
         $item->name = request('name');
         $item->category_id = request('category');
         $item->supplier_id = request('supplier');
-        $item->supplier_item_identifier = request('supplier_item');
+        $item->supplier_item_identifier = request('supplier_item_identifier');
         $item->cost = request('cost');
         $item->uom_id = request('uom');
         $pars = request('pars');
@@ -104,6 +106,11 @@ class ItemsController extends Controller
         $item->updated_at = Carbon::now()->format('Y-m-d H:i:s');
 
         $item->edited_by = \Auth::user()->id;
+
+        $request->validate([
+            'name' => 'required|unique:items',
+            'supplier_item_identifier' => 'required|unique:items',
+        ]);
      
         $item->save();
 
