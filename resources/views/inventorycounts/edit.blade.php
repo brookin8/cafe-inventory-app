@@ -104,7 +104,7 @@
 	 						 	<div class="row">
 	 						 		<div class="col-2">
 	 						 		{{$item->item_id}}
-	 						 		<input class="hidden" name="item{{$item->item_id}}" value="{{$item->id}}">
+	 						 		<input class="hidden" name="item{{$item->item_id}}" value="{{$item->item_id}}">
 	 						 		</div>
 									<div class="col-5 text-left">{{$item->name}}
 									</div>
