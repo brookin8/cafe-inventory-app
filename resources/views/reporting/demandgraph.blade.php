@@ -801,7 +801,7 @@ function drawStuff() {
          headers.push(items[i].name);
          data.addColumn('number', items[i].name);
       }
-      console.log('headers: ' + headers);
+      //console.log('headers: ' + headers);
 
       data.addColumn('number','Total');
 
@@ -816,6 +816,7 @@ function drawStuff() {
                var dateconversion = new Date(spend[k].week).setHours(0,0,0,0);
                if(dateconversion === dates[i] && spend[k].name === headers[j]) {
                   pushing.push(Number(spend[k].spend));
+                  console.log('header: ' + headers[j]);
                   total += Number(spend[k].spend);
                   found = true;
                }
