@@ -37,7 +37,7 @@
 						</button>
 					</div>
 					<div class="collapse" id="collapse{{$category->id}}">
-						<div class="row mt-4 mb-3 ordertop">
+						<div class="row mt-4 mb-3 ordertop" style="box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0), 0 0 11px 0 rgba(0, 0, 0, 0.19);">
 							<div class="col-2">Item #</div>
 							<div class="col-5 text-left">Name</div>
 							<div class="col-3">Supplier</div>
