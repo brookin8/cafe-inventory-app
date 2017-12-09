@@ -26,7 +26,7 @@
 							</ul>
 						</div>
                 		<div class="col-2 mt-1">
-                			<a href="/inventorycounts/create"><button class="btn newcount btn-primary ml-5">New Count</button></a>
+                			<a href="/inventorycounts/supplierselect"><button class="btn newcount btn-primary ml-5">New Count</button></a>
                 		</div>
                 	</div>
 				</div>

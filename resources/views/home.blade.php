@@ -22,6 +22,7 @@
                                     Top 5 Items - Demand
                                 </div>
                                 <div class="card-block dashboard" id="demandblock" style="overflow:auto;">
+                                <a href="../reporting" style="color:white;">
                                   <div class="table-responsive">
                                      <table class="table" id="demandblocktable">
                                             <thead>
@@ -40,6 +41,7 @@
                                             </tbody>
                                         </table>
                                     </div>
+                                    </a>
                                 </div>
                                 <div class="card-footer">
                                 </div>
@@ -80,7 +82,11 @@
                                                 @foreach($notcounted as $key=>$value)
                                                 <tr>
                                                     <td class="text-left">{{$key}}</td>
+                                                @if($value === 'None')
                                                     <td class="text-left">{{$value}}</td>
+                                                @else
+                                                    <td class="text-left">{{date('m/d/Y', strtotime($value))}}</td>
+                                                @endif
                                                 </tr>
                                                 @endforeach
                                             </tbody>

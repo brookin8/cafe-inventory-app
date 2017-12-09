@@ -152,7 +152,7 @@
                 <div class="collapse" id="collapsecounts">
                     <a href="{{ url('/') }}/inventorycounts"><div class="row ml-2">All Counts</div></a>
                     <a href="{{ url('/') }}/inventorycounts/saved"><div class="row ml-2">Saved Counts</div></a>
-                    <a href="{{ url('/') }}/inventorycounts/create"><div class="row ml-2">New Count</div></a>
+                    <a href="{{ url('/') }}/inventorycounts/supplierselect"><div class="row ml-2">New Count</div></a>
                 </div>
                <a data-toggle="collapse" href="#collapseinvoices" aria-expanded="false" aria-controls="#collapseinvoices"><div class="row">
                     Invoices </div>

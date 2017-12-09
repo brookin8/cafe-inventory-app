@@ -217,4 +217,40 @@ class ItemsController extends Controller
         $item->delete();
         return redirect('/items');
     }
+
+    public function addstore(Request $request)
+    {
+        $itemfind = (int)request('itemstoreid');
+        $item = \App\Item::find($itemfind);
+        $store = \Auth::user()->store_id;
+
+        $item->stores()->attach($store,
+            ['PARs' => 0,'created_at' => Carbon::now(),'updated_at' => Carbon::now()]
+        );
+
+        return redirect('/items');
+    }
+
+    public function removestore(Request $request)
+    {
+        $itemfind = (int)request('itemstoreid');
+        $store = \Auth::user()->store_id;
+
+        $items = \DB::table('items_stores')
+        ->where([
+            ['items_stores.item_id','=',$itemfind],
+            ['items_stores.store_id','=',$store]
+            ])
+        ->get();
+
+        $deleteids = [];
+
+        foreach($items as $item) {
+            array_push($deleteids,$item->id);
+        }
+
+        $delete = \DB::table('items_stores')->whereIn('id', $deleteids)->delete(); 
+    
+        return redirect('/items');
+    }
 }

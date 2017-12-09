@@ -35,7 +35,7 @@
 									<th class="text-left">UOM</th>
 									<th class="text-left">Cost</th>
 									<th class="text-left">PARs</th>
-									<th class="text-left">Edited</th>
+									{{-- <th class="text-left">Edited</th> --}}
 									<th class="text-left">Actions</th>
 								</tr>
 							</thead>
@@ -56,15 +56,35 @@
 										@endif
 									@endforeach
 								@else
-								<td class="text-left">NO PARs</td>
+								<td class="text-left">Inactive</td>
 								@endif
-								<td class="text-left">{{$item->username}}</td>
-								<td class="text-left"><a href="/items/{{$item->id}}/edit"><button class="edit-modal btn btn-sm btn-info">
+								{{-- <td class="text-left">{{$item->username}}</td> --}}
+								<td class="text-left">
+									<div class="row">
+									<a href="/items/{{$item->id}}/edit"><button class="edit-modal btn btn-sm btn-info mr-2">
 										<span class="glyphicon glyphicon-edit"></span>
 									</button></a>
-									<a href="/items/{{$item->id}}"><button type="button" class="delete-modal btn btn-sm btn-danger">
+									<a href="/items/{{$item->id}}"><button type="button" class="delete-modal btn btn-sm btn-danger mr-2">
 										<span class="glyphicon glyphicon-trash"></span>
 									</button></a>
+									@if(!in_array($item->id,$itemswithpars))
+									<form action="/items/addstore" method="post">
+										<input type="hidden" value="{{$item->id}}" name="itemstoreid">
+										{{ csrf_field() }}
+										<button type="submit" class="delete-modal btn btn-sm btn-success">
+											<span class="glyphicon glyphicon-plus"></span>
+										</button>
+									</form>
+									@else
+									<form action="/items/removestore" method="post">
+										<input type="hidden" value="{{$item->id}}" name="itemstoreid">
+										{{ csrf_field() }}
+										<button type="submit" class="delete-modal btn btn-sm btn-warning">
+											<span class="glyphicon glyphicon-minus"></span>
+										</button>
+									</form>
+									@endif
+									</div>
 								</td>
 							</tr>
 							@endforeach
@@ -76,13 +96,43 @@
 								<td class="text-left">{{$item2->uom}}</td>
 								<td class="text-left">${{$item2->cost}}</td>
 								<td class="text-left">{{$item2->category}}</td>
-								<td class="text-left">{{$item2->username}}</td>
-								<td class="text-left"><a href="/items/{{$item2->id}}/edit"><button class="edit-modal btn btn-sm btn-info">
-										<span class="glyphicon glyphicon-edit"></span>
-									</button></a>
-									<a href="/items/{{$item2->id}}"><button type="button" class="delete-modal btn btn-sm btn-danger">
-										<span class="glyphicon glyphicon-trash mr-4"></span>
-									</button></a>
+								{{-- <td class="text-left">{{$item2->username}}</td> --}}
+								@if(in_array($item2->id,$itemswithpars))
+									@foreach($pars as $par)
+										@if($item2->id === $par->item_id)
+											<td class="text-left">{{$par->PARs}}</td>
+										@break
+										@endif
+									@endforeach
+								@else
+								<td class="text-left">Inactive</td>
+								@endif
+								<td class="text-left">
+									<div class="row">
+										<a href="/items/{{$item2->id}}/edit"><button class="edit-modal btn btn-sm btn-info mr-2">
+											<span class="glyphicon glyphicon-edit"></span>
+										</button></a>
+										<a href="/items/{{$item2->id}}"><button type="button" class="delete-modal btn btn-sm btn-danger mr-2">
+											<span class="glyphicon glyphicon-trash mr-4"></span>
+										</button></a>
+										@if(!in_array($item->id,$itemswithpars))
+											<form action="/items/addstore" method="post">
+												<input type="hidden" value="{{$item->id}}" name="itemstoreid">
+												{{ csrf_field() }}
+												<button type="submit" class="delete-modal btn btn-sm btn-success">
+													<span class="glyphicon glyphicon-plus"></span>
+												</button>
+											</form>
+										@else
+											<form action="/items/removestore" method="post">
+												<input type="hidden" value="{{$item->id}}" name="itemstoreid">
+												{{ csrf_field() }}
+												<button type="submit" class="delete-modal btn btn-sm btn-warning">
+													<span class="glyphicon glyphicon-minus"></span>
+												</button>
+											</form>
+										@endif
+									</div>
 								</td>
 							</tr>
 							@endforeach

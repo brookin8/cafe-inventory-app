@@ -24,6 +24,7 @@ class CountController extends Controller
      */
     public function index()
     {
+
         $counts = \DB::table('inventorycounts')
                 ->join('users', 'inventorycounts.created_by', '=', 'users.id')
                 ->select('inventorycounts.*', 'users.name as username')
@@ -34,6 +35,21 @@ class CountController extends Controller
                 ->get();
 
         return view('inventorycounts.index',compact('counts'));
+    }
+
+     public function supplierselect()
+    {
+        $suppliers = \App\Supplier::all();
+
+        return view('inventorycounts.supplierselect',compact('suppliers'));
+    }
+
+    public function supplierselected(Request $request)
+    {
+        $countsupplier = request('countsupplier');
+        $request->session()->put('countsupplier', $countsupplier);
+
+        return redirect('../inventorycounts/create');
     }
 
     public function saved() {
@@ -55,16 +71,33 @@ class CountController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        $items = \DB::table('items_stores')
+
+        $countsuppliers = $request->session()->get('countsupplier');
+        error_log(print_r($countsuppliers,true));
+        if(in_array('0',$countsuppliers)) {
+            $items = \DB::table('items_stores')
             ->join('items','items.id','=','items_stores.item_id')
             ->join('suppliers','suppliers.id','=','items.supplier_id')
             ->where('items_stores.store_id','=',\Auth::user()->store_id)
             ->orderBy('items.name')
             ->select('items.name as name','items.*','items_stores.*','suppliers.name as supplier','items.category_id as category')
             ->get();
-
+        } else {
+            $items = \DB::table('items_stores')
+            ->join('items','items.id','=','items_stores.item_id')
+            ->join('suppliers','suppliers.id','=','items.supplier_id')
+            ->where([
+                ['items_stores.store_id','=',\Auth::user()->store_id]
+                ])
+            ->whereIn('items.supplier_id', $countsuppliers)
+            ->orderBy('items.name')
+            ->select('items.name as name','items.*','items_stores.*','suppliers.name as supplier','items.category_id as category')
+            ->get();
+        }
+        
+        
         $categoryids = [];
 
         foreach($items as $item) {

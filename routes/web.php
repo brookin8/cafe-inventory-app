@@ -23,6 +23,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::post('/items/addstore','ItemsController@addstore');
+
+Route::post('/items/removestore','ItemsController@removestore');
+
 Route::resource('items', 'ItemsController');
 
 Route::get('/suppliers/details/{id}','SupplierController@details');
@@ -60,6 +64,10 @@ Route::post('/invoices/orderselect', 'InvoiceController@orderselected');
 Route::get('/invoices/backorder', 'InvoiceController@backorder');
 
 Route::resource('invoices', 'InvoiceController');
+
+Route::get('/inventorycounts/supplierselect', 'CountController@supplierselect');
+
+Route::post('/inventorycounts/supplierselect', 'CountController@supplierselected');
 
 Route::get('/inventorycounts/saved', 'CountController@saved');
 
