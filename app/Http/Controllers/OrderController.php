@@ -362,6 +362,38 @@ class OrderController extends Controller
         $order = \App\Order::find($id);
         $supplierId = $order->supplier_id;
         $supplier = \App\Supplier::find($supplierId);
+        $itemswithpars = [];
+        $itemswithonhand = [];
+        $store = \Auth::user()->store_id;
+        $itemids=[];
+        $countstart = Carbon::now()->subDays(2);
+        
+        $pars = \DB::table('items_stores')
+            ->where('store_id','=',$store)
+            ->select('items_stores.*')
+            ->orderBy('items_stores.updated_at','desc')
+            ->get();
+
+        foreach($pars as $par) {
+            array_push($itemswithpars,$par->item_id);
+        }
+
+         $onhand = \DB::table('items_inventorycounts')
+                ->join('inventorycounts','items_inventorycounts.inventorycount_id','=','inventorycounts.id')
+                ->select('items_inventorycounts.*')
+                ->whereIn('items_inventorycounts.item_id',$itemids)
+                ->where([
+                    ['inventorycounts.store_id','=',$store],
+                    ['inventorycounts.editable','=',false],
+                    ['items_inventorycounts.updated_at','<=',Carbon::now()],
+                    ['items_inventorycounts.updated_at','>=',$countstart]
+                ])
+                ->get();
+
+        foreach($onhand as $onhands) {
+            array_push($itemswithonhand,$onhands->item_id);
+        }
+
         
         $ordereditems = \DB::table('items_orders')
                 ->join('orders', 'items_orders.order_id', '=', 'orders.id')
@@ -397,6 +429,7 @@ class OrderController extends Controller
         
         foreach($items as $item) {
             array_push($categoryids, $item->category_id);
+            array_push($itemids, $item->id);
         }
 
         $categoryid = array_unique($categoryids);
@@ -409,7 +442,7 @@ class OrderController extends Controller
             ->get();
 
 
-        return view('orders.edit',compact('order','items','ordereditems','deliverydate','categories','ordereditemsIds','today'));
+        return view('orders.edit',compact('order','items','ordereditems','deliverydate','categories','ordereditemsIds','today','itemswithpars','itemswithonhand','pars','onhand'));
     }
 
     /**

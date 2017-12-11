@@ -66,22 +66,51 @@
 					</button>
 				</div>
 					<div class="collapse" id="collapse{{$category->id}}">
-						<div class="row">
-							<div class="col-3">Item</div>
-							<div class="col-2">Unit Cost</div>
-							<div class="col-3">Order Qty</div>
-						</div>
+						<div class="row mt-4 mb-3 ordertop" style="box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0), 0 0 11px 0 rgba(0, 0, 0, 0.19);">
+						<div class="col-4">Item</div>
+						<div class="col-2">PARs</div>
+						<div class="col-2">Onhand</div>
+						<div class="col-2">Unit Cost</div>
+						<div class="col-2">Order Qty</div>
+					</div>
 					@foreach ($items as $item)
 						@if($item->category_id === $category->id)
-		 						 <div class="card card-block">
+		 						 <div class="card card-block" style="width:95%">
 		 						 	<div class="row">
-										<div class="col-3">{{$item->name}}
+										<div class="col-4">{{$item->name}}
 											<input class="hidden" name="item{{$item->id}}" value="{{$item->id}}">
 										</div>
 										<div class="col-2">
-											${{$item->cost}}
-										</div>
-										<div class="col-3">
+										@if(in_array($item->id,$itemswithpars))
+											@foreach($pars as $par)
+												@if($item->id === $par->item_id)
+													@if(empty($par->PARs))
+													NO PARs
+													@else
+													{{$par->PARs}}
+													@endif
+												@break
+												@endif
+											@endforeach
+										@else
+											NO PARs
+										@endif
+									</div>
+									<div class="col-2">
+										@if(in_array($item->id,$itemswithonhand))
+											@foreach($onhand as $onhands)
+												@if($item->id === $onhands->item_id)
+													{{$onhands->inventorycount_qty}}
+												@endif
+											@endforeach
+										@else
+											No Count within 48 hrs
+										@endif
+									</div>
+									<div class="col-2">
+										${{$item->cost}}
+									</div>
+									<div class="col-2">
 										@if (in_array($item->id,$ordereditemsIds))
 											@foreach ($ordereditems as $ordereditem)
 												@if ($ordereditem->item_id === $item->id)
