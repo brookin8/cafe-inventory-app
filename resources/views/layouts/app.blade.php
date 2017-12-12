@@ -189,7 +189,7 @@
         
         $(document).ready(function() {
             $( "#toggleimage" ).click( function() {
-                $(".fa.fa-bars").toggleClass('flip');
+                $(".fa.fa-bars").addClass('flip');
             });
         });
 
