@@ -2343,6 +2343,24 @@ class ItemsSpendTableSeeder extends Seeder
       'created_at' => Carbon::now(),
       'updated_at' => Carbon::now()
       ]);
+
+      DB::table('items_spend')->insert([
+      'week' =>  Carbon::create('2017', '12', '04','0','0','0'),
+      'item_id' => 73,
+      'store_id' => 2,
+      'spend' => 26.2,
+      'created_at' => Carbon::now(),
+      'updated_at' => Carbon::now()
+      ]);
+
+      DB::table('items_spend')->insert([
+      'week' => Carbon::create('2017', '12', '04','0','0','0'),
+      'item_id' => 173,
+      'store_id' => 2,
+      'spend' => 5,
+      'created_at' => Carbon::now(),
+      'updated_at' => Carbon::now()
+      ]);
     }
 }
 

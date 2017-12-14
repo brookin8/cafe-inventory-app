@@ -36,7 +36,19 @@ class ReportingController extends Controller
             ->orderBy('items.name')
             ->get();
 
-        $itemstores1 = \DB::table('items_stores')
+        if(\Auth::user()->access_id === 1) {
+            $itemstores1 = \DB::table('items_stores')
+            ->join('items','items.id','=','items_stores.item_id')
+            ->join('categories','items.category_id','=','categories.id')
+            ->join('suppliers','items.supplier_id','=','suppliers.id')
+            ->join('stores','items_stores.store_id','=','stores.id')
+            ->join('uoms','items.uom_id','=','uoms.id')
+            ->select('items_stores.*','items.name as name','categories.name as category','suppliers.name as supplier','stores.name as store','uoms.unit as uom')
+            ->orderBy('items_stores.updated_at','desc')
+            ->get();
+        
+        } else {
+            $itemstores1 = \DB::table('items_stores')
             ->join('items','items.id','=','items_stores.item_id')
             ->join('categories','items.category_id','=','categories.id')
             ->join('suppliers','items.supplier_id','=','suppliers.id')
@@ -46,6 +58,8 @@ class ReportingController extends Controller
             ->select('items_stores.*','items.name as name','categories.name as category','suppliers.name as supplier','stores.name as store','uoms.unit as uom')
             ->orderBy('items_stores.updated_at','desc')
             ->get();
+        }  
+
 
         $itemstores = [];
         $itemstoresids = [];
@@ -250,9 +264,9 @@ class ReportingController extends Controller
                 ->join('categories','items.category_id','=','categories.id')
                 ->join('suppliers','items.supplier_id','=','suppliers.id')
                 ->join('stores','items_spend.store_id','=','stores.id')
-                ->select('items_spend.week','items_spend.item_id','items.name as name','categories.name as category','items_spend.spend','suppliers.name as supplier','stores.name as store')
+                ->select('items_spend.week','items_spend.item_id','items_spend.store_id','items.name as name','categories.name as category','items_spend.spend','suppliers.name as supplier','stores.name as store')
                 ->where([
-                    ['items_spend.store_id','=',\Auth::user()->store_id],
+                    // ['items_spend.store_id','=',\Auth::user()->store_id],
                     ['items_spend.week','>=',$fourweeks]
                     ])
                 ->orderBy('items_spend.week')
@@ -267,9 +281,9 @@ class ReportingController extends Controller
            $demand2 = \DB::table('items_demand')
             ->join('items','items.id','=','items_demand.item_id')
             ->join('categories','items.category_id','=','categories.id')
-            ->select('items_demand.week','items_demand.item_id','items.name as name','categories.name as category','items_demand.demand')
+            ->select('items_demand.week','items_demand.item_id','items_demand.store_id','items.name as name','categories.name as category','items_demand.demand')
             ->where([
-                ['items_demand.store_id','=',\Auth::user()->store_id],
+                // ['items_demand.store_id','=',\Auth::user()->store_id],
                 ['items_demand.week','>=',$fourweeksdemand]
                 ])
             ->orderBy('items_demand.week')
@@ -281,7 +295,7 @@ class ReportingController extends Controller
             ->join('categories','items.category_id','=','categories.id')
             ->join('suppliers','items.supplier_id','=','suppliers.id')
             ->join('stores','items_stores.store_id','=','stores.id')
-            ->where('items_stores.store_id','=',\Auth::user()->store_id)
+            // ->where('items_stores.store_id','=',\Auth::user()->store_id)
             ->select('items_stores.*','items.name as name','categories.name as category','suppliers.name as supplier','stores.name as store')
             ->get();
 
@@ -351,7 +365,7 @@ class ReportingController extends Controller
             ->join('stores','items_spend.store_id','=','stores.id')
             ->select('items_spend.week','items_spend.item_id','items.name as name','categories.name as category','items_spend.spend','suppliers.name as supplier','stores.name as store')
             ->where([
-                ['items_spend.store_id','=',\Auth::user()->store_id],
+                // ['items_spend.store_id','=',\Auth::user()->store_id],
                 ['items_spend.week','>=',$startdate],
                 ['items_spend.week','<=',$enddate]
             ])
@@ -366,7 +380,7 @@ class ReportingController extends Controller
             ->join('uoms','items.uom_id','=','uoms.id')
             ->select('items_demand.week','items_demand.item_id','items.name as name','categories.name as category','items_demand.demand','suppliers.name as supplier','stores.name as store','uoms.unit as uom')
             ->where([
-                ['items_demand.store_id','=',\Auth::user()->store_id],
+                // ['items_demand.store_id','=',\Auth::user()->store_id],
                 ['items_demand.week','>=',$startdatedemand],
                 ['items_demand.week','<=',$enddatedemand]
                 ])

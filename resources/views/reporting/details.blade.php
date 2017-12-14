@@ -82,7 +82,7 @@
 								<td class="text-left reporting">{{$spends2->supplier}}</td>
 								<td class="text-left reporting">
 									@foreach($demand2 as $demands2)
-										@if(Carbon\Carbon::parse($spends2->week)->format('m/d/Y') === Carbon\Carbon::parse($demands2->week)->format('m/d/Y') && $demands2->item_id === $spends2->item_id)
+										@if(Carbon\Carbon::parse($spends2->week)->format('m/d/Y') === Carbon\Carbon::parse($demands2->week)->format('m/d/Y') && $demands2->item_id === $spends2->item_id && $demands2->store_id === $spends2->store_id)
 											{{$demands2->demand}}
 										@endif
 									@endforeach
