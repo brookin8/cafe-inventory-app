@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Yajra\Datatables\Datatables;
+// use Yajra\Datatables\Datatables;
 use Carbon\Carbon;
 
 class ItemsController extends Controller

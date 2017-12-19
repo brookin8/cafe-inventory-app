@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use App\Mail\Order;
 
 class OrderController extends Controller
 {
@@ -226,17 +227,44 @@ class OrderController extends Controller
             //print_r($itemspend);
 
         if($order2->editable === false) {
-            //error_log('false');
+
+            $pdfitems = \DB::table('items_orders')
+            ->join('items','items.id','=','items_orders.item_id')
+            ->where([
+                    ['order_id','=',$orderid],
+                    ])
+            ->select('items_orders.*','items.supplier_item_identifier as supplieritem')
+            ->get();
+
+            $data = array(
+                'order2' => $order2,
+                'pdfitems' => $pdfitems
+            );
+
+            // \Mail::to('brookin8@gmail.com')->send(new Order);
+            $pdf = \PDF::loadView('pdf.order', $data);
+            // return $pdf->download('order.pdf');
+
+            \Mail::send('emails.send', $data, function($message) use($pdf)
+            {
+                $message->from('brookin8@gmail.com', 'Erin');
+
+                $message->to('brookin8@gmail.com')->subject('Order');
+
+                $message->attachData($pdf->output(), "order.pdf");
+            });
+
             $thisweek = Carbon::today()->startOfWeek();
             $lastweek = Carbon::today()->startOfWeek()->subDays(7);
             error_log('This: '.$thisweek);
             $today = Carbon::today();
 
             $orderitems = \DB::table('items_orders')
-                 ->where([
-                        ['order_id','=',$orderid],
-                        ])
-                ->get();
+             ->where([
+                    ['order_id','=',$orderid],
+                    ])
+            ->get();
+           
             //error_log('orderitems: '. $orderitems);
 
             $allitems = \DB::table('items')
@@ -548,7 +576,8 @@ class OrderController extends Controller
         $order2->save();
 
         if($order2->editable === false) {
-            error_log('false');
+            // error_log('false');
+            \Mail::to('brookin8@gmail.com')->send(new Order);
             $thisweek = Carbon::today()->startOfWeek();
             $lastweek = Carbon::today()->startOfWeek()->subDays(7);
             $today = Carbon::today();

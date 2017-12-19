@@ -103,8 +103,8 @@
                             <div class="card-header">
                             Orders Due
                             </div>
-                                <div class="card-block dashboard" id="dueorderblock">
-                                    <div class="table-responsive" style="overflow:auto;">
+                                <div class="card-block dashboard" id="dueorderblock" style="overflow:auto;">
+                                    <div class="table-responsive">
                                         <table class="table" id="dueordertable">
                                         <thead>
                                             <tr>
