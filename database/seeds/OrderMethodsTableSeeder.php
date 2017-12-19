@@ -12,10 +12,10 @@ class OrderMethodsTableSeeder extends Seeder
     public function run()
     {
       DB::table('order_methods')->insert([
-        'method' => 'email',
+        'method' => 'default (PDF)',
       ]);
       DB::table('order_methods')->insert([
-        'method' => 'website',
+        'method' => 'custom',
       ]);
     }
 }

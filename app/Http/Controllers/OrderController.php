@@ -228,31 +228,38 @@ class OrderController extends Controller
 
         if($order2->editable === false) {
 
-            $pdfitems = \DB::table('items_orders')
-            ->join('items','items.id','=','items_orders.item_id')
-            ->where([
-                    ['order_id','=',$orderid],
-                    ])
-            ->select('items_orders.*','items.supplier_item_identifier as supplieritem')
-            ->get();
+            $supplierfind = $order2->supplier_id;
+            $suppliermethod = \App\Supplier::find($supplierfind);
+            $ordermethod = $suppliermethod->order_method;
 
-            $data = array(
-                'order2' => $order2,
-                'pdfitems' => $pdfitems
-            );
+            if($ordermethod === 1) {
+                $pdfitems = \DB::table('items_orders')
+                ->join('items','items.id','=','items_orders.item_id')
+                ->where([
+                        ['order_id','=',$orderid],
+                        ])
+                ->select('items_orders.*','items.supplier_item_identifier as supplieritem')
+                ->get();
 
-            // \Mail::to('brookin8@gmail.com')->send(new Order);
-            $pdf = \PDF::loadView('pdf.order', $data);
-            // return $pdf->download('order.pdf');
+                $data = array(
+                    'order2' => $order2,
+                    'pdfitems' => $pdfitems
+                );
 
-            \Mail::send('emails.send', $data, function($message) use($pdf)
-            {
-                $message->from('brookin8@gmail.com', 'Erin');
+                // \Mail::to('brookin8@gmail.com')->send(new Order);
+                $pdf = \PDF::loadView('pdf.order', $data);
+                // return $pdf->download('order.pdf');
 
-                $message->to('brookin8@gmail.com')->subject('Order');
+                \Mail::send('emails.send', $data, function($message) use($pdf)
+                {
+                    $message->from('brookin8@gmail.com', 'Erin');
 
-                $message->attachData($pdf->output(), "order.pdf");
-            });
+                    $message->to('brookin8@gmail.com')->subject('Order');
+
+                    $message->attachData($pdf->output(), "order.pdf");
+                });
+            }
+            
 
             $thisweek = Carbon::today()->startOfWeek();
             $lastweek = Carbon::today()->startOfWeek()->subDays(7);
@@ -577,7 +584,38 @@ class OrderController extends Controller
 
         if($order2->editable === false) {
             // error_log('false');
-            \Mail::to('brookin8@gmail.com')->send(new Order);
+            $supplierfind = $order2->supplier_id;
+            $suppliermethod = \App\Supplier::find($supplierfind);
+            $ordermethod = $suppliermethod->order_method;
+
+            if($ordermethod === 1) {
+                $pdfitems = \DB::table('items_orders')
+                ->join('items','items.id','=','items_orders.item_id')
+                ->where([
+                        ['order_id','=',$orderid],
+                        ])
+                ->select('items_orders.*','items.supplier_item_identifier as supplieritem')
+                ->get();
+
+                $data = array(
+                    'order2' => $order2,
+                    'pdfitems' => $pdfitems
+                );
+
+                // \Mail::to('brookin8@gmail.com')->send(new Order);
+                $pdf = \PDF::loadView('pdf.order', $data);
+                // return $pdf->download('order.pdf');
+
+                \Mail::send('emails.send', $data, function($message) use($pdf)
+                {
+                    $message->from('brookin8@gmail.com', 'Erin');
+
+                    $message->to('brookin8@gmail.com')->subject('Order');
+
+                    $message->attachData($pdf->output(), "order.pdf");
+                });
+            }
+
             $thisweek = Carbon::today()->startOfWeek();
             $lastweek = Carbon::today()->startOfWeek()->subDays(7);
             $today = Carbon::today();
