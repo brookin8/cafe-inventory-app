@@ -9,6 +9,7 @@
         </div>
         <div class="col-xs-8">
             <div class="panel panel-default">
+              <form class="form-horizontal" method="POST" action="/users/{{$user->id}}">
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col text-left">
@@ -28,7 +29,7 @@
                 </div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="/users/{{$user->id}}">
+                   
                         {{ csrf_field() }}
                         {{ method_field('PUT') }}
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
