@@ -39,7 +39,7 @@
 								@foreach($invoices as $invoice)
 								<tr class="">
 									<td class="text-left"><a href="invoices/{{$invoice->id}}" class="bodylink"><div>{{$invoice->id}}</div></a></td>
-									<td class="text-left"><a href="invoices/{{$invoice->id}}" class="bodylink"><div>#{{$invoice->order_id}}</div></a></td>
+									<td class="text-left"><a href="invoices/{{$invoice->id}}" class="bodylink"><div>{{$invoice->order_id}}</div></a></td>
 									<td class="text-left"><a href="invoices/{{$invoice->id}}" class="bodylink"><div>{{$invoice->supplier}}</div></a></td>
 									<td class="text-left"><a href="invoices/{{$invoice->id}}" class="bodylink"><div>${{$invoice->total_invoice_amount}}</div></a></td>
 									<td class="text-left"><a href="invoices/{{$invoice->id}}" class="bodylink"><div>{{Carbon\Carbon::parse($invoice->updated_at)->format('m/d/Y')}}</div>

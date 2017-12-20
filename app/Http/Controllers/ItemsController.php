@@ -231,6 +231,7 @@ class ItemsController extends Controller
         return redirect('/items');
     }
 
+
     public function removestore(Request $request)
     {
         $itemfind = (int)request('itemstoreid');
@@ -252,5 +253,76 @@ class ItemsController extends Controller
         $delete = \DB::table('items_stores')->whereIn('id', $deleteids)->delete(); 
     
         return redirect('/items');
+    }
+
+    public function massupdate()
+    {
+        $items = \App\Item::all();
+        $storefind = \App\Store::find(\Auth::user()->store_id);
+        $store = $storefind->name;
+        $itemstore = \DB::table('items_stores')
+        ->where([
+            ['items_stores.store_id','=',\Auth::user()->store_id],
+            ])
+        ->orderBy('updated_at','desc')
+        ->get();
+
+        $itemstoreids = [];
+        foreach($itemstore as $itemstores) {
+            array_push($itemstoreids,$itemstores->item_id);
+        }
+
+        return view('items.massupdate',compact('items','store','itemstore','itemstoreids'));
+    }
+
+     public function massupdated()
+    {
+        $items = \App\Item::all();
+            
+        $numItems = $items->count();
+
+    
+        for($i=1;$i<=$numItems;$i++) {
+            $stringi = (string)$i;
+            $itemid = request('item'.$stringi);
+            $pars = request('pars'.$stringi); 
+            $active = request('active'.$stringi); 
+            $store = \Auth::user()->store_id;
+
+           if($active === 'yes') {
+                $item = \App\Item::find($itemid);
+
+                $item->stores()->attach($store,
+                    ['PARs' => $pars,'created_at' => Carbon::now(),'updated_at' => Carbon::now()]
+                );
+
+            } else {
+                //If record exists - delete
+                if(\DB::table('items_stores')
+                    ->where([
+                        ['item_id','=',$itemid],
+                        ['store_id','=',$store]
+                    ])
+                    ->exists()) {
+
+                        $items = \DB::table('items_stores')
+                            ->where([
+                                ['items_stores.item_id','=',$itemid],
+                                ['items_stores.store_id','=',$store]
+                                ])
+                            ->get();
+
+                        $deleteids = [];
+
+                        foreach($items as $itemdel) {
+                            array_push($deleteids,$itemdel->id);
+                        }
+
+                        $delete = \DB::table('items_stores')->whereIn('id', $deleteids)->delete(); 
+                    }
+                }
+
+        }
+    return redirect('/items');
     }
 }

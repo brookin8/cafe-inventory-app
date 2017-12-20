@@ -23,6 +23,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/items/massupdate', 'ItemsController@massupdate');
+
+Route::post('/items/massupdate', 'ItemsController@massupdated');
+
 Route::post('/items/addstore','ItemsController@addstore');
 
 Route::post('/items/removestore','ItemsController@removestore');
