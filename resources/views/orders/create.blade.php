@@ -12,13 +12,28 @@
                 		<div class="col">
                 			New Order
                 		</div>
-                		<div class="col text-right buttoncol">
+                		@if($supplier->id === 3)
+                		<div class="col">
 							<a href="../orders">
 								<button type="button" class="btn btn-default mr-3">Discard</button>
 							</a>
 							<button class="btn btn-primary mr-3" type="submit" name="button" value="save">Save</button>
-							<button class="btn btn-success" type="submit" name="button" value="submit">Submit</button>
+							<button class="btn btn-success mr-3" type="submit" name="button" value="submit">Submit</button>
+                		</div>
+                		<div class="col-2 text-right buttoncol">
+                			<a href="../orders">
+							<button class="btn btn-warning" type="button" name="button" value="submit">Done</button>
+							</a>
 						</div>
+						@else
+						<div class="col text-right buttoncol">
+                			<a href="../orders">
+								<button type="button" class="btn btn-default mr-3">Discard</button>
+							</a>
+							<button class="btn btn-primary mr-3" type="submit" name="button" value="save">Save</button>
+							<button class="btn btn-success mr-3" type="submit" name="button" value="submit">Submit</button>
+						</div>
+						@endif
                 	</div>
                 </div>
 
@@ -54,47 +69,49 @@
 						<div class="col-2">Order Qty</div>
 					</div>
 				@foreach ($items as $item)
-					@if($item->category_id === $category->id)
-	 						 <div class="card card-block" style="width:95%">
-	 						 	<div class="row">
-									<div class="col-4">{{$item->name}}
-										<input class="hidden" name="item{{$loop->iteration}}" value="{{$item->id}}">
-									</div>
-									<div class="col-2">
-										@if(in_array($item->id,$itemswithpars))
-											@foreach($pars as $par)
-												@if($item->id === $par->item_id)
-													@if(empty($par->PARs))
-													NO PARs
-													@else
-													{{$par->PARs}}
+					@if(in_array($item->id,$itemswithpars))
+						@if($item->category_id === $category->id)
+		 						 <div class="card card-block" style="width:95%">
+		 						 	<div class="row">
+										<div class="col-4">{{$item->name}}
+											<input class="hidden" name="item{{$loop->iteration}}" value="{{$item->id}}">
+										</div>
+										<div class="col-2">
+											@if(in_array($item->id,$itemswithpars))
+												@foreach($pars as $par)
+													@if($item->id === $par->item_id)
+														@if(empty($par->PARs))
+														NO PARs
+														@else
+														{{$par->PARs}}
+														@endif
+													@break
 													@endif
-												@break
-												@endif
-											@endforeach
-										@else
-											NO PARs
-										@endif
-									</div>
-									<div class="col-2">
-										@if(in_array($item->id,$itemswithonhand))
-											@foreach($onhand as $onhands)
-												@if($item->id === $onhands->item_id)
-													{{$onhands->inventorycount_qty}}
-												@endif
-											@endforeach
-										@else
-											No Count within 48 hrs
-										@endif
-									</div>
-									<div class="col-2">
-										${{$item->cost}}
-									</div>
-									<div class="col-2">
-										<input class="orderquantity" name="qty{{$loop->iteration}}" type="number">
+												@endforeach
+											@else
+												NO PARs
+											@endif
+										</div>
+										<div class="col-2">
+											@if(in_array($item->id,$itemswithonhand))
+												@foreach($onhand as $onhands)
+													@if($item->id === $onhands->item_id)
+														{{$onhands->inventorycount_qty}}
+													@endif
+												@endforeach
+											@else
+												No Count within 48 hrs
+											@endif
+										</div>
+										<div class="col-2">
+											${{$item->cost}}
+										</div>
+										<div class="col-2">
+											<input class="orderquantity" name="qty{{$loop->iteration}}" type="number">
+										</div>
 									</div>
 								</div>
-							</div>
+						@endif
 					@endif
 				@endforeach
 			</div>
