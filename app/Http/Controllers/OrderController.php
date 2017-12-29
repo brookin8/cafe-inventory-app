@@ -252,9 +252,9 @@ class OrderController extends Controller
 
                 \Mail::send('emails.send', $data, function($message) use($pdf)
                 {
-                    $message->from('brookin8@gmail.com', 'Erin');
+                    $message->from('billing@northlime.net', 'North Lime');
 
-                    $message->to('brookin8@gmail.com')->subject('Order');
+                    $message->to('billing@northlime.net')->subject('North Lime Order');
 
                     $message->attachData($pdf->output(), "order.pdf");
                 });
@@ -477,12 +477,23 @@ class OrderController extends Controller
         $deliverydate->addDays($supplier->lead_time_days);
         $categoryids=[];
 
+        // $items = \DB::table('items')
+        //         ->join('items_stores','items_stores.item_id','=','items.id')
+        //         ->whereNull('items.deleted_at')
+        //         ->where([
+        //             ['items.supplier_id','=',$supplierId],
+        //             ['items_stores.store_id','=',\Auth::user()->store_id]
+        //         ])
+        //         ->select('items.*')
+        //         ->orderBy('items.name')
+        //         ->get();
+                
         $items = \DB::table('items')
-                ->join('items_stores','items_stores.item_id','=','items.id')
+                // ->join('items_stores','items_stores.item_id','=','items.id')
                 ->whereNull('items.deleted_at')
                 ->where([
                     ['items.supplier_id','=',$supplierId],
-                    ['items_stores.store_id','=',\Auth::user()->store_id]
+                    // ['items_stores.store_id','=',\Auth::user()->store_id]
                 ])
                 ->select('items.*')
                 ->orderBy('items.name')
@@ -613,15 +624,16 @@ class OrderController extends Controller
             $supplierfind = $order2->supplier_id;
             $suppliermethod = \App\Supplier::find($supplierfind);
             $ordermethod = $suppliermethod->order_method;
-
-            if($ordermethod === 1) {
-                $pdfitems = \DB::table('items_orders')
+            $pdfitems = \DB::table('items_orders')
                 ->join('items','items.id','=','items_orders.item_id')
                 ->where([
-                        ['order_id','=',$orderid],
+                        ['order_id','=',$id],
                         ])
-                ->select('items_orders.*','items.supplier_item_identifier as supplieritem')
+                ->select('items_orders.*','items.supplier_item_identifier as supplieritem','items.uom_id as uom')
                 ->get();
+
+            if($ordermethod === 1) {
+                
 
                 $data = array(
                     'order2' => $order2,
@@ -634,12 +646,37 @@ class OrderController extends Controller
 
                 \Mail::send('emails.send', $data, function($message) use($pdf)
                 {
-                    $message->from('brookin8@gmail.com', 'Erin');
+                    $message->from('billing@northlime.net', 'North Lime');
 
-                    $message->to('brookin8@gmail.com')->subject('Order');
+                    $message->to('billing@northlime.net')->subject('North Lime Order');
 
                     $message->attachData($pdf->output(), "order.pdf");
                 });
+            } elseif ($supplierfind === 3 && strpos($suppliermethod->name,'Sysco') !== false) {
+                $filename = 'Sysco_Order' . $orderid;
+                $file = fopen($filename, 'w+');
+
+                fputcsv($file,array('H','O0601'));
+
+
+                foreach ($pdfitems as $pdfitem) {
+                    if($pdfitem->uom === 2) {
+                        fputcsv($file, array('P',$pdfitem->supplieritem,$pdfitem->order_qty));
+                    } else {
+                        fputcsv($file, array('P',$pdfitem->supplieritem,0,$pdfitem->order_qty));
+                    }
+                }
+
+                fclose($file);
+
+                $headers = array(
+                    'Content-Type' => 'text/csv',
+                );
+
+                header( "refresh:5; url=../orders" ); 
+
+                return response()->download($filename, 'Sysco_Order'.$orderid.'.csv', $headers);
+               
             }
 
             // $thisweek = Carbon::today()->startOfWeek();

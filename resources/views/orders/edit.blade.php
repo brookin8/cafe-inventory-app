@@ -14,13 +14,28 @@
                 		<div class="col">
                 			Order #: {{$order->id}}
                 		</div>
-                		<div class="col text-right buttoncol">
+                		@if($order->supplier->id === 3)
+                		<div class="col">
 							<a href="../../orders">
 								<button type="button" class="btn btn-default mr-3">Discard</button>
 							</a>
-							<button class="btn btn-outline-primary newitem mr-3" type="submit" name="button" value="save">Save</button>
-							<button class="btn btn-primary newitem" type="submit" name="button" value="submit">Submit</button>
+							<button class="btn btn-primary mr-3" type="submit" name="button" value="save">Save</button>
+							<button class="btn btn-success mr-3" type="submit" name="button" value="submit">Submit</button>
+                		</div>
+                		<div class="col-2 text-right buttoncol">
+                			<a href="../../orders">
+							<button class="btn btn-warning" type="button" name="button" value="submit">Done</button>
+							</a>
 						</div>
+						@else
+						<div class="col text-right buttoncol">
+                			<a href="../../orders">
+								<button type="button" class="btn btn-default mr-3">Discard</button>
+							</a>
+							<button class="btn btn-primary mr-3" type="submit" name="button" value="save">Save</button>
+							<button class="btn btn-success mr-3" type="submit" name="button" value="submit">Submit</button>
+						</div>
+						@endif
                 	</div>
                 </div>
 
@@ -74,6 +89,7 @@
 						<div class="col-2">Order Qty</div>
 					</div>
 					@foreach ($items as $item)
+						@if(in_array($item->id,$itemswithpars))
 						@if($item->category_id === $category->id)
 		 						 <div class="card card-block" style="width:95%">
 		 						 	<div class="row">
@@ -123,6 +139,7 @@
 										</div>
 									</div>
 								</div>
+						@endif
 						@endif
 					@endforeach
 				</div>
