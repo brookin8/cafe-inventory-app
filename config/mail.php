@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'brookin8@gmail.com'),
-        'name' => env('MAIL_FROM_NAME', 'North Lime'),
+        'address' => env('MAIL_FROM_ADDRESS', 'northlimeorder@gmail.com'),
+        'name' => env('MAIL_FROM_NAME', 'North Lime Orders'),
     ],
 
     /*
@@ -84,9 +84,9 @@ return [
     |
     */
 
-    'username' => env('MAIL_USERNAME', 'brookin8@gmail.com'),
+    'username' => env('MAIL_USERNAME', 'northlimeorder@gmail.com'),
 
-    'password' => env('MAIL_PASSWORD', 'NewOrleans12'),
+    'password' => env('MAIL_PASSWORD', 'oldbean575'),
 
     /*
     |--------------------------------------------------------------------------
