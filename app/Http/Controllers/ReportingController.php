@@ -14,14 +14,14 @@ class ReportingController extends Controller
      */
     public function index(Request $request)
     {
-
+        error_log('why not working. Wow Im adding a lot of code');
         $thisweek = Carbon::today()->startOfWeek();
         $lastweek = Carbon::today()->startOfWeek()->subDays(7)->format('m/d/Y');
         $lastweekspend = Carbon::today()->startOfWeek()->subDays(7);
         $today = Carbon::today();
         $fourweeks = Carbon::today()->startOfWeek()->subDays(28)->format('Y-m-d');
-        //error_log('fourweeks: ' . $fourweeks);
-        //error_log('type of fourweeks: ' . gettype($fourweeks));
+        error_log('fourweeks: ' . $fourweeks);
+        error_log('type of fourweeks: ' . gettype($fourweeks));
 
         $fiveweeks = Carbon::today()->startOfWeek()->subDays(35);
         $tenweeks = Carbon::today()->startOfWeek()->subDays(70);
@@ -71,7 +71,7 @@ class ReportingController extends Controller
             }
         }
 
-        //error_log('itemstores: ' . $itemstores);
+        error_log('itemstores: ' . $itemstores);
 
         $demand = \DB::table('items_demand')
             ->join('items','items.id','=','items_demand.item_id')
@@ -120,10 +120,10 @@ class ReportingController extends Controller
         }
 
         
-            // foreach($demand2 as $demands2) {
-            //     error_log(gettype($demands2->week));
-            //     error_log($demands2->week);
-            // }
+            foreach($demand2 as $demands2) {
+                error_log(gettype($demands2->week));
+                error_log($demands2->week);
+            }
 
         $demandlastweek = \DB::table('items_demand')
             ->select('items_demand.*')
