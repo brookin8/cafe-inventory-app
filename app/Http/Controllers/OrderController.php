@@ -252,7 +252,7 @@ class OrderController extends Controller
 
                 \Mail::send('emails.send', $data, function($message) use($pdf)
                 {
-                    $message->from('brookin8@gmail.com', 'North Lime');
+                    $message->from('northlimeorder@gmail.com', 'North Lime');
 
                     $message->to('billing@northlime.net')->subject('North Lime Order');
 
