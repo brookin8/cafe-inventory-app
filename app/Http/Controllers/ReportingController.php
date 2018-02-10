@@ -119,10 +119,10 @@ class ReportingController extends Controller
         }
 
         
-            foreach($demand2 as $demands2) {
-                error_log(gettype($demands2->week));
-                error_log($demands2->week);
-            }
+           // foreach($demand2 as $demands2) {
+                //error_log(gettype($demands2->week));
+               // error_log($demands2->week);
+           // }
 
         $demandlastweek = \DB::table('items_demand')
             ->select('items_demand.*')
@@ -147,7 +147,7 @@ class ReportingController extends Controller
             $tenweek[$item->id] = 0;
         }
 
-        error_log(print_r($tenweek));
+        //error_log(print_r($tenweek));
 
         foreach($demandlastweek as $demandlastweeks) {
             $lastweekdata[$demandlastweeks->item_id] = $demandlastweeks->demand;
@@ -200,7 +200,7 @@ class ReportingController extends Controller
         $ptd = [];
         $ytd = [];
         $lastweekdata2 = [];
-        error_log('This month:' .$thismonth);
+        //error_log('This month:' .$thismonth);
 
         foreach($items as $item) {
             $ptd[$item->id] = 0;
