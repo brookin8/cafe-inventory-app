@@ -14,14 +14,14 @@ class ReportingController extends Controller
      */
     public function index(Request $request)
     {
-        error_log('why not working. Wow Im adding a lot of code');
+    
         $thisweek = Carbon::today()->startOfWeek();
         $lastweek = Carbon::today()->startOfWeek()->subDays(7)->format('m/d/Y');
         $lastweekspend = Carbon::today()->startOfWeek()->subDays(7);
         $today = Carbon::today();
         $fourweeks = Carbon::today()->startOfWeek()->subDays(28)->format('Y-m-d');
-        error_log('fourweeks: ' . $fourweeks);
-        error_log('type of fourweeks: ' . gettype($fourweeks));
+        // error_log('fourweeks: ' . $fourweeks);
+        // error_log('type of fourweeks: ' . gettype($fourweeks));
 
         $fiveweeks = Carbon::today()->startOfWeek()->subDays(35);
         $tenweeks = Carbon::today()->startOfWeek()->subDays(70);
@@ -71,7 +71,6 @@ class ReportingController extends Controller
             }
         }
 
-        error_log('itemstores: ' . $itemstores);
 
         $demand = \DB::table('items_demand')
             ->join('items','items.id','=','items_demand.item_id')
@@ -363,7 +362,7 @@ class ReportingController extends Controller
             ->join('categories','items.category_id','=','categories.id')
             ->join('suppliers','items.supplier_id','=','suppliers.id')
             ->join('stores','items_spend.store_id','=','stores.id')
-            ->select('items_spend.week','items_spend.item_id','items.name as name','categories.name as category','items_spend.spend','suppliers.name as supplier','stores.name as store')
+            ->select('items_spend.week','items_spend.item_id','items.name as name','categories.name as category','items_spend.spend','suppliers.name as supplier','stores.name as store','items_spend.store_id')
             ->where([
                 // ['items_spend.store_id','=',\Auth::user()->store_id],
                 ['items_spend.week','>=',$startdate],
@@ -378,7 +377,7 @@ class ReportingController extends Controller
             ->join('suppliers','items.supplier_id','=','suppliers.id')
             ->join('stores','items_demand.store_id','=','stores.id')
             ->join('uoms','items.uom_id','=','uoms.id')
-            ->select('items_demand.week','items_demand.item_id','items.name as name','categories.name as category','items_demand.demand','suppliers.name as supplier','stores.name as store','uoms.unit as uom')
+            ->select('items_demand.week','items_demand.item_id','items.name as name','categories.name as category','items_demand.demand','suppliers.name as supplier','stores.name as store','uoms.unit as uom', 'items_demand.store_id')
             ->where([
                 // ['items_demand.store_id','=',\Auth::user()->store_id],
                 ['items_demand.week','>=',$startdatedemand],
