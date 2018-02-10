@@ -31,7 +31,7 @@ class ReportingController extends Controller
 
         $items = \DB::table('items')
             ->join('categories','items.category_id','=','categories.id')
-            ->whereNull('items.deleted_at')
+            //->whereNull('items.deleted_at')
             ->select('items.*','categories.name as category')
             ->orderBy('items.name')
             ->get();
@@ -240,7 +240,7 @@ class ReportingController extends Controller
 
         $items = \DB::table('items')
             ->join('categories','items.category_id','=','categories.id')
-            // ->whereNull('items.deleted_at')
+            ->whereNull('items.deleted_at')
             ->select('items.*','categories.name as category')
             ->orderBy('items.name')
             ->get();
