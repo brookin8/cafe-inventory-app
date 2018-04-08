@@ -203,9 +203,9 @@
 		</div>
 		<div class="panel-body reporting">	
 
-			<div class="row ml-5 mr-3 mt-4">
+			<div class="row ml-2 mr-2 mt-4">
 				<div class="table-responsive">
-					<table class="table tableborder table-striped table-hover ml-3" width="100%" id="table">
+					<table class="table tableborder table-striped table-hover ml-3 display nowrap" style="width:100%; min-width:100%;" id="table">
 						<thead>
 							<tr>
 								<th class="text-left reporting">Store</th>
@@ -314,6 +314,7 @@ $(document).ready(function() {
 
 	var table = $('#table').DataTable( {
     	dom: 'Blfrtip',
+    	scrollX: true,
     	buttons: [
     	{extend:'copy', className:'tableButton'},
     	{extend:'excel', className:'tableButton'},
