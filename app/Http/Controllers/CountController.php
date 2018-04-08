@@ -131,7 +131,10 @@ class CountController extends Controller
         $count->store_id = \Auth::user()->store_id;
         $count->created_by = \Auth::user()->id;
         $count->created_at = Carbon::now();
-        $count->updated_at = Carbon::now();
+        //changed from now to today
+        $count->updated_at = Carbon::today();
+        //$count->updated_at = Carbon::now()->addDays(3);
+        error_log($count->updated_at);
         $count->total_value_onhand = 0;
 
         if($button === 'save') {
@@ -220,8 +223,8 @@ class CountController extends Controller
                     ->orderBy('items_inventorycounts.updated_at','desc')
                     ->first();
 
-                    error_log('newcount1:'.print_r($newcount1,true));
-                    error_log('prevcount1:' . print_r($prevcount1,true));
+                    //error_log('newcount1:'.print_r($newcount1,true));
+                    //error_log('prevcount1:' . print_r($prevcount1,true));
 
                     //If previous count exists
                     if(\DB::table('items_inventorycounts')
@@ -239,22 +242,22 @@ class CountController extends Controller
                         $prevcount = \App\Iteminventorycount::find($prevcountid);
                         $newcountid = $newcount1->id;
                         $newcount = \App\Iteminventorycount::find($newcountid);
-                        error_log('newcount id and result:' . $newcountid . $newcount);
-                        error_log('prevcount: ' . $prevcount);
+                        //error_log('newcount id and result:' . $newcountid . $newcount);
+                        //error_log('prevcount: ' . $prevcount);
                         
                         //Grab the dates of the counts
                         $newcountdate = $newcount->updated_at;
                         $prevcountdate = $prevcount->updated_at->startOfDay();
                         $firstweekdateget = $prevcount->updated_at->startOfDay();
-                        error_log('newcountdate: '. $newcountdate);
-                        error_log('prevcountdate: '. $prevcountdate);
+                        //error_log('newcountdate: '. $newcountdate);
+                        //error_log('prevcountdate: '. $prevcountdate);
                         
                         // Find the total difference between the days
                         $totaldays = date_diff($newcountdate,$prevcountdate)->d;
                         if($totaldays === 0) {
                             $totaldays = 1;
                         }
-                        error_log('totaldays: ' . $totaldays);
+                        //error_log('totaldays: ' . $totaldays);
                         
                         //And any quantity that was received in between those dates    
                         $invoicedqty = \DB::table('items_invoices')
@@ -267,7 +270,7 @@ class CountController extends Controller
                                 ])
                             ->get();
                         
-                        error_log('invoicedqty: '. $invoicedqty);
+                        //error_log('invoicedqty: '. $invoicedqty);
                         
                         if($prevcountdate->dayOfWeek === 1) {
                             $weekcounter = 0;
@@ -299,7 +302,7 @@ class CountController extends Controller
 
 
                         $totaldemand = $prevcount->inventorycount_qty + $totalinvoiceamount - $newcount->inventorycount_qty;
-                        error_log('total demand: '.$totaldemand);
+                        //error_log('total demand: '.$totaldemand);
                        
                        
 
