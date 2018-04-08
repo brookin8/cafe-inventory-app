@@ -204,8 +204,8 @@
 		<div class="panel-body reporting">	
 
 			<div class="row ml-5 mr-3 mt-4">
-				<div class="table-responsive">
-					<table class="table tableborder table-striped table-hover ml-3" width="98%" id="table">
+				<div class="table-responsive" style="overflow-x:scroll;">
+					<table class="table tableborder table-striped table-hover ml-3" width="100%" id="table">
 						<thead>
 							<tr>
 								<th class="text-left reporting">Store</th>
