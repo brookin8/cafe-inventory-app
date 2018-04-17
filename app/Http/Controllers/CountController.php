@@ -34,7 +34,36 @@ class CountController extends Controller
                     ])
                 ->get();
 
-        return view('inventorycounts.index',compact('counts'));
+        $countssuppliers = \DB::table('inventorycounts')
+                ->join('items_inventorycounts', 'inventorycounts.id', '=', 'items_inventorycounts.inventorycount_id')
+                ->join('items', 'items.id', '=', 'items_inventorycounts.item_id')
+                ->join('suppliers', 'suppliers.id', '=', 'items.supplier_id')
+                ->select('inventorycounts.*', 'suppliers.name as supplier')
+                ->where([
+                    ['inventorycounts.editable','=',false],
+                    ['inventorycounts.store_id','=',\Auth::user()->store_id]
+                    ])
+                ->get();
+
+                $supplierarray = [];
+                foreach($countssuppliers as $count) {
+                    $key = $count->id;
+                    $value = [];
+                    array_push($value, $count->supplier);
+                    if(array_key_exists($key, $supplierarray)) {
+                        $current = $supplierarray[$key];
+                        if($value != $current) {
+                            $merged = array_merge($current,$value);
+                            $finalmerged = array_unique($merged);
+                            $supplierarray[$key] = $finalmerged;
+                        }
+                    } else {
+                        $supplierarray[$key] = $value;
+                    }
+                }
+                //error_log(print_r($supplierarray));
+
+        return view('inventorycounts.index',compact('counts', 'supplierarray'));
     }
 
      public function supplierselect()
